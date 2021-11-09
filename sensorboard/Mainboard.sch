@@ -347,49 +347,6 @@ Wire Wire Line
 	1450 1000 1650 1000
 Wire Wire Line
 	2200 1000 2150 1000
-$Comp
-L Connector:8P8C_LED J2
-U 1 1 5DB9241E
-P 5500 1400
-F 0 "J2" H 5500 833 50  0000 C CNN
-F 1 "8P8C_LED" H 5500 924 50  0000 C CNN
-F 2 "Connector_RJ:RJ45_Amphenol_RJHSE538X" V 5500 1425 50  0001 C CNN
-F 3 "~" V 5500 1425 50  0001 C CNN
-	1    5500 1400
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	5100 1100 4750 1100
-Wire Wire Line
-	5100 1200 4750 1200
-Text Label 4750 1100 0    50   ~ 0
-CAN_HIGH
-Text Label 4750 1200 0    50   ~ 0
-CAN_LOW
-$Comp
-L power:GND #PWR018
-U 1 1 5DB9DB5B
-P 4950 1900
-F 0 "#PWR018" H 4950 1650 50  0001 C CNN
-F 1 "GND" H 4955 1727 50  0000 C CNN
-F 2 "" H 4950 1900 50  0001 C CNN
-F 3 "" H 4950 1900 50  0001 C CNN
-	1    4950 1900
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3.3V #PWR019
-U 1 1 5DBA5D7E
-P 4950 1550
-F 0 "#PWR019" H 4950 1400 50  0001 C CNN
-F 1 "+3.3V" H 4965 1723 50  0000 C CNN
-F 2 "" H 4950 1550 50  0001 C CNN
-F 3 "" H 4950 1550 50  0001 C CNN
-	1    4950 1550
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4950 1800 5100 1800
 Wire Wire Line
 	6400 5100 6750 5100
 Wire Wire Line
@@ -443,124 +400,6 @@ Connection ~ 1450 1000
 Wire Wire Line
 	1300 1000 1300 1350
 Connection ~ 1300 1000
-$Comp
-L Device:LED D7
-U 1 1 5DCA786C
-P 4400 1600
-F 0 "D7" H 4393 1816 50  0000 C CNN
-F 1 "CABLE_DETECT" H 4393 1725 50  0000 C CNN
-F 2 "LED_SMD:LED_0603_1608Metric_Castellated" H 4400 1600 50  0001 C CNN
-F 3 "~" H 4400 1600 50  0001 C CNN
-	1    4400 1600
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5900 1200 6200 1200
-Wire Wire Line
-	5900 1800 6200 1800
-Text Label 6200 1200 2    50   ~ 0
-CAN_RX
-Text Label 6200 1800 2    50   ~ 0
-CAN_TX
-$Comp
-L Device:R_Small R19
-U 1 1 5DCF3973
-P 6000 1600
-F 0 "R19" H 6059 1646 50  0000 L CNN
-F 1 "470" H 6059 1555 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 6000 1600 50  0001 C CNN
-F 3 "~" H 6000 1600 50  0001 C CNN
-	1    6000 1600
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_Small R18
-U 1 1 5DCF45CE
-P 6000 1000
-F 0 "R18" H 6059 1046 50  0000 L CNN
-F 1 "470" H 6059 955 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 6000 1000 50  0001 C CNN
-F 3 "~" H 6000 1000 50  0001 C CNN
-	1    6000 1000
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3.3V #PWR022
-U 1 1 5DCF51EA
-P 6000 900
-F 0 "#PWR022" H 6000 750 50  0001 C CNN
-F 1 "+3.3V" H 6015 1073 50  0000 C CNN
-F 2 "" H 6000 900 50  0001 C CNN
-F 3 "" H 6000 900 50  0001 C CNN
-	1    6000 900 
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3.3V #PWR023
-U 1 1 5DCF594A
-P 6000 1500
-F 0 "#PWR023" H 6000 1350 50  0001 C CNN
-F 1 "+3.3V" H 6015 1673 50  0000 C CNN
-F 2 "" H 6000 1500 50  0001 C CNN
-F 3 "" H 6000 1500 50  0001 C CNN
-	1    6000 1500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5050 6950 5100 6950
-$Comp
-L power:GND #PWR026
-U 1 1 5DBE9FD9
-P 5500 7500
-F 0 "#PWR026" H 5500 7250 50  0001 C CNN
-F 1 "GND" H 5550 7300 50  0000 C CNN
-F 2 "" H 5500 7500 50  0001 C CNN
-F 3 "" H 5500 7500 50  0001 C CNN
-	1    5500 7500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4350 7250 4300 7250
-Wire Wire Line
-	4300 7250 4300 7500
-Wire Wire Line
-	4300 7500 4700 7500
-Connection ~ 4700 7500
-Wire Wire Line
-	4700 7500 4700 7450
-Wire Wire Line
-	5050 7250 5350 7250
-Wire Wire Line
-	5050 7150 5350 7150
-Wire Wire Line
-	4350 7050 4050 7050
-Wire Wire Line
-	4350 6950 4050 6950
-Text Label 5350 7150 2    50   ~ 0
-SCLK
-Text Label 5350 7250 2    50   ~ 0
-MOSI
-Text Label 4050 7050 0    50   ~ 0
-MISO
-Text Label 4050 6950 0    50   ~ 0
-FLASH_CS
-Wire Wire Line
-	4950 1800 4950 1900
-Wire Wire Line
-	4250 1600 4200 1600
-$Comp
-L power:GND #PWR015
-U 1 1 5DD6E6D3
-P 4200 1800
-F 0 "#PWR015" H 4200 1550 50  0001 C CNN
-F 1 "GND" H 4205 1627 50  0000 C CNN
-F 2 "" H 4200 1800 50  0001 C CNN
-F 3 "" H 4200 1800 50  0001 C CNN
-	1    4200 1800
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4200 1800 4200 1600
 Wire Wire Line
 	3400 4900 3400 5150
 $Comp
@@ -575,9 +414,6 @@ F 3 "http://www.ti.com/lit/ds/symlink/sn65hvd230.pdf" H 3300 5850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 NoConn ~ 3000 5550
-NoConn ~ 5100 1300
-NoConn ~ 5100 1400
-NoConn ~ 5100 1500
 $Comp
 L Device:LED_Small D17
 U 1 1 5DFAB0B1
@@ -657,8 +493,6 @@ F 3 "~" H 4350 5550 50  0001 C CNN
 	1    4150 5550
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	3800 7100 3800 7150
 $Comp
 L Connector:TestPoint TP20
 U 1 1 5DF4B310
@@ -679,92 +513,6 @@ F 1 "TestPoint" V 6750 5400 50  0000 L CNN
 F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 6950 5000 50  0001 C CNN
 F 3 "~" H 6950 5000 50  0001 C CNN
 	1    6750 5000
-	0    1    1    0   
-$EndComp
-$Comp
-L Connector:TestPoint TP1
-U 1 1 5DF9EC0F
-P 4300 7250
-F 0 "TP1" V 4254 7438 50  0000 L CNN
-F 1 "TestPoint" V 4300 7600 50  0000 L CNN
-F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 4500 7250 50  0001 C CNN
-F 3 "~" H 4500 7250 50  0001 C CNN
-	1    4300 7250
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R_Small R23
-U 1 1 5E0CD038
-P 5200 6950
-F 0 "R23" H 5259 6996 50  0000 L CNN
-F 1 "10K" H 5259 6905 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 5200 6950 50  0001 C CNN
-F 3 "~" H 5200 6950 50  0001 C CNN
-	1    5200 6950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5100 6750 5100 6950
-Wire Wire Line
-	5200 6750 5200 6850
-Wire Wire Line
-	5050 7050 5200 7050
-Wire Wire Line
-	5200 6750 5100 6750
-Wire Wire Line
-	3800 6900 3800 6600
-$Comp
-L Jumper:SolderJumper_2_Open JP5
-U 1 1 5E28C1E7
-P 4950 6400
-F 0 "JP5" H 4950 6605 50  0000 C CNN
-F 1 "SolderJumper_2_Open" H 4950 6514 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm" H 4950 6400 50  0001 C CNN
-F 3 "~" H 4950 6400 50  0001 C CNN
-	1    4950 6400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5100 6600 5100 6750
-Connection ~ 5100 6750
-Wire Wire Line
-	5100 6600 5100 6400
-Connection ~ 5100 6600
-$Comp
-L Mainboard-rescue:+3.3V-Mainboard-cache #PWR024
-U 1 1 5E2C7938
-P 4450 6350
-F 0 "#PWR024" H 4450 6200 50  0001 C CNN
-F 1 "+3.3V" H 4465 6523 50  0000 C CNN
-F 2 "" H 4450 6350 50  0001 C CNN
-F 3 "" H 4450 6350 50  0001 C CNN
-	1    4450 6350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4450 6350 4450 6400
-Wire Wire Line
-	4450 6400 4800 6400
-$Comp
-L Jumper:SolderJumper_2_Open JP1
-U 1 1 5E2D684C
-P 5250 7500
-F 0 "JP1" H 5250 7705 50  0000 C CNN
-F 1 "SolderJumper_2_Open" H 5250 7600 50  0000 C CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm" H 5250 7500 50  0001 C CNN
-F 3 "~" H 5250 7500 50  0001 C CNN
-	1    5250 7500
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:TestPoint TP24
-U 1 1 5E31D198
-P 5100 6600
-F 0 "TP24" V 5054 6788 50  0000 L CNN
-F 1 "TestPoint" V 5145 6788 50  0000 L CNN
-F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 5300 6600 50  0001 C CNN
-F 3 "~" H 5300 6600 50  0001 C CNN
-	1    5100 6600
 	0    1    1    0   
 $EndComp
 $Comp
@@ -789,7 +537,6 @@ F 3 "http://www.diodes.com/_files/datasheets/ds30125.pdf" H 1500 5700 50  0001 C
 	2    1500 5700
 	1    0    0    1   
 $EndComp
-Connection ~ 4300 7250
 NoConn ~ 3900 3750
 NoConn ~ 3900 3850
 NoConn ~ 3900 3950
@@ -1087,17 +834,6 @@ Wire Wire Line
 Connection ~ 1000 4100
 Wire Wire Line
 	700  4100 1000 4100
-$Comp
-L Mainboard-rescue:W25Q64FV-iclr U4
-U 1 1 5E21AD44
-P 4700 7100
-F 0 "U4" H 4700 7515 50  0000 C CNN
-F 1 "W25Q64FV" H 4700 7424 50  0000 C CNN
-F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 4700 7100 50  0001 C CNN
-F 3 "" H 4700 7100 50  0001 C CNN
-	1    4700 7100
-	1    0    0    -1  
-$EndComp
 NoConn ~ 6400 5200
 NoConn ~ 6400 5300
 NoConn ~ 6400 4900
@@ -1227,29 +963,12 @@ F 3 "" H 5800 2500 50  0001 C CNN
 	1    5800 2500
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:R_Small R20
-U 1 1 5E26120B
-P 3800 7000
-F 0 "R20" H 3859 7046 50  0000 L CNN
-F 1 "10K" H 3859 6955 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 3800 7000 50  0001 C CNN
-F 3 "~" H 3800 7000 50  0001 C CNN
-	1    3800 7000
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3800 7150 4350 7150
-Wire Wire Line
-	3800 6600 5100 6600
 Wire Wire Line
 	1050 6500 1350 6500
 Text Label 1600 6700 0    50   ~ 0
 EN
 Wire Wire Line
 	1350 6700 1350 6500
-Wire Wire Line
-	4700 7500 5100 7500
 Connection ~ 1350 6700
 Wire Wire Line
 	1600 6700 1550 6700
@@ -1286,8 +1005,6 @@ Wire Wire Line
 	3800 5450 4150 5450
 Wire Wire Line
 	3800 5550 4150 5550
-Wire Wire Line
-	5500 7500 5400 7500
 Text Label 6750 3400 2    50   ~ 0
 SYNC
 Text Label 6750 3500 2    50   ~ 0
@@ -1391,36 +1108,12 @@ F 3 "" H 3800 1000 50  0001 C CNN
 	1    3800 1000
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5900 1100 6000 1100
-Wire Wire Line
-	5900 1700 6000 1700
-$Comp
-L Device:R_Small R15
-U 1 1 5DCA6D89
-P 4750 1600
-F 0 "R15" V 4554 1600 50  0000 C CNN
-F 1 "470" V 4645 1600 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 4750 1600 50  0001 C CNN
-F 3 "~" H 4750 1600 50  0001 C CNN
-	1    4750 1600
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	4850 1600 5100 1600
-Wire Wire Line
-	4650 1600 4550 1600
-Wire Wire Line
-	4950 1700 4950 1550
-Wire Wire Line
-	4950 1700 5100 1700
 $Sheet
 S 10600 6250 500  150 
 U 5DB9F80E
 F0 "power" 50
 F1 "power.sch" 50
 $EndSheet
-NoConn ~ 10700 6200
 Wire Notes Line
 	9800 5950 11150 5950
 Wire Notes Line
@@ -1435,9 +1128,6 @@ Wire Wire Line
 Connection ~ 10400 5250
 Wire Wire Line
 	10400 5250 10400 5550
-Connection ~ 10400 4950
-Wire Wire Line
-	10400 4950 10400 5250
 Text Label 10950 5850 2    50   ~ 0
 ADC_CS2
 Wire Wire Line
@@ -1587,23 +1277,6 @@ Text Label 10200 1000 2    50   ~ 0
 MISO
 Text Label 10200 900  2    50   ~ 0
 MOSI
-Wire Wire Line
-	10400 4550 10400 4950
-Text Label 10950 4950 2    50   ~ 0
-FLASH_CS
-Wire Wire Line
-	10600 4950 10950 4950
-$Comp
-L Device:R_Small R31
-U 1 1 5E320DFC
-P 10500 4950
-F 0 "R31" V 10304 4950 50  0000 C CNN
-F 1 "10K" V 10395 4950 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 10500 4950 50  0001 C CNN
-F 3 "~" H 10500 4950 50  0001 C CNN
-	1    10500 4950
-	0    1    1    0   
-$EndComp
 $Comp
 L power:+3.3V #PWR0108
 U 1 1 5E2F0B8B
@@ -1646,4 +1319,6 @@ Wire Wire Line
 	1600 2900 1950 2900
 Text Notes 600  2100 0    50   ~ 0
 Typically a 5.1K is used for USB_DET\nto indicate that this is a slave device\n(with no LED), but I'm assuming \nthat Daniele's setup will work fine.
+Wire Wire Line
+	10400 4550 10400 5250
 $EndSCHEMATC
