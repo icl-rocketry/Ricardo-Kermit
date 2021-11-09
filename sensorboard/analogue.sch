@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 5
+Sheet 5 5
 Title ""
 Date ""
 Rev ""
@@ -405,7 +405,7 @@ Wire Wire Line
 	2700 850  3100 850 
 Connection ~ 2700 850 
 Text Notes 550  650  0    50   ~ 0
-This assumes a 4.05V-5V input that needs to be stepped down into 2.7V-3.3V\nResistor choice is for commonality with DAC
+This assumes a 0V-5V input that needs to be scaled down into 0V-3.3V\nResistor choice is for commonality with DAC
 $Comp
 L Device:C C?
 U 1 1 5DC4E705
