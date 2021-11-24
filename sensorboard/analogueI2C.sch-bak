@@ -528,10 +528,6 @@ Text Label 1150 2850 2    50   ~ 0
 AIN6
 Text Label 1150 2950 2    50   ~ 0
 AIN7
-Text Label 1150 4300 2    50   ~ 0
-AIN10
-Text Label 1150 4200 2    50   ~ 0
-AIN11
 Wire Wire Line
 	1300 4300 1150 4300
 Wire Wire Line
@@ -1497,4 +1493,6 @@ Connection ~ 1300 1000
 Connection ~ 1300 1300
 Connection ~ 1300 2450
 Connection ~ 1300 2650
+NoConn ~ 1150 4300
+NoConn ~ 1150 4200
 $EndSCHEMATC
