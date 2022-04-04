@@ -48,7 +48,13 @@
           "min_clearance": 0.19999999999999998
         }
       },
-      "diff_pair_dimensions": [],
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.0,
+          "via_gap": 0.0,
+          "width": 0.0
+        }
+      ],
       "drc_exclusions": [],
       "meta": {
         "filename": "board_design_settings.json",
@@ -349,7 +355,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "Mainboard.kicad_pro",
+    "filename": "sensorboard.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -437,7 +443,7 @@
       "intersheets_ref_suffix": "",
       "junction_size_choice": 3,
       "label_size_ratio": 0.25,
-      "pin_symbol_size": 0.0,
+      "pin_symbol_size": 25.0,
       "text_offset_ratio": 0.08
     },
     "legacy_lib_dir": "",
@@ -488,10 +494,6 @@
       "thermocouple4"
     ],
     [
-      "0453c67e-50a7-4870-aeab-84f52ff6e68b",
-      "usb"
-    ],
-    [
       "00000000-0000-0000-0000-000061dcc004",
       "thermocouple5"
     ],
@@ -512,12 +514,16 @@
       "thermocouple8"
     ],
     [
-      "a190bd03-a44f-406d-b509-db6d2721c035",
-      "CAN"
-    ],
-    [
       "00000000-0000-0000-0000-000061dcbff2",
       "thermocouple9"
+    ],
+    [
+      "0453c67e-50a7-4870-aeab-84f52ff6e68b",
+      "usb"
+    ],
+    [
+      "a190bd03-a44f-406d-b509-db6d2721c035",
+      "CAN"
     ]
   ],
   "text_variables": {}
