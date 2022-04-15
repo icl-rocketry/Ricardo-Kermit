@@ -3851,7 +3851,7 @@
     (property "Value" "LQG15WZ1N8B02D" (id 1) (at 187.96 46.9899 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (id 2) (at 186.69 45.72 0)
+    (property "Footprint" "iclr:INDC1006X60N" (id 2) (at 186.69 45.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 186.69 45.72 0)
@@ -4284,7 +4284,7 @@
     (uuid ad46cd95-f162-4a6c-8925-7b744d994db1)
     (property "Reference" "L1" (id 0) (at 172.72 104.14 90))
     (property "Value" "6.8uH" (id 1) (at 172.72 106.68 90))
-    (property "Footprint" "" (id 2) (at 172.72 109.22 0)
+    (property "Footprint" "iclr:INDC1006X60N" (id 2) (at 172.72 109.22 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 172.72 109.22 0)
@@ -5718,10 +5718,10 @@
       (reference "JP11") (unit 1) (value "SolderJumper_2_Open") (footprint "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm")
     )
     (path "/ad46cd95-f162-4a6c-8925-7b744d994db1"
-      (reference "L1") (unit 1) (value "6.8uH") (footprint "")
+      (reference "L1") (unit 1) (value "6.8uH") (footprint "iclr:INDC1006X60N")
     )
     (path "/47c29db2-b621-4590-b339-da2b95b151a0"
-      (reference "L2") (unit 1) (value "LQG15WZ1N8B02D") (footprint "")
+      (reference "L2") (unit 1) (value "LQG15WZ1N8B02D") (footprint "iclr:INDC1006X60N")
     )
     (path "/00000000-0000-0000-0000-00005e4f19d5"
       (reference "Q1") (unit 1) (value "MMDT2222A") (footprint "Package_TO_SOT_SMD:SOT-363_SC-70-6")
