@@ -230,7 +230,7 @@
           (stroke (width 0.2032) (type default) (color 0 0 0 0))
           (fill (type none))
         )
-        (arc (start 1.778 0) (mid 0.2221 1.8083) (end -1.778 0.508)
+        (arc (start 1.778 0) (mid 0.222 1.8083) (end -1.778 0.508)
           (stroke (width 0.254) (type default) (color 0 0 0 0))
           (fill (type none))
         )
@@ -1472,7 +1472,6 @@
       )
     )
   )
-
 
   (junction (at 146.05 80.01) (diameter 0) (color 0 0 0 0)
     (uuid 09bb07eb-9359-44ee-b461-82e84c72a623)
@@ -4285,7 +4284,7 @@
     (property "Footprint" "Connector_Coaxial:U.FL_Molex_MCRF_73412-0110_Vertical" (id 2) (at 186.69 34.29 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" " ~" (id 3) (at 186.69 34.29 0)
+    (property "Datasheet" "https://docs.rs-online.com/332c/0900766b813c49d5.pdf" (id 3) (at 186.69 34.29 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 647eebaa-221e-446a-addc-3a9c0d82c95f))

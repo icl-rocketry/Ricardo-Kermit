@@ -1037,7 +1037,6 @@
     )
   )
 
-
   (junction (at 254 106.68) (diameter 0) (color 0 0 0 0)
     (uuid 0ec6ae8c-e529-42e0-b8fd-e6f90c34f76d)
   )
@@ -2067,7 +2066,7 @@
     (property "Footprint" "iclr:QFN28G_0.5-5X5MM" (id 2) (at 132.08 50.8 0)
       (effects (font (size 1.27 1.27)) (justify left bottom) hide)
     )
-    (property "Datasheet" "" (id 3) (at 132.08 50.8 0)
+    (property "Datasheet" "https://www.farnell.com/datasheets/2674213.pdf" (id 3) (at 132.08 50.8 0)
       (effects (font (size 1.27 1.27)) (justify left bottom) hide)
     )
     (property "VALUE" "CP2102-GMR-QFN28" (id 4) (at 132.08 50.8 0)
