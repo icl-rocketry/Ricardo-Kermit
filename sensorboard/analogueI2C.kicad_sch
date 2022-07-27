@@ -1785,7 +1785,7 @@
     (property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" (id 2) (at 38.1 76.2 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (id 3) (at 38.1 76.2 0)
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/ads1219.pdf?ts=1658881428100&ref_url=https%253A%252F%252Fwww.google.com%252F" (id 3) (at 38.1 76.2 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 5f81f012-c387-4b7e-a754-d174ee7838d8))
