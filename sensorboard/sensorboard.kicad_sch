@@ -5794,32 +5794,89 @@
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb31"
       (reference "JP1") (unit 1) (value "SolderJumper_3_Open") (footprint "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels")
     )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb21"
+      (reference "JP1_a") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb1b"
+      (reference "JP1_b") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb65"
       (reference "JP2") (unit 1) (value "SolderJumper_3_Open") (footprint "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb55"
+      (reference "JP2_a") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb4f"
+      (reference "JP2_b") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb99"
       (reference "JP3") (unit 1) (value "SolderJumper_3_Open") (footprint "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels")
     )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb89"
+      (reference "JP3_a") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb83"
+      (reference "JP3_b") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cbcd"
       (reference "JP4") (unit 1) (value "SolderJumper_3_Open") (footprint "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cbbd"
+      (reference "JP4_a") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cbb7"
+      (reference "JP4_b") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cc01"
       (reference "JP5") (unit 1) (value "SolderJumper_3_Open") (footprint "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels")
     )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cbf1"
+      (reference "JP5_a") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cbeb"
+      (reference "JP5_b") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c0bee7"
       (reference "JP6") (unit 1) (value "SolderJumper_3_Open") (footprint "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061bf63ab"
+      (reference "JP6_a") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061bf5de0"
+      (reference "JP6_b") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c2ff87"
       (reference "JP7") (unit 1) (value "SolderJumper_3_Open") (footprint "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels")
     )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c2ff77"
+      (reference "JP7_a") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c2ff71"
+      (reference "JP7_b") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c33b91"
       (reference "JP8") (unit 1) (value "SolderJumper_3_Open") (footprint "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c33b7b"
+      (reference "JP8_b") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c37f16"
       (reference "JP9") (unit 1) (value "SolderJumper_3_Open") (footprint "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels")
     )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c37f06"
+      (reference "JP9_a") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c37f00"
+      (reference "JP9_b") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c3b850"
       (reference "JP10") (unit 1) (value "SolderJumper_3_Open") (footprint "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c3b840"
+      (reference "JP10_a") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c3b83a"
+      (reference "JP10_b") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/a190bd03-a44f-406d-b509-db6d2721c035/c60db2ee-7495-4e16-bb5b-c5c1eef002ff"
       (reference "JP11") (unit 1) (value "SolderJumper_2_Open") (footprint "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm")
@@ -5932,53 +5989,8 @@
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061bbe74f"
       (reference "R31") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb1b"
-      (reference "R32") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb4f"
-      (reference "R33") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb83"
-      (reference "R34") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cbb7"
-      (reference "R35") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
     (path "/00000000-0000-0000-0000-00005dfab0b7"
       (reference "R36") (unit 1) (value "470") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cbeb"
-      (reference "R37") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb21"
-      (reference "R38") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb55"
-      (reference "R39") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb89"
-      (reference "R40") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cbbd"
-      (reference "R41") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cbf1"
-      (reference "R42") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061bf5de0"
-      (reference "R43") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c2ff71"
-      (reference "R44") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c33b7b"
-      (reference "R45") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c37f00"
-      (reference "R46") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c3b83a"
-      (reference "R47") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061bb00a1"
       (reference "R48") (unit 1) (value "1k") (footprint "Resistor_SMD:R_0603_1608Metric")
@@ -5986,20 +5998,8 @@
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061bb10aa"
       (reference "R49") (unit 1) (value "1k") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061bf63ab"
-      (reference "R50") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c2ff77"
-      (reference "R51") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c33b81"
       (reference "R52") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c37f06"
-      (reference "R53") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c3b840"
-      (reference "R54") (unit 1) (value "43k") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/00000000-0000-0000-0000-000061dcbfce/00000000-0000-0000-0000-00006199bb8c"
       (reference "R55") (unit 1) (value "100") (footprint "Resistor_SMD:R_0603_1608Metric")
