@@ -5488,6 +5488,9 @@
     (path "/9b6c2cec-a0ae-45f2-9100-915244cd8aad"
       (reference "#PWR0159") (unit 1) (value "VBUS") (footprint "")
     )
+    (path "/0453c67e-50a7-4870-aeab-84f52ff6e68b/fc4c3e53-c8d8-4232-8259-9e04210aff93"
+      (reference "#PWR0160") (unit 1) (value "GND") (footprint "")
+    )
     (path "/00000000-0000-0000-0000-000061e3fc9a"
       (reference "BOOT_TP1") (unit 1) (value "TestPoint") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
     )
@@ -6175,7 +6178,7 @@
     (path "/00000000-0000-0000-0000-000061dcbfbe/00000000-0000-0000-0000-0000619996ee"
       (reference "U11") (unit 1) (value "MAX31856") (footprint "Package_SO:TSSOP-14_4.4x5mm_P0.65mm")
     )
-    (path "/0453c67e-50a7-4870-aeab-84f52ff6e68b/baa71ec9-5e19-43fe-867f-64d0a5134064"
+    (path "/0453c67e-50a7-4870-aeab-84f52ff6e68b/bb37a374-8114-4ac5-be93-f7060fb408c3"
       (reference "U12") (unit 1) (value "SC2416H") (footprint "iclr:SOIC127P599X175-9N")
     )
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061bcd48b"
