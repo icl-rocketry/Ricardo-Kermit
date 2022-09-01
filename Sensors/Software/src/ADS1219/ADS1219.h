@@ -85,7 +85,7 @@ class ADS1219  {
 		ADS1219(TwoWire& wire,uint8_t addr);
 
 		// Methods
-		void begin(adsGain_t gain = ONE, int rate = 20, adsMode_t mode = MODE_CONTINUOUS, adsRef_t vref = REF_EXTERNAL);
+		void begin(adsGain_t gain = ONE, int rate = 20, adsMode_t mode = CONTINUOUS, adsRef_t vref = REF_EXTERNAL);
 		void resetConfig();
 		long readSingleEnded(int channel);
 		long readDifferential_0_1();

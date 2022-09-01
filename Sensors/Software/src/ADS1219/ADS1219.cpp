@@ -9,7 +9,7 @@ ADS1219::ADS1219(TwoWire& wire, uint8_t addr) :
   _i2cPort = &_wire;
   address = addr;
   config = 0x00;
-  singleShot = true;
+  singleShot = false;
 }
 
 void ADS1219::begin(adsGain_t gain, int rate, adsMode_t mode, adsRef_t vref) {
