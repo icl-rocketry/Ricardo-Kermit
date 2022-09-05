@@ -1,28 +1,74 @@
-#include "Arduino.h"
-#include "ADS1219/ADS1219.h"
-#include "sensor_pins.h"
-#include "Wire.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "esp_task_wdt.h"
 
-TwoWire I2C(0);
-ADS1219 ADS1219(I2C,0b1000000);
+#define ARDUINO_LOOP_STACK_SIZE 8192
 
-uint32_t I2cfreq = 400000;
+#include <Arduino.h>
 
-void setup() {
-  // put your setup code here, to run once:
-I2C.begin(_SDA,_SCL,I2cfreq);
-ADS1219.begin();
-Serial.begin(115200);
+#include "stateMachine.h"
+#include "States/setup.h"
 
+#include <exception>
+
+// #define LOG_LOCAL_LEVEL ESP_LOG_VERBOSE
+// #include "esp_log.h"
+
+// #include <i2cpyro.h"
+
+stateMachine statemachine;
+static constexpr bool exceptionsEnabled = true; //for debugging -> will integrate this into the sd configuration options later
+
+TaskHandle_t loopTaskHandle = NULL;
+
+void setup_task()
+{
+    try
+
+    {
+        statemachine.initialise(new Setup(&statemachine));
+    }
+    catch (const std::exception &e)
+    {
+        Serial.println(e.what());
+        Serial.flush();
+        throw e;
+    }
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-Serial.println(ADS1219.readSingleEnded(1));
-delay(100);
-Serial.println(ADS1219.readSingleEnded(2));
-delay(100);
-Serial.println(ADS1219.readSingleEnded(3));
-delay(100);
+void inner_loop_task()
+{
+    if constexpr (exceptionsEnabled)
+    {
+        try
+        {
+            statemachine.update();
+        }
+        catch (const std::exception &e)
+        {
+            statemachine.logcontroller.log(e.what());
+        }
+    }
+    else
+    {
+        statemachine.update();
+    }
+}
 
+void loopTask(void *pvParameters)
+{
+    // esp_log_level_set("*", ESP_LOG_INFO); 
+    // statemachine.initialise(new Setup(&statemachine)); //intialize statemachine with setup state to run all necessary setup tasks
+    setup_task();
+    for(;;) {
+        inner_loop_task();
+        vTaskDelay(1);
+ 
+    }
+}
+
+extern "C" void app_main()
+{
+    initArduino(); //probably dont even need this
+    xTaskCreateUniversal(loopTask, "loopTask", ARDUINO_LOOP_STACK_SIZE, NULL, 1, &loopTaskHandle, 1);
 }

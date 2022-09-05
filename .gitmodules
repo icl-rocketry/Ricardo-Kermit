@@ -1,0 +1,6 @@
+[submodule "librrc"]
+	path = librrc
+	url = https://github.com/icl-rocketry/librrc
+[submodule "librnp"]
+	path = librnp
+	url = https://github.com/icl-rocketry/librnp

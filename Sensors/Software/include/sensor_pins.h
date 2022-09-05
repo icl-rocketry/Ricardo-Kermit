@@ -22,9 +22,9 @@ static constexpr int TC_CS8 = 25;
 static constexpr int TC_CS9 = 14;
 
 //SPI
-static constexpr int SCLK = 18;
-static constexpr int MISO = 19;
-static constexpr int MOSI = 23;
+static constexpr int SCLK1 = 18;
+static constexpr int MISO1 = 19;
+static constexpr int MOSI1 = 23;
 
 //CAN
 static constexpr int CAN_TX = 32;
