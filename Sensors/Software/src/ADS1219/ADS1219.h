@@ -15,6 +15,7 @@
  */
 
 #include <Wire.h>
+#include <board_config.h>
 
 class ADS1219  {
   	private:
@@ -63,20 +64,20 @@ class ADS1219  {
 		static constexpr uint8_t VREF_INTERNAL = 0x00;
 		static constexpr uint8_t VREF_EXTERNAL = 0x01;
 
-		typedef enum{
+		enum class adsGain_t{
 		ONE	= GAIN_ONE,
 		FOUR	= GAIN_FOUR
-		}adsGain_t;
+		};
 
-		typedef enum{
+		enum class adsMode_t{
 		SINGLE_SHOT	= MODE_SINGLE_SHOT,
 		CONTINUOUS	= MODE_CONTINUOUS
-		}adsMode_t;
+		};
 
-		typedef enum{
+		enum class adsRef_t{
 		REF_INTERNAL	= VREF_INTERNAL,
 		REF_EXTERNAL	= VREF_EXTERNAL
-		}adsRef_t;
+		};
   
   protected:
 		uint8_t address;

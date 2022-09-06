@@ -1,5 +1,22 @@
 #pragma once
-#include <ADS1219/ADS1219.h>
+
+//ADS1219 Device setting enums
+enum class adsGain_t{
+    ONE	= 0x00,
+    FOUR = 0x10
+    };
+enum class adsMode_t{
+    SINGLE_SHOT	= 0x00,
+    CONTINUOUS	= 0x02
+    };
+
+enum class adsRef_t{
+    REF_INTERNAL	= 0x00,
+    REF_EXTERNAL	= 0x01
+    };
+
+//General Board Config
+static constexpr int I2C_FREQUENCY = 400000;
 
 /* ADS1219 Config
 Device 0 - U13

@@ -17,48 +17,21 @@
 // #include <i2cpyro.h"
 
 stateMachine statemachine;
-static constexpr bool exceptionsEnabled = true; //for debugging -> will integrate this into the sd configuration options later
 
 TaskHandle_t loopTaskHandle = NULL;
 
 void setup_task()
 {
-    try
-
-    {
         statemachine.initialise(new Setup(&statemachine));
-    }
-    catch (const std::exception &e)
-    {
-        Serial.println(e.what());
-        Serial.flush();
-        throw e;
-    }
 }
 
 void inner_loop_task()
 {
-    if constexpr (exceptionsEnabled)
-    {
-        try
-        {
-            statemachine.update();
-        }
-        catch (const std::exception &e)
-        {
-            statemachine.logcontroller.log(e.what());
-        }
-    }
-    else
-    {
-        statemachine.update();
-    }
+    statemachine.update();
 }
 
 void loopTask(void *pvParameters)
 {
-    // esp_log_level_set("*", ESP_LOG_INFO); 
-    // statemachine.initialise(new Setup(&statemachine)); //intialize statemachine with setup state to run all necessary setup tasks
     setup_task();
     for(;;) {
         inner_loop_task();

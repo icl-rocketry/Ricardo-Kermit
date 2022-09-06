@@ -10,27 +10,12 @@ Written by the Electronics team, Imperial College London Rocketry
 #include <vector>
 #include <functional>
 
-#include "global_config.h"
-#include "ricardo_pins.h"
+#include "board_config.h"
+#include "sensor_pins.h"
 
 #include "States/state.h"
 
 #include "Storage/systemstatus.h"
-
-#include "Storage/logController.h"
-#include "Storage/storageController.h"
-#include "Storage/configController.h"
-
-
-#include "Sensors/estimator.h"
-#include "Sensors/sensors.h"
-
-#include "Events/eventHandler.h"
-#include "Deployment/deploymenthandler.h"
-#include "Engine/enginehandler.h"
-#include "Controller/controllerhandler.h"
-
-#include "Sound/tunezHandler.h"
 
 #include "Network/interfaces/usb.h"
 #include "Network/interfaces/radio.h"
@@ -50,20 +35,12 @@ stateMachine::stateMachine() :
     vspi(VSPI),
     hspi(HSPI),
     I2C(0),
-    storagecontroller(this),
-    logcontroller(&storagecontroller,networkmanager),
     systemstatus(logcontroller),
     usbserial(Serial,systemstatus,logcontroller),
     radio(hspi,systemstatus,logcontroller),
     canbus(systemstatus,logcontroller,3),
     networkmanager(static_cast<uint8_t>(DEFAULT_ADDRESS::ROCKET),NODETYPE::HUB,true),
     commandhandler(this),
-    sensors(hspi,I2C,systemstatus,logcontroller),
-    estimator(systemstatus,logcontroller),
-    deploymenthandler(networkmanager,deploymentHandlerServiceID,I2C,logcontroller),
-    enginehandler(networkmanager,engineHandlerServiceID,logcontroller),
-    controllerhandler(enginehandler,logcontroller),
-    eventhandler(enginehandler,deploymenthandler,logcontroller)
 {};
 
 
@@ -82,32 +59,19 @@ void stateMachine::initialise(State* initStatePtr) {
   hspi.setFrequency(8000000);
   hspi.setBitOrder(MSBFIRST);
   hspi.setDataMode(SPI_MODE0);
+
   //setup cs pins
   //initialise output variables as output
-  pinMode(LoraCs, OUTPUT);
-  pinMode(ImuCs_1, OUTPUT);
-  pinMode(ImuCs_2, OUTPUT);
-  pinMode(BaroCs, OUTPUT);
-  pinMode(MagCs, OUTPUT);
-  pinMode(SdCs_1, OUTPUT);
-  pinMode(SdCs_2, OUTPUT);
+  //pinMode(LoraCs, OUTPUT);
 
   //initialise outputs as high
-  digitalWrite(LoraCs, HIGH);
-  digitalWrite(ImuCs_1, HIGH);
-  digitalWrite(ImuCs_2, HIGH);
-  digitalWrite(BaroCs, HIGH);
-  digitalWrite(MagCs, HIGH);
-  digitalWrite(SdCs_1, HIGH);
-  digitalWrite(SdCs_2, HIGH);
+  //digitalWrite(LoraCs, HIGH);
+
   //open serial port on usb interface
   Serial.begin(Serial_baud);
   Serial.setRxBufferSize(SERIAL_SIZE_RX);
 
-  // call tunez handler setup first so we can provide startup tone and auditory cues asap
-  tunezhandler.setup();
-
-  //setup interfaces
+  //setup network interfaces
   usbserial.setup();
   radio.setup();
   canbus.setup();
@@ -125,40 +89,13 @@ void stateMachine::initialise(State* initStatePtr) {
 
    // command handler callback
   networkmanager.registerService(static_cast<uint8_t>(DEFAULT_SERVICES::COMMAND),commandhandler.getCallback()); 
-
-  //setup storage and logging so any erros encoutered can be logged
-  storagecontroller.setup();
-    
-  logcontroller.setup();
+  
   networkmanager.setLogCb([this](const std::string& message){return logcontroller.log(message);});
 
-  // create config controller object
-  ConfigController configcontroller(&storagecontroller,&logcontroller); 
-  configcontroller.load(); // load configuration from sd card into ram
-
-  //enumerate deployers engines controllers and events from config file
-  try
-  {
-    deploymenthandler.setup(configcontroller.get()["Deployers"]);
-    enginehandler.setup(configcontroller.get()["Engines"]);
-    controllerhandler.setup(configcontroller.get()["Controllers"]);
-    eventhandler.setup(configcontroller.get()["Events"]);
-  }
-  catch (const std::exception& e)
-  {
-    Serial.println("exception:");
-    Serial.println(std::string(e.what()).c_str());
-    //impelment panic handler to send crashed message to gc
-    throw std::runtime_error("broke");
-  }
   //register deployment and engine handler services
   networkmanager.registerService(deploymentHandlerServiceID,deploymenthandler.getThisNetworkCallback());  
   networkmanager.registerService(engineHandlerServiceID,enginehandler.getThisNetworkCallback());  
 
-
-  // //sensors must be setup before estim ator
-  sensors.setup(configcontroller.get()["Sensors"]);
-  estimator.setup();
   //call setup state
   changeState(initStatePtr);
  
@@ -168,21 +105,6 @@ void stateMachine::initialise(State* initStatePtr) {
 void stateMachine::update() {
 
 
-  tunezhandler.update();
-
-  //write logs to file 
-  logcontroller.update();
-
-  //request new sensor data
-  sensors.update();
- 
-  //process updated sensor data
-  estimator.update(sensors.getData());
-
-  logcontroller.log(estimator.getData(),
-                    sensors.getData(),
-                    static_cast<const RadioInterfaceInfo*>(radio.getInfo())->rssi,
-                    static_cast<const RadioInterfaceInfo*>(radio.getInfo())->snr);// log new navigation solution and sensor output
 
   //check for new packets and process
 

@@ -1,6 +1,7 @@
 
 #include <Wire.h>
 #include "ADS1219.h"
+#include <board_config.h>
 
 
 ADS1219::ADS1219(TwoWire& wire, uint8_t addr) :
