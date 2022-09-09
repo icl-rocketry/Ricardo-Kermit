@@ -5,67 +5,42 @@
 #define ARDUINO_LOOP_STACK_SIZE 8192
 
 #include <Arduino.h>
-
-#include "stateMachine.h"
-#include "States/setup.h"
-
 #include <exception>
-
-// #define LOG_LOCAL_LEVEL ESP_LOG_VERBOSE
-// #include "esp_log.h"
-
-// #include <i2cpyro.h"
+#include "stateMachine.h"
+#include "States/groundstationGateway.h"
+#include "ADS1219/ADS1219.h"
+#include <global_config.h>
 
 stateMachine statemachine;
-static constexpr bool exceptionsEnabled = true; //for debugging -> will integrate this into the sd configuration options later
-
-TaskHandle_t loopTaskHandle = NULL;
+TwoWire I2C1(0);
+ADS1219 ADS1219(I2C1,D0addr);
 
 void setup_task()
 {
-    try
-
-    {
-        statemachine.initialise(new Setup(&statemachine));
-    }
-    catch (const std::exception &e)
-    {
-        Serial.println(e.what());
-        Serial.flush();
-        throw e;
-    }
+    statemachine.initialise(new GroundstationGateway(&statemachine));
 }
 
 void inner_loop_task()
 {
-    if constexpr (exceptionsEnabled)
-    {
-        try
-        {
-            statemachine.update();
-        }
-        catch (const std::exception &e)
-        {
-            statemachine.logcontroller.log(e.what());
-        }
-    }
-    else
-    {
-        statemachine.update();
-    }
+    statemachine.update();
 }
 
 void loopTask(void *pvParameters)
 {
     // esp_log_level_set("*", ESP_LOG_INFO); 
-    // statemachine.initialise(new Setup(&statemachine)); //intialize statemachine with setup state to run all necessary setup tasks
-    setup_task();
+    //setup_task();
+    Serial.begin(115200);
+    ADS1219.begin();
+    I2C1.begin(_SDA,_SCL,I2C_FREQUENCY);
     for(;;) {
-        inner_loop_task();
+        //inner_loop_task();
         vTaskDelay(1);
+        Serial.println(ADS1219.getOffset());
  
     }
 }
+
+TaskHandle_t loopTaskHandle = NULL;
 
 extern "C" void app_main()
 {

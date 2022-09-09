@@ -15,6 +15,7 @@
  */
 
 #include <Wire.h>
+#include <global_config.h>
 
 class ADS1219  {
   	private:
@@ -26,6 +27,11 @@ class ADS1219  {
 		uint8_t config;
 		bool singleShot;
 		int data_ready;
+		int deviceOffset;
+		long doffset = 0;
+		unsigned long currentTime;
+		unsigned long prevTime;
+		int iter = 0;
 
 		TwoWire& _wire; //pointer to wire object
 		TwoWire *_i2cPort;
@@ -63,17 +69,17 @@ class ADS1219  {
 		static constexpr uint8_t VREF_INTERNAL = 0x00;
 		static constexpr uint8_t VREF_EXTERNAL = 0x01;
 
-		typedef enum{
+		typedef enum {
 		ONE	= GAIN_ONE,
 		FOUR	= GAIN_FOUR
 		}adsGain_t;
 
-		typedef enum{
+		typedef enum {
 		SINGLE_SHOT	= MODE_SINGLE_SHOT,
 		CONTINUOUS	= MODE_CONTINUOUS
 		}adsMode_t;
 
-		typedef enum{
+		typedef enum {
 		REF_INTERNAL	= VREF_INTERNAL,
 		REF_EXTERNAL	= VREF_EXTERNAL
 		}adsRef_t;
@@ -85,13 +91,15 @@ class ADS1219  {
 		ADS1219(TwoWire& wire,uint8_t addr);
 
 		// Methods
-		void begin(adsGain_t gain = ONE, int rate = 20, adsMode_t mode = CONTINUOUS, adsRef_t vref = REF_EXTERNAL);
+		void begin(adsGain_t gain = ONE, int rate = 20, adsMode_t mode = CONTINUOUS, adsRef_t vref = REF_EXTERNAL, int Offset = 0);
 		void resetConfig();
 		long readSingleEnded(int channel);
+		long readAdjusted(int channel);
 		long readDifferential_0_1();
 		long readDifferential_2_3();
 		long readDifferential_1_2();
 		long readShorted();
+		long getOffset(const int readingNumber = 10, const int timeincrement = 100);
 		void setGain(adsGain_t gain);
 		void setDataRate(int rate);
 		void setConversionMode(adsMode_t mode);

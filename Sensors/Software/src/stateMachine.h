@@ -12,30 +12,17 @@ Written by the Electronics team, Imperial College London Rocketry
 #include "States/state.h"
 
 #include "Storage/systemstatus.h"
-
 #include "Storage/logController.h"
-#include "Storage/storageController.h"
-
-
-#include "Sensors/estimator.h"
-
-#include "Sensors/sensors.h"
-
-#include "Sound/tunezHandler.h"
-
-#include "Events/eventHandler.h"
-#include "Deployment/deploymenthandler.h"
-#include "Engine/enginehandler.h"
-#include "Controller/controllerhandler.h"
 
 #include "Network/interfaces/usb.h"
-#include "Network/interfaces/radio.h"
 #include "Network/interfaces/canbus.h"
 
 #include "rnp_networkmanager.h"
 #include "rnp_routingtable.h"
 
 #include "Commands/commandHandler.h"
+
+
 
 #include "SPI.h"
 #include "Wire.h"
@@ -57,35 +44,18 @@ class stateMachine {
     SPIClass hspi;
     TwoWire I2C;
 
-
-    StorageController storagecontroller;
-    LogController logcontroller;
-
- 
-    SystemStatus systemstatus;
-    
     USB usbserial;
-    Radio radio;
     CanBus canbus;
     RnpNetworkManager networkmanager;
     CommandHandler commandhandler;
 
-    Sensors sensors;
-    Estimator estimator;
+    LogController logcontroller;
+    SystemStatus systemstatus;
 
-    DeploymentHandler deploymenthandler;
-    EngineHandler enginehandler;
-
-    ControllerHandler controllerhandler;
-    EventHandler eventhandler;
-
-    
-    TunezHandler tunezhandler;
+   
   private:
     State* _currStatePtr;
 
-    static constexpr uint8_t deploymentHandlerServiceID = 4;
-    static constexpr uint8_t engineHandlerServiceID = 5;
 
 };
 

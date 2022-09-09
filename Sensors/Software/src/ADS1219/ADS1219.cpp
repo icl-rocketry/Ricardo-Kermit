@@ -1,6 +1,7 @@
 
 #include <Wire.h>
 #include "ADS1219.h"
+#include <global_config.h>
 
 
 ADS1219::ADS1219(TwoWire& wire, uint8_t addr) :
@@ -12,11 +13,12 @@ ADS1219::ADS1219(TwoWire& wire, uint8_t addr) :
   singleShot = false;
 }
 
-void ADS1219::begin(adsGain_t gain, int rate, adsMode_t mode, adsRef_t vref) {
+void ADS1219::begin(adsGain_t gain, int rate, adsMode_t mode, adsRef_t vref, int Offset) {
   setGain(gain);
   setDataRate(rate);
   setConversionMode(mode);
   setVoltageReference(vref);
+  deviceOffset = Offset;
 }
 
 void ADS1219::start(){
@@ -84,6 +86,27 @@ long ADS1219::readSingleEnded(int channel){
   writeRegister(config);
 	  start();
 	  return readConversionResult();
+}
+
+long ADS1219::readAdjusted(int channel){
+  return readSingleEnded(channel) - deviceOffset;  
+}
+
+long ADS1219::getOffset(const int readingNumber, const int timeincrement){
+  prevTime = 0;
+  if( iter != readingNumber) {
+    currentTime = millis();
+    if(currentTime - prevTime >= timeincrement) {
+      prevTime = currentTime;
+      doffset = doffset + readShorted();
+      currentTime = millis();
+      iter++;
+    }
+  }
+  else{
+  doffset = doffset / readingNumber;
+  }
+  return doffset;
 }
 
 long ADS1219::readDifferential_0_1(){
