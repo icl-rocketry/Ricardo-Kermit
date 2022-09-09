@@ -14,7 +14,7 @@
 #include "driver/gpio.h"
 #include "driver/can.h"
 
-#include "ricardo_pins.h"
+#include "sensor_pins.h"
 
 
 

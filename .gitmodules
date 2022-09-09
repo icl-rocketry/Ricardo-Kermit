@@ -1,6 +1,6 @@
-[submodule "librrc"]
-	path = librrc
+[submodule "Sensors/Software/lib/librrc"]
+	path = Sensors/Software/lib/librrc
 	url = https://github.com/icl-rocketry/librrc
-[submodule "librnp"]
-	path = librnp
+[submodule "Sensors/Software/lib/librnp"]
+	path = Sensors/Software/lib/librnp
 	url = https://github.com/icl-rocketry/librnp

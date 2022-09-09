@@ -72,17 +72,17 @@ class ADS1219  {
 		typedef enum {
 		ONE	= GAIN_ONE,
 		FOUR	= GAIN_FOUR
-		}adsGain_t;
+		};
 
 		typedef enum {
 		SINGLE_SHOT	= MODE_SINGLE_SHOT,
 		CONTINUOUS	= MODE_CONTINUOUS
-		}adsMode_t;
+		};
 
 		typedef enum {
 		REF_INTERNAL	= VREF_INTERNAL,
 		REF_EXTERNAL	= VREF_EXTERNAL
-		}adsRef_t;
+		};
   
   protected:
 		uint8_t address;

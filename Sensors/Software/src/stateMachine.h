@@ -28,8 +28,6 @@ Written by the Electronics team, Imperial College London Rocketry
 #include "Wire.h"
 
 
-
-
 class stateMachine {
   
   public:
