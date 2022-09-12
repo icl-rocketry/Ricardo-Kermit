@@ -206,7 +206,7 @@ void CanBus::processReceivedPackets(){
         //resize vector
         receive_buffer_element.bytedata.resize(bytedata_size + can_packet.data_length_code);
         //copy new data
-        std::memcpy(receive_buffer_element.bytedata.data(),&can_packet.data,can_packet.data_length_code);
+        std::memcpy(receive_buffer_element.bytedata.data() + bytedata_size,&can_packet.data,can_packet.data_length_code);
         //update last time modified 
         receive_buffer_element.last_time_modified = millis();
 
