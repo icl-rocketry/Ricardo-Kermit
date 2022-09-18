@@ -82,4 +82,4 @@ static constexpr adsRef_t D2vref = REF_EXTERNAL;
 // Offsets
 static constexpr int offsetD0 = 13;
 static constexpr int offsetD1 = 12;
-static constexpr int offsetD2 = 12;
+static constexpr int offsetD2 = 13;
