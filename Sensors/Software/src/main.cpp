@@ -13,7 +13,6 @@
 
 stateMachine statemachine;
 TwoWire I2C1(0);
-ADS1219 ADS1219(I2C1,D0addr);
 
 void setup_task()
 {
@@ -27,16 +26,19 @@ void inner_loop_task()
 
 void loopTask(void *pvParameters)
 {
-    // esp_log_level_set("*", ESP_LOG_INFO); 
-    //setup_task();
+    // esp_log_level_set("*", ESP_LOG_INFO);
+    // setup_task();
     Serial.begin(115200);
+    I2C1.begin(_SDA, _SCL, I2C_FREQUENCY);
+    ADS1219 ADS1219(I2C1, D2addr);
     ADS1219.begin();
-    I2C1.begin(_SDA,_SCL,I2C_FREQUENCY);
-    for(;;) {
-        //inner_loop_task();
+    for (;;)
+    {
+        // inner_loop_task();
         vTaskDelay(1);
-        Serial.println(ADS1219.getOffset());
- 
+        // Serial.println(ADS1219.readAdjusted(0));
+        // delay(1000);
+        Serial.println(ADS1219.getOffset(1000, 100));
     }
 }
 
@@ -44,6 +46,6 @@ TaskHandle_t loopTaskHandle = NULL;
 
 extern "C" void app_main()
 {
-    initArduino(); //probably dont even need this
+    initArduino(); // probably dont even need this
     xTaskCreateUniversal(loopTask, "loopTask", ARDUINO_LOOP_STACK_SIZE, NULL, 1, &loopTaskHandle, 1);
 }

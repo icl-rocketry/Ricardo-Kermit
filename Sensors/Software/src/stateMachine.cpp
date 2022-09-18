@@ -10,8 +10,8 @@ Written by the Electronics team, Imperial College London Rocketry
 #include <vector>
 #include <functional>
 
-#include "board_config.h"
-#include "sensor_pins.h"
+#include "global_config.h"
+#include "ricardo_pins.h"
 
 #include "States/state.h"
 
