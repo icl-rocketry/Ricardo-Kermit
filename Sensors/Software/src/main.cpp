@@ -30,7 +30,7 @@ void loopTask(void *pvParameters)
     // setup_task();
     Serial.begin(115200);
     I2C1.begin(_SDA, _SCL, I2C_FREQUENCY);
-    ADS1219 ADS1219(I2C1, D2addr);
+    ADS1219 ADS1219(I2C1, D0addr);
     ADS1219.begin();
     for (;;)
     {
@@ -38,7 +38,7 @@ void loopTask(void *pvParameters)
         vTaskDelay(1);
         // Serial.println(ADS1219.readAdjusted(0));
         // delay(1000);
-        Serial.println(ADS1219.getOffset(1000, 100));
+        Serial.println(ADS1219.getOffset(100, 100));
     }
 }
 

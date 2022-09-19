@@ -41,33 +41,33 @@ private:
 	static constexpr uint8_t CONFIG_REGISTER_ADDRESS = 0x40;
 	static constexpr uint8_t STATUS_REGISTER_ADDRESS = 0x24;
 
-	static constexpr uint8_t MUX_MASK = 0x1F;
-	static constexpr uint8_t MUX_DIFF_0_1 = 0x00;
-	static constexpr uint8_t MUX_DIFF_2_3 = 0x20;
-	static constexpr uint8_t MUX_DIFF_1_2 = 0x40;
-	static constexpr uint8_t MUX_SINGLE_0 = 0x60;
-	static constexpr uint8_t MUX_SINGLE_1 = 0x80;
-	static constexpr uint8_t MUX_SINGLE_2 = 0xA0;
-	static constexpr uint8_t MUX_SINGLE_3 = 0xC0;
-	static constexpr uint8_t MUX_SHORTED = 0xE0;
+	static constexpr uint8_t MUX_MASK = 0b11111000;
+	static constexpr uint8_t MUX_DIFF_0_1 = 0b00000000;
+	static constexpr uint8_t MUX_DIFF_2_3 = 0b00000001;
+	static constexpr uint8_t MUX_DIFF_1_2 = 0b00000010;
+	static constexpr uint8_t MUX_SINGLE_0 = 0b00000011;
+	static constexpr uint8_t MUX_SINGLE_1 = 0b00000100;
+	static constexpr uint8_t MUX_SINGLE_2 = 0b00000101;
+	static constexpr uint8_t MUX_SINGLE_3 = 0b00000110;
+	static constexpr uint8_t MUX_SHORTED = 0b00000111;
 
-	static constexpr uint8_t GAIN_MASK = 0xEF;
-	static constexpr uint8_t GAIN_ONE = 0x00;
-	static constexpr uint8_t GAIN_FOUR = 0x10;
+	static constexpr uint8_t GAIN_MASK = 0b11110111;
+	static constexpr uint8_t GAIN_ONE = 0b00000000;
+	static constexpr uint8_t GAIN_FOUR = 0b0001000;
 
-	static constexpr uint8_t DATA_RATE_MASK = 0xF3;
-	static constexpr uint8_t DATA_RATE_20 = 0x00;
-	static constexpr uint8_t DATA_RATE_90 = 0x04;
-	static constexpr uint8_t DATA_RATE_330 = 0x08;
-	static constexpr uint8_t DATA_RATE_1000 = 0x0c;
+	static constexpr uint8_t DATA_RATE_MASK = 0b11001111;
+	static constexpr uint8_t DATA_RATE_20 = 0b00000000;
+	static constexpr uint8_t DATA_RATE_90 = 0b00010000;
+	static constexpr uint8_t DATA_RATE_330 = 0b00100000;
+	static constexpr uint8_t DATA_RATE_1000 = 0b00110000;
 
-	static constexpr uint8_t MODE_MASK = 0xFD;
-	static constexpr uint8_t MODE_SINGLE_SHOT = 0x00;
-	static constexpr uint8_t MODE_CONTINUOUS = 0x02;
+	static constexpr uint8_t MODE_MASK = 0b10111111;
+	static constexpr uint8_t MODE_SINGLE_SHOT = 0b00000000;
+	static constexpr uint8_t MODE_CONTINUOUS = 0b01000000;
 
-	static constexpr uint8_t VREF_MASK = 0xFE;
-	static constexpr uint8_t VREF_INTERNAL = 0x00;
-	static constexpr uint8_t VREF_EXTERNAL = 0x01;
+	static constexpr uint8_t VREF_MASK = 0b01111111;
+	static constexpr uint8_t VREF_INTERNAL = 0b00000000;
+	static constexpr uint8_t VREF_EXTERNAL = 0b10000000;
 
 	typedef enum
 	{

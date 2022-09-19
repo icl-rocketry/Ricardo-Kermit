@@ -19,6 +19,7 @@ void ADS1219::begin(adsGain_t gain, uint rate, adsMode_t mode, adsRef_t vref, in
   setConversionMode(mode);
   setVoltageReference(vref);
   deviceOffset = Offset;
+  start();
 }
 
 void ADS1219::start()
@@ -168,6 +169,7 @@ long ADS1219::readShorted()
   config &= MUX_MASK;
   config |= MUX_SHORTED;
   writeRegister(config);
+  start();
   return readConversionResult();
 }
 

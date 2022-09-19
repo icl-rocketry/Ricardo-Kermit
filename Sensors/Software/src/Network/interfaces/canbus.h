@@ -15,7 +15,7 @@
 #include "driver/gpio.h"
 #include "driver/can.h"
 
-#include "sensor_pins.h"
+#include "ricardo_pins.h"
 
 struct CanBusInterfaceInfo:public RnpInterfaceInfo{
     uint8_t maxSendBufferElements;
