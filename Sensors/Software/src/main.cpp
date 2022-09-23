@@ -10,6 +10,7 @@
 #include "States/groundstationGateway.h"
 #include "ADS1219/ADS1219.h"
 #include <global_config.h>
+#include "NTCThermistor/NTCthermistor.h"
 
 stateMachine statemachine;
 TwoWire I2C1(0);

@@ -17,14 +17,19 @@
 #define ARDUINOJSON_ENABLE_COMMENTS 1
 
 // ADS1219 Device setting enums
-static constexpr uint8_t GAIN_ONE = 0x00;
-static constexpr uint8_t GAIN_FOUR = 0x10;
+static constexpr uint8_t GAIN_ONE = 0b00000000;
+static constexpr uint8_t GAIN_FOUR = 0b0001000;
 
-static constexpr uint8_t MODE_SINGLE_SHOT = 0x00;
-static constexpr uint8_t MODE_CONTINUOUS = 0x02;
+static constexpr uint8_t DATA_RATE_20 = 0b00000000;
+static constexpr uint8_t DATA_RATE_90 = 0b00010000;
+static constexpr uint8_t DATA_RATE_330 = 0b00100000;
+static constexpr uint8_t DATA_RATE_1000 = 0b00110000;
 
-static constexpr uint8_t VREF_INTERNAL = 0x00;
-static constexpr uint8_t VREF_EXTERNAL = 0x01;
+static constexpr uint8_t MODE_SINGLE_SHOT = 0b00000000;
+static constexpr uint8_t MODE_CONTINUOUS = 0b01000000;
+
+static constexpr uint8_t VREF_INTERNAL = 0b00000000;
+static constexpr uint8_t VREF_EXTERNAL = 0b10000000;
 
 typedef enum
 {
@@ -44,10 +49,17 @@ typedef enum
     REF_EXTERNAL = VREF_EXTERNAL
 } adsRef_t;
 
+enum class ADCDevices : uint8_t
+{
+    D0 = 0,
+    D1 = 1,
+    D2 = 2,
+};
+
 // General Board Config
 static constexpr uint32_t I2C_FREQUENCY = 400000;
-static constexpr uint Serial_baud = 115200;
-static constexpr uint SERIAL_SIZE_RX = 256;
+static constexpr unsigned int Serial_baud = 115200;
+static constexpr unsigned int SERIAL_SIZE_RX = 256;
 
 /* ADS1219 Config
 Device 0 - U13
@@ -65,9 +77,9 @@ static constexpr adsGain_t D1gain = ONE;
 static constexpr adsGain_t D2gain = ONE;
 
 // DataRate
-static constexpr uint D0drate = 20;
-static constexpr uint D1drate = 20;
-static constexpr uint D2drate = 20;
+static constexpr unsigned int D0drate = 20;
+static constexpr unsigned int D1drate = 20;
+static constexpr unsigned int D2drate = 20;
 
 // Conversion Mode
 static constexpr adsMode_t D0mode = CONTINUOUS;

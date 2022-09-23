@@ -69,24 +69,6 @@ private:
 	static constexpr uint8_t VREF_INTERNAL = 0b00000000;
 	static constexpr uint8_t VREF_EXTERNAL = 0b10000000;
 
-	typedef enum
-	{
-		ONE = GAIN_ONE,
-		FOUR = GAIN_FOUR
-	} adsGain_t;
-
-	typedef enum
-	{
-		SINGLE_SHOT = MODE_SINGLE_SHOT,
-		CONTINUOUS = MODE_CONTINUOUS
-	} adsMode_t;
-
-	typedef enum
-	{
-		REF_INTERNAL = VREF_INTERNAL,
-		REF_EXTERNAL = VREF_EXTERNAL
-	} adsRef_t;
-
 protected:
 	uint8_t address;
 
@@ -95,7 +77,7 @@ public:
 	ADS1219(TwoWire &wire, uint8_t addr);
 
 	// Methods
-	void begin(adsGain_t gain = ONE, uint rate = 20, adsMode_t mode = CONTINUOUS, adsRef_t vref = REF_EXTERNAL, int Offset = 0);
+	void begin(adsGain_t gain = ONE, unsigned int rate = 20, adsMode_t mode = CONTINUOUS, adsRef_t vref = REF_EXTERNAL, int Offset = 0);
 	void resetConfig();
 	long readSingleEnded(int channel);
 	long readAdjusted(int channel);

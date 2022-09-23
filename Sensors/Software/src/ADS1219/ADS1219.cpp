@@ -6,8 +6,8 @@
 
 ADS1219::ADS1219(TwoWire &wire, uint8_t addr) : _wire(wire)
 {
-  _i2cPort = &_wire;
   address = addr;
+  _i2cPort = &_wire;
   config = 0x00;
   singleShot = false;
 }
