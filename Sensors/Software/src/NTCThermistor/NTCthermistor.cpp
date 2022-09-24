@@ -7,7 +7,7 @@ _ADS(ADS)
 {};
 
 
-double NTCThermistor::getTemp(const int Rfixed, const double SHHA, const double SHHB, const double SHHC, uint8_t ADCchannel)
+float NTCThermistor::getTemp(const uint32_t Rfixed, const float SHHA, const float SHHB, const float SHHC, uint8_t ADCchannel)
 {
     Rtherm = Rfixed * ((16777215/_ADS->readAdjusted(ADCchannel))-1);
     Temp = 1 / (SHHA + SHHB * log(Rtherm) + SHHC * pow(log(Rtherm),3));

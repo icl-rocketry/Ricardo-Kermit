@@ -23,15 +23,14 @@ private:
 	void start();
 	uint8_t readRegister(uint8_t reg);
 	void writeRegister(uint8_t data);
-	long readConversionResult();
+	uint32_t readConversionResult();
 	uint8_t config;
 	bool singleShot;
 	uint8_t data_ready;
-	int deviceOffset;
-	long doffset = 0;
-	unsigned long currentTime;
-	unsigned long prevTime = 0;
-	uint iter = 0;
+	uint32_t deviceOffset;
+	uint32_t doffset = 0;
+	uint32_t prevTime = 0;
+	uint32_t iter = 0;
 
 	TwoWire &_wire; // pointer to wire object
 	TwoWire *_i2cPort;
@@ -77,17 +76,17 @@ public:
 	ADS1219(TwoWire &wire, uint8_t addr);
 
 	// Methods
-	void begin(adsGain_t gain = ONE, unsigned int rate = 20, adsMode_t mode = CONTINUOUS, adsRef_t vref = REF_EXTERNAL, int Offset = 0);
+	void begin(adsGain_t gain = ONE, uint16_t rate = 20, adsMode_t mode = CONTINUOUS, adsRef_t vref = REF_EXTERNAL, uint32_t Offset = 0);
 	void resetConfig();
-	long readSingleEnded(int channel);
-	long readAdjusted(int channel);
-	long readDifferential_0_1();
-	long readDifferential_2_3();
-	long readDifferential_1_2();
-	long readShorted();
-	long getOffset(const uint readingNumber = 50, const uint timeincrement = 100);
+	uint32_t readSingleEnded(uint8_t channel);
+	uint32_t readAdjusted(uint8_t channel);
+	uint32_t readDifferential_0_1();
+	uint32_t readDifferential_2_3();
+	uint32_t readDifferential_1_2();
+	uint32_t readShorted();
+	uint32_t getOffset(const uint32_t readingNumber = 50, const uint16_t timeincrement = 100);
 	void setGain(adsGain_t gain);
-	void setDataRate(int rate);
+	void setDataRate(uint16_t rate);
 	void setConversionMode(adsMode_t mode);
 	void setVoltageReference(adsRef_t vref);
 	void powerDown();

@@ -77,9 +77,9 @@ static constexpr adsGain_t D1gain = ONE;
 static constexpr adsGain_t D2gain = ONE;
 
 // DataRate
-static constexpr unsigned int D0drate = 20;
-static constexpr unsigned int D1drate = 20;
-static constexpr unsigned int D2drate = 20;
+static constexpr uint16_t D0drate = 20;
+static constexpr uint16_t D1drate = 20;
+static constexpr uint16_t D2drate = 20;
 
 // Conversion Mode
 static constexpr adsMode_t D0mode = CONTINUOUS;
@@ -92,6 +92,6 @@ static constexpr adsRef_t D1vref = REF_EXTERNAL;
 static constexpr adsRef_t D2vref = REF_EXTERNAL;
 
 // Offsets
-static constexpr int offsetD0 = 13;
-static constexpr int offsetD1 = 12;
-static constexpr int offsetD2 = 13;
+static constexpr uint32_t offsetD0 = 13;
+static constexpr uint32_t offsetD1 = 12;
+static constexpr uint32_t offsetD2 = 13;

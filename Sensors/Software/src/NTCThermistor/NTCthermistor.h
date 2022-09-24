@@ -17,17 +17,16 @@
 #include <global_config.h>
 #include "ADS1219/ADS1219.h"
 #include <Arduino.h>
-#include <Wire.h>
 
 class NTCThermistor{
 
 private:
     ADS1219* _ADS; //reference to an ADS object
-    double Temp;
-    double Rtherm;
+    float Temp;
+    float Rtherm;
 public:
 	NTCThermistor(ADS1219* ADS);
-    double getTemp(const int Rfixed, const double SHHA, const double SHHB, const double SHHC, uint8_t ADCchannel);
+    float getTemp(const uint32_t Rfixed, const float SHHA, const float SHHB, const float SHHC, uint8_t ADCchannel);
 
 //protected:
 };
