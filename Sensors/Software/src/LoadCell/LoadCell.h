@@ -12,16 +12,28 @@
  */
 
 #include <global_config.h>
-#include <ADS1219/ADS1219.h>
+#include "ADS1219/ADS1219.h"
+#include <Arduino.h>
 
 class LoadCell{
     private:
-    ADS1219* _ADS; //reference to an ADS object
-    float Weight;
-
+    ADS1219* _ADS1; //reference to an ADS object
+    ADS1219* _ADS2; //reference to an ADS object
+    uint32_t zeroReading;
+    float conversionfactor;
+    float returnedconvfactor;
+    uint8_t channel1;
+    uint8_t channel2;
+    float g;
+    bool multipledevices;
+    float Weight; 
+    
     public:
-    LoadCell(ADS1219* ADS);
-    float getMass(uint8_t ADCchannel);
-    float getWeight(uint8_t ADCchannel);
+    LoadCell(ADS1219* ADS1, const uint32_t zeroMassreading, float localgval, uint8_t ADC1channel);
+    LoadCell(ADS1219* ADS1, ADS1219* ADS2, uint32_t zeroMassreading, float localgval, uint8_t ADC1channel, uint8_t ADC2channel);
+    void setConversionFactor (float convfactor);
+    float getWeight();
+    float getMass();
+    float getConversionFactor (float KnownMass);
 
 };
