@@ -54,7 +54,7 @@ class stateMachine {
   private:
     State* _currStatePtr;
 
-
+    static constexpr int default_address = 120;
 };
 
 #endif

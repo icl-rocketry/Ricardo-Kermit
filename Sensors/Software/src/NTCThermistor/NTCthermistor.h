@@ -4,7 +4,7 @@
  * @file NTCthermistor.h
  * @author Andrei Paduraru
  * @brief Sensor class for NTC thermistors. 
- * Returns temperature value as a double precision float, calculated
+ * Returns temperature value as a float, calculated
  * using the Steinhart-Hart equation:
  * https://en.wikipedia.org/wiki/Steinhart%E2%80%93Hart_equation
  * 
@@ -24,9 +24,19 @@ private:
     ADS1219* _ADS; //reference to an ADS object
     float Temp;
     float Rtherm;
-public:
-	NTCThermistor(ADS1219* ADS);
-    float getTemp(const uint32_t Rfixed, const float SHHA, const float SHHB, const float SHHC, uint8_t ADCchannel);
+    float SHHA;
+    float SHHB;
+    float SHHC;
+    uint32_t RFixedPD;
+    uint32_t Rseries;
+    uint8_t channel;
+    float grad;
+    float constant;
 
+public:
+	NTCThermistor(ADS1219* ADS, const uint32_t Rfixed, const uint32_t Rseriesextra, const float A, const float B, const float C, uint8_t ADCchannel);
+    NTCThermistor(ADS1219* ADS, const uint32_t Rfixed, const uint32_t Rseriesextra, const float gradient, const float Cconstant, uint8_t ADCchannel);
+    float getTemp();
+    float getTempLinear();
 //protected:
 };
