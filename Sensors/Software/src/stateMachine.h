@@ -4,8 +4,7 @@ Code used to process states, and the transitions between them, contains parent c
 Written by the Electronics team, Imperial College London Rocketry
 */
 
-#ifndef STATEMACHINE_H
-#define STATEMACHINE_H
+#pragma once
 
 #include "Arduino.h"
 
@@ -21,7 +20,7 @@ Written by the Electronics team, Imperial College London Rocketry
 #include "rnp_routingtable.h"
 
 #include "Commands/commandHandler.h"
-
+#include "Sensors/SensorStructs.h"
 
 
 #include "SPI.h"
@@ -49,6 +48,7 @@ class stateMachine {
 
     LogController logcontroller;
     SystemStatus systemstatus;
+    SensorStructs 
 
    
   private:
@@ -57,4 +57,3 @@ class stateMachine {
     static constexpr int default_address = 120;
 };
 
-#endif

@@ -118,6 +118,18 @@ void stateMachine::update() {
 
   networkmanager.update();
 
+  //change the following with actual sensor values:
+  AnalogSensors.ch0 = 0;
+  AnalogSensors.ch1 = 0;
+  AnalogSensors.ch2 = 0;
+  AnalogSensors.ch3 = 0;
+  AnalogSensors.ch4 = 0;
+  AnalogSensors.ch5 = 0;
+  AnalogSensors.ch6 = 0;
+  AnalogSensors.ch7 = 0;
+  AnalogSensors.ch8 = 0;
+  AnalogSensors.ch9 = 0;
+
   State* newStatePtr = _currStatePtr->update();
 
   if (newStatePtr != _currStatePtr) {

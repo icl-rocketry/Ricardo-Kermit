@@ -11,6 +11,7 @@
 #include "ADS1219/ADS1219.h"
 #include <global_config.h>
 #include "NTCThermistor/NTCthermistor.h"
+#include "LoadCell/LoadCell.h"
 
 stateMachine statemachine;
 TwoWire I2C1(0);

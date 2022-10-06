@@ -25,11 +25,19 @@ class CommandHandler {
 
         static constexpr uint8_t serviceID = static_cast<uint8_t>(DEFAULT_SERVICES::COMMAND); // serivce ID for network manager
 
+        enum class PACKET_TYPES:uint8_t{
+            SIMPLE = 0,
+            MAGCAL = 10,
+            MESSAGE_RESPONSE = 100,
+            TELEMETRY_RESPONSE = 101
+        };
+
     private:
         stateMachine* _sm; //pointer to state machine
 
         void handleCommand(std::unique_ptr<RnpPacketSerialized> packetptr);
         
+        void TelemetryCommand(const RnpPacketSerialized& packet);
         void FreeRamCommand(const RnpPacketSerialized& packet);
 
 };	
