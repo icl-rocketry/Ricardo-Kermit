@@ -1,5 +1,4 @@
-#include <LoadCell/LoadCell.h>
-#include <global_config.h>
+#include "LoadCell.h"
 
 LoadCell::LoadCell(ADS1219 *ADS1, uint32_t zeroMassreading, float localgval, uint8_t ADC1channel) : _ADS1(ADS1)
 {
@@ -39,18 +38,18 @@ float getWeight()
 
 float getMass()
 {
-    return getWeight() / localgval;
+    return getWeight() / g;
 }
 
 float getConversionFactor(float KnownMass)
 {
     if (multipledevices == 0)
     {
-        returnedconvfactor = (_ADS1->readAdjusted(channel1) - zeroMassreading) / (KnownMass * localgval);
+        returnedconvfactor = (_ADS1->readAdjusted(channel1) - zeroMassreading) / (KnownMass * g);
     }
     else
     {
-        returnedconvfactor = (_ADS1->readAdjusted(channel1) - _ADS2->readAdjusted(channel2) - zeroMassreading) / (KnownMass * localgval);
+        returnedconvfactor = (_ADS1->readAdjusted(channel1) - _ADS2->readAdjusted(channel2) - zeroMassreading) / (KnownMass * g);
     }
     return returnedconvfactor;
 }

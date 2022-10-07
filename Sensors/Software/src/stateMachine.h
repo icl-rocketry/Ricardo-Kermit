@@ -48,8 +48,6 @@ class stateMachine {
 
     LogController logcontroller;
     SystemStatus systemstatus;
-    SensorStructs 
-
    
   private:
     State* _currStatePtr;

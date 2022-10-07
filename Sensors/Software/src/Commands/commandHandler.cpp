@@ -61,7 +61,7 @@ void CommandHandler::TelemetryCommand(const RnpPacketSerialized& packet)
 
 	TelemetryPacket telemetry;
 
-	auto raw_sensors = _sm->AnalogSensors;
+	//auto raw_sensors = _sm->AnalogSensors;
 
 	telemetry.header.type = static_cast<uint8_t>(CommandHandler::PACKET_TYPES::TELEMETRY_RESPONSE);
 	telemetry.header.source = _sm->networkmanager.getAddress();
@@ -71,16 +71,17 @@ void CommandHandler::TelemetryCommand(const RnpPacketSerialized& packet)
 	telemetry.header.uid = commandpacket.header.uid; 
 	telemetry.system_time = millis();
 
-	telemetry.ch0sens = raw_sensors.ch0;
-	telemetry.ch1sens = raw_sensors.ch1;
-	telemetry.ch2sens = raw_sensors.ch2;
-	telemetry.ch3sens = raw_sensors.ch3;
-	telemetry.ch4sens = raw_sensors.ch4;
-	telemetry.ch5sens = raw_sensors.ch5;
-	telemetry.ch6sens = raw_sensors.ch6;
-	telemetry.ch7sens = raw_sensors.ch7;
-	telemetry.ch8sens = raw_sensors.ch8;
-	telemetry.ch9sens = raw_sensors.ch9;
+	//change the following with sensor commands:
+	telemetry.ch0sens = 0;
+	telemetry.ch1sens = 0;
+	telemetry.ch2sens = 0;
+	telemetry.ch3sens = 0;
+	telemetry.ch4sens = 0;
+	telemetry.ch5sens = 0;
+	telemetry.ch6sens = 0;
+	telemetry.ch7sens = 0;
+	telemetry.ch8sens = 0;
+	telemetry.ch9sens = 0;
 
 
 	telemetry.system_status = _sm->systemstatus.getStatus();

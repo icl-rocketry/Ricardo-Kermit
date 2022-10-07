@@ -22,7 +22,7 @@ class TelemetryPacket : public RnpPacket{
                 &TelemetryPacket::ch8sens,
                 &TelemetryPacket::ch9sens,
                 &TelemetryPacket::system_status,
-                &TelemetryPacket::system_time,
+                &TelemetryPacket::system_time
 
             
             );
