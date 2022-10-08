@@ -1,31 +1,19 @@
 #include "LoadCell.h"
 
-LoadCell::LoadCell(ADS1219 *ADS1, uint32_t zeroMassreading, float localgval, uint8_t ADC1channel) : _ADS1(ADS1)
+LoadCell::LoadCell(ADS1219 *ADS1, uint32_t zeroReading, uint8_t ADC1channel, float localgval) : _ADS1(ADS1), _ADS2(nullptr), zeroReading(zeroReading), channel1(ADC1channel), g(localgval)
 {
-    zeroReading = zeroMassreading;
-    channel1 = ADC1channel;
-    g = localgval;
-    multipledevices = 0;
 };
 
-LoadCell::LoadCell(ADS1219 *ADS1, ADS1219 *ADS2, uint32_t zeroMassreading, float localgval, uint8_t ADC1channel, uint8_t ADC2channel) : _ADS1(ADS1),
-                                                                                                                                        _ADS2(ADS2)
-{
-    zeroReading = zeroMassreading;
-    channel1 = ADC1channel;
-    channel2 = ADC2channel;
-    g = localgval;
-    multipledevices = 1;
-};
+LoadCell::LoadCell(ADS1219 *ADS1, ADS1219 *ADS2, uint32_t zeroReading, uint8_t ADC1channel, uint8_t ADC2channel, float localgval) : _ADS1(ADS1), _ADS2(ADS2), zeroReading(zeroReading), channel1(ADC1channel), channel2(ADC2channel), g(localgval){};
 
-void setConversionFactor(float convfactor)
+void LoadCell::setConversionFactor(float convfactor)
 {
     conversionfactor = convfactor;
 }
 
-float getWeight()
+float LoadCell::getWeight()
 {
-    if (multipledevices == 0)
+    if (!_ADS2)
     {
         Weight = (_ADS1->readAdjusted(channel1) - zeroReading) / conversionfactor;
     }
@@ -36,20 +24,20 @@ float getWeight()
     return Weight;
 }
 
-float getMass()
+float LoadCell::getMass()
 {
     return getWeight() / g;
 }
 
-float getConversionFactor(float KnownMass)
+float LoadCell::getConversionFactor(float KnownMass)
 {
-    if (multipledevices == 0)
+    if (!_ADS2)
     {
-        returnedconvfactor = (_ADS1->readAdjusted(channel1) - zeroMassreading) / (KnownMass * g);
+        returnedconvfactor = (_ADS1->readAdjusted(channel1) - zeroReading) / (KnownMass * g);
     }
     else
     {
-        returnedconvfactor = (_ADS1->readAdjusted(channel1) - _ADS2->readAdjusted(channel2) - zeroMassreading) / (KnownMass * g);
+        returnedconvfactor = (_ADS1->readAdjusted(channel1) - _ADS2->readAdjusted(channel2) - zeroReading) / (KnownMass * g);
     }
     return returnedconvfactor;
 }

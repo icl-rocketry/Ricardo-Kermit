@@ -18,8 +18,8 @@
 class LoadCell
 {
 public:
-    LoadCell(ADS1219 *ADS1, uint32_t zeroMassreading, float localgval, uint8_t ADC1channel);
-    LoadCell(ADS1219 *ADS1, ADS1219 *ADS2, uint32_t zeroMassreading, float localgval, uint8_t ADC1channel, uint8_t ADC2channel);
+    LoadCell(ADS1219 *ADS1, uint32_t zeroReading, uint8_t ADC1channel, float localgval = 9.81);
+    LoadCell(ADS1219 *ADS1, ADS1219 *ADS2, uint32_t zeroReading, uint8_t ADC1channel, uint8_t ADC2channel, float localgval = 9.81);
     void setConversionFactor(float convfactor);
     float getWeight();
     float getMass();
@@ -34,6 +34,5 @@ private:
     uint8_t channel1;
     uint8_t channel2;
     float g;
-    bool multipledevices;
     float Weight;
 };
