@@ -16,7 +16,7 @@
 // ArduinoJson
 #define ARDUINOJSON_ENABLE_COMMENTS 1
 
-// ADS1219 Device setting enums
+// ADS1219 Device setting enums, (you shouldn't have to touch these)
 static constexpr uint8_t GAIN_ONE = 0b00000000;
 static constexpr uint8_t GAIN_FOUR = 0b0001000;
 
@@ -56,6 +56,14 @@ enum class ADCDevices : uint8_t
     D2 = 2,
 };
 
+enum class ADSDatarates : uint16_t
+	{
+		DataRate_20 = 20,
+		DataRate_90 = 90,
+		DataRate_330 = 330,
+		DataRate_1000 = 1000
+	};
+
 // General Board Config
 static constexpr uint32_t I2C_FREQUENCY = 400000;
 static constexpr unsigned int Serial_baud = 115200;
@@ -77,9 +85,9 @@ static constexpr adsGain_t D1gain = ONE;
 static constexpr adsGain_t D2gain = ONE;
 
 // DataRate
-static constexpr uint16_t D0drate = 20;
-static constexpr uint16_t D1drate = 20;
-static constexpr uint16_t D2drate = 20;
+static constexpr ADSDatarates D0drate = ADSDatarates::DataRate_20;
+static constexpr ADSDatarates D1drate = ADSDatarates::DataRate_20;
+static constexpr ADSDatarates D2drate = ADSDatarates::DataRate_20;
 
 // Conversion Mode
 static constexpr adsMode_t D0mode = CONTINUOUS;

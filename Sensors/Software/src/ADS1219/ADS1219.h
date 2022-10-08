@@ -76,7 +76,7 @@ public:
 	ADS1219(TwoWire &wire, uint8_t addr);
 
 	// Methods
-	void begin(adsGain_t gain = ONE, uint16_t rate = 20, adsMode_t mode = CONTINUOUS, adsRef_t vref = REF_EXTERNAL, uint32_t Offset = 0);
+	void begin(adsGain_t gain = ONE, ADSDatarates rate = ADSDatarates::DataRate_20, adsMode_t mode = CONTINUOUS, adsRef_t vref = REF_EXTERNAL, uint32_t Offset = 0);
 	void resetConfig();
 	uint32_t readSingleEnded(uint8_t channel);
 	uint32_t readAdjusted(uint8_t channel);
@@ -86,7 +86,7 @@ public:
 	uint32_t readShorted();
 	uint32_t getOffset(const uint32_t readingNumber = 50, const uint16_t timeincrement = 100);
 	void setGain(adsGain_t gain);
-	void setDataRate(uint16_t rate);
+	void setDataRate(ADSDatarates rate);
 	void setConversionMode(adsMode_t mode);
 	void setVoltageReference(adsRef_t vref);
 	void powerDown();

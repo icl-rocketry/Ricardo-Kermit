@@ -11,7 +11,7 @@ ADS1219::ADS1219(TwoWire &wire, uint8_t addr) : _wire(wire)
   singleShot = false;
 }
 
-void ADS1219::begin(adsGain_t gain, uint16_t rate, adsMode_t mode, adsRef_t vref, uint32_t Offset)
+void ADS1219::begin(adsGain_t gain, ADSDatarates rate, adsMode_t mode, adsRef_t vref, uint32_t Offset)
 {
   setGain(gain);
   setDataRate(rate);
@@ -195,21 +195,21 @@ void ADS1219::setGain(adsGain_t gain)
   writeRegister(config);
 }
 
-void ADS1219::setDataRate(uint16_t rate)
+void ADS1219::setDataRate(ADSDatarates rate)
 {
   config &= DATA_RATE_MASK;
   switch (rate)
   {
-  case (20):
+  case (ADSDatarates::DataRate_20):
     config |= DATA_RATE_20;
     break;
-  case (90):
+  case (ADSDatarates::DataRate_90):
     config |= DATA_RATE_90;
     break;
-  case (330):
+  case (ADSDatarates::DataRate_330):
     config |= DATA_RATE_330;
     break;
-  case (1000):
+  case (ADSDatarates::DataRate_1000):
     config |= DATA_RATE_1000;
     break;
   default:
