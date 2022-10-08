@@ -39,10 +39,13 @@ stateMachine::stateMachine() :
     I2C(0),
     usbserial(Serial,systemstatus,logcontroller),
     canbus(systemstatus,logcontroller,3),
-    networkmanager(static_cast<uint8_t>(DEFAULT_ADDRESS::GROUNDSTATION_GATEWAY),NODETYPE::HUB,true),
+    networkmanager(static_cast<uint8_t>(DEFAULT_ADDRESS::ROCKET),NODETYPE::HUB,true),
     commandhandler(this),
     logcontroller(networkmanager),
-    systemstatus(&logcontroller)
+    systemstatus(&logcontroller),
+    ADS0(I2C,D0addr),
+    ADS1(I2C,D1addr),
+    ADS2(I2C,D2addr)
 {};
 
 
@@ -61,6 +64,12 @@ void stateMachine::initialise(State* initStatePtr) {
   hspi.setFrequency(8000000);
   hspi.setBitOrder(MSBFIRST);
   hspi.setDataMode(SPI_MODE0);
+
+  //Initialise ADC devices
+  ADS0.begin(D0gain, D0drate, D0mode, D0vref, offsetD0);
+  ADS1.begin(D1gain, D1drate, D1mode, D1vref, offsetD1);
+  ADS2.begin(D2gain, D2drate, D2mode, D2vref, offsetD2);
+
   //open serial port on usb interface
   Serial.begin(Serial_baud);
   Serial.setRxBufferSize(SERIAL_SIZE_RX);

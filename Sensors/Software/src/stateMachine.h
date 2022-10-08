@@ -21,7 +21,7 @@ Written by the Electronics team, Imperial College London Rocketry
 
 #include "Commands/commandHandler.h"
 #include "Sensors/SensorStructs.h"
-
+#include "ADS1219/ADS1219.h"
 
 #include "SPI.h"
 #include "Wire.h"
@@ -48,7 +48,11 @@ class stateMachine {
 
     LogController logcontroller;
     SystemStatus systemstatus;
-   
+
+    ADS1219 ADS0;
+    ADS1219 ADS1;
+    ADS1219 ADS2;
+
   private:
     State* _currStatePtr;
 

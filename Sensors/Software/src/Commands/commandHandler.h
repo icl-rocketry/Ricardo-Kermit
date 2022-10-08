@@ -29,7 +29,8 @@ class CommandHandler {
             SIMPLE = 0,
             MAGCAL = 10,
             MESSAGE_RESPONSE = 100,
-            TELEMETRY_RESPONSE = 101
+            TELEMETRY_RESPONSE = 101,
+            RAW_ADCs = 102
         };
 
     private:
@@ -38,6 +39,7 @@ class CommandHandler {
         void handleCommand(std::unique_ptr<RnpPacketSerialized> packetptr);
         
         void TelemetryCommand(const RnpPacketSerialized& packet);
+        void rawADCCommand(const RnpPacketSerialized& packet);
         void FreeRamCommand(const RnpPacketSerialized& packet);
 
 };	
