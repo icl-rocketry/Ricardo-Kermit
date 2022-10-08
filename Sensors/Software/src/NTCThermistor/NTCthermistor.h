@@ -21,7 +21,7 @@
 class NTCThermistor{
 
 private:
-    ADS1219* _ADS; //reference to an ADS object
+    ADS1219 &_ADS; //reference to an ADS object
     float Temp;
     float Rtherm;
     float SHHA;
@@ -34,8 +34,8 @@ private:
     float constant;
 
 public:
-	NTCThermistor(ADS1219* ADS, const uint32_t Rfixed, const uint32_t Rseriesextra, const float A, const float B, const float C, uint8_t ADCchannel);
-    NTCThermistor(ADS1219* ADS, const uint32_t Rfixed, const uint32_t Rseriesextra, const float gradient, const float Cconstant, uint8_t ADCchannel);
+	NTCThermistor(ADS1219 &ADS, const uint32_t Rfixed, const uint32_t Rseriesextra, const float A, const float B, const float C, uint8_t ADCchannel);
+    NTCThermistor(ADS1219 &ADS, const uint32_t Rfixed, const uint32_t Rseriesextra, const float gradient, const float Cconstant, uint8_t ADCchannel);
     float getTemp();
     float getTempLinear();
 //protected:
