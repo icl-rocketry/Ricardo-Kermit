@@ -14,7 +14,6 @@
 #include "LoadCell/LoadCell.h"
 
 stateMachine statemachine;
-TwoWire I2C1(0);
 
 void setup_task()
 {
@@ -30,17 +29,10 @@ void loopTask(void *pvParameters)
 {
     // esp_log_level_set("*", ESP_LOG_INFO);
     // setup_task();
-    Serial.begin(115200);
-    I2C1.begin(_SDA, _SCL, I2C_FREQUENCY);
-    ADS1219 ADS1219(I2C1, D0addr);
-    ADS1219.begin();
     for (;;)
     {
-        // inner_loop_task();
+        inner_loop_task();
         vTaskDelay(1);
-        // Serial.println(ADS1219.readAdjusted(0));
-        // delay(1000);
-        Serial.println(ADS1219.getOffset(100, 100));
     }
 }
 
