@@ -9,6 +9,6 @@ _ADS(ADS)
 
 float PTransducer::getPressure(const float grad, const float c, uint8_t ADCchannel)
 {
-    Pressure = ((3.308* _ADS.readAdjusted(ADCchannel) / 16777215) - c )/grad;
+    Pressure = ((VMax * _ADS.readAdjusted(ADCchannel) / ADCMax) - c )/grad;
     return Pressure;
 }

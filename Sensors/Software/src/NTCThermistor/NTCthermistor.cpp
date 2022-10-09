@@ -23,14 +23,14 @@ channel(ADCchannel)
 
 float NTCThermistor::getTemp()
 {
-    Rtherm = RFixedPD * ((16777215 / _ADS.readAdjusted(channel)) - 1) - Rseries;
+    Rtherm = RFixedPD * ((ADCMax / _ADS.readAdjusted(channel)) - 1) - Rseries;
     Temp = 1 / (SHHA + SHHB * log(Rtherm) + SHHC * pow(log(Rtherm), 3));
     return Temp;
 }
 
 float NTCThermistor::getTempLinear()
 {
-    Rtherm = RFixedPD * ((16777215 / _ADS.readAdjusted(channel)) - 1) - Rseries;
+    Rtherm = RFixedPD * ((ADCMax / _ADS.readAdjusted(channel)) - 1) - Rseries;
     Temp = grad * Rtherm + constant;
     return Temp;
 }

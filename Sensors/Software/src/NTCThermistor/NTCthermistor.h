@@ -32,6 +32,7 @@ private:
     uint8_t channel;
     float grad;
     float constant;
+    static constexpr uint32_t ADCMax = 16777215;
 
 public:
 	NTCThermistor(ADS1219 &ADS, const uint32_t Rfixed, const uint32_t Rseriesextra, const float A, const float B, const float C, uint8_t ADCchannel);

@@ -17,6 +17,8 @@ class PTransducer {
 private:
     ADS1219 &_ADS; //reference to an ADS object
     float Pressure;
+    static constexpr float VMax = 3.308;
+    static constexpr uint32_t ADCMax = 16777215;
 public:
 	PTransducer(ADS1219 &ADS);
     float getPressure(const float grad, const float c, uint8_t ADCchannel);
