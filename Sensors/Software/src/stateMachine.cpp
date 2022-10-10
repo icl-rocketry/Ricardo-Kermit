@@ -56,6 +56,7 @@ stateMachine::stateMachine() :
 
 
 void stateMachine::initialise(State* initStatePtr) {
+  
 
   //internal io initilization must happen here so io buses setup for sensor initialzation
   //intialize i2c interface
@@ -86,7 +87,7 @@ void stateMachine::initialise(State* initStatePtr) {
   networkmanager.addInterface(&canbus);
 
   networkmanager.enableAutoRouteGen(true);
-  networkmanager.setNoRouteAction(NOROUTE_ACTION::BROADCAST,{1,2,3});
+  networkmanager.setNoRouteAction(NOROUTE_ACTION::BROADCAST,{1,2});
 
   //load default routing table
   RoutingTable routetable;

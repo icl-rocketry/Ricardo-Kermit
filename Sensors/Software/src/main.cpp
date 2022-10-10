@@ -28,7 +28,7 @@ void inner_loop_task()
 void loopTask(void *pvParameters)
 {
     // esp_log_level_set("*", ESP_LOG_INFO);
-    // setup_task();
+    setup_task();
     for (;;)
     {
         inner_loop_task();
