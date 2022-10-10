@@ -7,9 +7,9 @@ state for groundstation use as reciever
 
 #include "rnp_routingtable.h"
 
-class GroundstationGateway: public State {
+class Idle: public State {
     public:
-        GroundstationGateway(stateMachine* sm);
+        Idle(stateMachine* sm);
         void initialise();
         State* update();
         void exitstate();

@@ -7,7 +7,7 @@
 #include <Arduino.h>
 #include <exception>
 #include "stateMachine.h"
-#include "States/groundstationGateway.h"
+#include "States/idle.h"
 #include "ADS1219/ADS1219.h"
 #include <global_config.h>
 #include "NTCThermistor/NTCthermistor.h"
@@ -17,7 +17,7 @@ stateMachine statemachine;
 
 void setup_task()
 {
-    statemachine.initialise(new GroundstationGateway(&statemachine));
+    statemachine.initialise(new Idle(&statemachine));
 }
 
 void inner_loop_task()

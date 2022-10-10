@@ -33,19 +33,25 @@ Written by the Electronics team, Imperial College London Rocketry
 
 
 
+
+
 stateMachine::stateMachine() : 
     vspi(VSPI),
-    hspi(HSPI),
     I2C(0),
     usbserial(Serial,systemstatus,logcontroller),
-    canbus(systemstatus,logcontroller,3),
-    networkmanager(static_cast<uint8_t>(DEFAULT_ADDRESS::ROCKET),NODETYPE::HUB,true),
+    canbus(systemstatus,logcontroller,2),
+    networkmanager(default_address,NODETYPE::HUB,true),
     commandhandler(this),
     logcontroller(networkmanager),
     systemstatus(&logcontroller),
     ADS0(I2C,D0addr),
     ADS1(I2C,D1addr),
-    ADS2(I2C,D2addr)
+    ADS2(I2C,D2addr),
+    loadcell0(&ADS0,0,10,networkmanager),
+    ptap0(ADS2,1,0,1,networkmanager),
+    ptap1(ADS1,1,0,2,networkmanager),
+    ntctemp0(ADS1,100,100,1,0,2,networkmanager),
+    ntctemp1(ADS1,100,100,1,0,3,networkmanager)
 {};
 
 
@@ -60,10 +66,6 @@ void stateMachine::initialise(State* initStatePtr) {
   vspi.setBitOrder(MSBFIRST);
   vspi.setDataMode(SPI_MODE0);
 
-  hspi.begin();
-  hspi.setFrequency(8000000);
-  hspi.setBitOrder(MSBFIRST);
-  hspi.setDataMode(SPI_MODE0);
 
   //Initialise ADC devices
   ADS0.begin(D0gain, D0drate, D0mode, D0vref, offsetD0);
@@ -116,6 +118,11 @@ void stateMachine::initialise(State* initStatePtr) {
 
   // command handler callback
   networkmanager.registerService(static_cast<uint8_t>(DEFAULT_SERVICES::COMMAND),commandhandler.getCallback()); 
+  networkmanager.registerService(10,loadcell0.getThisNetworkCallback());
+  networkmanager.registerService(12,ntctemp0.getThisNetworkCallback());
+  networkmanager.registerService(13,ntctemp1.getThisNetworkCallback());
+  networkmanager.registerService(16,ptap1.getThisNetworkCallback());
+  networkmanager.registerService(19,ptap0.getThisNetworkCallback());
     
   //call setup state
   changeState(initStatePtr);

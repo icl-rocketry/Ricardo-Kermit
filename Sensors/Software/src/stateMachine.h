@@ -26,6 +26,9 @@ Written by the Electronics team, Imperial College London Rocketry
 #include "SPI.h"
 #include "Wire.h"
 
+#include "LoadCell/LoadCell.h"
+#include "NTCThermistor/NTCthermistor.h"
+#include "PTransducer/PTransducer.h"
 
 class stateMachine {
   
@@ -38,7 +41,6 @@ class stateMachine {
 
    
     SPIClass vspi;
-    SPIClass hspi;
     TwoWire I2C;
 
     USB usbserial;
@@ -52,6 +54,12 @@ class stateMachine {
     ADS1219 ADS0;
     ADS1219 ADS1;
     ADS1219 ADS2;
+
+    LoadCell loadcell0;
+    PTransducer ptap0;
+    PTransducer ptap1;
+    NTCThermistor ntctemp0;
+    NTCThermistor ntctemp1;
 
   private:
     State* _currStatePtr;

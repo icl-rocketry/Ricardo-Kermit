@@ -11,7 +11,7 @@
 #include "commands.h"
 #include "rnp_packet.h"
 #include "rnp_networkmanager.h"
-#include "commandpacket.h"
+
 
 
 class stateMachine;//forward declaration 
@@ -30,7 +30,8 @@ class CommandHandler {
             MAGCAL = 10,
             MESSAGE_RESPONSE = 100,
             TELEMETRY_RESPONSE = 101,
-            RAW_ADCs = 102
+            PROCESSED_SENSORS_RESPONSE=103,
+            RAW_ADC_RESPONSE = 104
         };
 
     private:

@@ -12,16 +12,25 @@
 #include <Arduino.h>
 #include "ADS1219/ADS1219.h"
 
-class PTransducer {
+
+#include <librrc/nrcremotesensorbase.h>
+#include <rnp_networkmanager.h>
+
+class PTransducer : public NRCRemoteSensorBase<PTransducer>
+{
 
 private:
     ADS1219 &_ADS; //reference to an ADS object
     float Pressure;
     static constexpr float VMax = 3.308;
     static constexpr uint32_t ADCMax = 16777215;
+    const float _grad;
+    const float _c;
+    const uint8_t _ADCchannel;
 public:
-	PTransducer(ADS1219 &ADS);
-    float getPressure(const float grad, const float c, uint8_t ADCchannel);
+	PTransducer(ADS1219 &ADS, float grad, float c, uint8_t ADCchannel,RnpNetworkManager& netman);
+    float getPressure();
+    void update();
 
 //protected:
 };

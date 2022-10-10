@@ -1,4 +1,4 @@
-#include "TelemetryPacket.h"
+#include "rawadcpacket.h"
 
 #include "rnp_networkmanager.h"
 #include "rnp_packet.h"
@@ -7,22 +7,22 @@
 
 
 
-TelemetryPacket::~TelemetryPacket()
+RawADCPacket::~RawADCPacket()
 {};
 
-TelemetryPacket::TelemetryPacket():
+RawADCPacket::RawADCPacket():
 RnpPacket(0,
-          101,
+          104,
           size())
 {};
 
-TelemetryPacket::TelemetryPacket(const RnpPacketSerialized& packet):
+RawADCPacket::RawADCPacket(const RnpPacketSerialized& packet):
 RnpPacket(packet,size())
 {
     getSerializer().deserialize(*this,packet.getBody());
 };
 
-void TelemetryPacket::serialize(std::vector<uint8_t>& buf){
+void RawADCPacket::serialize(std::vector<uint8_t>& buf){
     RnpPacket::serialize(buf);
 	size_t bufsize = buf.size();
 	buf.resize(bufsize + size());

@@ -1,4 +1,4 @@
-#include "TelemetryPacket.h"
+#include "processedsensorpacket.h"
 
 #include "rnp_networkmanager.h"
 #include "rnp_packet.h"
@@ -7,22 +7,22 @@
 
 
 
-TelemetryPacket::~TelemetryPacket()
+ProcessedSensorPacket::~ProcessedSensorPacket()
 {};
 
-TelemetryPacket::TelemetryPacket():
+ProcessedSensorPacket::ProcessedSensorPacket():
 RnpPacket(0,
-          101,
+          103,
           size())
 {};
 
-TelemetryPacket::TelemetryPacket(const RnpPacketSerialized& packet):
+ProcessedSensorPacket::ProcessedSensorPacket(const RnpPacketSerialized& packet):
 RnpPacket(packet,size())
 {
     getSerializer().deserialize(*this,packet.getBody());
 };
 
-void TelemetryPacket::serialize(std::vector<uint8_t>& buf){
+void ProcessedSensorPacket::serialize(std::vector<uint8_t>& buf){
     RnpPacket::serialize(buf);
 	size_t bufsize = buf.size();
 	buf.resize(bufsize + size());

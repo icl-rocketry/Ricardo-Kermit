@@ -15,17 +15,22 @@
 #include <ADS1219/ADS1219.h>
 #include <stdint.h>
 
-class LoadCell
+#include <librrc/nrcremotesensorbase.h>
+#include <rnp_networkmanager.h>
+
+class LoadCell : public NRCRemoteSensorBase<LoadCell>
 {
 public:
-    LoadCell(ADS1219 *ADS1, uint32_t zeroReading, uint8_t ADC1channel, float localgval = 9.81);
-    LoadCell(ADS1219 *ADS1, ADS1219 *ADS2, uint32_t zeroReading, uint8_t ADC1channel, uint8_t ADC2channel, float localgval = 9.81);
+    LoadCell(ADS1219 *ADS1, uint32_t zeroReading, uint8_t ADC1channel, RnpNetworkManager& netman, float localgval = 9.81);
+    LoadCell(ADS1219 *ADS1, ADS1219 *ADS2, uint32_t zeroReading, uint8_t ADC1channel, uint8_t ADC2channel, RnpNetworkManager& netman, float localgval = 9.81);
     void setConversionFactor(float convfactor);
     float getWeight();
     float getMass();
     float getConversionFactor(float KnownMass);
 
-private:
+    void update();
+
+private: 
     ADS1219 *_ADS1; // reference to an ADS object
     ADS1219 *_ADS2; // reference to an ADS object
     uint32_t zeroReading;

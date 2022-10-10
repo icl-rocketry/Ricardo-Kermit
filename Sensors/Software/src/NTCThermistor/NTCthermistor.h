@@ -17,8 +17,10 @@
 #include <global_config.h>
 #include "ADS1219/ADS1219.h"
 #include <Arduino.h>
-
-class NTCThermistor{
+#include <librrc/nrcremotesensorbase.h>
+#include <rnp_networkmanager.h>
+class NTCThermistor : public NRCRemoteSensorBase<NTCThermistor>
+{ 
 
 private:
     ADS1219 &_ADS; //reference to an ADS object
@@ -35,9 +37,10 @@ private:
     static constexpr uint32_t ADCMax = 16777215;
 
 public:
-	NTCThermistor(ADS1219 &ADS, const uint32_t Rfixed, const uint32_t Rseriesextra, const float A, const float B, const float C, uint8_t ADCchannel);
-    NTCThermistor(ADS1219 &ADS, const uint32_t Rfixed, const uint32_t Rseriesextra, const float gradient, const float Cconstant, uint8_t ADCchannel);
+	NTCThermistor(ADS1219 &ADS, const uint32_t Rfixed, const uint32_t Rseriesextra, const float A, const float B, const float C, uint8_t ADCchannel,RnpNetworkManager& netman);
+    NTCThermistor(ADS1219 &ADS, const uint32_t Rfixed, const uint32_t Rseriesextra, const float gradient, const float Cconstant, uint8_t ADCchannel,RnpNetworkManager& netman);
     float getTemp();
     float getTempLinear();
-//protected:
+    void update();
+
 };

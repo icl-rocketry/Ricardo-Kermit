@@ -5,24 +5,24 @@
 
 #include <vector>
 
-class rawADCPacket : public RnpPacket{
+class RawADCPacket : public RnpPacket{
     private:
     //serializer framework
         static constexpr auto getSerializer()
         {
             auto ret = RnpSerializer(
-                &rawADCPacket::ch0,
-                &rawADCPacket::ch1,
-                &rawADCPacket::ch2,
-                &rawADCPacket::ch3,
-                &rawADCPacket::ch4,
-                &rawADCPacket::ch5,
-                &rawADCPacket::ch6,
-                &rawADCPacket::ch7,
-                &rawADCPacket::ch8,
-                &rawADCPacket::ch9,
-                &rawADCPacket::system_status,
-                &rawADCPacket::system_time
+                &RawADCPacket::ch0, 
+                &RawADCPacket::ch1,
+                &RawADCPacket::ch2, 
+                &RawADCPacket::ch3, 
+                &RawADCPacket::ch4, 
+                &RawADCPacket::ch5, 
+                &RawADCPacket::ch6, 
+                &RawADCPacket::ch7, 
+                &RawADCPacket::ch8, 
+                &RawADCPacket::ch9, 
+                &RawADCPacket::system_status, 
+                &RawADCPacket::system_time
 
             
             );
@@ -30,15 +30,15 @@ class rawADCPacket : public RnpPacket{
         }
         
     public:
-        ~rawADCPacket();
+        ~RawADCPacket();
 
-        rawADCPacket();
+        RawADCPacket();
         /**
          * @brief Deserialize Telemetry Packet
          * 
          * @param data 
          */
-        rawADCPacket(const RnpPacketSerialized& packet);
+        RawADCPacket(const RnpPacketSerialized& packet);
 
         /**
          * @brief Serialize Telemetry Packet
@@ -49,10 +49,19 @@ class rawADCPacket : public RnpPacket{
 
         
         //packet header
-        //PacketHeader header{static_cast<uint8_t>(packet::TELEMETRY), packet_size()};
+        //PacketHeader header{static_cast<uint8_t>(packet::TELEMETRY); unit32_t packet_size()};
 
         //ADC channels
-        uint32_t ch0, ch1, ch2, ch3, ch4, ch5, ch6, ch7, ch8, ch9;
+        uint32_t ch0;
+        uint32_t ch1; 
+        uint32_t ch2; 
+        uint32_t ch3; 
+        uint32_t ch4; 
+        uint32_t ch5; 
+        uint32_t ch6; 
+        uint32_t ch7; 
+        uint32_t ch8; 
+        uint32_t ch9;
 
         //system details
         uint32_t system_status;

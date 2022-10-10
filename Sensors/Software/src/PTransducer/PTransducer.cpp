@@ -2,13 +2,24 @@
 #include <ADS1219/ADS1219.h>
 #include <global_config.h>
 
-PTransducer::PTransducer(ADS1219 &ADS):
-_ADS(ADS)
+#include <librrc/nrcremotesensorbase.h>
+#include <rnp_networkmanager.h>
+
+PTransducer::PTransducer(ADS1219 &ADS, float grad, float c, uint8_t ADCchannel, RnpNetworkManager& netman):
+NRCRemoteSensorBase(netman),
+_ADS(ADS),
+_grad(grad),
+_c(c),
+_ADCchannel(ADCchannel)
 {};
 
 
-float PTransducer::getPressure(const float grad, const float c, uint8_t ADCchannel)
+float PTransducer::getPressure()
 {
-    Pressure = ((VMax * _ADS.readAdjusted(ADCchannel) / ADCMax) - c )/grad;
+    Pressure = ((VMax * _ADS.readAdjusted(_ADCchannel) / ADCMax) - _c )/_grad;
     return Pressure;
+}
+
+void PTransducer::update(){
+    updateSensorValue(getPressure());
 }

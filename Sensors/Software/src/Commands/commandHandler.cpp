@@ -14,9 +14,9 @@
 
 #include "rnp_packet.h"
 #include "rnp_interface.h"
-#include "commandpacket.h"
-#include "TelemetryPacket.h"
-#include "rawADCPacket.h"
+#include "default_packets/simplecommandpacket.h"
+#include "processedsensorpacket.h"
+#include "rawadcpacket.h"
 
 CommandHandler::CommandHandler(stateMachine *sm) : _sm(sm){};
 
@@ -55,46 +55,46 @@ void CommandHandler::TelemetryCommand(const RnpPacketSerialized &packet)
 {
 	SimpleCommandPacket commandpacket(packet);
 
-	TelemetryPacket telemetry;
+	ProcessedSensorPacket processedSensorPacket;
 
 	// auto raw_sensors = _sm->AnalogSensors;
 
-	telemetry.header.type = static_cast<uint8_t>(CommandHandler::PACKET_TYPES::TELEMETRY_RESPONSE);
-	telemetry.header.source = _sm->networkmanager.getAddress();
-	telemetry.header.source_service = serviceID;
-	telemetry.header.destination = commandpacket.header.source;
-	telemetry.header.destination_service = commandpacket.header.source_service;
-	telemetry.header.uid = commandpacket.header.uid;
-	telemetry.system_time = millis();
+	processedSensorPacket.header.type = static_cast<uint8_t>(CommandHandler::PACKET_TYPES::PROCESSED_SENSORS_RESPONSE);
+	processedSensorPacket.header.source = _sm->networkmanager.getAddress();
+	processedSensorPacket.header.source_service = serviceID;
+	processedSensorPacket.header.destination = commandpacket.header.source;
+	processedSensorPacket.header.destination_service = commandpacket.header.source_service;
+	processedSensorPacket.header.uid = commandpacket.header.uid;
+	processedSensorPacket.system_time = millis();
 
 	// change the following with sensor commands:
-	telemetry.ch0sens = 0;
-	telemetry.ch1sens = 0;
-	telemetry.ch2sens = 0;
-	telemetry.ch3sens = 0;
-	telemetry.ch4sens = 0;
-	telemetry.ch5sens = 0;
-	telemetry.ch6sens = 0;
-	telemetry.ch7sens = 0;
-	telemetry.ch8sens = 0;
-	telemetry.ch9sens = 0;
+	processedSensorPacket.ch0sens = _sm->loadcell0.getWeight();
+	processedSensorPacket.ch1sens = 0;
+	processedSensorPacket.ch2sens = _sm->ntctemp0.getTempLinear();
+	processedSensorPacket.ch3sens = _sm->ntctemp0.getTempLinear();
+	processedSensorPacket.ch4sens = 0;
+	processedSensorPacket.ch5sens = 0;
+	processedSensorPacket.ch6sens = _sm->ptap1.getPressure();
+	processedSensorPacket.ch7sens = 0;
+	processedSensorPacket.ch8sens = 0;
+	processedSensorPacket.ch9sens = _sm->ptap0.getPressure();
 
-	telemetry.system_status = _sm->systemstatus.getStatus();
+	processedSensorPacket.system_status = _sm->systemstatus.getStatus();
 
-	_sm->networkmanager.sendPacket(telemetry);
+	_sm->networkmanager.sendPacket(processedSensorPacket);
 }
 
 void CommandHandler::rawADCCommand(const RnpPacketSerialized &packet)
 {
 	SimpleCommandPacket commandpacket(packet);
 
-	rawADCPacket ADCraw;
+	RawADCPacket ADCraw;
 
-	auto D0 = _sm->ADS0;
-	auto D1 = _sm->ADS1;
-	auto D2 = _sm->ADS2;
+	ADS1219& D0 = _sm->ADS0;
+	ADS1219& D1 = _sm->ADS1;
+	ADS1219& D2 = _sm->ADS2;
 
-	ADCraw.header.type = static_cast<uint8_t>(CommandHandler::PACKET_TYPES::RAW_ADCs);
+	ADCraw.header.type = static_cast<uint8_t>(CommandHandler::PACKET_TYPES::RAW_ADC_RESPONSE);
 	ADCraw.header.source = _sm->networkmanager.getAddress();
 	ADCraw.header.source_service = serviceID;
 	ADCraw.header.destination = commandpacket.header.source;
@@ -124,7 +124,7 @@ void CommandHandler::FreeRamCommand(const RnpPacketSerialized &packet)
 	// avliable in all states
 	// returning as simple string packet for ease
 	// currently only returning free ram
-	MessagePacket_Base<0, static_cast<uint8_t>(CommandPacket::TYPES::MESSAGE_RESPONSE)> message("FreeRam: " + std::to_string(esp_get_free_heap_size()));
+	MessagePacket_Base<0, static_cast<uint8_t>(PACKET_TYPES::MESSAGE_RESPONSE)> message("FreeRam: " + std::to_string(esp_get_free_heap_size()));
 	message.header.source_service = serviceID;
 	message.header.destination_service = packet.header.source_service;
 	message.header.source = packet.header.destination;
