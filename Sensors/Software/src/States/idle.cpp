@@ -19,7 +19,6 @@ void Idle::initialise(){
 };
 
 State* Idle::update(){
-
     _sm->loadcell0.update();
     _sm->ntctemp0.update();
     _sm->ntctemp1.update();

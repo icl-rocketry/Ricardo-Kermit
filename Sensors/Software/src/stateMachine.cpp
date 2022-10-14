@@ -29,11 +29,11 @@ Written by the Electronics team, Imperial College London Rocketry
 #include "SPI.h"
 #include "Wire.h"
 
+// 1000 psi values: 
+// gradient = 49.07143; c = 295
 
-
-
-
-
+//1600 psi values:
+// gradient = 29.21429; c = 295
 
 stateMachine::stateMachine() : 
     vspi(VSPI),
@@ -47,11 +47,11 @@ stateMachine::stateMachine() :
     ADS0(I2C,D0addr),
     ADS1(I2C,D1addr),
     ADS2(I2C,D2addr),
-    loadcell0(&ADS0,0,10,networkmanager),
-    ptap0(ADS2,1,0,1,networkmanager),
-    ptap1(ADS1,1,0,2,networkmanager),
-    ntctemp0(ADS1,100,100,1,0,2,networkmanager),
-    ntctemp1(ADS1,100,100,1,0,3,networkmanager)
+    loadcell0(&ADS0,4254000,10,networkmanager),
+    ptap0(ADS2,29.21429,295,1,networkmanager),
+    ptap1(ADS1,49.07143,295,2,networkmanager),
+    ntctemp0(ADS0,43000,22000,273.15+25,100000.0,3950.0,2,networkmanager),
+    ntctemp1(ADS0,43000,22000,273.15+25,100000.0,3950.0,3,networkmanager)
 {};
 
 

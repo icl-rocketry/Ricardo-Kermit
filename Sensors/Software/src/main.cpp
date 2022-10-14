@@ -22,7 +22,7 @@ void setup_task()
 
 void inner_loop_task()
 {
-    statemachine.update();
+    //statemachine.update();
 }
 
 void loopTask(void *pvParameters)
@@ -31,9 +31,10 @@ void loopTask(void *pvParameters)
     setup_task();
     for (;;)
     {
-        inner_loop_task();
-        vTaskDelay(1);
-    }
+         inner_loop_task();
+         vTaskDelay(1);
+
+     }
 }
 
 TaskHandle_t loopTaskHandle = NULL;

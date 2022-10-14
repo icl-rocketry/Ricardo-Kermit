@@ -21,15 +21,15 @@ static constexpr uint8_t GAIN_ONE = 0b00000000;
 static constexpr uint8_t GAIN_FOUR = 0b0001000;
 
 static constexpr uint8_t DATA_RATE_20 = 0b00000000;
-static constexpr uint8_t DATA_RATE_90 = 0b00010000;
-static constexpr uint8_t DATA_RATE_330 = 0b00100000;
+static constexpr uint8_t DATA_RATE_90 = 0b00000100;
+static constexpr uint8_t DATA_RATE_330 = 0b00001000;
 static constexpr uint8_t DATA_RATE_1000 = 0b00110000;
 
 static constexpr uint8_t MODE_SINGLE_SHOT = 0b00000000;
-static constexpr uint8_t MODE_CONTINUOUS = 0b01000000;
+static constexpr uint8_t MODE_CONTINUOUS = 0b00000010;
 
 static constexpr uint8_t VREF_INTERNAL = 0b00000000;
-static constexpr uint8_t VREF_EXTERNAL = 0b10000000;
+static constexpr uint8_t VREF_EXTERNAL = 0b00000001;
 
 typedef enum
 {
@@ -99,7 +99,17 @@ static constexpr adsRef_t D0vref = REF_EXTERNAL;
 static constexpr adsRef_t D1vref = REF_EXTERNAL;
 static constexpr adsRef_t D2vref = REF_EXTERNAL;
 
-// Offsets
-static constexpr uint32_t offsetD0 = 13;
-static constexpr uint32_t offsetD1 = 12;
-static constexpr uint32_t offsetD2 = 13;
+// Offsets (feed system board)
+//static constexpr int32_t offsetD0 = 372;
+//static constexpr int32_t offsetD1 = 367;
+//static constexpr int32_t offsetD2 = 3336;
+
+// Offsets (GND system board)
+static constexpr int32_t offsetD0 = 191;
+static constexpr int32_t offsetD1 = 265;
+static constexpr int32_t offsetD2 = 57;
+
+//offsets (test board)
+// static constexpr int32_t offsetD0 = 214;
+// static constexpr int32_t offsetD1 = 214;
+// static constexpr int32_t offsetD2 = 214;

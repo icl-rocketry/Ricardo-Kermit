@@ -22,11 +22,13 @@ class PTransducer : public NRCRemoteSensorBase<PTransducer>
 private:
     ADS1219 &_ADS; //reference to an ADS object
     float Pressure;
-    static constexpr float VMax = 3.308;
-    static constexpr uint32_t ADCMax = 16777215;
+    static constexpr float VMax = 5;
+    static constexpr uint32_t ADCMax = 8388607;
     const float _grad;
     const float _c;
     const uint8_t _ADCchannel;
+
+    float _cnew;
 public:
 	PTransducer(ADS1219 &ADS, float grad, float c, uint8_t ADCchannel,RnpNetworkManager& netman);
     float getPressure();

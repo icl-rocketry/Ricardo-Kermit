@@ -9,22 +9,22 @@ ADS1219::ADS1219(TwoWire &wire, uint8_t addr) : _wire(wire)
   _i2cPort = &_wire;
   config = 0x00;
   singleShot = false;
-}
+};
 
-void ADS1219::begin(adsGain_t gain, ADSDatarates rate, adsMode_t mode, adsRef_t vref, uint32_t Offset)
+void ADS1219::begin(adsGain_t gain, ADSDatarates rate, adsMode_t mode, adsRef_t vref, int32_t Offset)
 {
+  resetConfig();
   setGain(gain);
   setDataRate(rate);
   setConversionMode(mode);
   setVoltageReference(vref);
   deviceOffset = Offset;
-  start();
 }
 
 void ADS1219::start()
 {
   _i2cPort->beginTransmission(address);
-  _i2cPort->write(0x08);
+  _i2cPort->write(0b00001000);
   _i2cPort->endTransmission();
 }
 
@@ -55,10 +55,10 @@ void ADS1219::writeRegister(uint8_t data)
 uint32_t ADS1219::readConversionResult()
 {
   _i2cPort->beginTransmission(address);
-  _i2cPort->write(0x10);
+  _i2cPort->write(0b00010000);
   _i2cPort->endTransmission();
   _i2cPort->requestFrom((uint8_t)address, (uint8_t)3);
-  uint32_t data32 = _i2cPort->read();
+  int32_t data32 = _i2cPort->read();
   data32 <<= 8;
   data32 |= _i2cPort->read();
   data32 <<= 8;
@@ -68,12 +68,12 @@ uint32_t ADS1219::readConversionResult()
 
 void ADS1219::resetConfig()
 {
-  writeRegister(0x00);
+  writeRegister(0b00000110);
 }
 
-uint32_t ADS1219::readSingleEnded(uint8_t channel)
+int32_t ADS1219::readSingleEnded(uint8_t channel)
 {
-  config &= MUX_MASK;
+  config &= ~MUX_MASK;
   switch (channel)
   {
   case (0):
@@ -96,7 +96,7 @@ uint32_t ADS1219::readSingleEnded(uint8_t channel)
   return readConversionResult();
 }
 
-uint32_t ADS1219::readAdjusted(uint8_t channel)
+int32_t ADS1219::readAdjusted(uint8_t channel)
 {
   switch (channel)
   {
@@ -134,7 +134,7 @@ uint32_t ADS1219::readAdjusted(uint8_t channel)
   return doffset;
 } */
 
-uint32_t ADS1219::getOffset(const uint32_t readingNumber, const uint16_t timeincrement)
+int32_t ADS1219::getOffset(const uint32_t readingNumber, const uint16_t timeincrement)
 {
   iter = 0;
   doffset = 0;
@@ -152,36 +152,36 @@ uint32_t ADS1219::getOffset(const uint32_t readingNumber, const uint16_t timeinc
   return doffset;
 }
 
-uint32_t ADS1219::readDifferential_0_1()
+int32_t ADS1219::readDifferential_0_1()
 {
-  config &= MUX_MASK;
+  config &= ~MUX_MASK;
   config |= MUX_DIFF_0_1;
   writeRegister(config);
   start();
   return readConversionResult();
 }
 
-uint32_t ADS1219::readDifferential_2_3()
+int32_t ADS1219::readDifferential_2_3()
 {
-  config &= MUX_MASK;
+  config &= ~MUX_MASK;
   config |= MUX_DIFF_2_3;
   writeRegister(config);
   start();
   return readConversionResult();
 }
 
-uint32_t ADS1219::readDifferential_1_2()
+int32_t ADS1219::readDifferential_1_2()
 {
-  config &= MUX_MASK;
+  config &= ~MUX_MASK;
   config |= MUX_DIFF_1_2;
   writeRegister(config);
   start();
   return readConversionResult();
 }
 
-uint32_t ADS1219::readShorted()
+int32_t ADS1219::readShorted()
 {
-  config &= MUX_MASK;
+  config &= ~MUX_MASK;
   config |= MUX_SHORTED;
   writeRegister(config);
   start();
@@ -193,6 +193,7 @@ void ADS1219::setGain(adsGain_t gain)
   config &= GAIN_MASK;
   config |= gain;
   writeRegister(config);
+  gainout = gain;
 }
 
 void ADS1219::setDataRate(ADSDatarates rate)
@@ -235,7 +236,7 @@ void ADS1219::setConversionMode(adsMode_t mode)
 
 void ADS1219::setVoltageReference(adsRef_t vref)
 {
-  config &= VREF_MASK;
+  config &= ~VREF_MASK;
   config |= vref;
   writeRegister(config);
 }

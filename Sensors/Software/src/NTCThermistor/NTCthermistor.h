@@ -32,13 +32,17 @@ private:
     uint32_t RFixedPD;
     uint32_t Rseries;
     uint8_t channel;
-    float grad;
+    float Beta;
     float constant;
-    static constexpr uint32_t ADCMax = 16777215;
+    static constexpr uint32_t ADCMax = 9549523;
+    static constexpr float Vsupply = 5;
+    float Vout;
+    float T1;
+    float R1; 
 
 public:
-	NTCThermistor(ADS1219 &ADS, const uint32_t Rfixed, const uint32_t Rseriesextra, const float A, const float B, const float C, uint8_t ADCchannel,RnpNetworkManager& netman);
-    NTCThermistor(ADS1219 &ADS, const uint32_t Rfixed, const uint32_t Rseriesextra, const float gradient, const float Cconstant, uint8_t ADCchannel,RnpNetworkManager& netman);
+	//NTCThermistor(ADS1219 &ADS, const uint32_t Rfixed, const uint32_t Rseriesextra, const float A, const float B, const float C, uint8_t ADCchannel,RnpNetworkManager& netman);
+    NTCThermistor(ADS1219 &ADS, const uint32_t Rfixed, const uint32_t Rseriesextra, const float T1, const float R1, const float Beta, uint8_t ADCchannel,RnpNetworkManager& netman);
     float getTemp();
     float getTempLinear();
     void update();

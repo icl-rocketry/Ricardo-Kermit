@@ -27,11 +27,11 @@ float LoadCell::getWeight()
 {
     if (!_ADS2)
     {
-        Weight = (_ADS1->readAdjusted(channel1) - zeroReading) / conversionfactor;
+        Weight = (float)(_ADS1->readAdjusted(channel1) - zeroReading) / (float)conversionfactor;
     }
     else
     {
-        Weight = (_ADS1->readAdjusted(channel1) - _ADS2->readAdjusted(channel2) - zeroReading) / conversionfactor;
+        Weight = (float)(_ADS1->readAdjusted(channel1) - _ADS2->readAdjusted(channel2) - zeroReading) / (float)conversionfactor;
     }
     return Weight;
 }
@@ -45,11 +45,11 @@ float LoadCell::getConversionFactor(float KnownMass)
 {
     if (!_ADS2)
     {
-        returnedconvfactor = (_ADS1->readAdjusted(channel1) - zeroReading) / (KnownMass * g);
+        returnedconvfactor =(float) (_ADS1->readAdjusted(channel1) - zeroReading) / (float) (KnownMass * g);
     }
     else
     {
-        returnedconvfactor = (_ADS1->readAdjusted(channel1) - _ADS2->readAdjusted(channel2) - zeroReading) / (KnownMass * g);
+        returnedconvfactor = (float) (_ADS1->readAdjusted(channel1) - _ADS2->readAdjusted(channel2) - zeroReading) /(float) (KnownMass * g);
     }
     return returnedconvfactor;
 }

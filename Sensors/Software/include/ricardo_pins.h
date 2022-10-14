@@ -35,3 +35,4 @@ static constexpr int TxCan = 32;
 static constexpr int RxCan = 33;
 
 // PINS kept for compatibility
+
