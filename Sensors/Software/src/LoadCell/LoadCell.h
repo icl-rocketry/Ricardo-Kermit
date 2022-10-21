@@ -17,6 +17,7 @@
 
 #include <librrc/nrcremotesensorbase.h>
 #include <rnp_networkmanager.h>
+#include <global_config.h>
 
 class LoadCell : public NRCRemoteSensorBase<LoadCell>
 {
@@ -24,9 +25,14 @@ public:
     LoadCell(ADS1219 *ADS1, uint32_t zeroReading, uint8_t ADC1channel, RnpNetworkManager& netman, float localgval = 9.81);
     LoadCell(ADS1219 *ADS1, ADS1219 *ADS2, uint32_t zeroReading, uint8_t ADC1channel, uint8_t ADC2channel, RnpNetworkManager& netman, float localgval = 9.81);
     void setConversionFactor(float convfactor);
-    float getWeight();
-    float getMass();
+    float calculateWeight();
+    float calculateMass();
     float getConversionFactor(float KnownMass);
+    adsGain_t gain1;
+    adsGain_t gain2;
+
+    float getWeight(){return Weight;};
+    float getMass(){return calculateMass();};
 
     void update();
 

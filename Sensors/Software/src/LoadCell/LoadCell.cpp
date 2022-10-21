@@ -23,22 +23,29 @@ void LoadCell::setConversionFactor(float convfactor)
     conversionfactor = convfactor;
 }
 
-float LoadCell::getWeight()
+float LoadCell::calculateWeight()
 {
+    gain1 = _ADS1->gainout;
+    _ADS1->setGain(FOUR);
     if (!_ADS2)
     {
-        Weight = (float)(_ADS1->readAdjusted(channel1) - zeroReading) / (float)conversionfactor;
+        Weight = (float)(_ADS1->readAdjusted(channel1) - (float) zeroReading) / (float)conversionfactor;
     }
     else
     {
+        gain2 = _ADS2->gainout;
+        _ADS2->setGain(FOUR);
         Weight = (float)(_ADS1->readAdjusted(channel1) - _ADS2->readAdjusted(channel2) - zeroReading) / (float)conversionfactor;
+        _ADS2->setGain(gain2);
     }
+    _ADS1->setGain(gain1);
     return Weight;
+
 }
 
-float LoadCell::getMass()
+float LoadCell::calculateMass()
 {
-    return getWeight() / g;
+    return (float) Weight / (float) g;
 }
 
 float LoadCell::getConversionFactor(float KnownMass)
@@ -55,5 +62,5 @@ float LoadCell::getConversionFactor(float KnownMass)
 }
 
 void LoadCell::update(){
-    updateSensorValue(getWeight());
+    updateSensorValue(calculateWeight());
 }

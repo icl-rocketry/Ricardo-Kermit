@@ -31,7 +31,8 @@ private:
     float _cnew;
 public:
 	PTransducer(ADS1219 &ADS, float grad, float c, uint8_t ADCchannel,RnpNetworkManager& netman);
-    float getPressure();
+    float calculate();
+    float getPressure(){return Pressure;}
     void update();
 
 //protected:

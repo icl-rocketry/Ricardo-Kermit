@@ -190,10 +190,10 @@ int32_t ADS1219::readShorted()
 
 void ADS1219::setGain(adsGain_t gain)
 {
+  gainout = gain;
   config &= GAIN_MASK;
   config |= gain;
   writeRegister(config);
-  gainout = gain;
 }
 
 void ADS1219::setDataRate(ADSDatarates rate)

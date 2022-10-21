@@ -69,9 +69,12 @@ void CommandHandler::TelemetryCommand(const RnpPacketSerialized &packet)
 
 	// change the following with sensor commands:
 	processedSensorPacket.ch0sens = _sm->loadcell0.getWeight();
+	//Serial.println(_sm->loadcell0.getWeight());
 	processedSensorPacket.ch1sens = 0;
 	processedSensorPacket.ch2sens = _sm->ntctemp0.getTempLinear();
-	processedSensorPacket.ch3sens = _sm->ntctemp0.getTempLinear();
+	//Serial.println(_sm->ntctemp0.getTempLinear());
+	processedSensorPacket.ch3sens = _sm->ntctemp1.getTempLinear();
+	//Serial.println(_sm->ntctemp1.getTempLinear());
 	processedSensorPacket.ch4sens = 0;
 	processedSensorPacket.ch5sens = 0;
 	processedSensorPacket.ch6sens = _sm->ptap1.getPressure();
@@ -103,8 +106,8 @@ void CommandHandler::rawADCCommand(const RnpPacketSerialized &packet)
 	ADCraw.system_time = millis();
 
 	// change the following with sensor commands:
-	ADCraw.ch0 = D0.readAdjusted(0);
-	ADCraw.ch1 = D0.readAdjusted(1);
+	ADCraw.ch0 = D0.readAdjusted(10);
+	ADCraw.ch1 = D0.readAdjusted(10);
 	ADCraw.ch2 = D0.readAdjusted(2);
 	ADCraw.ch3 = D0.readAdjusted(3);
 	ADCraw.ch4 = D1.readAdjusted(0);

@@ -14,13 +14,12 @@ _ADCchannel(ADCchannel)
 {};
 
 
-float PTransducer::getPressure()
+float PTransducer::calculate()
 {
-    _cnew = (float) VMax * _c / (float) ADCMax; 
-    Pressure = ((VMax * (float) _ADS.readAdjusted(_ADCchannel) / (float) ADCMax) - _cnew )/(float) _grad;
+    Pressure = ((float) _ADS.readAdjusted(_ADCchannel) - (float)_c)/_grad;
     return Pressure;
 }
 
 void PTransducer::update(){
-    updateSensorValue(getPressure());
+    updateSensorValue(calculate());
 }

@@ -19,11 +19,49 @@ void Idle::initialise(){
 };
 
 State* Idle::update(){
-    _sm->loadcell0.update();
-    _sm->ntctemp0.update();
-    _sm->ntctemp1.update();
-    _sm->ptap0.update();
-    _sm->ptap1.update();
+    if (millis() - prevUpdateTime > readDelta){
+        prevUpdateTime = millis(); 
+        switch (readIndex){
+        case 0:
+        {
+            _sm->loadcell0.update();
+            readIndex ++;
+            break;
+        }
+        case 1:
+        {
+            _sm->ntctemp0.update();
+            readIndex ++;
+            break;
+        }
+        case 2:
+        {
+            _sm->ntctemp1.update();
+            readIndex++;
+            //Serial.println("Update");
+            break;
+        }
+        case 3:
+        {
+             _sm->ptap0.update();
+             readIndex++;
+            break;
+        }
+        case 4:
+        {
+            _sm->ptap1.update();
+            readIndex = 0;
+            break;
+        }
+        default:
+        {
+            break;
+        }
+          
+
+        }
+        
+    }
     
     return this;//loopy loop
 };

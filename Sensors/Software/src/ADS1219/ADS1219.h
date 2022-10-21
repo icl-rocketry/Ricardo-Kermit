@@ -16,6 +16,7 @@
 
 #include <Wire.h>
 #include <global_config.h>
+#include <Arduino.h>
 
 class ADS1219
 {
@@ -126,5 +127,5 @@ public:
 	void setVoltageReference(adsRef_t vref);
 	void powerDown();
 	uint8_t readRegister(uint8_t reg);
-	uint8_t gainout;
+	adsGain_t gainout;
 };

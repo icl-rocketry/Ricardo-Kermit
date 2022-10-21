@@ -14,6 +14,9 @@ class Idle: public State {
         State* update();
         void exitstate();
     private:
+        uint32_t prevUpdateTime;
+        static constexpr int readDelta = 100;
+        uint8_t readIndex = 0;
 
 
 };

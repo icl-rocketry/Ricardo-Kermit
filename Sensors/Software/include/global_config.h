@@ -17,13 +17,13 @@
 #define ARDUINOJSON_ENABLE_COMMENTS 1
 
 // ADS1219 Device setting enums, (you shouldn't have to touch these)
-static constexpr uint8_t GAIN_ONE = 0b00000000;
-static constexpr uint8_t GAIN_FOUR = 0b0001000;
+static constexpr uint8_t GAIN_ONE			=	0x00;
+static constexpr uint8_t GAIN_FOUR			=	0x10;
 
-static constexpr uint8_t DATA_RATE_20 = 0b00000000;
-static constexpr uint8_t DATA_RATE_90 = 0b00000100;
-static constexpr uint8_t DATA_RATE_330 = 0b00001000;
-static constexpr uint8_t DATA_RATE_1000 = 0b00110000;
+static constexpr uint8_t DATA_RATE_20		=	0x00;
+static constexpr uint8_t DATA_RATE_90		=	0x04;
+static constexpr uint8_t DATA_RATE_330		=	0x08;
+static constexpr uint8_t DATA_RATE_1000		=	0x0c;
 
 static constexpr uint8_t MODE_SINGLE_SHOT = 0b00000000;
 static constexpr uint8_t MODE_CONTINUOUS = 0b00000010;
@@ -100,11 +100,11 @@ static constexpr adsRef_t D1vref = REF_EXTERNAL;
 static constexpr adsRef_t D2vref = REF_EXTERNAL;
 
 // Offsets (feed system board)
-//static constexpr int32_t offsetD0 = 372;
-//static constexpr int32_t offsetD1 = 367;
-//static constexpr int32_t offsetD2 = 3336;
+// static constexpr int32_t offsetD0 = 372;
+// static constexpr int32_t offsetD1 = 367;
+// static constexpr int32_t offsetD2 = 360;
 
-// Offsets (GND system board)
+//Offsets (GND system board)
 static constexpr int32_t offsetD0 = 191;
 static constexpr int32_t offsetD1 = 265;
 static constexpr int32_t offsetD2 = 57;
