@@ -2646,7 +2646,7 @@
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 84595152-a99e-41fe-bbd2-a73b797a2b86)
   )
-  (label "LNA_IN" (at 181.61 34.29 180)
+  (label "LNA_IN" (at 177.8 22.86 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 89548341-2b1d-46ee-8c2c-c6d01876559c)
   )
@@ -4315,17 +4315,17 @@
     (pin "2" (uuid 5c2e01bc-2346-4662-89aa-72cb813c9184))
   )
 
-  (symbol (lib_id "power:GND") (at 186.69 39.37 0) (unit 1)
+  (symbol (lib_id "power:GND") (at 182.88 27.94 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid afcf691d-7d0f-4e76-a37b-e022ce2ad830)
-    (property "Reference" "#PWR0157" (id 0) (at 186.69 45.72 0)
+    (property "Reference" "#PWR0157" (id 0) (at 182.88 34.29 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "GND" (id 1) (at 186.69 44.45 0))
-    (property "Footprint" "" (id 2) (at 186.69 39.37 0)
+    (property "Value" "GND" (id 1) (at 182.88 33.02 0))
+    (property "Footprint" "" (id 2) (at 182.88 27.94 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (id 3) (at 186.69 39.37 0)
+    (property "Datasheet" "" (id 3) (at 182.88 27.94 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid f1016292-4069-4ff4-8916-175cff8f4c27))
@@ -4505,19 +4505,19 @@
     (pin "1" (uuid 1985b54a-697f-40ea-8f31-4189317ac541))
   )
 
-  (symbol (lib_id "Connector:Conn_Coaxial") (at 186.69 34.29 0) (unit 1)
+  (symbol (lib_id "Connector:Conn_Coaxial") (at 182.88 22.86 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid ec8cbf76-1fe3-4238-adb6-1f9c8cbb1db7)
-    (property "Reference" "J15" (id 0) (at 189.23 33.3131 0)
+    (property "Reference" "J15" (id 0) (at 185.42 21.8831 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "Conn_Coaxial" (id 1) (at 189.23 35.8531 0)
+    (property "Value" "Conn_Coaxial" (id 1) (at 185.42 24.4231 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Connector_Coaxial:U.FL_Molex_MCRF_73412-0110_Vertical" (id 2) (at 186.69 34.29 0)
+    (property "Footprint" "Connector_Coaxial:U.FL_Molex_MCRF_73412-0110_Vertical" (id 2) (at 182.88 22.86 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "https://docs.rs-online.com/332c/0900766b813c49d5.pdf" (id 3) (at 186.69 34.29 0)
+    (property "Datasheet" "https://docs.rs-online.com/332c/0900766b813c49d5.pdf" (id 3) (at 182.88 22.86 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 647eebaa-221e-446a-addc-3a9c0d82c95f))
@@ -4999,6 +4999,18 @@
     )
   )
 
+  (sheet (at 21.59 101.6) (size 17.78 13.97) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid) (color 0 0 0 0))
+    (fill (color 0 0 0 0.0000))
+    (uuid f50ea3f6-9887-4dc3-9ec9-7a0fb1ee7721)
+    (property "Sheet name" "microSD" (id 0) (at 21.59 100.8884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheet file" "microSDcard.kicad_sch" (id 1) (at 21.59 116.1546 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+  )
+
   (sheet_instances
     (path "/" (page "1"))
     (path "/00000000-0000-0000-0000-000061cb93b1" (page "2"))
@@ -5014,6 +5026,7 @@
     (path "/00000000-0000-0000-0000-000061dcbff2" (page "12"))
     (path "/0453c67e-50a7-4870-aeab-84f52ff6e68b" (page "14"))
     (path "/a190bd03-a44f-406d-b509-db6d2721c035" (page "15"))
+    (path "/f50ea3f6-9887-4dc3-9ec9-7a0fb1ee7721" (page "15"))
   )
 
   (symbol_instances
@@ -5491,6 +5504,21 @@
     (path "/0453c67e-50a7-4870-aeab-84f52ff6e68b/fc4c3e53-c8d8-4232-8259-9e04210aff93"
       (reference "#PWR0160") (unit 1) (value "GND") (footprint "")
     )
+    (path "/f50ea3f6-9887-4dc3-9ec9-7a0fb1ee7721/40602ea7-29db-4710-9169-f7bba8a7efb1"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/f50ea3f6-9887-4dc3-9ec9-7a0fb1ee7721/52c9b3d4-32e6-44c9-9914-7a7b6e8bb49d"
+      (reference "#PWR?") (unit 1) (value "+3.3V") (footprint "")
+    )
+    (path "/f50ea3f6-9887-4dc3-9ec9-7a0fb1ee7721/66800468-c8eb-4ffe-8f26-d28f4964eae4"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/f50ea3f6-9887-4dc3-9ec9-7a0fb1ee7721/66acfd08-104c-403f-b10f-be67255862ef"
+      (reference "#PWR?") (unit 1) (value "+3.3V") (footprint "")
+    )
+    (path "/f50ea3f6-9887-4dc3-9ec9-7a0fb1ee7721/b0b4726e-2db0-44b7-89f9-18ddacbccb83"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
     (path "/00000000-0000-0000-0000-000061e3fc9a"
       (reference "BOOT_TP1") (unit 1) (value "TestPoint") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
     )
@@ -5794,6 +5822,9 @@
     (path "/ec8cbf76-1fe3-4238-adb6-1f9c8cbb1db7"
       (reference "J15") (unit 1) (value "Conn_Coaxial") (footprint "Connector_Coaxial:U.FL_Molex_MCRF_73412-0110_Vertical")
     )
+    (path "/f50ea3f6-9887-4dc3-9ec9-7a0fb1ee7721/e6b68fa5-f3bb-45a6-9beb-54b9c7d120e8"
+      (reference "J?") (unit 1) (value "Micro_SD_Card_Det") (footprint "Connector_Card:microSD_HC_Hirose_DM3AT-SF-PEJM5")
+    )
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c4cb31"
       (reference "JP1") (unit 1) (value "SolderJumper_3_Open") (footprint "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels")
     )
@@ -6060,6 +6091,9 @@
     )
     (path "/c896e414-3acb-4bdf-8006-9ce4dd3ddaab"
       (reference "R73") (unit 1) (value "1.8M") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
+    (path "/f50ea3f6-9887-4dc3-9ec9-7a0fb1ee7721/30d871e5-cd7b-49d0-bad3-df947e161a54"
+      (reference "R?") (unit 1) (value "10k") (footprint "")
     )
     (path "/5a199630-412d-49e8-af95-8e19a6c648f5"
       (reference "RTS_TP1") (unit 1) (value "TestPoint") (footprint "TestPoint:TestPoint_Pad_D1.0mm")
