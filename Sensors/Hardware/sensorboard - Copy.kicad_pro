@@ -518,12 +518,12 @@
       "thermocouple9"
     ],
     [
-      "139e7654-9abe-4509-b959-ef2a4c0e8284",
-      "USB -> UART"
+      "0453c67e-50a7-4870-aeab-84f52ff6e68b",
+      "usb"
     ],
     [
-      "f5d08e6e-78a9-4643-8dbf-1f1240e72106",
-      "CAN-BUS"
+      "a190bd03-a44f-406d-b509-db6d2721c035",
+      "CAN"
     ],
     [
       "f50ea3f6-9887-4dc3-9ec9-7a0fb1ee7721",
