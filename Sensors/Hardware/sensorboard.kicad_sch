@@ -5029,6 +5029,9 @@
     (path "/089fbcce-a9df-424f-a994-bce36eb71511"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/0eabcf64-c8c2-4bed-aabd-ce9d7ffe9e13"
+      (reference "#PWR?") (unit 1) (value "+3.3V") (footprint "")
+    )
     (path "/126c5d39-7932-4204-a928-6a6c40b58cc1"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
@@ -5067,6 +5070,12 @@
     )
     (path "/f5d08e6e-78a9-4643-8dbf-1f1240e72106/54c27e2d-52b9-4197-956b-7db5f761b4df"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/56f594ec-be0a-45d6-be4c-5c9b8d4d974d"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/5caf05d8-6d93-4b73-8148-a87ab771d9e5"
+      (reference "#PWR?") (unit 1) (value "+5V") (footprint "")
     )
     (path "/139e7654-9abe-4509-b959-ef2a4c0e8284/5d60cb60-109f-4f47-a369-e940a4c7606c"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
@@ -5124,9 +5133,6 @@
     )
     (path "/f50ea3f6-9887-4dc3-9ec9-7a0fb1ee7721/b0b4726e-2db0-44b7-89f9-18ddacbccb83"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/00000000-0000-0000-0000-000061b9f0c0/b1401a76-5e2d-4ef3-8a24-eed0f1103686"
-      (reference "#PWR?") (unit 1) (value "+5V") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000061b9f0c0/baf7a254-7b3f-4535-a85b-14c7e921660a"
       (reference "#PWR?") (unit 1) (value "+3.3V") (footprint "")
@@ -5482,8 +5488,14 @@
     (path "/00000000-0000-0000-0000-000061b9f0c0/00000000-0000-0000-0000-000061c3b83a"
       (reference "JP10_b") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/1bbafce0-2b67-4884-aa42-bd8c45819ef5"
+      (reference "JP?") (unit 1) (value "SolderJumper_3_Open") (footprint "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels")
+    )
     (path "/00000000-0000-0000-0000-000061b9f0c0/7d58eecf-3d58-42d0-bce2-9de68884c80b"
       (reference "JP?") (unit 1) (value "SolderJumper_2_Open") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/b2dfce22-dc75-4d91-b1b4-2c58e4eb4d22"
+      (reference "JP?") (unit 1) (value "SolderJumper_3_Open") (footprint "")
     )
     (path "/f5d08e6e-78a9-4643-8dbf-1f1240e72106/deb2b25e-9fb0-448e-88c5-95a67db1d371"
       (reference "JP?") (unit 1) (value "TermJP") (footprint "")
@@ -5581,8 +5593,14 @@
     (path "/7e70133f-25e3-46bf-ae7d-147be200fc32"
       (reference "R?") (unit 1) (value "10K") (footprint "Resistor_SMD:R_0402_1005Metric")
     )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/91d72969-7198-4c4b-8864-d990c3218afb"
+      (reference "R?") (unit 1) (value "0.27636R") (footprint "")
+    )
     (path "/139e7654-9abe-4509-b959-ef2a4c0e8284/93a3db9c-71c9-44e9-b238-938623fed236"
       (reference "R?") (unit 1) (value "56k") (footprint "Resistor_SMD:R_0402_1005Metric")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/94bcabcc-3526-44ca-9b33-e741ede35151"
+      (reference "R?") (unit 1) (value "R_Small") (footprint "")
     )
     (path "/f5d08e6e-78a9-4643-8dbf-1f1240e72106/c0a35b75-0e83-4311-add3-5a3930110d30"
       (reference "R?") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0402_1005Metric")
@@ -5598,6 +5616,9 @@
     )
     (path "/df9966ed-1ea6-4cae-ad46-50f382f6dc64"
       (reference "R?") (unit 1) (value "50") (footprint "")
+    )
+    (path "/00000000-0000-0000-0000-000061b9f0c0/e25e796f-f7bc-47b1-94c1-b316e5e098bf"
+      (reference "R?") (unit 1) (value "0.4836R") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000061b9f0c0/e3f232c9-0067-4d19-8e48-e9ce26fdd65f"
       (reference "R?") (unit 1) (value "R_Small") (footprint "")
