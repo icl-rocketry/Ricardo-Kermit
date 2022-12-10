@@ -494,6 +494,10 @@
       "analogueSPI"
     ],
     [
+      "de0f76c4-1b74-4c96-9fad-1f7da693b4f2",
+      "Boosts"
+    ],
+    [
       "139e7654-9abe-4509-b959-ef2a4c0e8284",
       "USB -> UART"
     ],
