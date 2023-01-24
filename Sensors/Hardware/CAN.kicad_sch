@@ -832,7 +832,7 @@
     (property "Reference" "R?" (id 0) (at 118.11 93.98 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10k" (id 1) (at 118.11 96.52 0)
+    (property "Value" "0" (id 1) (at 118.11 96.52 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (id 2) (at 124.46 95.25 0)
