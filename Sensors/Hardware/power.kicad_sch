@@ -1077,7 +1077,7 @@
     (property "Value" "1uH" (id 1) (at 186.69 67.7422 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Inductor_SMD:L_0805_2012Metric" (id 2) (at 185.42 66.04 0)
+    (property "Footprint" "Inductor_SMD:L_0402_1005Metric" (id 2) (at 185.42 66.04 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 185.42 66.04 0)
