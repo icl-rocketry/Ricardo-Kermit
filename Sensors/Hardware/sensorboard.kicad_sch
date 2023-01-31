@@ -1163,6 +1163,7 @@
     )
   )
 
+
   (junction (at 55.88 148.59) (diameter 0) (color 0 0 0 0)
     (uuid 0035b230-25b3-460e-a5dc-089c98220d26)
   )
@@ -4468,9 +4469,6 @@
     )
     (path "/de0f76c4-1b74-4c96-9fad-1f7da693b4f2/bd3c5de1-f7ef-4c9d-8c0e-d8c3b38bd76d"
       (reference "#PWR0143") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/de0f76c4-1b74-4c96-9fad-1f7da693b4f2/1006aa80-0ce7-45c5-8e3b-73c2cad1f36c"
-      (reference "#PWR0144") (unit 1) (value "GND") (footprint "")
     )
     (path "/de0f76c4-1b74-4c96-9fad-1f7da693b4f2/ff7268d3-4145-430c-b753-66d2a60f1b86"
       (reference "#PWR0145") (unit 1) (value "+3.3V") (footprint "")
