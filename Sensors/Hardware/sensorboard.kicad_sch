@@ -4623,7 +4623,7 @@
       (reference "C31") (unit 1) (value "10uF") (footprint "Capacitor_SMD:C_0402_1005Metric")
     )
     (path "/2b173291-6fb0-491b-9706-884a6390c6a8/d6a7d69d-c87c-455f-8c8a-584398f5633e"
-      (reference "C32") (unit 1) (value "10uF") (footprint "Capacitor_SMD:C_0402_1005Metric")
+      (reference "C32") (unit 1) (value "10uF") (footprint "Capacitor_SMD:C_0603_1608Metric")
     )
     (path "/2b173291-6fb0-491b-9706-884a6390c6a8/290f2fc4-5d8c-469a-a337-475e6f0aa2a0"
       (reference "C33") (unit 1) (value "1uF") (footprint "Capacitor_SMD:C_0402_1005Metric")
@@ -4941,7 +4941,7 @@
       (reference "L2") (unit 1) (value "20nH") (footprint "Inductor_SMD:L_0402_1005Metric")
     )
     (path "/2b173291-6fb0-491b-9706-884a6390c6a8/2cc9c980-900f-47f1-8a62-ffe519c3eaed"
-      (reference "L3") (unit 1) (value "1uH") (footprint "Inductor_SMD:L_0402_1005Metric")
+      (reference "L3") (unit 1) (value "1uH") (footprint "Inductor_SMD:L_0805_2012Metric")
     )
     (path "/de0f76c4-1b74-4c96-9fad-1f7da693b4f2/27b22deb-ab85-47f3-91b1-b4ef3e1f1f09"
       (reference "L4") (unit 1) (value "6.8uH") (footprint "iclr:INDPM3030X200N")
