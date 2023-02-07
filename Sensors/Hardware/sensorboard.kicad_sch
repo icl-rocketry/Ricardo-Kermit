@@ -4686,7 +4686,7 @@
       (reference "C52") (unit 1) (value "2.2uF") (footprint "Capacitor_SMD:C_0402_1005Metric")
     )
     (path "/de0f76c4-1b74-4c96-9fad-1f7da693b4f2/47d3bd25-b021-4cee-98f6-19da3e2c163f"
-      (reference "C53") (unit 1) (value "100uF") (footprint "Capacitor_SMD:C_0603_1608Metric")
+      (reference "C53") (unit 1) (value "100uF") (footprint "iclr:CAPC2012X145N")
     )
     (path "/de0f76c4-1b74-4c96-9fad-1f7da693b4f2/6973b4da-53a6-47ea-97e3-5b6c2cce21bf"
       (reference "C54") (unit 1) (value "100uF") (footprint "Capacitor_SMD:C_0603_1608Metric")
@@ -5160,13 +5160,13 @@
       (reference "R68") (unit 1) (value "470") (footprint "Resistor_SMD:R_0402_1005Metric")
     )
     (path "/f5d08e6e-78a9-4643-8dbf-1f1240e72106/c0a35b75-0e83-4311-add3-5a3930110d30"
-      (reference "R69") (unit 1) (value "0") (footprint "Resistor_SMD:R_0402_1005Metric")
+      (reference "R69") (unit 1) (value "0") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/f5d08e6e-78a9-4643-8dbf-1f1240e72106/c4e42d16-8dbe-42af-a61a-faa72b95fe53"
-      (reference "R70") (unit 1) (value "60") (footprint "Resistor_SMD:R_0402_1005Metric")
+      (reference "R70") (unit 1) (value "60") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/f5d08e6e-78a9-4643-8dbf-1f1240e72106/c363df37-be76-44cd-846e-5e1010ee0d3e"
-      (reference "R71") (unit 1) (value "60") (footprint "Resistor_SMD:R_0402_1005Metric")
+      (reference "R71") (unit 1) (value "60") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/f50ea3f6-9887-4dc3-9ec9-7a0fb1ee7721/30d871e5-cd7b-49d0-bad3-df947e161a54"
       (reference "R72") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0402_1005Metric")

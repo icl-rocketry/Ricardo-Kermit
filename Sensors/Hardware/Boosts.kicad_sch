@@ -1176,7 +1176,7 @@
     (property "Value" "100uF" (id 1) (at 109.22 77.47 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (id 2) (at 106.68 74.93 0)
+    (property "Footprint" "iclr:CAPC2012X145N" (id 2) (at 106.68 74.93 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 106.68 74.93 0)
