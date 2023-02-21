@@ -1081,6 +1081,10 @@
     (uuid fcd50169-3297-4820-9369-d602c146cdbd)
   )
 
+  (text "Vout" (at 181.61 43.18 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 57b6515a-5e30-4883-b55e-16aab54ed9e2)
+  )
   (text "Vin" (at 275.59 58.42 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid b65d2ccd-765e-4b46-b24a-f65e2ec015f2)
