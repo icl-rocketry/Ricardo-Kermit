@@ -1387,7 +1387,7 @@
     (property "Footprint" "iclr:CONV_MAX77827AEFD+T" (at 158.75 48.26 0)
       (effects (font (size 1.27 1.27)) (justify left bottom) hide)
     )
-    (property "Datasheet" "" (at 165.1 67.31 0)
+    (property "Datasheet" "https://www.mouser.co.uk/datasheet/2/256/MAX77827-1595880.pdf" (at 165.1 67.31 0)
       (effects (font (size 1.27 1.27)) (justify left bottom) hide)
     )
     (property "MANUFACTURER" "Maxim Integrated" (at 162.56 50.8 0)
