@@ -19,6 +19,7 @@ void ADS1219::begin(adsGain_t gain, ADSDatarates rate, adsMode_t mode, adsRef_t 
   setConversionMode(mode);
   setVoltageReference(vref);
   deviceOffset = Offset;
+  start();
 }
 
 void ADS1219::start()
@@ -73,7 +74,7 @@ void ADS1219::resetConfig()
 
 int32_t ADS1219::readSingleEnded(uint8_t channel)
 {
-  config &= ~MUX_MASK;
+  config &= MUX_MASK;
   switch (channel)
   {
   case (0):
@@ -92,7 +93,6 @@ int32_t ADS1219::readSingleEnded(uint8_t channel)
     break;
   }
   writeRegister(config);
-  start();
   return readConversionResult();
 }
 
@@ -154,37 +154,33 @@ int32_t ADS1219::getOffset(const uint32_t readingNumber, const uint16_t timeincr
 
 int32_t ADS1219::readDifferential_0_1()
 {
-  config &= ~MUX_MASK;
+  config &= MUX_MASK;
   config |= MUX_DIFF_0_1;
   writeRegister(config);
-  start();
   return readConversionResult();
 }
 
 int32_t ADS1219::readDifferential_2_3()
 {
-  config &= ~MUX_MASK;
+  config &= MUX_MASK;
   config |= MUX_DIFF_2_3;
   writeRegister(config);
-  start();
   return readConversionResult();
 }
 
 int32_t ADS1219::readDifferential_1_2()
 {
-  config &= ~MUX_MASK;
+  config &= MUX_MASK;
   config |= MUX_DIFF_1_2;
   writeRegister(config);
-  start();
   return readConversionResult();
 }
 
 int32_t ADS1219::readShorted()
 {
-  config &= ~MUX_MASK;
+  config &= MUX_MASK;
   config |= MUX_SHORTED;
   writeRegister(config);
-  start();
   return readConversionResult();
 }
 
@@ -236,7 +232,7 @@ void ADS1219::setConversionMode(adsMode_t mode)
 
 void ADS1219::setVoltageReference(adsRef_t vref)
 {
-  config &= ~VREF_MASK;
+  config &= VREF_MASK;
   config |= vref;
   writeRegister(config);
 }

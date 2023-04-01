@@ -76,7 +76,7 @@ private:
 	static constexpr uint8_t VREF_EXTERNAL = 0b10000000;
 	*/	
 
-	static constexpr uint8_t MUX_MASK 		=	0b11100000;
+	static constexpr uint8_t MUX_MASK 		=	0b00011111;
 static constexpr uint8_t MUX_DIFF_0_1		=	0b00000000;
 static constexpr uint8_t MUX_DIFF_2_3		=	0b00100000;
 static constexpr uint8_t MUX_DIFF_1_2		=	0b01000000;
@@ -100,7 +100,7 @@ static constexpr uint8_t MODE_MASK			=	0xFD;
 static constexpr uint8_t MODE_SINGLE_SHOT	=	0x00;
 static constexpr uint8_t MODE_CONTINUOUS	=		0x02;
 
-static constexpr uint8_t VREF_MASK = 0b00000001;
+static constexpr uint8_t VREF_MASK = 0b11111110;
 static constexpr uint8_t VREF_INTERNAL = 0b00000000;
 	static constexpr uint8_t VREF_EXTERNAL = 0b00000001;
 

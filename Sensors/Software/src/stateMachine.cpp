@@ -47,7 +47,7 @@ stateMachine::stateMachine() :
     ADS0(I2C,D0addr),
     ADS1(I2C,D1addr),
     ADS2(I2C,D2addr),
-    loadcell0(&ADS0,1647,10,networkmanager),
+    loadcell0(&ADS0,2580,10,networkmanager),
     ptap0(ADS2,59830.85714,858860,1,networkmanager),
     ptap1(ADS2,59830.85714,869312,0,networkmanager),
     ntctemp0(ADS0,43000,22000,273.15+25,100000.0,3950.0,1.04,2,networkmanager),
@@ -127,7 +127,8 @@ void stateMachine::initialise(State* initStatePtr) {
     
   //call setup state
   changeState(initStatePtr);
-  loadcell0.setConversionFactor(17.262);
+  loadcell0.setGradient(70.4106146015907);
+  loadcell0.zero(100);
  
   
 };

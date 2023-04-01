@@ -18,9 +18,9 @@ LoadCell::LoadCell(ADS1219 *ADS1, ADS1219 *ADS2, uint32_t zeroReading, uint8_t A
                                                                                                                                                                channel2(ADC2channel),
                                                                                                                                                                g(localgval){};
 
-void LoadCell::setConversionFactor(float convfactor)
+void LoadCell::setGradient(float grad)
 {
-    conversionfactor = convfactor;
+    Gradient = grad;
 }
 
 float LoadCell::calculateWeight()
@@ -29,13 +29,14 @@ float LoadCell::calculateWeight()
     _ADS1->setGain(FOUR);
     if (!_ADS2)
     {
-        Weight = (float)(_ADS1->readAdjusted(channel1) - (float) zeroReading) / (float)conversionfactor;
+        Weight = (float)(_ADS1->readAdjusted(channel1) - (float) zeroReading) / (float)Gradient;
+        Serial.println((float)Weight/(float)g);
     }
     else
     {
         gain2 = _ADS2->gainout;
         _ADS2->setGain(FOUR);
-        Weight = (float)(_ADS1->readAdjusted(channel1) - _ADS2->readAdjusted(channel2) - zeroReading) / (float)conversionfactor;
+        Weight = (float)(_ADS1->readAdjusted(channel1) - _ADS2->readAdjusted(channel2) - zeroReading) / (float)Gradient;
         _ADS2->setGain(gain2);
     }
     _ADS1->setGain(gain1);
@@ -48,17 +49,55 @@ float LoadCell::calculateMass()
     return (float) Weight / (float) g;
 }
 
-float LoadCell::getConversionFactor(float KnownMass)
+float LoadCell::getGradient(float KnownMass)
 {
     if (!_ADS2)
     {
-        returnedconvfactor =(float) (_ADS1->readAdjusted(channel1) - zeroReading) / (float) (KnownMass * g);
+        returnedGrad =(float) (_ADS1->readAdjusted(channel1) - zeroReading) / (float) (KnownMass * g);
     }
     else
     {
-        returnedconvfactor = (float) (_ADS1->readAdjusted(channel1) - _ADS2->readAdjusted(channel2) - zeroReading) /(float) (KnownMass * g);
+        returnedGrad = (float) (_ADS1->readAdjusted(channel1) - _ADS2->readAdjusted(channel2) - zeroReading) /(float) (KnownMass * g);
     }
-    return returnedconvfactor;
+    return returnedGrad;
+}
+
+void LoadCell::zero(uint16_t Nsamples){
+    
+    uint32_t meanval = 0;
+
+    gain1 = _ADS1->gainout;
+    _ADS1->setGain(FOUR);
+    if (Nsamples == 0){
+        meanval = _ADS1->readAdjusted(channel1);
+    }
+    else{
+    for (uint16_t iter = 0; iter < Nsamples; iter++ ){
+        if (!_ADS2)
+        {
+            meanval += _ADS1->readAdjusted(channel1);
+        }
+        else
+        {
+            gain2 = _ADS2->gainout;
+            _ADS2->setGain(FOUR);
+            meanval += _ADS1->readAdjusted(channel1) - _ADS2->readAdjusted(channel2);
+            _ADS2->setGain(gain2);
+        }
+
+    _ADS1->setGain(gain1);
+    }
+    
+    meanval = meanval / Nsamples;
+    }
+
+    zeroReading = meanval;
+    
+    }
+
+void LoadCell::extendedCommandHandler_impl(const NRCPacket::NRC_COMMAND_ID commandID,packetptr_t packetptr){
+
+    
 }
 
 void LoadCell::update(){

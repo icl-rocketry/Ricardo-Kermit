@@ -80,7 +80,7 @@ static constexpr uint8_t D1addr = 0b1000100;
 static constexpr uint8_t D2addr = 0b1000101;
 
 // Gain
-static constexpr adsGain_t D0gain = ONE;
+static constexpr adsGain_t D0gain = FOUR;
 static constexpr adsGain_t D1gain = ONE;
 static constexpr adsGain_t D2gain = ONE;
 
@@ -105,7 +105,7 @@ static constexpr adsRef_t D2vref = REF_EXTERNAL;
 // static constexpr int32_t offsetD2 = 360;
 
 //Offsets (GND system board)
-static constexpr int32_t offsetD0 = 191;
+static constexpr int32_t offsetD0 = 0;
 static constexpr int32_t offsetD1 = 265;
 static constexpr int32_t offsetD2 = 57;
 

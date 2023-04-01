@@ -33,57 +33,6 @@ void loopTask(void *pvParameters)
     {
          inner_loop_task();
          vTaskDelay(1);
-        // Serial.println((statemachine.ADS0.readAdjusted(10))-4282700);
-        // delay(200);
-        // Serial.println("T0");
-        // Serial.println(statemachine.ntctemp0.getTempLinear());
-        // delay(100);
-        // Serial.println("T1");
-        // Serial.println(statemachine.ntctemp1.getTempLinear());
-        // delay(100);
-        //Serial.println("mass");
-
-
-        // Serial.println(statemachine.loadcell0.getMass());
-        // delay(500);
-        // delay(500);
-        // Serial.println("ntc0");
-        // Serial.println(statemachine.ntctemp0.getTempLinear());
-        // delay(500);
-        // Serial.println("ntc1");
-        // Serial.println(statemachine.ntctemp1.getTempLinear());
-        // delay(500);
-        //Serial.println("ADCR");
-        // Serial.println(statemachine.ADS0.readAdjusted(10));
-        // delay(250);
-        //Serial.println(statemachine.ntctemp0.getTempLinear());
-        // delay(500);
-        //Serial.println(statemachine.ptap0.getPressure());
-        //Serial.println(statemachine.ADS2.readAdjusted(1));
-        // Serial.println(statemachine.ADS0.readAdjusted(10));
-        // delay(100);
-        // Serial.println(statemachine.ADS2.readAdjusted(0));
-        // delay(100);
-        // Serial.println("Tap0");
-        // Serial.println(statemachine.ptap0.getPressure());
-        // Serial.println(statemachine.ntctemp1.getTempLinear());
-        // delay(100);
-        // Serial.println(statemachine.ntctemp0.getTempLinear());
-        // delay(100);
-        //Serial.println(statemachine.ntctemp1.getTempLinear());
-        //delay(100);
-        // // Serial.println(statemachine.loadcell0.getWeight());
-        // // delay(100);
-        // // delay(100);
-        // Serial.println(statemachine.ptap1.getPressure());
-        // Serial.println(statemachine.loadcell0.getWeight());
-        // delay(100);
-        
-        //Serial.println(statemachine.ADS0.readAdjusted(10));
-        //delay(100);
-
-        // delay(100);
-
 
      }
 }
