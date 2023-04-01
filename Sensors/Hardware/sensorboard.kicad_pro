@@ -1,26 +1,6 @@
 {
   "board": {
-    "3dviewports": [
-      {
-        "name": "back",
-        "ww": 1.0,
-        "wx": -4.117524147033691,
-        "wy": 10.071948051452637,
-        "wz": -11.046493530273438,
-        "xw": 0.0,
-        "xx": 0.005330834072083235,
-        "xy": -0.9996797442436218,
-        "xz": -0.024730835109949112,
-        "yw": 0.0,
-        "yx": -0.9950201511383057,
-        "yy": -0.002840897301211953,
-        "yz": -0.09963174909353256,
-        "zw": 0.0,
-        "zx": 0.0995296761393547,
-        "zy": 0.025138918310403824,
-        "zz": -0.9947154521942139
-      }
-    ],
+    "3dviewports": [],
     "design_settings": {
       "defaults": {
         "board_outline_line_width": 0.049999999999999996,
@@ -142,9 +122,9 @@
         "allow_blind_buried_vias": false,
         "allow_microvias": false,
         "max_error": 0.005,
-        "min_clearance": 0.127,
+        "min_clearance": 0.21,
         "min_connection": 0.0,
-        "min_copper_edge_clearance": 0.3,
+        "min_copper_edge_clearance": 0.024999999999999998,
         "min_hole_clearance": 0.25,
         "min_hole_to_hole": 0.25,
         "min_microvia_diameter": 0.19999999999999998,
@@ -153,8 +133,8 @@
         "min_silk_clearance": 0.0,
         "min_text_height": 0.7999999999999999,
         "min_text_thickness": 0.08,
-        "min_through_hole_diameter": 0.19999999999999998,
-        "min_track_width": 0.09,
+        "min_through_hole_diameter": 0.3,
+        "min_track_width": 0.19999999999999998,
         "min_via_annular_width": 0.049999999999999996,
         "min_via_diameter": 0.39999999999999997,
         "solder_mask_to_copper_clearance": 0.0,
@@ -458,7 +438,7 @@
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.127,
+        "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -475,7 +455,7 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.127,
+        "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -492,7 +472,7 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.127,
+        "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
