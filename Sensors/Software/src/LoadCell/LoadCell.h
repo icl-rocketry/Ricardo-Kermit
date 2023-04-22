@@ -51,7 +51,7 @@ private:
     float g;
     float Weight;
     
-    void extendedCommandHandler_impl(const NRCPacket::NRC_COMMAND_ID commandID,packetptr_t packetptr){};
+    // void extendedCommandHandler_impl(const NRCPacket::NRC_COMMAND_ID commandID,packetptr_t packetptr){};
      
     
 };

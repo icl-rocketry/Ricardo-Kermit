@@ -30,7 +30,7 @@ float LoadCell::calculateWeight()
     if (!_ADS2)
     {
         Weight = (float)(_ADS1->readAdjusted(channel1) - (float) zeroReading) / (float)Gradient;
-        Serial.println((float)Weight/(float)g);
+        //Serial.println((float)Weight/(float)g);
     }
     else
     {
@@ -95,10 +95,10 @@ void LoadCell::zero(uint16_t Nsamples){
     
     }
 
-void LoadCell::extendedCommandHandler_impl(const NRCPacket::NRC_COMMAND_ID commandID,packetptr_t packetptr){
+// void LoadCell::extendedCommandHandler_impl(const NRCPacket::NRC_COMMAND_ID commandID,packetptr_t packetptr){
 
     
-}
+// }
 
 void LoadCell::update(){
     updateSensorValue(calculateWeight());

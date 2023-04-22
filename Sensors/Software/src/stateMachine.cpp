@@ -51,8 +51,18 @@ stateMachine::stateMachine() :
     ptap0(ADS2,59830.85714,858860,1,networkmanager),
     ptap1(ADS2,59830.85714,869312,0,networkmanager),
     ntctemp0(ADS0,43000,22000,273.15+25,100000.0,3950.0,1.04,2,networkmanager),
-    ntctemp1(ADS0,43000,22000,273.15+25,100000.0,3950.0,1.08,3,networkmanager)
-{};
+    ntctemp1(ADS0,43000,22000,273.15+25,100000.0,3950.0,1.08,3,networkmanager),
+    TC0(vspi,TC_CS0),
+    TC1(vspi,TC_CS1),
+    TC2(vspi,TC_CS2),
+    TC3(vspi,TC_CS3),
+    TC4(vspi,TC_CS4),
+    TC5(vspi,TC_CS5),
+    TC6(vspi,TC_CS6),
+    TC7(vspi,TC_CS7),
+    TC8(vspi,TC_CS8),
+    TC9(vspi,TC_CS9)
+  {};
 
 
 void stateMachine::initialise(State* initStatePtr) {

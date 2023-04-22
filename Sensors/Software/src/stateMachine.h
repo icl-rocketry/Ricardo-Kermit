@@ -21,7 +21,9 @@ Written by the Electronics team, Imperial College London Rocketry
 
 #include "Commands/commandHandler.h"
 #include "Sensors/SensorStructs.h"
+
 #include "ADS1219/ADS1219.h"
+#include "MAX31856/MAX31856.h"
 
 #include "SPI.h"
 #include "Wire.h"
@@ -60,6 +62,18 @@ class stateMachine {
     PTransducer ptap1;
     NTCThermistor ntctemp0;
     NTCThermistor ntctemp1;
+
+    MAX31856 TC0;
+    MAX31856 TC1;
+    MAX31856 TC2;
+    MAX31856 TC3;
+    MAX31856 TC4;
+    MAX31856 TC5;
+    MAX31856 TC6;
+    MAX31856 TC7;
+    MAX31856 TC8;
+    MAX31856 TC9;
+
 
   private:
     State* _currStatePtr;

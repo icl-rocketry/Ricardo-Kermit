@@ -82,6 +82,17 @@ void CommandHandler::TelemetryCommand(const RnpPacketSerialized &packet)
 	processedSensorPacket.ch8sens = 0;
 	processedSensorPacket.ch9sens = _sm->ptap0.getPressure();
 
+	processedSensorPacket.temp0 = _sm->TC0.getTemp();
+	processedSensorPacket.temp1 = _sm->TC1.getTemp();
+	processedSensorPacket.temp2 = _sm->TC2.getTemp();
+	processedSensorPacket.temp3 = _sm->TC3.getTemp();
+	processedSensorPacket.temp4 = _sm->TC4.getTemp();
+	processedSensorPacket.temp5 = _sm->TC5.getTemp();
+	processedSensorPacket.temp6 = _sm->TC6.getTemp();
+	processedSensorPacket.temp7 = _sm->TC7.getTemp();
+	processedSensorPacket.temp8 = _sm->TC8.getTemp();
+	processedSensorPacket.temp9 = _sm->TC9.getTemp();
+
 	processedSensorPacket.system_status = _sm->systemstatus.getStatus();
 
 	_sm->networkmanager.sendPacket(processedSensorPacket);
