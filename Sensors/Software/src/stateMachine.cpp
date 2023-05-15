@@ -73,9 +73,10 @@ void stateMachine::initialise(State* initStatePtr) {
   I2C.begin(_SDA,_SCL,I2C_FREQUENCY);
   //initalize spi interface
   vspi.begin();
-  vspi.setFrequency(1000000);
+  vspi.setFrequency(5e6);
   vspi.setBitOrder(MSBFIRST);
-  vspi.setDataMode(SPI_MODE0);
+  vspi.setDataMode(SPI_MODE1);
+  vspi.setClockDivider(SPI_CLOCK_DIV16);
 
 
   //Initialise ADC devices
@@ -119,6 +120,29 @@ void stateMachine::initialise(State* initStatePtr) {
   //configure save function from network manager
   networkmanager.setSaveConfigImpl(RnpNvsSave::SaveToNVS);
 
+  pinMode(TC_CS0, OUTPUT);
+  pinMode(TC_CS1, OUTPUT);
+  pinMode(TC_CS2, OUTPUT);
+  pinMode(TC_CS3, OUTPUT);
+  pinMode(TC_CS4, OUTPUT);
+  pinMode(TC_CS5, OUTPUT);
+  pinMode(TC_CS6, OUTPUT);
+  pinMode(TC_CS7, OUTPUT);
+  pinMode(TC_CS8, OUTPUT);
+  pinMode(TC_CS9, OUTPUT);
+
+  //initialise outputs as high
+  digitalWrite(TC_CS0, HIGH);
+  digitalWrite(TC_CS1, HIGH);
+  digitalWrite(TC_CS2, HIGH);
+  digitalWrite(TC_CS3, HIGH);
+  digitalWrite(TC_CS4, HIGH);
+  digitalWrite(TC_CS5, HIGH);
+  digitalWrite(TC_CS6, HIGH);
+  digitalWrite(TC_CS7, HIGH);
+  digitalWrite(TC_CS8, HIGH);
+  digitalWrite(TC_CS9, HIGH);
+
   //try to load previous net config from nvs
   RnpNetworkManagerConfig savedNetworkConfig;
   if (!RnpNvsSave::ReadFromNVS(savedNetworkConfig))
@@ -139,6 +163,16 @@ void stateMachine::initialise(State* initStatePtr) {
   changeState(initStatePtr);
   loadcell0.setGradient(70.4106146015907);
   loadcell0.zero(100);
+  TC0.setup();
+  TC1.setup();
+  TC2.setup();
+  TC3.setup();
+  TC4.setup();
+  TC5.setup();
+  TC6.setup();
+  TC7.setup();
+  TC8.setup();
+  TC9.setup();
  
   
 };

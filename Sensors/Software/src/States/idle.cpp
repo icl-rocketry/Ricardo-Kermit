@@ -68,16 +68,18 @@ State* Idle::update(){
         
     }
 
-    _sm->TC0.update();
-    _sm->TC1.update();
-    _sm->TC2.update();
-    _sm->TC3.update();
-    _sm->TC4.update();
-    _sm->TC5.update();
-    _sm->TC6.update();
-    _sm->TC7.update();
+    // _sm->TC0.update();
+    // _sm->TC1.update();
+    // _sm->TC2.update();
+    // _sm->TC3.update();
+    // _sm->TC4.update();
+    // _sm->TC5.update();
+    // _sm->TC6.update();
+    // _sm->TC7.update();
     _sm->TC8.update();
-    _sm->TC9.update();
+    Serial.println(_sm->TC8.getTemp());
+    delay(200);
+    // _sm->TC9.update();
     
     return this;//loopy loop
 };

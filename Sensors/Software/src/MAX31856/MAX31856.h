@@ -34,25 +34,25 @@ class MAX31856{
 
         enum ConvModes : uint8_t {
             normOff = 0,
-            conti = 1
+            conti = 0b10000000
         };
 
         enum ENCJComp : uint8_t {
             enable = 0,
-            disable = 1
+            disable = 0b00001000
         };
 
         enum FaultModes : uint8_t {
             comparator = 0,
-            interrupt = 1
+            interrupt = 0b00000100
         };
 
         enum FilterFreqs : uint8_t {
-            sixtyHz = 1,
+            sixtyHz = 0b00000001,
             fiftyHz = 0
         };
         
-        MAX31856(SPIClass &spi, uint8_t cs);
+        MAX31856(SPIClass &spi, uint8_t cs, TCType TCType = TCType::TK, OCSet OCSet = OCSet::RSH5KTCL2, AVSet AVSet = AVSet::onesamp, ConvModes Mode = ConvModes::conti, ENCJComp EN = ENCJComp::enable, FaultModes Fault = FaultModes::comparator, FilterFreqs Freq = FilterFreqs::sixtyHz);
         void setup();
         void reset();
         void setTCType(TCType TCType);
@@ -110,12 +110,22 @@ class MAX31856{
         SPISettings _spisettings;
 
         uint8_t _cs;
+
+        //Settings
+        TCType Type;
+        OCSet OpenCircDet;
+        AVSet Averaging;
+        ConvModes ConvMode;
+        ENCJComp ColdJComp;
+        FaultModes FModes;
+        FilterFreqs Freq;
+
         //Shadow registers, all set to factory defaults
         uint8_t C0Reg = 0x00;
         uint8_t C1Reg = 0x03;
     
         //Masks
-        static constexpr float fpScale = 1.0/128.0;
+        static constexpr float fpScale = 1.0/1048576.0;
         static constexpr uint32_t SignMask19Bit = 0b1000000000000000000;
 
         //C0
