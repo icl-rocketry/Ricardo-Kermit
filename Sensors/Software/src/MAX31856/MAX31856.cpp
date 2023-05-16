@@ -1,19 +1,19 @@
 #include "MAX31856.h"
 
 MAX31856::MAX31856(SPIClass &spi, uint8_t cs, TCType TCType, OCSet OCSet, AVSet AVSet, ConvModes Mode, ENCJComp EN, FaultModes Fault, FilterFreqs Freq):
-_spi(spi), _spisettings(5e6, MSBFIRST, SPI_MODE1), _cs(cs), Type(TCType), OpenCircDet(OCSet), Averaging(AVSet), ConvMode(Mode), ColdJComp(EN), FModes(Fault), Freq(Freq) {};
+_spi(spi), _spisettings(5e6, MSBFIRST, SPI_MODE1), _cs(cs), _Type(TCType), _OpenCircDet(OCSet), _Averaging(AVSet), _ConvMode(Mode), _ColdJComp(EN), _FMode(Fault), _Freq(Freq) {};
 
 void MAX31856::setup()
 {
     clearFault();
     setConversionMode(ConvModes::normOff);
-    setTCType(TCType::TK);
-    setOCDetection(OCSet::RSH5KTCL2);
-    setAveraging(AVSet::onesamp);
-    enableCJComp(ENCJComp::enable);
-    setFaultMode(FaultModes::comparator);
-    setFilter(FilterFreqs::sixtyHz);
-    setConversionMode(ConvModes::conti);
+    setTCType(_Type);
+    setOCDetection(_OpenCircDet);
+    setAveraging(_Averaging);
+    enableCJComp(_ColdJComp);
+    setFaultMode(_FMode);
+    setFilter(_Freq);
+    setConversionMode(_ConvMode);
 }
 
 void MAX31856::writeRegister(writeRegisters target, uint8_t data){

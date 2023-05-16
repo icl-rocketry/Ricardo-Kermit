@@ -112,13 +112,13 @@ class MAX31856{
         uint8_t _cs;
 
         //Settings
-        TCType Type;
-        OCSet OpenCircDet;
-        AVSet Averaging;
-        ConvModes ConvMode;
-        ENCJComp ColdJComp;
-        FaultModes FModes;
-        FilterFreqs Freq;
+        TCType _Type;
+        OCSet _OpenCircDet;
+        AVSet _Averaging;
+        ConvModes _ConvMode;
+        ENCJComp _ColdJComp;
+        FaultModes _FMode;
+        FilterFreqs _Freq;
 
         //Shadow registers, all set to factory defaults
         uint8_t C0Reg = 0x00;
