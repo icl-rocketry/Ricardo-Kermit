@@ -1413,7 +1413,7 @@
     (uuid fa8253f7-c71a-428b-9fb7-151f199e5a90)
   )
 
-  (label "LDO10V_IN" (at 264.16 34.29 180) (fields_autoplaced)
+  (label "LDO11V_IN" (at 264.16 34.29 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 3a834e89-4b51-4a54-90b6-5a20c5f600fb)
   )
