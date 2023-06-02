@@ -1803,7 +1803,7 @@
     (property "Footprint" "iclr:SOIC127P599X175-9N" (at 232.41 50.8 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 232.41 50.8 0)
+    (property "Datasheet" "https://www.mouser.com/datasheet/2/761/sc4215-1278268.pdf" (at 232.41 50.8 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 32f43bbd-8c25-42ce-84de-c8c70ec944cf))
