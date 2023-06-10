@@ -1408,6 +1408,11 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid b65d2ccd-765e-4b46-b24a-f65e2ec015f2)
   )
+  (text "C3 capacitor used for configuring the duty cycle of the internal oscillator, one in next to inductor\n"
+    (at 194.31 114.3 0)
+    (effects (font (size 1 1)) (justify left bottom))
+    (uuid cc54b998-4dea-40b0-ace2-b5fac76a846c)
+  )
   (text "Vin" (at 144.78 86.36 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid fa8253f7-c71a-428b-9fb7-151f199e5a90)
