@@ -1126,7 +1126,7 @@
   (symbol (lib_id "Connector:TestPoint") (at 137.16 57.15 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 29c8f517-b1b2-4e8c-85e5-5bcf75eb61ae)
-    (property "Reference" "TP1" (at 135.89 50.8 0)
+    (property "Reference" "TP_BBIN1" (at 135.89 50.8 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "TestPoint" (at 135.89 48.2631 0)
@@ -1142,7 +1142,7 @@
     (instances
       (project "sensorboard"
         (path "/26801cfb-b53b-4a6a-a2f4-5f4986565765/2b173291-6fb0-491b-9706-884a6390c6a8"
-          (reference "TP1") (unit 1)
+          (reference "TP_BBIN1") (unit 1)
         )
       )
     )
@@ -1426,7 +1426,7 @@
   (symbol (lib_id "Connector:TestPoint") (at 205.74 55.88 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8ed4885f-c5e8-4817-8e0e-0a6d1ccdaf65)
-    (property "Reference" "TP2" (at 195.58 52.07 0)
+    (property "Reference" "TP_BBOUT1" (at 195.58 52.07 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "TestPoint" (at 195.58 54.6069 0)
@@ -1442,7 +1442,7 @@
     (instances
       (project "sensorboard"
         (path "/26801cfb-b53b-4a6a-a2f4-5f4986565765/2b173291-6fb0-491b-9706-884a6390c6a8"
-          (reference "TP2") (unit 1)
+          (reference "TP_BBOUT1") (unit 1)
         )
       )
     )
