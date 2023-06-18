@@ -556,7 +556,16 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "rf1",
+        "pattern": "/CS0"
+      },
+      {
+        "netclass": "rf1",
+        "pattern": "/CS1"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {

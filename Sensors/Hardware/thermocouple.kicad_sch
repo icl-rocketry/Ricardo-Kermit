@@ -794,7 +794,7 @@
   (symbol (lib_id "Device:Thermocouple") (at 50.8 71.12 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006199b0f6)
-    (property "Reference" "TC1" (at 50.1142 62.865 0)
+    (property "Reference" "TC2" (at 50.1142 62.865 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Thermocouple" (at 50.1142 65.1764 0)
@@ -811,16 +811,16 @@
     (instances
       (project "sensorboard"
         (path "/26801cfb-b53b-4a6a-a2f4-5f4986565765/00000000-0000-0000-0000-000061cb93b1"
-          (reference "TC1") (unit 1)
+          (reference "TC2") (unit 1)
         )
         (path "/26801cfb-b53b-4a6a-a2f4-5f4986565765/00000000-0000-0000-0000-000061d785e6"
-          (reference "TC2") (unit 1)
+          (reference "TC3") (unit 1)
         )
         (path "/26801cfb-b53b-4a6a-a2f4-5f4986565765/00000000-0000-0000-0000-000061d7d3f0"
           (reference "TC4") (unit 1)
         )
         (path "/26801cfb-b53b-4a6a-a2f4-5f4986565765/00000000-0000-0000-0000-000061d8261a"
-          (reference "TC3") (unit 1)
+          (reference "TC1") (unit 1)
         )
       )
     )
