@@ -22,12 +22,15 @@
 class LoadCell : public NRCRemoteSensorBase<LoadCell>
 {
 public:
-    LoadCell(ADS1219 *ADS1, uint32_t zeroReading, uint8_t ADC1channel, RnpNetworkManager& netman, float localgval = 9.81);
-    LoadCell(ADS1219 *ADS1, ADS1219 *ADS2, uint32_t zeroReading, uint8_t ADC1channel, uint8_t ADC2channel, RnpNetworkManager& netman, float localgval = 9.81);
-    void setGradient(float convfactor);
+    LoadCell(ADS1219 *ADS1, uint32_t zeroReading, uint8_t ADC1channel, RnpNetworkManager& netman, float localgval = 9.81, uint8_t LCIndex);
+    LoadCell(ADS1219 *ADS1, ADS1219 *ADS2, uint32_t zeroReading, uint8_t ADC1channel, uint8_t ADC2channel, RnpNetworkManager& netman, float localgval = 9.81, uint8_t LCIndex);
+    void setGradient(float grad);
+    void setg(float gravconst);
+
+    void setup();
+    void loadConsts();
     float calculateWeight();
     float calculateMass();
-    float getGradient(float KnownMass);
     adsGain_t gain1;
     adsGain_t gain2;
 
@@ -37,7 +40,7 @@ public:
     void update();
     void zero(uint16_t Nsamples);
     
-
+    void extendedCommandHandler_impl(const NRCPacket::NRC_COMMAND_ID commandID, packetptr_t packetptr);
     
 
 private: 
@@ -48,6 +51,7 @@ private:
     float returnedGrad;
     uint8_t channel1;
     uint8_t channel2;
+    uint8_t LoadCellInd;
     float g;
     float Weight;
     

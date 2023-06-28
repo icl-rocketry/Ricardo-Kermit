@@ -28,6 +28,7 @@ class CommandHandler {
         enum class PACKET_TYPES:uint8_t{
             SIMPLE = 0,
             MAGCAL = 10,
+            LCCAL = 11,
             MESSAGE_RESPONSE = 100,
             TELEMETRY_RESPONSE = 101,
             PROCESSED_SENSORS_RESPONSE=103,
