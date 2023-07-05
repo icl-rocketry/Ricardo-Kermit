@@ -2567,7 +2567,7 @@
     (property "Value" "3V3LED" (at 52.07 19.9644 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 52.07 22.86 90)
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 52.07 22.86 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 52.07 22.86 90)
