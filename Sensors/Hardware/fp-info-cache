@@ -1,4 +1,4 @@
-21594222198916307
+21610440229080866
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -89698,6 +89698,13 @@ GCT_USB4110-GF-A_REVB
 16
 16
 iclr
+IC_TPS61089RNRR
+
+
+0
+12
+12
+iclr
 INDC1006X60N
 
 
@@ -89714,6 +89721,20 @@ INDM8681X400N
 iclr
 INDPM3030X200N
 74438
+Inductor
+0
+2
+2
+iclr
+INDPM110100X540N
+SRP1050WA-100M
+Inductor
+0
+2
+2
+iclr
+INDPM112100X400N
+WLPMA0A040M2R2LC
 Inductor
 0
 2
@@ -89915,6 +89936,13 @@ Integrated Circuit
 48
 48
 iclr
+RNR0011A
+RNR0011A
+Integrated Circuit
+0
+13
+13
+iclr
 SER2011202MLD
 SER2011-202MLD-1
 Inductor
@@ -90027,6 +90055,13 @@ Inductor
 2
 2
 iclr
+SRR6038
+SRR6038
+Inductor
+0
+2
+2
+iclr
 SiC437BEDT1GE3
 SiC437BED-T1-GE3-7
 Integrated Circuit
@@ -90124,6 +90159,34 @@ XDCR_DPS310
 0
 8
 8
+iclr
+XFL2010183MEC
+XFL2010-183MEC-1
+Inductor
+0
+2
+2
+iclr
+buckaroo
+
+
+0
+0
+0
+iclr
+chinesebuck
+
+
+0
+0
+0
+iclr
+daisychain
+
+
+0
+0
+0
 iclr
 iclr_logo
 
