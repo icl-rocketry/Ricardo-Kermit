@@ -1,4 +1,4 @@
-21610440229080866
+21606263262073440
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -89936,13 +89936,6 @@ Integrated Circuit
 48
 48
 iclr
-RNR0011A
-RNR0011A
-Integrated Circuit
-0
-13
-13
-iclr
 SER2011202MLD
 SER2011-202MLD-1
 Inductor
@@ -90050,13 +90043,6 @@ TVS Diode (Uni-directional)
 iclr
 SRP5050FA5R6M
 SRP5050FA-5R6M-2
-Inductor
-0
-2
-2
-iclr
-SRR6038
-SRR6038
 Inductor
 0
 2
