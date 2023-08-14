@@ -25,7 +25,7 @@
 #include <SPI.h>
 #include "ADS131M06.h"
 
-ADS131M06::ADS131M06(int8_t _csPin, int8_t _clkoutPin, SPIClass* _spi, int8_t _clockCh) {
+ADS131M06::ADS131M06(SPIClass* _spi, int8_t _csPin, int8_t _clkoutPin, int8_t _clockCh) {
   csPin = _csPin;
   clkoutPin = _clkoutPin;
   spi = _spi;
@@ -33,7 +33,7 @@ ADS131M06::ADS131M06(int8_t _csPin, int8_t _clkoutPin, SPIClass* _spi, int8_t _c
   initialised = false;
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-void ADS131M06::begin(void) {
+void ADS131M06::setup(void) {
   pinMode(csPin, OUTPUT);//set the pinmode of csPin to output data
   digitalWrite(csPin, HIGH);//set the csPin to output high (active low)
 

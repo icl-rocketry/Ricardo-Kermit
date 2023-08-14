@@ -21,8 +21,8 @@
 
 class ADS131M06 {
   public:
-    ADS131M06(int8_t _csPin, int8_t _clkoutPin, SPIClass* _spi, int8_t _clockCh = 1);
-    void begin(void);
+    ADS131M06(SPIClass* _spi, int8_t _csPin, int8_t _clkoutPin, int8_t _clockCh = 1);
+    void setup(void);
     void rawChannels(int8_t * channelArrPtr, int8_t channelArrLen, int32_t * outputArrPtr);
     int32_t rawChannelSingle(int8_t channel);
     uint16_t readReg(uint8_t reg, uint8_t number = 0x00);//modify for multiple consecutive register useage
@@ -58,7 +58,7 @@ class ADS131M06 {
 
     static constexpr uint8_t CLKIN_SPD = 8192000; // Clock speed for the CLKIN pin on the DAC
     static constexpr uint8_t SCLK_SPD = 25000000; // SPI frequency of DAC
-    
+
     //channels: config, ... most sig bit, ... least sig bit, 
     static constexpr uint8_t CH0_CFG = 0x09;
     static constexpr uint8_t CH0_OCAL_MSB = 0x0A;

@@ -32,7 +32,8 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         MAX31856 TC2;
         MAX31856 TC3;
         //2 ADC's:
-
+        ADS131M06 ADC0;
+        ADS131M06 ADC1;
 
     // private:
 

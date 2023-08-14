@@ -30,7 +30,9 @@ SNSRSPI(HSPI_BUS_NUM),
 TC0(SNSRSPI, PinMap::TC0_Cs),
 TC1(SNSRSPI, PinMap::TC1_Cs),
 TC2(SNSRSPI, PinMap::TC2_Cs),
-TC3(SNSRSPI, PinMap::TC3_Cs)
+TC3(SNSRSPI, PinMap::TC3_Cs),
+ADC0(SNSRSPI, PinMap::ADC0_Cs, , ),//need clkout pin and channel
+ADC1(SNSRSPI, PinMap::ADC1_Cs, , )
 {};
 
 
@@ -45,11 +47,15 @@ void System::systemSetup(){
     //initialize statemachine with idle state
     statemachine.initalize(std::make_unique<Idle>(systemstatus,commandhandler));
     //any other setup goes here
-
+    //Thermocouples:
     TC0.setup();
     TC1.setup();
     TC2.setup();
     TC3.setup();
+    //ADC's:
+    ADC0.setup();
+    ADC1.setup();     
+
 
 };
 
