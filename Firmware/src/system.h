@@ -6,8 +6,13 @@
 #include "Config/commands_config.h"
 #include "Config/pinmap_config.h"
 #include "Sensors/MAX31856.h"
+#include "Sensors/ADS131M06.h"
 
 #include "Commands/commands.h"
+
+/* System class: a class which encapsulates all the classes used to describe components on
+    the board, creating the board system. Interacting with the board involves interacting
+    the system */
 
 class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
 {
@@ -18,15 +23,16 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         void systemSetup();
 
         void systemUpdate();
-
-        SPIClass SDSPI;
-        SPIClass SNSRSPI;
-        
+        //2 seperate SPI lines:
+        SPIClass SDSPI; //SPI for the SD card
+        SPIClass SNSRSPI; //SPI for the sensors
+        //4 thermocouples:
         MAX31856 TC0;
         MAX31856 TC1;
         MAX31856 TC2;
         MAX31856 TC3;
-        
+        //2 ADC's:
+
 
     // private:
 
