@@ -25,24 +25,33 @@
 #include <SPI.h>
 #include "ADS131M06.h"
 
-ADS131M06::ADS131M06(SPIClass* _spi, int8_t _csPin, int8_t _clkoutPin, int8_t _clockCh) {
-  csPin = _csPin;
-  clkoutPin = _clkoutPin;
-  spi = _spi;
-  clockCh = _clockCh;
-  initialised = false;
-}
+ADS131M06::ADS131M06(SPIClass &_spi, uint8_t _csPin, uint8_t _clkoutPin, uint8_t _clockCh):
+spi(_spi),
+csPin(_csPin),
+clkoutPin(_clkoutPin),
+clockCh(_clockCh),
+clockEnabled(true),
+initialised(false)
+{}
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-void ADS131M06::setup(void) {
+void ADS131M06::setup() {
   pinMode(csPin, OUTPUT);//set the pinmode of csPin to output data
   digitalWrite(csPin, HIGH);//set the csPin to output high (active low)
 
-  spi->begin();
+  spi.begin();
 
-  // Set CLKOUT on the ESP32 to give the correct frequency for CLKIN on the DAC XXXXXXXXXXXXXXX DO WE NEED THIS?
-  ledcSetup(clockCh, CLKIN_SPD, 2);
+  /* Set CLKOUT on the ESP32. used for generation of the ADC clock signal using ledc.
+    Define the individual clock channel to generate the signal and the clock frequency to
+    generate it at.
+    AttachPin takes the GPIO pin which will be attached to the channel specified.
+    
+  */
+ clkConfig();
+ if (clockEnabled = true){
+  ledcSetup(clockCh, CLKIN_SPD, 2); //duty cycle resolution = 2bits? check datasheet mohammad
   ledcAttachPin(clkoutPin, clockCh);
   ledcWrite(clockCh, 2);
+ }
 
   initialised=true;
 }
@@ -169,7 +178,7 @@ bool ADS131M06::writeReg(uint8_t reg, uint16_t data, uint8_t number = 0x00) {// 
   uint16_t commandWord = (commandPref<<12) + (reg<<7) + (number);
 
   digitalWrite(csPin, LOW);
-  spi->beginTransaction(SPISettings(SCLK_SPD, MSBFIRST, SPI_MODE1));
+  spi.beginTransaction(SPISettings(SCLK_SPD, MSBFIRST, SPI_MODE1));
   /*this actually starts a trasmission process and configures the clock speed, MSB or LSB
    config for
    transfer of bits out of the respective registers, and the SPI mode which configures the CPOL
@@ -187,10 +196,10 @@ bool ADS131M06::writeReg(uint8_t reg, uint16_t data, uint8_t number = 0x00) {// 
 
   // Send 4 empty words
   for (uint8_t i=0; i<4; i++) {
-    spiTransferWord();
+    spiTransferWord(); //sends 2bytes of zeros by default
   }
 
-  spi->endTransaction();
+  spi.endTransaction();
   digitalWrite(csPin, HIGH); //active low due to CPHA as mentioned before, therefore deactivate here.
 
   // Get response in order to determine whether the writing was successfull:
@@ -245,7 +254,7 @@ uint8_t ADS131M06::readReg(uint8_t reg, uint8_t number = 0x00) {//xxxxxxxxxxxxx-
   uint8_t commandPref = 0x0A;//10 = 0000 1010
   //1010 0000 0000 0000
   // Make command word using syntax found in data sheet: 101a aaaa annn nnnn
-  uint16_t commandWord = (commandPref << 12) + (reg << 7) + number; 
+  uint16_t commandWord = (commandPref << 12) + (reg << 7) + number;
 
   //DYNAMIC MEMORY:XXXXXXXXXXXXXXXXXXXXXXXXXX-check how to compile with a specified length? does it need to?
   // Define size depending on whether a single or multiple registers are being read
@@ -255,8 +264,8 @@ uint8_t ADS131M06::readReg(uint8_t reg, uint8_t number = 0x00) {//xxxxxxxxxxxxx-
   }else{
     std::unique_ptr<uint32_t> responseArr(new uint32_t); //length = number + 2 -> 2 for the ack word at the start and the CRC at the end
     multiple = true;
-    uint16_t AckCheck = (0x0D << 12) + (reg << 7) + number; 
   }
+  uint16_t AckCheck = (0x0D << 12) + (reg << 7) + number;
 
   // Use first frame to send command
   spiCommFrame(&responseArr[0], commandWord);
@@ -275,7 +284,14 @@ uint8_t ADS131M06::readReg(uint8_t reg, uint8_t number = 0x00) {//xxxxxxxxxxxxx-
   //return responseArr[0] >> 16;
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------
-bool ADS131M06::reset(void){//xxxxxxxxxxxxxxx- deos the command latch then require a second frame to get the acknowledgment?
+bool ADS131M06::clkConfig(){//xxxxxxxxxxxxxxxxxxxx
+  /*Writes to the clock register and sets crystal oscillator to disable and enable */
+
+  uint16_t data = ;
+  writeReg(CLOCK, data);
+}
+//-----------------------------------------------------------------------------------------------
+bool ADS131M06::reset(){//xxxxxxxxxxxxxxx- deos the command latch then require a second frame to get the acknowledgment?
   /*command to reset the ADC device
   outputs true if successfull
   */
@@ -375,7 +391,7 @@ uint32_t ADS131M06::spiTransferWord(uint16_t inputData) {//XXXXXXXXXXXXXXXXXXXXX
      Input data is 16 bits
   */ 
   
-  uint32_t data = spi->transfer(inputData >> 8);
+  uint32_t data = spi.transfer(inputData >> 8);
   /*Input data (16bits command, see spi arduino) is shifted to the left by a byte, getting rid of the least significant byte and shifting 
   the most significant byte
   to its place, effectively making it a 16bit number with 8 bits of data in LSB, with MSB zeroed. This sent along
@@ -386,7 +402,7 @@ uint32_t ADS131M06::spiTransferWord(uint16_t inputData) {//XXXXXXXXXXXXXXXXXXXXX
   /*data returned is shifted left, effectively deleting the most significant byte and moving the second most significant byte in
   its place. All other bytes are shifted up also, effectively leaving the new least significant byte to be zeroed.
   Effectively this makes space for a new byte as the least significant byte to replace the zeros*/
-  data |= spi->transfer((inputData<<8) >> 8);
+  data |= spi.transfer((inputData<<8) >> 8);
   /*Input data is shifted to zero the most significant byte of data, effectively sending only the least significant byte this time, but as a 
   16 bit number. Each bit of the return signal from the spi
   line is compared with each bit from data. If either a bit from data or the result from the spi line is 1, then 1 is assigned as data for
@@ -395,7 +411,7 @@ uint32_t ADS131M06::spiTransferWord(uint16_t inputData) {//XXXXXXXXXXXXXXXXXXXXX
   (as we made space for it previously with the byte shift up)*/ 
   data <<= 8; // shift data by a byte to the right to make room for one more spi result (remember, as the first byte of the 2byte spi input signal
   //is always zero, the output of spi is also zero in the most significant byte, therefore shifting 1 byte to make room is enough)
-  data |= spi->transfer(0x00);
+  data |= spi.transfer(0x00);
   /*Finally send 8 bits of zeros (8 bits likely as type int is this and default is 8 bits if 16 bit datatype was not defined). The return value is
   set to the new */
   return data << 8;
@@ -409,7 +425,7 @@ void ADS131M06::spiCommFrame(uint32_t * outPtr, uint16_t command) {
   controller (other cspins for other spi devices should be set to high)
   Active low since the settining is SPI_MODE1 which sets the CPOL = 0 (check wiki for more)*/
 
-  spi->beginTransaction(SPISettings(SCLK_SPD, MSBFIRST, SPI_MODE1));
+  spi.beginTransaction(SPISettings(SCLK_SPD, MSBFIRST, SPI_MODE1));
   /*starts an spi transaction. Each time this is called, the settings for the transaction must
   be specified, including the clock speed, whether the MSB or the LSB is moved first and the
   CPHA and CPOL modes via SPI_MODE1*/
@@ -438,7 +454,7 @@ void ADS131M06::spiCommFrame(uint32_t * outPtr, uint16_t command) {
 
   /*Note: as the first index of the array is for the optional command, the next 4 indexes are for all the channel data and the last array index
   is for the CRC bits. Therefore the minimum length of the array must be 1 + 4 + 1 = 6.*/
-  spi->endTransaction();
+  spi.endTransaction();
 \
   //set the csPin back to HIGH as active low config.
   digitalWrite(csPin, HIGH);

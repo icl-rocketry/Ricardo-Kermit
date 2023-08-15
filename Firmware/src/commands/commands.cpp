@@ -35,4 +35,10 @@ void Commands::FreeRamCommand(System& sm, const RnpPacketSerialized& packet)
 	message.header.uid = packet.header.uid;
 	sm.networkmanager.sendPacket(message);
 	
-}
+};
+
+bool Commands::ADCReset(ADS131M06 &ADC)
+{
+	return ADC.reset();
+};
+

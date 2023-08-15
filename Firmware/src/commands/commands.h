@@ -17,5 +17,11 @@
 namespace Commands{
     
     void FreeRamCommand(ForwardDecl_SystemClass& system, const RnpPacketSerialized& packet);
+    //ADC commands:
+    bool ADCReset(ADS131M06 &ADC);
+    bool ADCStandby();
+    bool ADCWakeup();
+    bool ADCLock();
+    bool ADCUnlock();
 
 }

@@ -13,36 +13,152 @@
    https://github.com/icl-rocketry/ADS131M04-Lib
 */
 
-#ifndef ADS131M06_H
-#define ADS131M06_H
+
+#pragma once
 
 #include <Arduino.h>
 #include <SPI.h>
 
 class ADS131M06 {
   public:
-    ADS131M06(SPIClass* _spi, int8_t _csPin, int8_t _clkoutPin, int8_t _clockCh = 1);
-    void setup(void);
+    ADS131M06(SPIClass &_spi, uint8_t _csPin, uint8_t _clkoutPin, uint8_t _clockCh = 1);
+    ADS131M06(SPIClass &_spi, uint8_t _csPin); //second ADC uses the same master clock setup by first ADC
+    /**
+     * @brief Setup function of the ADC. Configure the Cs pin, begin SPI and set Cs to high
+     * (active low). Configure the clock source options for the ADC using clkConfig() and setup
+     * ledc frequency and pin option
+     * 
+     */
+    void setup();
+
+    /**
+     * @brief Writes data from the channels specified in channelArr, to outputArr,
+     * in the correct order (order of channels specified from channelArr).
+     * Copies data from all the channels into a rawDataArr created in the function using
+     * spicommframe(), then loops through the array
+     * and only copies the data from the channels specified in channelArr. Uses twocompDeco to change data format.
+     * 
+     * @param channelArrPtr channelArr should have values from 0-5 (specifying the 6 ADC channels) in any order required
+     * @param channelArrLen channelArrLen should be the length of that array, starting from 1. 
+     *                      (length = 4 if 0-3 channels are used)
+     * @param outputArrPtr Must match length of channelArrPtr
+     */
     void rawChannels(int8_t * channelArrPtr, int8_t channelArrLen, int32_t * outputArrPtr);
+
+    /**
+     * @brief Returns raw data value from the channel specified. Wrapper function of rawChannels() function
+     * where the length of the chanelArr and outputArr are 1. The arrlength identified is also 1.
+     * 
+     * @param channel zero indexed value (same as values in channelArrPtr)
+     * @return int32_t 
+     */
     int32_t rawChannelSingle(int8_t channel);
+
+    /**
+     * @brief Reads the data at the register specified as reg. Can read 1 individual register or multiple (if a number
+     * greater than zero is specified for number).
+     * 
+     * @param reg 
+     * @param number The number of consecutive registers to read from (not zero indexed)xxxxxx
+     * @return uint16_t (arrptr to the array containing the data). Data is in first index if only 1 register
+     *         is read. If multiple, then the first index is the acknowledgement and the data are in the consecutive
+     *         indexes.
+     */
     uint16_t readReg(uint8_t reg, uint8_t number = 0x00);//modify for multiple consecutive register useage
+    
+    /**
+     * @brief Reads the content at the register reg specified, or if number is specified, then multiple
+     * consecutive registers are read.
+     * 
+     * @param reg 
+     * @param data 
+     * @param number 
+     * @return true 
+     * @return false 
+     */
     bool writeReg(uint8_t reg, uint16_t data, uint8_t number = 0x00);//modify for multiple consecutive
-    bool reset(void);//xxxxxx
+
+    /**
+     * @brief Configures the clock generation options in the ADC by disabling the internal
+     * crystal oscillator and enabling the external clock reference option. Output true if
+     * operation is successfull.
+     * 
+     * @return true 
+     * @return false 
+     */
+    bool clkConfig();
+
+    //commands:-------------------------------------------------------------------------------
+    bool reset();//xxxxxx
     bool standby();//xxxxxxxx
     bool wakeup();//xxxxxx
     bool lock();//xxxxxxxxx
     bool unlock();//xxxxxxxx
+
+    /**
+     * @brief 
+     * 
+     * @return uint16_t 
+     */
     uint16_t status();//xxxxxxxx NULL COMMAND (required? same as what occurs in spicommframe?)
+    //------------------------------------------------------------------------------------------
+
+    /**
+     * @brief Set the Gain object
+     * 
+     * @param log2Gain0 
+     * @param log2Gain1 
+     * @param log2Gain2 
+     * @param log2Gain3 
+     * @return true 
+     * @return false 
+     */
     bool setGain(uint8_t log2Gain0 = 0, uint8_t log2Gain1 = 0, uint8_t log2Gain2 = 0, uint8_t log2Gain3 = 0);
+
+    /**
+     * @brief 
+     * 
+     * @param enabled 
+     * @param log2delay 
+     * @return true 
+     * @return false 
+     */
     bool globalChop(bool enabled = false, uint8_t log2delay = 4);
 
   private:
-    int8_t csPin, clkoutPin, clockCh;
-    SPIClass* spi;
+    uint8_t csPin, clkoutPin, clockCh;
+    SPIClass& spi;
     bool initialised;
+    bool clockEnabled;
     
+    /**
+     * @brief Saves all channel data (32 bits) to the outputArray of size 8 where the first index is the result of the
+     * optional 16 bit command (result is 32 bits), the next 6 indexes are the channel data, and the last index (8th)
+     * contains the CRC bits
+     * 
+     * @param outputArray Length 8 
+     * @param command optional 16 bit command
+     */
     void spiCommFrame(uint32_t * outputArray, uint16_t command = 0x0000);
+
+    /**
+     * @brief Transfer a 24 bit word, which is the result of concatinating 16 bits of input data (first 2 bytes) with
+     * a byte of zeros 0x00. Data is sent a byte at a time with the MSB sent first. Data returned is thus MSB aligned
+     * concatinated into a 32bit result in the format: MSB_response, LSB_response, zero_response, zeroPadding. Each
+     * is a byte of data, therefore 32 bits in total.
+     * Default data to send is zeros
+     * 
+     * @param inputData 16 bits
+     * @return uint32_t
+     */
     uint32_t spiTransferWord(uint16_t inputData = 0x0000);
+
+    /**
+     * @brief 
+     * 
+     * @param data 
+     * @return int32_t 
+     */
     int32_t twoCompDeco(uint32_t data);
 
     //Register definitions:-------------------------------------------------------------------------
@@ -56,8 +172,8 @@ class ADS131M06 {
     static constexpr uint8_t THRSHLD_MSB = 0x07;
     static constexpr uint8_t THRSHLD_LSB = 0x08;
 
-    static constexpr uint8_t CLKIN_SPD = 8192000; // Clock speed for the CLKIN pin on the DAC
-    static constexpr uint8_t SCLK_SPD = 25000000; // SPI frequency of DAC
+    static constexpr uint8_t CLKIN_SPD = 8192000; // Clock speed (Hz) for the CLKIN on the LEDC xxxx
+    static constexpr uint8_t SCLK_SPD = 25000000; // SPI transaction frequency xxxxxxxx
 
     //channels: config, ... most sig bit, ... least sig bit, 
     static constexpr uint8_t CH0_CFG = 0x09;
@@ -99,5 +215,3 @@ class ADS131M06 {
     static constexpr uint8_t REGMAP_CRC = 0x3E;
     static constexpr uint8_t RESERVED = 0x3F; //This register is exempt from read reg for ADC
 };
-
-#endif

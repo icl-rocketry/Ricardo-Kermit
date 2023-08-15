@@ -31,8 +31,8 @@ TC0(SNSRSPI, PinMap::TC0_Cs),
 TC1(SNSRSPI, PinMap::TC1_Cs),
 TC2(SNSRSPI, PinMap::TC2_Cs),
 TC3(SNSRSPI, PinMap::TC3_Cs),
-ADC0(SNSRSPI, PinMap::ADC0_Cs, , ),//need clkout pin and channel
-ADC1(SNSRSPI, PinMap::ADC1_Cs, , )
+ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK),//need clkout pin and channel
+ADC1(SNSRSPI, PinMap::ADC1_Cs)
 {};
 
 

@@ -24,6 +24,8 @@ namespace PinMap{
     static constexpr int ADC0_Cs = 13;
     static constexpr int ADC1_Cs = 21;
 
+    static constexpr int ADC_CLK = 9; //clkout pin for the ledc for ADC clock.xxxxxxxxxxxxxxxxx
+
     static constexpr int TxCan = 17;
     static constexpr int RxCan = 14;
 
