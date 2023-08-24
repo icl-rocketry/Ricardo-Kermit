@@ -32,6 +32,14 @@ class ADS131M06 {
     void setup();
 
     /**
+     * @brief update method. Called every time the system updates in the loop. Use to
+     * serial print the data values of the ADCs
+     * 
+     */
+    void update();
+
+
+    /**
      * @brief Writes data from the channels specified in channelArr, to outputArr,
      * in the correct order (order of channels specified from channelArr).
      * Copies data from all the channels into a rawDataArr created in the function using
@@ -59,16 +67,16 @@ class ADS131M06 {
      * greater than zero is specified for number).
      * 
      * @param reg 
-     * @param number The number of consecutive registers to read from (not zero indexed)xxxxxx
+     * //param number The number of consecutive registers to read from (not zero indexed)xxxxxx
      * @return uint16_t (arrptr to the array containing the data). Data is in first index if only 1 register
      *         is read. If multiple, then the first index is the acknowledgement and the data are in the consecutive
      *         indexes.
      */
-    uint16_t readReg(uint8_t reg, uint8_t number = 0x00);//modify for multiple consecutive register useage
+    uint16_t readReg(uint8_t reg);//modify for multiple consecutive register useage
     
     /**
-     * @brief Reads the content at the register reg specified, or if number is specified, then multiple
-     * consecutive registers are read.
+     * @brief writes to the specified register address, replacing the old register data with the
+     * new data provided. returns true if process completed successfully.
      * 
      * @param reg 
      * @param data 
@@ -76,7 +84,7 @@ class ADS131M06 {
      * @return true 
      * @return false 
      */
-    bool writeReg(uint8_t reg, uint16_t data, uint8_t number = 0x00);//modify for multiple consecutive
+    bool writeReg(uint8_t reg, uint16_t data);//modify for multiple consecutive
 
     /**
      * @brief Configures the clock generation options in the ADC by disabling the internal
@@ -94,13 +102,6 @@ class ADS131M06 {
     bool wakeup();//xxxxxx
     bool lock();//xxxxxxxxx
     bool unlock();//xxxxxxxx
-
-    /**
-     * @brief 
-     * 
-     * @return uint16_t 
-     */
-    uint16_t status();//xxxxxxxx NULL COMMAND (required? same as what occurs in spicommframe?)
     //------------------------------------------------------------------------------------------
 
     /**
@@ -134,7 +135,11 @@ class ADS131M06 {
     /**
      * @brief Saves all channel data (32 bits) to the outputArray of size 8 where the first index is the result of the
      * optional 16 bit command (result is 32 bits), the next 6 indexes are the channel data, and the last index (8th)
-     * contains the CRC bits
+     * contains the CRC bits. The spiCommFrame() function actually sends an 8 word command and
+     * outputs the response in the array specified.
+     * Sends an 8 word frame. The first word is the optional command (if this is
+     * not chosen, this is the NULL command by default, which gives the content of the status
+     * register).
      * 
      * @param outputArray Length 8 
      * @param command optional 16 bit command
@@ -146,7 +151,7 @@ class ADS131M06 {
      * a byte of zeros 0x00. Data is sent a byte at a time with the MSB sent first. Data returned is thus MSB aligned
      * concatinated into a 32bit result in the format: MSB_response, LSB_response, zero_response, zeroPadding. Each
      * is a byte of data, therefore 32 bits in total.
-     * Default data to send is zeros
+     * Default data to send are zeros
      * 
      * @param inputData 16 bits
      * @return uint32_t

@@ -24,6 +24,7 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include "ADS131M06.h"
+#include <libriccore/riccorelogging.h>
 
 ADS131M06::ADS131M06(SPIClass &_spi, uint8_t _csPin, uint8_t _clkoutPin, uint8_t _clockCh):
 spi(_spi),
@@ -46,7 +47,7 @@ void ADS131M06::setup() {
     AttachPin takes the GPIO pin which will be attached to the channel specified.
     
   */
- clkConfig();
+ RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("clk: ", clkConfig());//xxxxxxxx
  if (clockEnabled = true){
   ledcSetup(clockCh, CLKIN_SPD, 2); //duty cycle resolution = 2bits? check datasheet mohammad
   ledcAttachPin(clkoutPin, clockCh);
@@ -56,6 +57,18 @@ void ADS131M06::setup() {
   initialised=true;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
+void ADS131M06::update(){
+  /*serial print the every channel data*/
+  const int8_t channelArrLen = 6;
+  int8_t channelArrPtr[channelArrLen] = {0,1,2,3,4,5};
+  int32_t outputArrPtr[channelArrLen];
+  rawChannels(channelArrPtr, channelArrLen, outputArrPtr);
+  for(int8_t i = 0;i<channelArrLen; i++){
+    RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>(i, " ", outputArrPtr[i]);
+  }
+
+}
+
 void ADS131M06::rawChannels(int8_t * channelArrPtr, int8_t channelArrLen, int32_t * outputArrPtr) {
   /* Writes data from the channels specified in channelArr, to outputArr,
      in the correct order.
@@ -95,7 +108,7 @@ void ADS131M06::rawChannels(int8_t * channelArrPtr, int8_t channelArrLen, int32_
       }
    }
   else{
-      std::cout<<"ERROR: Array length specified exceeds maximum number of channels available"<<std::endl;
+      RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("ERROR: Array length specified exceeds maximum number of channels available");
    }
 }
 /*Overall, this function takes in an array which contains values specifying the channels where the data will be copied from into the outputArr.
@@ -158,7 +171,65 @@ bool ADS131M06::globalChop(bool enabled, uint8_t log2delay) {//XXXXXXXXXXXXXXXXX
   return writeReg(CFG, newRegData);// returns true is successfull in writing the data to the CFG register.
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-bool ADS131M06::writeReg(uint8_t reg, uint16_t data, uint8_t number = 0x00) {// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+// bool ADS131M06::writeReg(uint8_t reg, uint16_t data, uint8_t number = 0x00) {// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+//   /* Writes the content of data to the register reg (contains memory location)
+//      Returns true if successful
+
+//      number: the number of extra consecutive registers to be read, after the register location specified in reg
+//      Cannot write to RESERVED address as this requires a 7 bit address. command can only handle addresses which require up to 6 bits.
+//   */
+//   //command format: 011a aaaa annn nnnn
+//   uint8_t commandPref = 0x06;//0000 0110
+//   if (number > 127){
+//     /*check the number of bits required for specifying the number of consecutive registers to read is less than 7.
+//       Set to maximum if exceeded.
+//     */
+//     number = 0x7E; //set to max value available
+//     RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("ERROR: number of consecutive registers specified exceeds the limit of 7 bits. Number set to maximum of 127");
+//   }
+//   // Make command word using syntax found in data sheet
+//   uint16_t commandWord = (commandPref<<12) + (reg<<7) + (number);
+
+//   digitalWrite(csPin, LOW);
+//   spi.beginTransaction(SPISettings(SCLK_SPD, MSBFIRST, SPI_MODE1));
+//   /*this actually starts a trasmission process and configures the clock speed, MSB or LSB
+//    config for
+//    transfer of bits out of the respective registers, and the SPI mode which configures the CPOL
+//    and CPHA and whether the falling edge and data capture are on falling or rising edges of
+//    the clk signal
+//   */
+  
+//   // sends command word and data to be written in the register location along the SPI lines. return data is discarded (not assigned to anything)
+//   spiTransferWord(commandWord);
+//   /*transfer word sends 24 bits of data along the spi line, 1 byte at a time (technically 2bytes, check the function). the input data is 16bits
+//   ,however the most siginificant byte of this is sent first, then the next byte after. Finally the last byte is due to sending 0x00 along spi.
+//   The results are collected in a 32 bit result, which returned, with the first byte as zeros, second byte as the result of the most significant
+//   byte of the input data and so forth, with the last byte being the result of 0x00. Therefore the result if in order of Most significant bit first.*/
+//   spiTransferWord(data);
+
+//   // Send 6 empty words
+//   for (uint8_t i=0; i<6; i++) {
+//     spiTransferWord(); //sends 2bytes of zeros by default
+//   }
+
+//   spi.endTransaction();
+//   digitalWrite(csPin, HIGH); //active low due to CPHA as mentioned before, therefore deactivate here.
+
+//   // Get response in order to determine whether the writing was successfull:
+//   uint32_t responseArr[8];
+//   spiCommFrame(&responseArr[0]); // Copy SPI data from all channels into the responseArr[]
+
+//   // Determining whether the register was successfully written to or not:
+//   if ( ( (0x04<<12) + (reg<<7) ) == responseArr[0]) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+//   /*If the first element of the responseArr has a value equal to 4 (100 in binary) shifted 12 bits to the left making it 16384 plus
+//   the register address value shifted 7 bits left (x128), then the */
+// }
+
+bool ADS131M06::writeReg(uint8_t reg, uint16_t data) {// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   /* Writes the content of data to the register reg (contains memory location)
      Returns true if successful
 
@@ -167,36 +238,21 @@ bool ADS131M06::writeReg(uint8_t reg, uint16_t data, uint8_t number = 0x00) {// 
   */
   //command format: 011a aaaa annn nnnn
   uint8_t commandPref = 0x06;//0000 0110
-  if (number > 127){
-    /*check the number of bits required for specifying the number of consecutive registers to read is less than 7.
-      Set to maximum if exceeded.
-    */
-    number = 0x7E; //set to max value available
-    std::cout<<"ERROR: number of consecutive registers specified exceeds the limit of 7 bits. Number set to maximum of 127"<<std::endl;
-  }
   // Make command word using syntax found in data sheet
-  uint16_t commandWord = (commandPref<<12) + (reg<<7) + (number);
+  uint16_t commandWord = (commandPref<<12) + (reg<<7);
 
   digitalWrite(csPin, LOW);
   spi.beginTransaction(SPISettings(SCLK_SPD, MSBFIRST, SPI_MODE1));
-  /*this actually starts a trasmission process and configures the clock speed, MSB or LSB
-   config for
-   transfer of bits out of the respective registers, and the SPI mode which configures the CPOL
-   and CPHA and whether the falling edge and data capture are on falling or rising edges of
-   the clk signal
-  */
   
   // sends command word and data to be written in the register location along the SPI lines. return data is discarded (not assigned to anything)
   spiTransferWord(commandWord);
-  /*transfer word sends 24 bits of data along the spi line, 1 byte at a time (technically 2bytes, check the function). the input data is 16bits
-  ,however the most siginificant byte of this is sent first, then the next byte after. Finally the last byte is due to sending 0x00 along spi.
-  The results are collected in a 32 bit result, which returned, with the first byte as zeros, second byte as the result of the most significant
-  byte of the input data and so forth, with the last byte being the result of 0x00. Therefore the result if in order of Most significant bit first.*/
+  /*Use transferWord() function instead of spiCommFrame() since the data needs to be sent directly
+  after the command, instead of the 6 empty words being sent after the command in spiCommFrame()*/
   spiTransferWord(data);
 
-  // Send 4 empty words
-  for (uint8_t i=0; i<4; i++) {
-    spiTransferWord(); //sends 2bytes of zeros by default
+  // Send 6 empty words
+  for (uint8_t i=0; i<6; i++) {
+    spiTransferWord(); //sends 2bytes of zeros by default. completes the 8 word frame
   }
 
   spi.endTransaction();
@@ -207,14 +263,14 @@ bool ADS131M06::writeReg(uint8_t reg, uint16_t data, uint8_t number = 0x00) {// 
   spiCommFrame(&responseArr[0]); // Copy SPI data from all channels into the responseArr[]
 
   // Determining whether the register was successfully written to or not:
-  if ( ( (0x04<<12) + (reg<<7) ) == responseArr[0]) {
+  //response format: 010a aaaa ammm mmmm
+  if ( ( (0x04<<12) + (reg<<7) ) == (responseArr[0] >> 16)) { //check against the 16 bit response
     return true;
   } else {
     return false;
   }
-  /*If the first element of the responseArr has a value equal to 4 (100 in binary) shifted 12 bits to the left making it 16384 plus
-  the register address value shifted 7 bits left (x128), then the */
 }
+
 //----------------------------------------------------------------------------------------------------------------------------------------------
 bool ADS131M06::setGain(uint8_t log2Gain0, uint8_t log2gainCommand, uint8_t log2Gain2, uint8_t log2Gain3) {//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   /* Function to set the gain of the four channels of the ADC
@@ -237,58 +293,78 @@ bool ADS131M06::setGain(uint8_t log2Gain0, uint8_t log2gainCommand, uint8_t log2
   return writeReg(GAIN1, gainCommand); // GAIN1 is the register containing the command value to specify the gain. write new command here.
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-uint8_t ADS131M06::readReg(uint8_t reg, uint8_t number = 0x00) {//xxxxxxxxxxxxx-RESERVED address and the output type?
-  /* Reads the content of single register found at address reg
-     Returns register value
-     Note: formatting only allows for 6 bits of actual address data, therefore 63 total addresses. RESERVED address cannot be used as a result.
-  */
-  if (number > 127){
-    /*check the number of bits required for spe+cifying the number of consecutive registers to read is less than 7.
-      Set to maximum if exceeded.
-    */
-    number = 0x7E; //set to max value available
-    std::cout<<"ERROR: number of consecutive registers specified exceeds the limit of 7 bits. Number set to maximum of 127"<<std::endl;
-  }
+// uint8_t ADS131M06::readReg(uint8_t reg, uint8_t number = 0x00) {//xxxxxxxxxxxxx-RESERVED address and the output type?
+//   /* Reads the content of single register found at address reg
+//      Returns register value
+//      Note: formatting only allows for 6 bits of actual address data, therefore 63 total addresses. RESERVED address cannot be used as a result.
+//   */
+//   if (number > 127){
+//     /*check the number of bits required for spe+cifying the number of consecutive registers to read is less than 7.
+//       Set to maximum if exceeded.
+//     */
+//     number = 0x7E; //set to max value available
+//     RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("ERROR: number of consecutive registers specified exceeds the limit of 7 bits. Number set to maximum of 127");
+//   }
 
+//   //reg: aaaa aaaa 8 bits, however, no register address requires more than 6 bits other than the RESERVED address (requires 7 bits)
+//   uint8_t commandPref = 0x0A;//10 = 0000 1010
+//   //1010 0000 0000 0000
+//   // Make command word using syntax found in data sheet: 101a aaaa annn nnnn
+//   uint16_t commandWord = (commandPref << 12) + (reg << 7) + number;
+
+//   //DYNAMIC MEMORY:XXXXXXXXXXXXXXXXXXXXXXXXXX-check how to compile with a specified length? does it need to?
+//   // Define size depending on whether a single or multiple registers are being read
+//   bool multiple = false;
+//   if (number == 0x00){
+//     uint32_t responseArr[8];
+//   }else{
+//     std::unique_ptr<uint32_t> responseArr(new uint32_t); //length = number + 2 -> 2 for the ack word at the start and the CRC at the end
+//     multiple = true;
+//   }
+//   uint16_t AckCheck = (0x0D << 12) + (reg << 7) + number;
+
+//   // Use first frame to send command
+//   spiCommFrame(&responseArr[0], commandWord);
+
+//   // Read response: response occurs on the output frame following the command, rather than at the same time the command is sent.
+//   spiCommFrame(&responseArr[0]);
+  
+//   if((multiple == true)&&((responseArr[0]>>16) != AckCheck)){
+//     RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("ERROR: False Acknowledgement");
+//     return 0x00; //false
+//   }else {
+//     return &responseArr[0];
+//   }
+//   /*Outputs the memory location of the first element of the array instead. This is 8 bits and the length of the array is the number of
+//   consecutive registers to be read after the first specified, which is specified in the command at the start of the function.*/
+//   //return responseArr[0] >> 16;
+// }
+
+uint16_t readReg(uint8_t reg){
   //reg: aaaa aaaa 8 bits, however, no register address requires more than 6 bits other than the RESERVED address (requires 7 bits)
   uint8_t commandPref = 0x0A;//10 = 0000 1010
   //1010 0000 0000 0000
   // Make command word using syntax found in data sheet: 101a aaaa annn nnnn
-  uint16_t commandWord = (commandPref << 12) + (reg << 7) + number;
+  uint16_t commandWord = (commandPref << 12) + (reg << 7);
 
-  //DYNAMIC MEMORY:XXXXXXXXXXXXXXXXXXXXXXXXXX-check how to compile with a specified length? does it need to?
-  // Define size depending on whether a single or multiple registers are being read
-  bool multiple = false;
-  if (number == 0x00){
-    uint32_t responseArr[8];
-  }else{
-    std::unique_ptr<uint32_t> responseArr(new uint32_t); //length = number + 2 -> 2 for the ack word at the start and the CRC at the end
-    multiple = true;
-  }
-  uint16_t AckCheck = (0x0D << 12) + (reg << 7) + number;
+  //Define response array:
+  uint32_t responseArr[8];
 
   // Use first frame to send command
   spiCommFrame(&responseArr[0], commandWord);
 
   // Read response: response occurs on the output frame following the command, rather than at the same time the command is sent.
-  spiCommFrame(&responseArr[0]);
-  
-  if((multiple == true)&&((responseArr[0]>>16) != AckCheck)){
-    std::cout<<"ERROR: False Acknowledgement"<<std::endl;
-    return 0x00; //false
-  }else {
-    return &responseArr[0];
-  }
-  /*Outputs the memory location of the first element of the array instead. This is 8 bits and the length of the array is the number of
-  consecutive registers to be read after the first specified, which is specified in the command at the start of the function.*/
-  //return responseArr[0] >> 16;
+  spiCommFrame(&responseArr[0]);//xxxx test if this actuall gets the register data (might just output
+  //the channel data, which is not what we want here)
+  return (responseArr[0] >> 16); //return the 2bytes of actual data in the first index of the array.
+
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------
 bool ADS131M06::clkConfig(){//xxxxxxxxxxxxxxxxxxxx
   /*Writes to the clock register and sets crystal oscillator to disable and enable */
 
-  uint16_t data = ;
-  writeReg(CLOCK, data);
+  uint16_t data = 0b0011111111001110;
+  return(writeReg(CLOCK, data));
 }
 //-----------------------------------------------------------------------------------------------
 bool ADS131M06::reset(){//xxxxxxxxxxxxxxx- deos the command latch then require a second frame to get the acknowledgment?
@@ -371,16 +447,6 @@ bool ADS131M06::unlock(void){
   }else{
     return false;
   }
-}
-uint16_t ADS131M06::status(void){
-  /*sends the null command word which return the register status*/
-  uint16_t commandWord = 0x00; // NULL command for status display registers.
-  uint32_t responseArr[8];
-
-  spiCommFrame(&responseArr[0], commandWord);
-  spiCommFrame(&responseArr[0]);
-
-  return responseArr[0] >> 16;
 }
 //---------------------------------------------------------------------------------------------------------------------------------
 uint32_t ADS131M06::spiTransferWord(uint16_t inputData) {//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-check if 8 bits at a time is fine

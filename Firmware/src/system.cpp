@@ -67,4 +67,8 @@ void System::systemUpdate(){
     TC2.update();
     TC3.update();
 
+    ADC0.update();
+    ADC1.update();
+    RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("test output");//xxxxxxxxxxxxxx
+
 };

@@ -37,8 +37,8 @@ void Commands::FreeRamCommand(System& sm, const RnpPacketSerialized& packet)
 	
 };
 
-bool Commands::ADCReset(ADS131M06 &ADC)
-{
-	return ADC.reset();
-};
+// bool Commands::ADCReset(ADS131M06 &ADC)
+// {
+// 	return ADC.reset();
+// };
 
