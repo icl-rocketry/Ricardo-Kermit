@@ -18,6 +18,7 @@
 
 #include <Arduino.h>
 #include <SPI.h>
+#include <vector>
 
 class ADS131M06 {
   public:
@@ -51,7 +52,7 @@ class ADS131M06 {
      *                      (length = 4 if 0-3 channels are used)
      * @param outputArrPtr Must match length of channelArrPtr
      */
-    void rawChannels(int8_t * channelArrPtr, int8_t channelArrLen, int32_t * outputArrPtr);
+    void rawChannels(int8_t * channelArrPtr, int8_t channelArrLen, std::vector<int32_t>& outputVect);
 
     /**
      * @brief Returns raw data value from the channel specified. Wrapper function of rawChannels() function
@@ -127,10 +128,14 @@ class ADS131M06 {
     bool globalChop(bool enabled = false, uint8_t log2delay = 4);
 
   private:
-    uint8_t csPin, clkoutPin, clockCh;
+    
     SPIClass& spi;
-    bool initialised;
+    uint8_t csPin, clkoutPin, clockCh;
     bool clockEnabled;
+    bool initialised;
+    std::vector<uint32_t> resultsVect;
+    std::vector<uint32_t> responseVect;
+    std::vector<int32_t> outputVect;
     
     /**
      * @brief Saves all channel data (32 bits) to the outputArray of size 8 where the first index is the result of the
@@ -144,7 +149,7 @@ class ADS131M06 {
      * @param outputArray Length 8 
      * @param command optional 16 bit command
      */
-    void spiCommFrame(uint32_t * outputArray, uint16_t command = 0x0000);
+    void spiCommFrame(std::vector<uint32_t>& outputVect, uint16_t command = 0x0000);
 
     /**
      * @brief Transfer a 24 bit word, which is the result of concatinating 16 bits of input data (first 2 bytes) with
@@ -167,6 +172,8 @@ class ADS131M06 {
     int32_t twoCompDeco(uint32_t data);
 
     //Register definitions:-------------------------------------------------------------------------
+    
+
     static constexpr uint8_t ID = 0x00;
     static constexpr uint8_t STATUS = 0x01;
     static constexpr uint8_t MODE = 0x02;
@@ -177,8 +184,8 @@ class ADS131M06 {
     static constexpr uint8_t THRSHLD_MSB = 0x07;
     static constexpr uint8_t THRSHLD_LSB = 0x08;
 
-    static constexpr uint8_t CLKIN_SPD = 8192000; // Clock speed (Hz) for the CLKIN on the LEDC xxxx
-    static constexpr uint8_t SCLK_SPD = 25000000; // SPI transaction frequency xxxxxxxx
+    static constexpr uint32_t CLKIN_SPD = 8192000; // Clock speed (Hz) for the CLKIN on the LEDC xxxx
+    static constexpr uint32_t SCLK_SPD = 25000000; // SPI transaction frequency xxxxxxxx
 
     //channels: config, ... most sig bit, ... least sig bit, 
     static constexpr uint8_t CH0_CFG = 0x09;

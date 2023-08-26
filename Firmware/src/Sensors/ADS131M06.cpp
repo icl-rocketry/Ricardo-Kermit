@@ -32,7 +32,20 @@ csPin(_csPin),
 clkoutPin(_clkoutPin),
 clockCh(_clockCh),
 clockEnabled(true),
-initialised(false)
+initialised(false),
+resultsVect(6),
+responseVect(8),
+outputVect(6)
+{}
+
+ADS131M06::ADS131M06(SPIClass &_spi, uint8_t _csPin):
+spi(_spi),
+csPin(_csPin),
+clockEnabled(false),
+initialised(false),
+resultsVect(6),
+responseVect(8),
+outputVect(6)
 {}
 //-----------------------------------------------------------------------------------------------------------------------------------------------
 void ADS131M06::setup() {
@@ -47,8 +60,8 @@ void ADS131M06::setup() {
     AttachPin takes the GPIO pin which will be attached to the channel specified.
     
   */
- RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("clk: ", clkConfig());//xxxxxxxx
- if (clockEnabled = true){
+ //RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("clk: ", clkConfig());//xxxxxxxx
+ if (clockEnabled == true){
   ledcSetup(clockCh, CLKIN_SPD, 2); //duty cycle resolution = 2bits? check datasheet mohammad
   ledcAttachPin(clkoutPin, clockCh);
   ledcWrite(clockCh, 2);
@@ -62,14 +75,14 @@ void ADS131M06::update(){
   const int8_t channelArrLen = 6;
   int8_t channelArrPtr[channelArrLen] = {0,1,2,3,4,5};
   int32_t outputArrPtr[channelArrLen];
-  rawChannels(channelArrPtr, channelArrLen, outputArrPtr);
-  for(int8_t i = 0;i<channelArrLen; i++){
-    RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>(i, " ", outputArrPtr[i]);
-  }
+  rawChannels(channelArrPtr, channelArrLen, outputVect);
+  // for(int8_t i = 0;i<channelArrLen; i++){
+  //   RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>(i, " ", outputArrPtr[i]);
+  // }
 
 }
 
-void ADS131M06::rawChannels(int8_t * channelArrPtr, int8_t channelArrLen, int32_t * outputArrPtr) {
+void ADS131M06::rawChannels(int8_t * channelArrPtr, int8_t channelArrLen, std::vector<int32_t>& outputVect) {
   /* Writes data from the channels specified in channelArr, to outputArr,
      in the correct order.
 
@@ -78,33 +91,12 @@ void ADS131M06::rawChannels(int8_t * channelArrPtr, int8_t channelArrLen, int32_
      function is void as pointers are used to modify the arrays which are passed into the function.
   */
   if(channelArrLen < 6){//make sure length is within number of channels available
-      uint32_t rawDataArr[8];/*define an array to store in the inputted array data. Define as 8 since the max channels to specify is 6
-      but first data point starts after the first index [0] and starts at [1] instead, missing the first index. This is because the first
-      index contains the results of an optional command for spiCommFrame(). The next 6 indexes are for all the channel data from all 6 channels
-      and 8th index is for the CRC bytes (check spiCommFrame() function definition for more info)*/
-
       // Get data
-      spiCommFrame(&rawDataArr[0]); /*pass in the memory location of the first array element so that this is returned with the
-      data from the SPI communication. This copies all the data from ALL the channels available (all 6: 0-5) and saves it to the rawDataArr[]
-      filling index positions 0-7, where [0] has ...
-      As all the data is copied, some of this data may not be required to be copied to the ouputArr, so we must go through and only copy the data from 
-      rawDataArr which corresponds to the specified channels in channelArrPtr.*/
-  
+      spiCommFrame(resultsVect); 
+
       // Save the decoded data for each of the channels
       for (int8_t i = 0; i<channelArrLen; i++) {
-         *outputArrPtr = twoCompDeco(rawDataArr[*channelArrPtr+1]);/*twocompDeco() changes the type to signed integer instead. Pass in 
-         the data from rawDataArr which contains the SPI data. channelArrPtr contains 0-3 specifying the 4 channels of the ADC. 
-         If starting with 0 as a value, the raw data passed in is in rawDataArr[0+1]. The second index in rawDataArr is taken as ....
-         Finally, the data is stored in the current location pointed to by outputArrPtr (starting at 
-         first index: outputArrPtr[0] = twocomp(rawDataArr[1]) for the first iteration i=0 if the first channel specified is channel 0
-    
-         if the first channel specified is actually 2 for example, then for i= 0: outputArrPtr[0] = twocomp(rawDataArr[3]) as the index position
-         of rawDataArr[] is determined by the channel values specified in the channelArrPtr[] and 2 means the 3rd channel was specified*/
-
-         //increment both output and channel array pointers to the memory location next in line.
-         outputArrPtr++;
-         channelArrPtr++;
-
+         outputVect[i] = twoCompDeco(resultsVect[i]);
       }
    }
   else{
@@ -116,22 +108,22 @@ All channel data is copied initially into the rawDataArr using spiCommFrame and 
 channelDataArr is copied from the rawDataArr into the outputArr*/
 
 //--------------------------------------------------------------------------------------------------------------------------------------------
-int32_t ADS131M06::rawChannelSingle(int8_t channel) {
-  /* Returns raw value from a single channel
-     channel input from 0-5 (specifies the single channel, one of the 6 channels, zero indexed)
-     This function is wrapper function of the raw channels function since this method is called inside.
-  */
+// int32_t ADS131M06::rawChannelSingle(int8_t channel) {
+//   /* Returns raw value from a single channel
+//      channel input from 0-5 (specifies the single channel, one of the 6 channels, zero indexed)
+//      This function is wrapper function of the raw channels function since this method is called inside.
+//   */
   
-  int32_t outputArr[1]; // define output array with 1 memory location (just a pointer)
-  int8_t channelArr[1] = {channel}; /*define a channel array which contains only the number which specifies the designated input channel.
-  An output channel is also created of length 1 in order to provide a location for this data to be copied to, then this value is outputted*/
+//   int32_t outputArr[1]; // define output array with 1 memory location (just a pointer)
+//   int8_t channelArr[1] = {channel}; /*define a channel array which contains only the number which specifies the designated input channel.
+//   An output channel is also created of length 1 in order to provide a location for this data to be copied to, then this value is outputted*/
 
-  rawChannels(&channelArr[0], 1, &outputArr[0]);/*Using rawChannels() function: input memory location of first and only element of channelArr[]
-  , set length to 1 and give memory location of first and only element of outputArr[] where the data from the channel specified by channelArr[0]
-  (or *channelArr) is copied to.*/
+//   rawChannels(&channelArr[0], 1, &outputArr[0]);/*Using rawChannels() function: input memory location of first and only element of channelArr[]
+//   , set length to 1 and give memory location of first and only element of outputArr[] where the data from the channel specified by channelArr[0]
+//   (or *channelArr) is copied to.*/
 
-  return outputArr[0]; // returns the dereferenced pointer, therefore just the value of the data.
-}
+//   return outputArr[0]; // returns the dereferenced pointer, therefore just the value of the data.
+// }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
 bool ADS131M06::globalChop(bool enabled, uint8_t log2delay) {//XXXXXXXXXXXXXXXXXXXXXXXX
   /* Function to configure global chop mode for the ADS131M04.
@@ -259,12 +251,11 @@ bool ADS131M06::writeReg(uint8_t reg, uint16_t data) {// XXXXXXXXXXXXXXXXXXXXXXX
   digitalWrite(csPin, HIGH); //active low due to CPHA as mentioned before, therefore deactivate here.
 
   // Get response in order to determine whether the writing was successfull:
-  uint32_t responseArr[8];
-  spiCommFrame(&responseArr[0]); // Copy SPI data from all channels into the responseArr[]
+  spiCommFrame(responseVect); // Copy SPI data from all channels into the responseArr[]
 
   // Determining whether the register was successfully written to or not:
   //response format: 010a aaaa ammm mmmm
-  if ( ( (0x04<<12) + (reg<<7) ) == (responseArr[0] >> 16)) { //check against the 16 bit response
+  if ( ( (0x04<<12) + (reg<<7) ) == (responseVect[0] >> 16)) { //check against the 16 bit response
     return true;
   } else {
     return false;
@@ -340,7 +331,7 @@ bool ADS131M06::setGain(uint8_t log2Gain0, uint8_t log2gainCommand, uint8_t log2
 //   //return responseArr[0] >> 16;
 // }
 
-uint16_t readReg(uint8_t reg){
+uint16_t ADS131M06::readReg(uint8_t reg){
   //reg: aaaa aaaa 8 bits, however, no register address requires more than 6 bits other than the RESERVED address (requires 7 bits)
   uint8_t commandPref = 0x0A;//10 = 0000 1010
   //1010 0000 0000 0000
@@ -351,12 +342,12 @@ uint16_t readReg(uint8_t reg){
   uint32_t responseArr[8];
 
   // Use first frame to send command
-  spiCommFrame(&responseArr[0], commandWord);
+  spiCommFrame(responseVect, commandWord);
 
   // Read response: response occurs on the output frame following the command, rather than at the same time the command is sent.
-  spiCommFrame(&responseArr[0]);//xxxx test if this actuall gets the register data (might just output
+  spiCommFrame(responseVect);//xxxx test if this actuall gets the register data (might just output
   //the channel data, which is not what we want here)
-  return (responseArr[0] >> 16); //return the 2bytes of actual data in the first index of the array.
+  return (responseVect[0] >> 16); //return the 2bytes of actual data in the first index of the array.
 
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -372,14 +363,14 @@ bool ADS131M06::reset(){//xxxxxxxxxxxxxxx- deos the command latch then require a
   outputs true if successfull
   */
   uint16_t commandWord = 0x11;
-  uint32_t responseArr[8];
+
   uint16_t commandResponse = (0xFF <<8) + 0x22; //expected response to be checked against
 
-  spiCommFrame(&responseArr[0], commandWord);
-  spiCommFrame(&responseArr[0]);
+  spiCommFrame(responseVect, commandWord);
+  spiCommFrame(responseVect);
 
   // check if command was acknowledged:
-  if((responseArr[0] >> 16) == commandResponse){ //reponseArr is 32bit MSB aligned, therefore shift 16 and get rid of LSB zeroes.
+  if((responseVect[0] >> 16) == commandResponse){ //reponseArr is 32bit MSB aligned, therefore shift 16 and get rid of LSB zeroes.
     return true;
   }else{
     return false;
@@ -390,13 +381,12 @@ bool ADS131M06::standby(void){
     output true if successfull
   */
   uint16_t commandWord = 0x20;
-  uint32_t responseArr[8];
 
-  spiCommFrame(&responseArr[0], commandWord);
-  spiCommFrame(&responseArr[0]);
+  spiCommFrame(responseVect, commandWord);
+  spiCommFrame(responseVect);
 
   // check if command was acknowledged:
-  if((responseArr[0] >> 16) == commandWord){//response word is the same as the commandword
+  if((responseVect[0] >> 16) == commandWord){//response word is the same as the commandword
     return true;
   }else{
     return false;
@@ -406,13 +396,13 @@ bool ADS131M06::wakeup(void){
   /*Wakeup from the standby mode
     Output true if successfull*/
   uint16_t commandWord = 0x33; // 0000 0000 0011 0011
-  uint32_t responseArr[8];
 
-  spiCommFrame(&responseArr[0], commandWord);
-  spiCommFrame(&responseArr[0]);
+
+  spiCommFrame(responseVect, commandWord);
+  spiCommFrame(responseVect);
 
   // check if command was acknowledged:
-  if((responseArr[0] >> 16) == commandWord){//response word is the same as the commandword
+  if((responseVect[0] >> 16) == commandWord){//response word is the same as the commandword
     return true;
   }else{
     return false;
@@ -421,13 +411,12 @@ bool ADS131M06::wakeup(void){
 bool ADS131M06::lock(void){
   /**/
   uint16_t commandWord = (0x05 << 8) + (0x05 << 4) + 0x05; // 0000 0101 0101 0101
-  uint32_t responseArr[8];
 
-  spiCommFrame(&responseArr[0], commandWord);
-  spiCommFrame(&responseArr[0]);
+  spiCommFrame(responseVect, commandWord);
+  spiCommFrame(responseVect);
 
   // check if command was acknowledged:
-  if((responseArr[0] >> 16) == commandWord){//response word is the same as the commandword
+  if((responseVect[0] >> 16) == commandWord){//response word is the same as the commandword
     return true;
   }else{
     return false;
@@ -436,13 +425,12 @@ bool ADS131M06::lock(void){
 bool ADS131M06::unlock(void){
   /**/
   uint16_t commandWord = (0x06 << 8) + (0x05 << 4) + 0x05; // 0000 0110 0101 0101
-  uint32_t responseArr[8];
 
-  spiCommFrame(&responseArr[0], commandWord);
-  spiCommFrame(&responseArr[0]);
+  spiCommFrame(responseVect, commandWord);
+  spiCommFrame(responseVect);
 
   // check if command was acknowledged:
-  if((responseArr[0] >> 16) == commandWord){//response word is the same as the commandword
+  if((responseVect[0] >> 16) == commandWord){//response word is the same as the commandword
     return true;
   }else{
     return false;
@@ -484,7 +472,7 @@ uint32_t ADS131M06::spiTransferWord(uint16_t inputData) {//XXXXXXXXXXXXXXXXXXXXX
   /*final datat is shifted again. Therefore the order is: MSByteResponse LSbyteResponse ZeroResponse zeros*/
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------
-void ADS131M06::spiCommFrame(uint32_t * outPtr, uint16_t command) {
+void ADS131M06::spiCommFrame(std::vector<uint32_t>& outputVect, uint16_t command) {
   // Saves all the data of a communication frame to an array with pointer outPtr.
 
   digitalWrite(csPin, LOW);/*set the chip select pin to low mode: communicates with the
@@ -497,14 +485,14 @@ void ADS131M06::spiCommFrame(uint32_t * outPtr, uint16_t command) {
   CPHA and CPOL modes via SPI_MODE1*/
 
   // Send the command in the first word
-  *outPtr = spiTransferWord(command); //save the 32 bit result from SPI in the first location of outPtr (array)
+  outputVect[0] = spiTransferWord(command); //save the 32 bit result from SPI in the first location of outPtr (array)
   /*If no command word specified, the for loop ahead starts with skipping the first location of the array, so this would be empty.
   Each spiTransferWord sends only 24 bits of data*/
 
   // For the next 6 words, just read the data
   for (uint8_t i=1; i < 7; i++) {//6 times for all ADC channels
-    outPtr++;
-    *outPtr = spiTransferWord() >> 8;
+
+    outputVect[i] = spiTransferWord() >> 8;
     /*collects the 32 bit data for each channel. Each time spiTransferWord() is called with no input data, the next channel's data is called?
     The cycling through different channels may be due to spi.beginTransaction() being called beforehand. 
     Each 32 bit result is shifted to the right by a byte, deleting the last byte result from spiTransferWord() which is the result of 0x00.
@@ -515,13 +503,13 @@ void ADS131M06::spiCommFrame(uint32_t * outPtr, uint16_t command) {
   /*CRC: Cyclic Redundancy check. If spiTransferWord() is called for more times than the number of channels, then the CRC value 
   is transmitted (as these are the last bytes of the transaction code). An automatic CRC is done by calculating an 8 bit CRC on the entire
   32 bits of each command, then compares this with the tranmitted CRC. An error occurs if they do not match.*/
-  outPtr++;
-  *outPtr = spiTransferWord();
+  
+  outputVect[8] = spiTransferWord();
 
   /*Note: as the first index of the array is for the optional command, the next 4 indexes are for all the channel data and the last array index
   is for the CRC bits. Therefore the minimum length of the array must be 1 + 4 + 1 = 6.*/
   spi.endTransaction();
-\
+
   //set the csPin back to HIGH as active low config.
   digitalWrite(csPin, HIGH);
 }
