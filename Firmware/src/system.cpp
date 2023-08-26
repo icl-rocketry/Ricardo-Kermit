@@ -47,6 +47,26 @@ void System::systemSetup(){
     //initialize statemachine with idle state
     statemachine.initalize(std::make_unique<Idle>(systemstatus,commandhandler));
     //any other setup goes here
+    SNSRSPI.begin(PinMap::SNSR_SCLK,PinMap::SNSR_MISO,PinMap::SNSR_MOSI);
+    SNSRSPI.setFrequency(5000000);
+    SNSRSPI.setBitOrder(MSBFIRST);
+    SNSRSPI.setDataMode(SPI_MODE1);
+    SNSRSPI.setClockDivider(SPI_CLOCK_DIV16);
+
+    pinMode(PinMap::ADC0_Cs, OUTPUT);
+    pinMode(PinMap::ADC1_Cs, OUTPUT);
+    pinMode(PinMap::TC0_Cs, OUTPUT);
+    pinMode(PinMap::TC1_Cs, OUTPUT);
+    pinMode(PinMap::TC2_Cs, OUTPUT);
+    pinMode(PinMap::TC3_Cs, OUTPUT);
+
+    digitalWrite(PinMap::ADC0_Cs, HIGH);
+    digitalWrite(PinMap::ADC1_Cs, HIGH);
+    digitalWrite(PinMap::TC0_Cs, HIGH);
+    digitalWrite(PinMap::TC1_Cs, HIGH);
+    digitalWrite(PinMap::TC2_Cs, HIGH);
+    digitalWrite(PinMap::TC3_Cs, HIGH);
+
     //Thermocouples:
     TC0.setup();
     TC1.setup();
@@ -59,7 +79,6 @@ void System::systemSetup(){
 
 };
 
-
 void System::systemUpdate(){
 
     TC0.update();
@@ -69,6 +88,4 @@ void System::systemUpdate(){
 
     ADC0.update();
     ADC1.update();
-    RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("test output");//xxxxxxxxxxxxxx
-
 };

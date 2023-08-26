@@ -28,6 +28,7 @@
 
 ADS131M06::ADS131M06(SPIClass &_spi, uint8_t _csPin, uint8_t _clkoutPin, uint8_t _clockCh):
 spi(_spi),
+_spisettings(SCLK_SPD, MSBFIRST, SPI_MODE1),
 csPin(_csPin),
 clkoutPin(_clkoutPin),
 clockCh(_clockCh),
@@ -40,6 +41,7 @@ outputVect(6)
 
 ADS131M06::ADS131M06(SPIClass &_spi, uint8_t _csPin):
 spi(_spi),
+_spisettings(SCLK_SPD, MSBFIRST, SPI_MODE1),
 csPin(_csPin),
 clockEnabled(false),
 initialised(false),
@@ -74,7 +76,6 @@ void ADS131M06::update(){
   /*serial print the every channel data*/
   const int8_t channelArrLen = 6;
   int8_t channelArrPtr[channelArrLen] = {0,1,2,3,4,5};
-  int32_t outputArrPtr[channelArrLen];
   rawChannels(channelArrPtr, channelArrLen, outputVect);
   // for(int8_t i = 0;i<channelArrLen; i++){
   //   RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>(i, " ", outputArrPtr[i]);
@@ -90,7 +91,7 @@ void ADS131M06::rawChannels(int8_t * channelArrPtr, int8_t channelArrLen, std::v
      length of that array, starting from 1. (length = 4 if 0-3 channels are used)
      function is void as pointers are used to modify the arrays which are passed into the function.
   */
-  if(channelArrLen < 6){//make sure length is within number of channels available
+  if(channelArrLen <= 6){//make sure length is within number of channels available
       // Get data
       spiCommFrame(resultsVect); 
 
@@ -234,7 +235,7 @@ bool ADS131M06::writeReg(uint8_t reg, uint16_t data) {// XXXXXXXXXXXXXXXXXXXXXXX
   uint16_t commandWord = (commandPref<<12) + (reg<<7);
 
   digitalWrite(csPin, LOW);
-  spi.beginTransaction(SPISettings(SCLK_SPD, MSBFIRST, SPI_MODE1));
+  spi.beginTransaction(_spisettings);
   
   // sends command word and data to be written in the register location along the SPI lines. return data is discarded (not assigned to anything)
   spiTransferWord(commandWord);
@@ -339,7 +340,6 @@ uint16_t ADS131M06::readReg(uint8_t reg){
   uint16_t commandWord = (commandPref << 12) + (reg << 7);
 
   //Define response array:
-  uint32_t responseArr[8];
 
   // Use first frame to send command
   spiCommFrame(responseVect, commandWord);
@@ -479,7 +479,7 @@ void ADS131M06::spiCommFrame(std::vector<uint32_t>& outputVect, uint16_t command
   controller (other cspins for other spi devices should be set to high)
   Active low since the settining is SPI_MODE1 which sets the CPOL = 0 (check wiki for more)*/
 
-  spi.beginTransaction(SPISettings(SCLK_SPD, MSBFIRST, SPI_MODE1));
+  spi.beginTransaction(_spisettings);
   /*starts an spi transaction. Each time this is called, the settings for the transaction must
   be specified, including the clock speed, whether the MSB or the LSB is moved first and the
   CPHA and CPOL modes via SPI_MODE1*/

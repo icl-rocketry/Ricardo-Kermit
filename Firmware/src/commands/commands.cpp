@@ -15,6 +15,8 @@
 #include <libriccore/commands/commandhandler.h>
 
 #include "system.h"
+#include "commands/processedsensorpacket.h"
+
 
 
 void Commands::FreeRamCommand(System& sm, const RnpPacketSerialized& packet)
@@ -35,10 +37,43 @@ void Commands::FreeRamCommand(System& sm, const RnpPacketSerialized& packet)
 	message.header.uid = packet.header.uid;
 	sm.networkmanager.sendPacket(message);
 	
-};
+}
 
-// bool Commands::ADCReset(ADS131M06 &ADC)
-// {
-// 	return ADC.reset();
-// };
+void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
+{
+	SimpleCommandPacket commandpacket(packet);
 
+	ProcessedSensorPacket processedSensorPacket;
+
+	// auto raw_sensors = _sm->AnalogSensors;
+
+	processedSensorPacket.header.type = 103;
+	processedSensorPacket.header.source = sm.networkmanager.getAddress();
+	processedSensorPacket.header.source_service = sm.commandhandler.getServiceID();
+	processedSensorPacket.header.destination = commandpacket.header.source;
+	processedSensorPacket.header.destination_service = commandpacket.header.source_service;
+	processedSensorPacket.header.uid = commandpacket.header.uid;
+	processedSensorPacket.system_time = millis();
+
+	processedSensorPacket.ch0sens = 0;
+	processedSensorPacket.ch1sens = 0;
+	processedSensorPacket.ch2sens = 0; 
+	processedSensorPacket.ch3sens = 0;
+	processedSensorPacket.ch4sens = 0;
+	processedSensorPacket.ch5sens = 0;
+	processedSensorPacket.ch6sens = 0; 
+	processedSensorPacket.ch7sens = 0;
+	processedSensorPacket.ch8sens = 0;
+	processedSensorPacket.ch9sens = 0;
+	processedSensorPacket.ch10sens = 0; 
+	processedSensorPacket.ch11sens = 0;
+
+	processedSensorPacket.temp0 = sm.TC0.getTemp();
+	processedSensorPacket.temp1 = sm.TC1.getTemp();
+	processedSensorPacket.temp2 = sm.TC2.getTemp(); 
+	processedSensorPacket.temp3 = sm.TC3.getTemp();
+
+	processedSensorPacket.system_status = sm.systemstatus.getStatus();
+
+	sm.networkmanager.sendPacket(processedSensorPacket);
+}

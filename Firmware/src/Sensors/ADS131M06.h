@@ -127,9 +127,13 @@ class ADS131M06 {
      */
     bool globalChop(bool enabled = false, uint8_t log2delay = 4);
 
+    uint32_t getOutput(uint8_t ch){return outputVect[ch];};
+    
+
   private:
     
     SPIClass& spi;
+    SPISettings _spisettings;
     uint8_t csPin, clkoutPin, clockCh;
     bool clockEnabled;
     bool initialised;
@@ -184,8 +188,8 @@ class ADS131M06 {
     static constexpr uint8_t THRSHLD_MSB = 0x07;
     static constexpr uint8_t THRSHLD_LSB = 0x08;
 
-    static constexpr uint32_t CLKIN_SPD = 8192000; // Clock speed (Hz) for the CLKIN on the LEDC xxxx
-    static constexpr uint32_t SCLK_SPD = 25000000; // SPI transaction frequency xxxxxxxx
+    static constexpr uint32_t CLKIN_SPD = 8.192e6; // Clock speed (Hz) for the CLKIN on the LEDC xxxx
+    static constexpr uint32_t SCLK_SPD = 8.192e6; // SPI transaction frequency xxxxxxxx
 
     //channels: config, ... most sig bit, ... least sig bit, 
     static constexpr uint8_t CH0_CFG = 0x09;

@@ -7,6 +7,7 @@
 #include "Config/pinmap_config.h"
 #include "Sensors/MAX31856.h"
 #include "Sensors/ADS131M06.h"
+#include "LoadCell.h"
 
 #include "Commands/commands.h"
 
@@ -34,6 +35,8 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         //2 ADC's:
         ADS131M06 ADC0;
         ADS131M06 ADC1;
+
+        LoadCell LC1;
 
     // private:
 

@@ -17,8 +17,9 @@ void MAX31856::setup()
 }
 
 void MAX31856::writeRegister(writeRegisters target, uint8_t data){
-    _spi.beginTransaction(_spisettings);
+    
     digitalWrite(_cs, LOW);
+    _spi.beginTransaction(_spisettings);
     _spi.transfer(static_cast<uint8_t>(target));
     _spi.transfer(data);
     _spi.endTransaction();
@@ -27,8 +28,9 @@ void MAX31856::writeRegister(writeRegisters target, uint8_t data){
 
 uint32_t MAX31856::readRegister(readRegisters target, uint8_t Nbytes){
     uint32_t regData = 0;
-    _spi.beginTransaction(_spisettings);
+    
     digitalWrite(_cs, LOW);
+    _spi.beginTransaction(_spisettings);
     _spi.transfer(static_cast<uint8_t>(target));
     regData = _spi.transfer(0x00);
     for( uint8_t i = 0 ; i < Nbytes - 1 ; i++){ 
