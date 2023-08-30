@@ -16,8 +16,7 @@
 
 #include "system.h"
 #include "commands/processedsensorpacket.h"
-
-
+#include "commands/rawADCPacket.h"
 
 void Commands::FreeRamCommand(System& sm, const RnpPacketSerialized& packet)
 {	
@@ -55,18 +54,18 @@ void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
 	processedSensorPacket.header.uid = commandpacket.header.uid;
 	processedSensorPacket.system_time = millis();
 
-	processedSensorPacket.ch0sens = 0;
-	processedSensorPacket.ch1sens = 0;
-	processedSensorPacket.ch2sens = 0; 
-	processedSensorPacket.ch3sens = 0;
-	processedSensorPacket.ch4sens = 0;
-	processedSensorPacket.ch5sens = 0;
-	processedSensorPacket.ch6sens = 0; 
-	processedSensorPacket.ch7sens = 0;
-	processedSensorPacket.ch8sens = 0;
-	processedSensorPacket.ch9sens = 0;
-	processedSensorPacket.ch10sens = 0; 
-	processedSensorPacket.ch11sens = 0;
+	processedSensorPacket.ch0sens = sm.CPT0.getValue();
+	processedSensorPacket.ch1sens = sm.CPT1.getValue();
+	processedSensorPacket.ch2sens = sm.LC0.getWeight();
+	processedSensorPacket.ch3sens = sm.LC1.getWeight();
+	processedSensorPacket.ch4sens = sm.ADC0.getOutput(4);
+	processedSensorPacket.ch5sens = sm.ADC0.getOutput(5);
+	processedSensorPacket.ch6sens = sm.VPT0.getValue(); 
+	processedSensorPacket.ch7sens = sm.VPT1.getValue();
+	processedSensorPacket.ch8sens = sm.VPT2.getValue();
+	processedSensorPacket.ch9sens = sm.VPT3.getValue();
+	processedSensorPacket.ch10sens = sm.VPT4.getValue(); 
+	processedSensorPacket.ch11sens = sm.VPT5.getValue();
 
 	processedSensorPacket.temp0 = sm.TC0.getTemp();
 	processedSensorPacket.temp1 = sm.TC1.getTemp();
@@ -76,4 +75,36 @@ void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
 	processedSensorPacket.system_status = sm.systemstatus.getStatus();
 
 	sm.networkmanager.sendPacket(processedSensorPacket);
+}
+
+void Commands::rawADCCommand(System& sm, const RnpPacketSerialized& packet)
+{
+	SimpleCommandPacket commandpacket(packet);
+
+	RawADCPacket rawSensors;
+
+	rawSensors.header.type = 104;
+	rawSensors.header.source = sm.networkmanager.getAddress();
+	rawSensors.header.source_service = sm.commandhandler.getServiceID();
+	rawSensors.header.destination = commandpacket.header.source;
+	rawSensors.header.destination_service = commandpacket.header.source_service;
+	rawSensors.header.uid = commandpacket.header.uid;
+	rawSensors.system_time = millis();
+
+	rawSensors.ch0 = sm.ADC1.getOutput(5);
+	rawSensors.ch1 = sm.ADC1.getOutput(4);
+	rawSensors.ch2 = sm.ADC1.getOutput(3); 
+	rawSensors.ch3 = sm.ADC1.getOutput(2);
+	rawSensors.ch4 = sm.ADC1.getOutput(1);
+	rawSensors.ch5 = sm.ADC1.getOutput(0);
+	rawSensors.ch6 = sm.ADC0.getOutput(5); 
+	rawSensors.ch7 = sm.ADC0.getOutput(4);
+	rawSensors.ch8 = sm.ADC0.getOutput(3);
+	rawSensors.ch9 = sm.ADC0.getOutput(2);
+	rawSensors.ch10 = sm.ADC0.getOutput(1); 
+	rawSensors.ch11 = sm.ADC0.getOutput(0);
+
+	rawSensors.system_status = sm.systemstatus.getStatus();
+
+	sm.networkmanager.sendPacket(rawSensors);
 }

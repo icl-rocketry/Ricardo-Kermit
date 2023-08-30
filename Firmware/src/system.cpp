@@ -32,7 +32,17 @@ TC1(SNSRSPI, PinMap::TC1_Cs),
 TC2(SNSRSPI, PinMap::TC2_Cs),
 TC3(SNSRSPI, PinMap::TC3_Cs),
 ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK),//need clkout pin and channel
-ADC1(SNSRSPI, PinMap::ADC1_Cs)
+ADC1(SNSRSPI, PinMap::ADC1_Cs),
+VPT0(networkmanager, ADC0, 5),
+VPT1(networkmanager, ADC0, 4),
+VPT2(networkmanager, ADC0, 3),
+VPT3(networkmanager, ADC0, 2),
+VPT4(networkmanager, ADC0, 1),
+VPT5(networkmanager, ADC0, 0),
+CPT0(networkmanager, ADC1, 5),
+CPT1(networkmanager, ADC1, 4),
+LC0( &ADC1, (uint32_t) 0, (uint8_t) 3, networkmanager),
+LC1( &ADC1, (uint32_t) 0, (uint8_t) 2, networkmanager)
 {};
 
 
@@ -78,6 +88,8 @@ void System::systemSetup(){
 
 
 };
+
+long prevTime = 0;
 
 void System::systemUpdate(){
 

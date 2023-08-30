@@ -18,5 +18,6 @@ namespace Commands{
     
     void FreeRamCommand(ForwardDecl_SystemClass& system, const RnpPacketSerialized& packet);
     void TelemetryCommand(System& sm, const RnpPacketSerialized& packet);
+    void rawADCCommand(System& sm, const RnpPacketSerialized& packet);
 
 }

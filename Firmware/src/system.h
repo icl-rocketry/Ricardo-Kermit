@@ -8,6 +8,7 @@
 #include "Sensors/MAX31856.h"
 #include "Sensors/ADS131M06.h"
 #include "LoadCell.h"
+#include "nrcremoteptap.h"
 
 #include "Commands/commands.h"
 
@@ -36,6 +37,16 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         ADS131M06 ADC0;
         ADS131M06 ADC1;
 
+        NRCRemotePTap VPT0;
+        NRCRemotePTap VPT1;
+        NRCRemotePTap VPT2;
+        NRCRemotePTap VPT3;
+        NRCRemotePTap VPT4;
+        NRCRemotePTap VPT5;
+        NRCRemotePTap CPT0;
+        NRCRemotePTap CPT1;
+
+        LoadCell LC0;
         LoadCell LC1;
 
     // private:

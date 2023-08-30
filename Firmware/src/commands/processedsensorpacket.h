@@ -30,7 +30,6 @@ class ProcessedSensorPacket : public RnpPacket{
                 &ProcessedSensorPacket::system_status,
                 &ProcessedSensorPacket::system_time
 
-            
             );
             return ret;
         }
