@@ -5,6 +5,9 @@
 #include "Config/systemflags_config.h"
 #include "Config/commands_config.h"
 #include "Config/pinmap_config.h"
+
+#include <libriccore/networkinterfaces/can/canbus.h>
+
 #include "Sensors/MAX31856.h"
 #include "Sensors/ADS131M06.h"
 #include "LoadCell.h"
@@ -25,6 +28,9 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         void systemSetup();
 
         void systemUpdate();
+
+        CanBus<SYSTEM_FLAG> canbus;
+
         //2 seperate SPI lines:
         SPIClass SDSPI; //SPI for the SD card
         SPIClass SNSRSPI; //SPI for the sensors

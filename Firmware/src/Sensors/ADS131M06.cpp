@@ -66,7 +66,8 @@ void ADS131M06::setup() {
   ledcAttachPin(clkoutPin, clockCh);
   ledcWrite(clockCh, 2);
  }
-
+  setOSR(OSROPT::OSR8192);
+  
   initialised=true;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
@@ -510,6 +511,12 @@ void ADS131M06::spiCommFrame(std::vector<uint32_t>& outputVect, uint16_t command
 
   //set the csPin back to HIGH as active low config.
   digitalWrite(csPin, HIGH);
+}
+
+bool ADS131M06::setOSR(OSROPT OSR){
+    CLOCKREG &= OSRMASK;
+    CLOCKREG |= static_cast<uint8_t>(OSR);
+    return writeReg(CLOCK,CLOCKREG);
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
 int32_t ADS131M06::twoCompDeco(uint32_t data) {//XXXXXXXXXXXXXXXXXXXXXXXXXXXXX

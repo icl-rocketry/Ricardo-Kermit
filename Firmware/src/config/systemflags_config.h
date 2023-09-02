@@ -10,14 +10,15 @@ enum class SYSTEM_FLAG:uint32_t{
     DEBUG = (1 << 7),
     //critical messages 
     ERROR_SERIAL = (1 << 10),
+    ERROR_CAN = (1<<11),
     //if rocket is inverted
-    ERROR_ORIENTATION = (1 << 23),
+    ERROR_ORIENTATION = (1 << 24),
     //warn
-    WARN_BATT = (1 << 24),
+    WARN_BATT = (1 << 25),
     //FLIGHTPHASES 
-    FLIGHTPHASE_BOOST = (1 << 25),
-    FLIGHTPHASE_COAST = (1 << 26),
-    FLIGHTPHASE_APOGEE = (1 << 27)
+    FLIGHTPHASE_BOOST = (1 << 26),
+    FLIGHTPHASE_COAST = (1 << 27),
+    FLIGHTPHASE_APOGEE = (1 << 28)
     
 };
 

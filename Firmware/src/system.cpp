@@ -25,6 +25,7 @@ static constexpr int HSPI_BUS_NUM = HSPI;
 
 System::System():
 RicCoreSystem(Commands::command_map,Commands::defaultEnabledCommands,Serial),
+canbus(systemstatus,PinMap::TxCan,PinMap::RxCan,3),
 SDSPI(VSPI_BUS_NUM),
 SNSRSPI(HSPI_BUS_NUM),
 TC0(SNSRSPI, PinMap::TC0_Cs),
@@ -56,6 +57,12 @@ void System::systemSetup(){
 
     //initialize statemachine with idle state
     statemachine.initalize(std::make_unique<Idle>(systemstatus,commandhandler));
+    
+    networkmanager.setNodeType(NODETYPE::HUB);
+    networkmanager.setNoRouteAction(NOROUTE_ACTION::BROADCAST,{1,3});
+    
+    networkmanager.addInterface(&canbus);
+    
     //any other setup goes here
     SNSRSPI.begin(PinMap::SNSR_SCLK,PinMap::SNSR_MISO,PinMap::SNSR_MOSI);
     SNSRSPI.setFrequency(5000000);
@@ -89,7 +96,6 @@ void System::systemSetup(){
 
 };
 
-long prevTime = 0;
 
 void System::systemUpdate(){
 
