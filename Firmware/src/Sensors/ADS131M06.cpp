@@ -96,7 +96,7 @@ void ADS131M06::rawChannels(int8_t * channelArrPtr, int8_t channelArrLen, std::v
 
       // Save the decoded data for each of the channels
       for (int8_t i = 0; i<channelArrLen; i++) {
-         outputVect[i] = twoCompDeco(resultsVect[i]);
+         outputVect[i] = twoCompDeco(resultsVect[i+1]);
       }
    }
   else{
