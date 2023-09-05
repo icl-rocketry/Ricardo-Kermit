@@ -34,14 +34,14 @@ TC2(SNSRSPI, PinMap::TC2_Cs),
 TC3(SNSRSPI, PinMap::TC3_Cs),
 ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK),//need clkout pin and channel
 ADC1(SNSRSPI, PinMap::ADC1_Cs),
-VPT0(networkmanager, ADC0, 5),
-VPT1(networkmanager, ADC0, 4),
-VPT2(networkmanager, ADC0, 3),
-VPT3(networkmanager, ADC0, 2),
-VPT4(networkmanager, ADC0, 1),
-VPT5(networkmanager, ADC0, 0),
-CPT0(networkmanager, ADC1, 5),
-CPT1(networkmanager, ADC1, 4),
+VPT0(networkmanager, 0, ADC0, 5),
+VPT1(networkmanager, 1, ADC0, 4),
+VPT2(networkmanager, 2, ADC0, 3),
+VPT3(networkmanager, 3, ADC0, 2),
+VPT4(networkmanager, 4, ADC0, 1),
+VPT5(networkmanager, 5, ADC0, 0),
+CPT0(networkmanager, 6, ADC1, 5),
+CPT1(networkmanager, 7 ,ADC1, 4),
 LC0( &ADC1, (uint32_t) 0, (uint8_t) 3, networkmanager),
 LC1( &ADC1, (uint32_t) 0, (uint8_t) 2, networkmanager)
 {};
@@ -58,6 +58,7 @@ void System::systemSetup(){
     //initialize statemachine with idle state
     statemachine.initalize(std::make_unique<Idle>(systemstatus,commandhandler));
     
+    canbus.setup();
     networkmanager.setNodeType(NODETYPE::HUB);
     networkmanager.setNoRouteAction(NOROUTE_ACTION::BROADCAST,{1,3});
     
@@ -93,10 +94,12 @@ void System::systemSetup(){
     ADC0.setup();
     ADC1.setup();     
 
+    networkmanager.registerService(10, VPT0.getThisNetworkCallback());
+    networkmanager.registerService(16, VPT5.getThisNetworkCallback());
 
 };
 
-
+long prevTime = 0;
 void System::systemUpdate(){
 
     TC0.update();

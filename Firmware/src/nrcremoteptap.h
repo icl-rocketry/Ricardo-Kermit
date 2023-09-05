@@ -4,6 +4,8 @@
 
 #include <librnp/rnp_networkmanager.h>
 #include <librnp/rnp_packet.h>
+
+#include <librrc/Helpers/nvsstore.h>
 #include <librrc/packets/ptapcalibrationpacket.h>
 
 #include "Sensors/ADS131M06.h"
@@ -14,6 +16,7 @@ class NRCRemotePTap : public NRCRemoteSensorBase<NRCRemotePTap>
 
 
         NRCRemotePTap(RnpNetworkManager& networkmanager,
+                    uint8_t PTAPindex,
                     ADS131M06 &ADS,
                     uint8_t adc_channel,
                     float c = 1,
@@ -21,18 +24,26 @@ class NRCRemotePTap : public NRCRemoteSensorBase<NRCRemotePTap>
                     float resistance = 1
                     ) : 
             NRCRemoteSensorBase(networkmanager),
+            _ptapIndex(PTAPindex),
             _ADS(ADS),
             _adc_channel(adc_channel),
             _c(c),
             _grad(grad),
             _resistance(resistance)
-        {};
+        {loadCalibration();};
 
         uint32_t getValue();
+
+        float getConst(){return _c;};
+
+        float getGrad(){return _grad;};
+
+        void calibrate_impl(packetptr_t packetptr);
 
     protected:
 
         friend class NRCRemoteSensorBase<NRCRemotePTap>;
+        uint8_t _ptapIndex;
         ADS131M06 &_ADS;
         static constexpr uint32_t ADSMAX = 8388607;
         uint8_t _adc_channel;
@@ -40,6 +51,7 @@ class NRCRemotePTap : public NRCRemoteSensorBase<NRCRemotePTap>
         float _grad = 1;
         float _resistance = 1;
 
-        void calibrate(float c, float grad, float resistance);
-        void calibrate_impl(packetptr_t packetptr);     
+        void loadCalibration();
+        
+
 };
