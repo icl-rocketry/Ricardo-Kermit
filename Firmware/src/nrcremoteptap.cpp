@@ -1,9 +1,13 @@
 #include "nrcremoteptap.h"
 #include <Preferences.h>
 
-uint32_t NRCRemotePTap::getValue()
-{
-    return (((float) _ADS.getOutput(_adc_channel) - (float)_c)/_grad);
+// uint32_t NRCRemotePTap::getValue()
+// {
+//     return (((float) _ADS.getOutput(_adc_channel) - (float)_c)/_grad);
+// }
+
+void NRCRemotePTap::update(){
+    updateSensorValue(pressure);
 }
 
 void NRCRemotePTap::calibrate_impl(packetptr_t packetptr){

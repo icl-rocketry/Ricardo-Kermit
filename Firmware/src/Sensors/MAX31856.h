@@ -125,9 +125,9 @@ class MAX31856{
         uint8_t C1Reg = 0x03;
     
         //Masks
-        static constexpr float fpScale = 1.0/1048576.0;
-        static constexpr uint32_t SignMask19Bit = 0b1000000000000000000;
-
+        static constexpr float fpScale = 1.0/4096.0;
+        static constexpr uint32_t SignMask24Bit = 0b100000000000000000000000;
+        static constexpr uint32_t MaskAll24Bits = 0b111111111111111111111111;
         //C0
         static constexpr uint8_t ModeMask = 0b01111111;
         static constexpr uint8_t OCFaultMask = 0b11001111;

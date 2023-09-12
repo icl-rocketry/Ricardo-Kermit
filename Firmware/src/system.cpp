@@ -15,6 +15,8 @@
 
 #include "States/idle.h"
 
+#include <cstdlib>
+
 #ifdef CONFIG_IDF_TARGET_ESP32S3
 static constexpr int VSPI_BUS_NUM = 0;
 static constexpr int HSPI_BUS_NUM = 1;
@@ -95,13 +97,16 @@ void System::systemSetup(){
     ADC1.setup();     
 
     networkmanager.registerService(10, VPT0.getThisNetworkCallback());
-    networkmanager.registerService(16, VPT5.getThisNetworkCallback());
+    networkmanager.registerService(11, VPT1.getThisNetworkCallback());
 
 };
 
 long prevTime = 0;
 void System::systemUpdate(){
 
+    // VPT0.pressure = 2*((float) std::rand() / RAND_MAX) + 15.75;
+    // VPT1.pressure = 1*((float) std::rand() / RAND_MAX) + 20;
+    
     TC0.update();
     TC1.update();
     TC2.update();
@@ -109,4 +114,7 @@ void System::systemUpdate(){
 
     ADC0.update();
     ADC1.update();
+
+    VPT0.update();
+    VPT1.update();
 };

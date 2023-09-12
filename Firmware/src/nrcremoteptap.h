@@ -32,13 +32,15 @@ class NRCRemotePTap : public NRCRemoteSensorBase<NRCRemotePTap>
             _resistance(resistance)
         {loadCalibration();};
 
-        uint32_t getValue();
-
         float getConst(){return _c;};
 
         float getGrad(){return _grad;};
 
         void calibrate_impl(packetptr_t packetptr);
+
+        float pressure;
+
+        void update();
 
     protected:
 

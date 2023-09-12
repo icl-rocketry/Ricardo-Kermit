@@ -38,6 +38,22 @@ void Commands::FreeRamCommand(System& sm, const RnpPacketSerialized& packet)
 	
 }
 
+void Commands::setChamberP(System& sm, const RnpPacketSerialized& packet)
+{	
+	SimpleCommandPacket receivedPacket(packet);
+
+	sm.VPT0.pressure = receivedPacket.arg/100000;
+	
+}
+
+void Commands::setFuelP(System& sm, const RnpPacketSerialized& packet)
+{	
+	SimpleCommandPacket receivedPacket(packet);
+
+	sm.VPT1.pressure = receivedPacket.arg/100000;
+	
+}
+
 void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
 {
 	SimpleCommandPacket commandpacket(packet);

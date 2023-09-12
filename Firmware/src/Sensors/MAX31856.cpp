@@ -17,9 +17,8 @@ void MAX31856::setup()
 }
 
 void MAX31856::writeRegister(writeRegisters target, uint8_t data){
-    
-    digitalWrite(_cs, LOW);
     _spi.beginTransaction(_spisettings);
+    digitalWrite(_cs, LOW);
     _spi.transfer(static_cast<uint8_t>(target));
     _spi.transfer(data);
     _spi.endTransaction();
@@ -28,9 +27,8 @@ void MAX31856::writeRegister(writeRegisters target, uint8_t data){
 
 uint32_t MAX31856::readRegister(readRegisters target, uint8_t Nbytes){
     uint32_t regData = 0;
-    
-    digitalWrite(_cs, LOW);
     _spi.beginTransaction(_spisettings);
+    digitalWrite(_cs, LOW);
     _spi.transfer(static_cast<uint8_t>(target));
     regData = _spi.transfer(0x00);
     for( uint8_t i = 0 ; i < Nbytes - 1 ; i++){ 
@@ -45,14 +43,12 @@ uint32_t MAX31856::readRegister(readRegisters target, uint8_t Nbytes){
 void MAX31856::update(){
     int32_t TempReg = readRegister(readRegisters::LinTempB2,3);
 
-    Temp = (TempReg << 8) * fpScale;
-    if(TempReg & SignMask19Bit){
-        TempReg ^= SignMask19Bit;
-        Temp = -1.0 * (float) TempReg * fpScale;
+    if(TempReg & SignMask24Bit){
+        //idk wtf to do when negative
+        TempReg |= 0xFF000000;
     }
-    else{
-        Temp = (float) TempReg * fpScale;
-    }
+    Temp = (float) TempReg * fpScale;
+
     Temp += 273.15;
     if(Temp < 0){
         Temp = NAN;
