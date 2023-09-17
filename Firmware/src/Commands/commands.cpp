@@ -15,26 +15,42 @@
 #include <libriccore/commands/commandhandler.h>
 
 #include "system.h"
-#include "commands/processedsensorpacket.h"
-#include "commands/rawADCPacket.h"
+#include "Commands/processedsensorpacket.h"
+#include "Commands/rawADCPacket.h"
 
 void Commands::FreeRamCommand(System& sm, const RnpPacketSerialized& packet)
 {	
+
+	// ESP_LOGI("ch", "%s", "deserialize");
+
+	SimpleCommandPacket commandpacket(packet);
+
+	uint32_t freeram = esp_get_free_heap_size();
 	//avliable in all states
 	//returning as simple string packet for ease
 	//currently only returning free ram
+	if (commandpacket.arg == 0){
 	MessagePacket_Base<0,static_cast<uint8_t>(decltype(System::commandhandler)::PACKET_TYPES::MESSAGE_RESPONSE)> message("FreeRam: " + std::to_string(esp_get_free_heap_size()));
 	// this is not great as it assumes a single command handler with the same service ID
 	// would be better if we could pass some context through the function paramters so it has an idea who has called it
 	// or make it much clearer that only a single command handler should exist in the system
-	message.header.source_service = sm.commandhandler.getServiceID(); 
-	
-	
-	message.header.destination_service = packet.header.source_service;
-	message.header.source = packet.header.destination;
-	message.header.destination = packet.header.source;
-	message.header.uid = packet.header.uid;
-	sm.networkmanager.sendPacket(message);
+		message.header.source_service = sm.commandhandler.getServiceID(); 
+		message.header.destination_service = packet.header.source_service;
+		message.header.source = packet.header.destination;
+		message.header.destination = packet.header.source;
+		message.header.uid = packet.header.uid;
+		sm.networkmanager.sendPacket(message);
+	}
+	else if (commandpacket.arg == 1)
+	{
+		BasicDataPacket<uint32_t,0,105> responsePacket(freeram);
+		responsePacket.header.source_service = sm.commandhandler.getServiceID(); 
+		responsePacket.header.destination_service = packet.header.source_service;
+		responsePacket.header.source = packet.header.destination;
+		responsePacket.header.destination = packet.header.source;
+		responsePacket.header.uid = packet.header.uid;
+		sm.networkmanager.sendPacket(responsePacket);	
+	}
 	
 }
 
@@ -70,18 +86,18 @@ void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
 	processedSensorPacket.header.uid = commandpacket.header.uid;
 	processedSensorPacket.system_time = millis();
 
-	processedSensorPacket.ch0sens = sm.CPT0.getValue();
-	processedSensorPacket.ch1sens = sm.CPT1.getValue();
-	processedSensorPacket.ch2sens = sm.LC0.getWeight();
-	processedSensorPacket.ch3sens = sm.LC1.getWeight();
-	processedSensorPacket.ch4sens = sm.ADC0.getOutput(4);
-	processedSensorPacket.ch5sens = sm.ADC0.getOutput(5);
-	processedSensorPacket.ch6sens = sm.VPT0.getValue(); 
-	processedSensorPacket.ch7sens = sm.VPT1.getValue();
-	processedSensorPacket.ch8sens = sm.VPT2.getValue();
-	processedSensorPacket.ch9sens = sm.VPT3.getValue();
-	processedSensorPacket.ch10sens = sm.VPT4.getValue(); 
-	processedSensorPacket.ch11sens = sm.VPT5.getValue();
+	processedSensorPacket.ch0sens = sm.CPT0.getPressure();
+	processedSensorPacket.ch1sens = sm.CPT1.getPressure();
+	processedSensorPacket.ch2sens = sm.VPT0.getPressure();
+	processedSensorPacket.ch3sens = sm.VPT1.getPressure();
+	processedSensorPacket.ch4sens = sm.VPT2.getPressure();
+	processedSensorPacket.ch5sens = sm.VPT3.getPressure();
+	processedSensorPacket.ch6sens = sm.LC0.getWeight(); 
+	processedSensorPacket.ch7sens = sm.LC1.getWeight();
+	processedSensorPacket.ch8sens = sm.VPT4.getPressure();
+	processedSensorPacket.ch9sens = sm.VPT5.getPressure();
+	processedSensorPacket.ch10sens = sm.VPT6.getPressure(); 
+	processedSensorPacket.ch11sens = sm.VPT7.getPressure();
 
 	processedSensorPacket.temp0 = sm.TC0.getTemp();
 	processedSensorPacket.temp1 = sm.TC1.getTemp();

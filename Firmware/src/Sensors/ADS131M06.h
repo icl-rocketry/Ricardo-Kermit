@@ -127,17 +127,17 @@ class ADS131M06 {
      */
     bool globalChop(bool enabled = false, uint8_t log2delay = 4);
 
-    uint32_t getOutput(uint8_t ch){return outputVect[ch];};
+    int32_t getOutput(uint8_t ch){return outputVect[ch];};
 
     enum class OSROPT : uint8_t{
-        OSR128 = 0b000,
-        OSR256 = 0b001,
-        OSR512 = 0b010,
-        OSR1024 = 0b011,
-        OSR2048 = 0b100,
-        OSR4096 = 0b101,
-        OSR8192 = 0b110,
-        OSR16256 = 0b111
+        OSR128 = 0b00000,
+        OSR256 = 0b00100,
+        OSR512 = 0b01000,
+        OSR1024 = 0b01100,
+        OSR2048 = 0b10000,
+        OSR4096 = 0b10100,
+        OSR8192 = 0b11000,
+        OSR16256 = 0b11100
     };
     
     bool setOSR(OSROPT OSR);

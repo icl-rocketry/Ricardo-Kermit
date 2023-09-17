@@ -13,3 +13,6 @@
 [submodule "Firmware/components/arduino-esp32"]
 	path = Firmware/components/arduino
 	url = https://github.com/espressif/arduino-esp32.git
+[submodule "Firmware/lib/SdFat"]
+	path = Firmware/lib/SdFat
+	url = https://github.com/greiman/SdFat.git

@@ -10,10 +10,12 @@
 
 #include "Sensors/MAX31856.h"
 #include "Sensors/ADS131M06.h"
-#include "LoadCell.h"
-#include "nrcremoteptap.h"
+#include "nrccomponents/nrcremoteloadcell.h"
+#include "nrccomponents/nrcremoteptap.h"
 
 #include "Commands/commands.h"
+
+#include "Storage/sdfat_store.h"
 
 /* System class: a class which encapsulates all the classes used to describe components on
     the board, creating the board system. Interacting with the board involves interacting
@@ -43,19 +45,36 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         ADS131M06 ADC0;
         ADS131M06 ADC1;
 
+        NRCRemotePTap CPT0;
+        NRCRemotePTap CPT1;
         NRCRemotePTap VPT0;
         NRCRemotePTap VPT1;
         NRCRemotePTap VPT2;
         NRCRemotePTap VPT3;
+        NRCRemoteLoadcell LC0;
+        NRCRemoteLoadcell LC1;
         NRCRemotePTap VPT4;
         NRCRemotePTap VPT5;
-        NRCRemotePTap CPT0;
-        NRCRemotePTap CPT1;
+        NRCRemotePTap VPT6;
+        NRCRemotePTap VPT7;
 
-        LoadCell LC0;
-        LoadCell LC1;
+        SdFat_Store primarysd;
 
-    // private:
+    private:
+
+        void setupSPI();
+        void serviceSetup();
+        void deviceUpdate();
+        void remoteSensorUpdate();
+        void initializeLoggers();
+        void logReadings();
+        void remoteSensorSetup();
+
+        const std::string log_path = "/Logs";
+        const std::string config_path = "/Config";
+
+        uint32_t telemetry_log_delta = 10000;
+        uint32_t prev_telemetry_log_time;
 
 
 };
