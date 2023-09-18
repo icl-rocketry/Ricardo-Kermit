@@ -518,6 +518,67 @@ bool ADS131M06::setOSR(OSROPT OSR){
     CLOCKREG |= static_cast<uint8_t>(OSR);
     return writeReg(CLOCK,CLOCKREG);
 }
+
+bool ADS131M06::setGain(uint8_t channel, GAIN gain){
+    uint8_t GainRegAddr;
+    uint16_t gainREGValue;
+    switch(channel){
+      case(0):
+      {
+        GAIN1REG &= static_cast<uint16_t>(CHGAINMASK::CH04);
+        GAIN1REG |= static_cast<uint16_t>(gain);
+        GainRegAddr = GAIN1;
+        gainREGValue = GAIN1REG;
+        break;
+      }
+      case(1):
+      {
+        GAIN1REG &= static_cast<uint16_t>(CHGAINMASK::CH15);
+        GAIN1REG |= static_cast<uint16_t>(gain);
+        GainRegAddr = GAIN1;
+        gainREGValue = GAIN1REG;
+        break;
+      }
+      case(2):
+      {
+        GAIN1REG &= static_cast<uint16_t>(CHGAINMASK::CH2);
+        GAIN1REG |= static_cast<uint16_t>(gain);
+        GainRegAddr = GAIN1;
+        gainREGValue = GAIN1REG;
+        break;
+      }
+      case(3):
+      {
+        GAIN1REG &= static_cast<uint16_t>(CHGAINMASK::CH3);
+        GAIN1REG |= static_cast<uint16_t>(gain);
+        GainRegAddr = GAIN1;
+        gainREGValue = GAIN1REG;
+        break;
+      }
+      case(4):
+      {
+        GAIN2REG &= static_cast<uint16_t>(CHGAINMASK::CH04);
+        GAIN2REG |= static_cast<uint16_t>(gain);
+        GainRegAddr = GAIN2;
+        gainREGValue = GAIN2REG;
+        break;
+      }
+      case(5):
+      {
+        GAIN2REG &= static_cast<uint16_t>(CHGAINMASK::CH15);
+        GAIN2REG |= static_cast<uint16_t>(gain) << 4;
+        GainRegAddr = GAIN2;
+        gainREGValue = GAIN2REG;
+        break;
+      }
+      default:{
+          return(false);
+      }
+    }
+
+
+    return writeReg(GainRegAddr,gainREGValue);
+}
 //-----------------------------------------------------------------------------------------------------------------------------------------------
 int32_t ADS131M06::twoCompDeco(uint32_t data) {//XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   // Take the two's complement of the data

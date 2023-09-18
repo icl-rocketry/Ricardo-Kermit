@@ -140,7 +140,26 @@ class ADS131M06 {
         OSR16256 = 0b11100
     };
     
+    enum class GAIN : uint16_t{
+        GAIN1 = 0b000,
+        GAIN2 = 0b001,
+        GAIN4 = 0b010,
+        GAIN8 = 0b011,
+        GAIN16 = 0b100,
+        GAIN32 = 0b101,
+        GAIN64 = 0b110,
+        GAIN128 = 0b111
+    };
+
+    enum class CHGAINMASK : uint16_t{
+        CH04 = 0b1111111111111000,
+        CH15 = 0b1111111110001111,
+        CH2 = 0b1111100011111111,
+        CH3 = 0b1000111111111000,
+    };
+    
     bool setOSR(OSROPT OSR);
+    bool setGain(uint8_t channel, GAIN gain);
 
   private:
     
@@ -186,6 +205,12 @@ class ADS131M06 {
      * @return int32_t 
      */
     int32_t twoCompDeco(uint32_t data);
+
+    //Settings
+    uint16_t GAIN1REG = 0x0000;
+    uint16_t GAIN2REG = 0x0000;
+    static constexpr int32_t Mask24bit = 0b111111111111111111111111;
+    static constexpr int32_t SignMask24bit = 0b100000000000000000000000;
 
     //Settings
     static constexpr uint16_t OSRMASK = 0b1111111111100011;
