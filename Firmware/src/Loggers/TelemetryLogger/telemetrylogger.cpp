@@ -10,6 +10,8 @@
 
 #include "telemetrylogframe.h"
 
+#include <Arduino.h>
+
 
 TelemetryLogger::TelemetryLogger():
 _file(nullptr),

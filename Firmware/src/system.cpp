@@ -57,6 +57,7 @@ void System::systemSetup()
 
     Serial.setRxBufferSize(GeneralConfig::SerialRxSize);
     Serial.begin(GeneralConfig::SerialBaud);
+  
 
     // initialize statemachine with idle state
     statemachine.initalize(std::make_unique<Idle>(systemstatus, commandhandler));
@@ -115,6 +116,7 @@ void System::systemUpdate()
     remoteSensorUpdate();
 
     logReadings();
+    // Serial.println((int)primarysd.getState());
 };
 
 void System::serviceSetup()
@@ -156,7 +158,7 @@ void System::initializeLoggers()
     loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::SYS>().initialize(std::move(syslogfile), networkmanager);
 
     // initialize telemetry logger
-    loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::TELEMETRY>().initialize(std::move(telemetrylogfile));
+    loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::TELEMETRY>().initialize(std::move(telemetrylogfile),[](std::string_view msg){RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>(msg);});
 }
 
 void System::deviceUpdate()
@@ -222,7 +224,7 @@ void System::logReadings()
 
 void System::setupSPI(){
     SDSPI.begin(PinMap::SD_SCLK,PinMap::SD_MISO,PinMap::SD_MOSI);
-    SDSPI.setFrequency(1000000);
+    SDSPI.setFrequency(2000000);
     SDSPI.setBitOrder(MSBFIRST);
     SDSPI.setDataMode(SPI_MODE0);
 
