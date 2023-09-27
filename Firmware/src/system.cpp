@@ -151,8 +151,8 @@ void System::initializeLoggers()
     // make new directory
     primarysd.mkdir(log_directory_path);
 
-    std::unique_ptr<WrappedFile> syslogfile = primarysd.open(log_directory_path + "/syslog.txt", (FILE_MODE)((uint8_t)FILE_MODE::WRITE | (uint8_t)FILE_MODE::CREATE | (uint8_t)FILE_MODE::AT_END));
-    std::unique_ptr<WrappedFile> telemetrylogfile = primarysd.open(log_directory_path + "/telemetrylog.txt", (FILE_MODE)((uint8_t)FILE_MODE::WRITE | (uint8_t)FILE_MODE::CREATE | (uint8_t)FILE_MODE::AT_END));
+    std::unique_ptr<WrappedFile> syslogfile = primarysd.open(log_directory_path + "/syslog.txt", static_cast<FILE_MODE>(O_WRITE | O_CREAT | O_AT_END));
+    std::unique_ptr<WrappedFile> telemetrylogfile = primarysd.open(log_directory_path + "/telemetrylog.txt", static_cast<FILE_MODE>(O_WRITE | O_CREAT | O_AT_END),50);
 
     // intialize sys logger
     loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::SYS>().initialize(std::move(syslogfile), networkmanager);
