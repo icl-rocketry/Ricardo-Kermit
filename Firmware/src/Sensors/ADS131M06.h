@@ -18,7 +18,7 @@
 
 #include <Arduino.h>
 #include <SPI.h>
-#include <vector>
+#include <array>
 
 class ADS131M06 {
   public:
@@ -52,7 +52,7 @@ class ADS131M06 {
      *                      (length = 4 if 0-3 channels are used)
      * @param outputArrPtr Must match length of channelArrPtr
      */
-    void rawChannels(int8_t * channelArrPtr, int8_t channelArrLen, std::vector<int32_t>& outputVect);
+    void rawChannels(std::array<int32_t, 6>& outputArray);
 
     /**
      * @brief Returns raw data value from the channel specified. Wrapper function of rawChannels() function
@@ -105,31 +105,11 @@ class ADS131M06 {
     bool unlock();//xxxxxxxx
     //------------------------------------------------------------------------------------------
 
-    /**
-     * @brief Set the Gain object
-     * 
-     * @param log2Gain0 
-     * @param log2Gain1 
-     * @param log2Gain2 
-     * @param log2Gain3 
-     * @return true 
-     * @return false 
-     */
-    bool setGain(uint8_t log2Gain0 = 0, uint8_t log2Gain1 = 0, uint8_t log2Gain2 = 0, uint8_t log2Gain3 = 0);
-
-    /**
-     * @brief 
-     * 
-     * @param enabled 
-     * @param log2delay 
-     * @return true 
-     * @return false 
-     */
     bool globalChop(bool enabled = false, uint8_t log2delay = 4);
 
-    int32_t getOutput(uint8_t ch){return outputVect[ch];};
+    int32_t getOutput(uint8_t ch){return outputArray[ch];};
 
-    enum class OSROPT : uint8_t{
+    enum class OSROPT : uint16_t{
         OSR128 = 0b00000,
         OSR256 = 0b00100,
         OSR512 = 0b01000,
@@ -139,7 +119,7 @@ class ADS131M06 {
         OSR8192 = 0b11000,
         OSR16256 = 0b11100
     };
-    
+
     enum class GAIN : uint16_t{
         GAIN1 = 0b000,
         GAIN2 = 0b001,
@@ -168,9 +148,9 @@ class ADS131M06 {
     uint8_t csPin, clkoutPin, clockCh;
     bool clockEnabled;
     bool initialised;
-    std::vector<uint32_t> resultsVect;
-    std::vector<uint32_t> responseVect;
-    std::vector<int32_t> outputVect;
+    std::array<uint32_t,6> resultsArray;
+    std::array<uint32_t,8> responseArray;
+    std::array<int32_t,6> outputArray;
     
     /**
      * @brief Saves all channel data (32 bits) to the outputArray of size 8 where the first index is the result of the
@@ -184,7 +164,7 @@ class ADS131M06 {
      * @param outputArray Length 8 
      * @param command optional 16 bit command
      */
-    void spiCommFrame(std::vector<uint32_t>& outputVect, uint16_t command = 0x0000);
+    void spiCommFrame(std::array<uint32_t,8>& outputArray, uint16_t command = 0x0000);
 
     /**
      * @brief Transfer a 24 bit word, which is the result of concatinating 16 bits of input data (first 2 bytes) with
@@ -205,8 +185,7 @@ class ADS131M06 {
      * @return int32_t 
      */
     int32_t twoCompDeco(uint32_t data);
-
-    //Settings
+    
     uint16_t GAIN1REG = 0x0000;
     uint16_t GAIN2REG = 0x0000;
     static constexpr int32_t Mask24bit = 0b111111111111111111111111;
@@ -222,8 +201,8 @@ class ADS131M06 {
     static constexpr uint8_t STATUS = 0x01;
     static constexpr uint8_t MODE = 0x02;
     static constexpr uint8_t CLOCK = 0x03;
-    static constexpr uint8_t GAIN1 = 0x04;
-    static constexpr uint8_t GAIN2 = 0x05;
+    static constexpr uint8_t GAIN1 = 0x4;
+    static constexpr uint8_t GAIN2 = 0x5;
     static constexpr uint8_t CFG = 0x06;
     static constexpr uint8_t THRSHLD_MSB = 0x07;
     static constexpr uint8_t THRSHLD_LSB = 0x08;

@@ -44,7 +44,6 @@ void MAX31856::update(){
     int32_t TempReg = readRegister(readRegisters::LinTempB2,3);
 
     if(TempReg & SignMask24Bit){
-        //idk wtf to do when negative
         TempReg |= 0xFF000000;
     }
     Temp = (float) TempReg * fpScale;
