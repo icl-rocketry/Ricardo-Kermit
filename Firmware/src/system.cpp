@@ -97,7 +97,7 @@ void System::systemSetup()
     ADC0.setup();
     ADC1.setup();
 
-    ADC0.setOSR(ADS131M06::OSROPT::OSR16256);
+    ADC0.setOSR(ADS131M06::OSROPT::OSR8192);
     // ADC0.setGain(5, ADS131M06::GAIN::GAIN64);
     // ADC0.setGain(5, ADS131M06::GAIN::GAIN64);
 
