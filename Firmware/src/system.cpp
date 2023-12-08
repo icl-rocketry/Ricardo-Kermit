@@ -50,7 +50,7 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    VPT5(networkmanager, 7, ADC0, 2),
                    VPT6(networkmanager, 8, ADC0, 1),
                    VPT7(networkmanager, 9, ADC0, 0),
-                   primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(20),false,&systemstatus){};
+                   primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(20),true,&systemstatus){};
 
 void System::systemSetup()
 {
@@ -216,10 +216,11 @@ void System::logReadings()
         logframe.temp3 = TC3.getTemp();
 
         logframe.timestamp = micros();
+        prev_telemetry_log_time = micros();
 
         RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::TELEMETRY>(logframe);
 
-        prev_telemetry_log_time = micros();
+        
     }
 }
 
