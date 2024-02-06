@@ -175,6 +175,7 @@ void System::deviceUpdate()
     // TC2.update();
     if(millis()-prev_flow_sensr_update > 10){
         FS0.update();
+        prev_flow_sensr_update = millis();
     }
     TC3.update();
 }
