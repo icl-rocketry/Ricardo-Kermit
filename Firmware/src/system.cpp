@@ -34,7 +34,7 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    SNSRSPI(HSPI_BUS_NUM),
                    TC0(SNSRSPI, PinMap::TC0_Cs),
                    TC1(SNSRSPI, PinMap::TC1_Cs),
-                   TC2(SNSRSPI, PinMap::TC2_Cs),
+                   FS0(networkmanager, PinMap::TC2_Cs, 1.46),
                    TC3(SNSRSPI, PinMap::TC3_Cs),
                    ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK), // need clkout pin and channel
                    ADC1(SNSRSPI, PinMap::ADC1_Cs),
@@ -91,13 +91,15 @@ void System::systemSetup()
     // Thermocouples:
     TC0.setup();
     TC1.setup();
-    TC2.setup();
+    // TC2.setup();
+    FS0.setup();
     TC3.setup();
     // ADC's:
     ADC0.setup();
     ADC1.setup();
 
-    ADC0.setOSR(ADS131M06::OSROPT::OSR8192);
+    ADC0.setOSR(ADS131M06::OSROPT::OSR16256);
+    ADC1.setOSR(ADS131M06::OSROPT::OSR16256);
     // ADC0.setGain(5, ADS131M06::GAIN::GAIN64);
     // ADC0.setGain(5, ADS131M06::GAIN::GAIN64);
 
@@ -170,7 +172,10 @@ void System::deviceUpdate()
 
     TC0.update();
     TC1.update();
-    TC2.update();
+    // TC2.update();
+    if(millis()-prev_flow_sensr_update > 10){
+        FS0.update();
+    }
     TC3.update();
 }
 
@@ -195,6 +200,7 @@ void System::logReadings()
 {
     if (micros() - prev_telemetry_log_time > telemetry_log_delta)
     {
+        // FS0.update();
         TelemetryLogframe logframe;
 
         logframe.ch0sens = CPT0.getPressure();
@@ -212,7 +218,7 @@ void System::logReadings()
 
         logframe.temp0 = TC0.getTemp();
         logframe.temp1 = TC1.getTemp();
-        logframe.temp2 = TC2.getTemp();
+        logframe.temp2 = FS0.getValue();
         logframe.temp3 = TC3.getTemp();
 
         logframe.timestamp = micros();
