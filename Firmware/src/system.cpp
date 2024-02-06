@@ -75,7 +75,7 @@ void System::systemSetup()
     pinMode(PinMap::ADC1_Cs, OUTPUT);
     pinMode(PinMap::TC0_Cs, OUTPUT);
     pinMode(PinMap::TC1_Cs, OUTPUT);
-    pinMode(PinMap::TC2_Cs, OUTPUT);
+    // pinMode(PinMap::TC2_Cs, OUTPUT);
     pinMode(PinMap::TC3_Cs, OUTPUT);
 
     digitalWrite(PinMap::SdCs_1, HIGH);
@@ -83,7 +83,7 @@ void System::systemSetup()
     digitalWrite(PinMap::ADC1_Cs, HIGH);
     digitalWrite(PinMap::TC0_Cs, HIGH);
     digitalWrite(PinMap::TC1_Cs, HIGH);
-    digitalWrite(PinMap::TC2_Cs, HIGH);
+    // digitalWrite(PinMap::TC2_Cs, HIGH);
     digitalWrite(PinMap::TC3_Cs, HIGH);
 
     setupSPI();
