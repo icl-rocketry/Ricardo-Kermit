@@ -60,6 +60,7 @@ void MAX31856::update()
         {
             Temp = NAN;
         }
+        m_prevUpdate = millis();
     }
 }
 
