@@ -50,7 +50,7 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    VPT5(networkmanager, 7, ADC0, 2),
                    VPT6(networkmanager, 8, ADC0, 1),
                    VPT7(networkmanager, 9, ADC0, 0),
-                   primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(20),true,&systemstatus){};
+                   primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(25),false,&systemstatus){};
 
 void System::systemSetup()
 {
@@ -233,7 +233,7 @@ void System::logReadings()
 
 void System::setupSPI(){
     SDSPI.begin(PinMap::SD_SCLK,PinMap::SD_MISO,PinMap::SD_MOSI);
-    SDSPI.setFrequency(2000000);
+    SDSPI.setFrequency(25e6);
     SDSPI.setBitOrder(MSBFIRST);
     SDSPI.setDataMode(SPI_MODE0);
 
