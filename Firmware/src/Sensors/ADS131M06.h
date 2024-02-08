@@ -208,7 +208,7 @@ class ADS131M06 {
     static constexpr uint8_t THRSHLD_LSB = 0x08;
 
     static constexpr uint32_t CLKIN_SPD = 8.192e6; // Clock speed (Hz) for the CLKIN on the LEDC xxxx
-    static constexpr uint32_t SCLK_SPD = 25e6; // SPI transaction frequency xxxxxxxx
+    static constexpr uint32_t SCLK_SPD = 25e6; // SPI transaction frequency
 
     //channels: config, ... most sig bit, ... least sig bit, 
     static constexpr uint8_t CH0_CFG = 0x09;

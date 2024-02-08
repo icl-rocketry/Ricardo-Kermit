@@ -105,7 +105,13 @@ class MAX31856{
         uint32_t readRegister(readRegisters target, uint8_t Nbytes);
         void writeRegister(writeRegisters target, uint8_t data);
         void clearFault();
+
+        //Initialising
         float Temp = 0;
+        uint32_t m_prevUpdate = 0;
+        uint16_t m_updateDelta = 10;
+
+        //SPI
         SPIClass& _spi;
         SPISettings _spisettings;
 
