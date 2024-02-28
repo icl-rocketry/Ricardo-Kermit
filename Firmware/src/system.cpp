@@ -35,6 +35,7 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    TC0(SNSRSPI, PinMap::TC0_Cs),
                    TC1(SNSRSPI, PinMap::TC1_Cs),
                    FS0(networkmanager, PinMap::TC2_Cs, 0.001146158078),
+                //    TC2(SNSRSPI, PinMap::TC2_Cs),
                    TC3(SNSRSPI, PinMap::TC3_Cs),
                    ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK), // need clkout pin and channel
                    ADC1(SNSRSPI, PinMap::ADC1_Cs),
@@ -50,7 +51,7 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    VPT5(networkmanager, 7, ADC0, 2),
                    VPT6(networkmanager, 8, ADC0, 1),
                    VPT7(networkmanager, 9, ADC0, 0),
-                   primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(25),false,&systemstatus){};
+                   primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(15),false,&systemstatus){};
 
 void System::systemSetup()
 {
@@ -155,7 +156,7 @@ void System::initializeLoggers()
     primarysd.mkdir(log_directory_path);
 
     std::unique_ptr<WrappedFile> syslogfile = primarysd.open(log_directory_path + "/syslog.txt", static_cast<FILE_MODE>(O_WRITE | O_CREAT | O_AT_END));
-    std::unique_ptr<WrappedFile> telemetrylogfile = primarysd.open(log_directory_path + "/telemetrylog.txt", static_cast<FILE_MODE>(O_WRITE | O_CREAT | O_AT_END),50);
+    std::unique_ptr<WrappedFile> telemetrylogfile = primarysd.open(log_directory_path + "/telemetrylog.txt", static_cast<FILE_MODE>(O_WRITE | O_CREAT | O_AT_END),100);
 
     // intialize sys logger
     loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::SYS>().initialize(std::move(syslogfile), networkmanager);
@@ -173,10 +174,10 @@ void System::deviceUpdate()
     TC0.update();
     TC1.update();
     // TC2.update();
-    if(millis()-prev_flow_sensr_update > 10){
-        FS0.update();
-        prev_flow_sensr_update = millis();
-    }
+    // if(millis()-prev_flow_sensr_update > 10){
+    FS0.update();
+        // prev_flow_sensr_update = millis();
+    // }
     TC3.update();
 }
 
@@ -220,6 +221,7 @@ void System::logReadings()
         logframe.temp0 = TC0.getTemp();
         logframe.temp1 = TC1.getTemp();
         logframe.temp2 = FS0.getValue();
+        // logframe.temp2 = TC2.getTemp();
         logframe.temp3 = TC3.getTemp();
 
         logframe.timestamp = micros();
@@ -233,7 +235,7 @@ void System::logReadings()
 
 void System::setupSPI(){
     SDSPI.begin(PinMap::SD_SCLK,PinMap::SD_MISO,PinMap::SD_MOSI);
-    SDSPI.setFrequency(25e6);
+    SDSPI.setFrequency(15e6);
     SDSPI.setBitOrder(MSBFIRST);
     SDSPI.setDataMode(SPI_MODE0);
 

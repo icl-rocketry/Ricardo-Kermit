@@ -76,7 +76,7 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         const std::string log_path = "/Logs";
         const std::string config_path = "/Config";
 
-        uint32_t telemetry_log_delta = 5000;
+        uint32_t telemetry_log_delta = 9000;
         uint32_t prev_telemetry_log_time;
         uint32_t prev_flow_sensr_update;
 
