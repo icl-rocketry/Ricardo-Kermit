@@ -471,18 +471,6 @@
       ""
     ],
     [
-      "09612a32-b763-45b3-82e2-7ee2401fa0b3",
-      "Thermocouple1"
-    ],
-    [
-      "aa82bd73-4e18-49c2-aceb-299e0f2af7d2",
-      "Thermocouple2"
-    ],
-    [
-      "f988eb38-59aa-44c4-958d-23683e7d276f",
-      "AnalogueSPI"
-    ],
-    [
       "7aec0f76-f0ca-417c-88c2-9c2ae042aba1",
       "Power"
     ],
