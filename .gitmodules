@@ -16,3 +16,6 @@
 [submodule "Firmware/lib/SdFat"]
 	path = Firmware/lib/SdFat
 	url = https://github.com/greiman/SdFat.git
+[submodule "Firmware/components/SdFat"]
+	path = Firmware/components/SdFat
+	url = git@github.com:icl-rocketry/SdFat.git
