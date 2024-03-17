@@ -34,7 +34,7 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    SNSRSPI(HSPI_BUS_NUM),
                    TC0(SNSRSPI, PinMap::TC0_Cs),
                    TC1(SNSRSPI, PinMap::TC1_Cs),
-                   FS0(networkmanager, PinMap::TC2_Cs, 0.001146158078),
+                   FS0(networkmanager, PCNT_UNIT_0, PCNT_CHANNEL_0, PinMap::TC2_Cs, 0.001146158078),
                 //    TC2(SNSRSPI, PinMap::TC2_Cs),
                    TC3(SNSRSPI, PinMap::TC3_Cs),
                    ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK), // need clkout pin and channel
