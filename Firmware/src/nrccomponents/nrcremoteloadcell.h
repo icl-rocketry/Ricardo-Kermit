@@ -15,7 +15,7 @@
 #include "Sensors/ADS131M06.h"
 #include <stdint.h>
 
-#include <librrc/nrcremotesensorbase.h>
+#include <librrc/remote/nrcremotesensorbase.h>
 #include <librnp/rnp_networkmanager.h>
 
 #include <librrc/Helpers/nvsstore.h>

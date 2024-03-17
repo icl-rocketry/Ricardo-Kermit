@@ -3,7 +3,7 @@
  * @author Andrei Paduraru
  * @brief This class manages individual ADC channels on (for now) ADS131M06 adc chips. It deals with 
  * calibration of channel settings, as well the type of sensor physically attached to the channel and
- * its constants. 
+ * its calibration. 
  * @version 0.1
  * @date 2024-01-18
  * 

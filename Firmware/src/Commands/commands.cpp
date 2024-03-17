@@ -101,8 +101,7 @@ void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
 
 	processedSensorPacket.temp0 = sm.TC0.getTemp();
 	processedSensorPacket.temp1 = sm.TC1.getTemp();
-	processedSensorPacket.temp2 = sm.FS0.getValue();
-	// processedSensorPacket.temp2 = sm.TC2.getTemp();
+	processedSensorPacket.temp2 = sm.TC2.getTemp();
 	processedSensorPacket.temp3 = sm.TC3.getTemp();
 
 	processedSensorPacket.system_status = sm.systemstatus.getStatus();

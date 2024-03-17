@@ -7,7 +7,6 @@
 #include "Config/pinmap_config.h"
 
 #include <libriccore/networkinterfaces/can/canbus.h>
-#include <librrc/nrcremoteflowsensor.h>
 
 #include "Sensors/MAX31856.h"
 #include "Sensors/ADS131M06.h"
@@ -40,8 +39,7 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         //4 thermocouples:
         MAX31856 TC0;
         MAX31856 TC1;
-        // MAX31856 TC2;
-        NRCRemoteFlowSensor FS0;
+        MAX31856 TC2;
         MAX31856 TC3;
         //2 ADC's:
         ADS131M06 ADC0;
@@ -74,9 +72,8 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         void remoteSensorSetup();
 
         const std::string log_path = "/Logs";
-        const std::string config_path = "/Config";
 
-        uint32_t telemetry_log_delta = 9000;
+        uint32_t telemetry_log_delta = 1;
         uint32_t prev_telemetry_log_time;
         uint32_t prev_flow_sensr_update;
 

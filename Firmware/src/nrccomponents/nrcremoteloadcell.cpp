@@ -1,6 +1,5 @@
 #include "nrcremoteloadcell.h"
 
-#include <librrc/nrcremotesensorbase.h>
 #include <librnp/rnp_networkmanager.h>
 
 NRCRemoteLoadcell::NRCRemoteLoadcell(RnpNetworkManager &netman,  uint8_t loadCellIndex, ADS131M06& ADS, uint8_t ADCchannel, uint32_t zeroReading, float grad, float localgval) : NRCRemoteSensorBase(netman),

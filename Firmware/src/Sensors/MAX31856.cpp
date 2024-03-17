@@ -43,6 +43,13 @@ uint32_t MAX31856::readRegister(readRegisters target, uint8_t Nbytes)
     return regData;
 }
 
+void MAX31856::setParameter(writeRegisters Addr, uint8_t ShadowReg, uint8_t Mask, uint8_t Parameter)
+{
+    ShadowReg &= Mask;
+    ShadowReg |= Parameter;
+    writeRegister(Addr, ShadowReg);
+}
+
 void MAX31856::update()
 {
     if (millis() - m_prevUpdate > m_updateDelta)
@@ -55,8 +62,7 @@ void MAX31856::update()
         }
         Temp = (float)TempReg * fpScale;
 
-        Temp += 273.15;
-        if (Temp < 0)
+        if (Temp < -250)
         {
             Temp = NAN;
         }
@@ -66,58 +72,48 @@ void MAX31856::update()
 
 void MAX31856::clearFault()
 {
-    C0Reg &= FaultClearMask;
-    C0Reg |= 0b00000010;
-    writeRegister(writeRegisters::Config0, C0Reg);
+    setParameter(writeRegisters::Config0, C0Reg, FaultClearMask, 0b00000010);
 }
 
 void MAX31856::setTCType(TCType TCType)
 {
-    C1Reg &= TypeMask;
-    C1Reg |= TCType;
-    writeRegister(writeRegisters::Config1, C1Reg);
+    setParameter(writeRegisters::Config1, C1Reg, TypeMask, TCType);
 }
 
 void MAX31856::setOCDetection(OCSet OCSet)
 {
-    C0Reg &= OCFaultMask;
-    C0Reg |= OCSet;
-    writeRegister(writeRegisters::Config0, C0Reg);
+    setParameter(writeRegisters::Config0, C0Reg, OCFaultMask, OCSet);
 }
 
 void MAX31856::setAveraging(AVSet AVset)
 {
-    C1Reg &= AVMask;
-    C1Reg |= AVset;
-    writeRegister(writeRegisters::Config1, C1Reg);
+    setParameter(writeRegisters::Config1, C1Reg, AVMask, AVset);
 }
 
 void MAX31856::setConversionMode(ConvModes Mode)
 {
-    C0Reg &= ModeMask;
-    C0Reg |= Mode;
-    writeRegister(writeRegisters::Config0, C0Reg);
+    setParameter(writeRegisters::Config0, C0Reg, ModeMask, Mode);
 }
 
 void MAX31856::enableCJComp(ENCJComp EN)
 {
-    C0Reg &= CJCompENMask;
-    C0Reg |= EN;
-    writeRegister(writeRegisters::Config0, C0Reg);
+    setParameter(writeRegisters::Config0, C0Reg, CJCompENMask, EN);
 }
 
 void MAX31856::setFaultMode(FaultModes Mode)
 {
-    C0Reg &= FaultModeMask;
-    C0Reg |= Mode;
-    writeRegister(writeRegisters::Config0, C0Reg);
+    setParameter(writeRegisters::Config0, C0Reg, FaultModeMask, Mode);
 }
 
 void MAX31856::setFilter(FilterFreqs Freq)
 {
     setConversionMode(ConvModes::normOff);
-    C0Reg &= FilterMask;
-    C0Reg |= Freq;
-    writeRegister(writeRegisters::Config0, C0Reg);
-    setConversionMode(ConvModes::conti);
+    setParameter(writeRegisters::Config0, C0Reg, FilterMask, Freq);
+    setConversionMode(_ConvMode);
+}
+
+void MAX31856::setCJOffset(float CJOffset)
+{
+    uint8_t CJOff = CJOffset;
+    setParameter(writeRegisters::CJTOffset, CJOffReg, 0, CJOff);
 }

@@ -1,3 +1,14 @@
+/**
+ * @file MAX31856.h
+ * @author Andrei Paduraru (ap2621@ic.ac.uk)
+ * @brief Class to interact with MAX31856 thermocouple ICs.
+ * @version 0.2
+ * @date 2024-03-1
+ * 
+ * @copyright Copyright (c) 2023-2024
+ * 
+ */
+
 #pragma once
 
 #include <Arduino.h>
@@ -62,6 +73,7 @@ class MAX31856{
         void enableCJComp(ENCJComp EN);
         void setFaultMode(FaultModes Mode);
         void setFilter(FilterFreqs Freq);
+        void setCJOffset(float CJT);
         float getTemp() {return Temp;}
         void update();
         
@@ -100,16 +112,29 @@ class MAX31856{
             CJTH = 0x8A,
             CJTL = 0x8B,
         };
+
+        enum class Faults : uint8_t {
+            CJRange,
+            TCRange,
+            CJHigh,
+            CJLow,
+            TCHigh,
+            TCLow,
+            OVUV,
+            OPEN,
+        };
         
-        void setCJCompOffset();
         uint32_t readRegister(readRegisters target, uint8_t Nbytes);
         void writeRegister(writeRegisters target, uint8_t data);
+        void setParameter(writeRegisters RegisterAddr, uint8_t Register, uint8_t Mask, uint8_t Parameter);
         void clearFault();
+
+
 
         //Initialising
         float Temp = 0;
         uint32_t m_prevUpdate = 0;
-        uint16_t m_updateDelta = 10;
+        uint16_t m_updateDelta = 41;
 
         //SPI
         SPIClass& _spi;
@@ -129,11 +154,13 @@ class MAX31856{
         //Shadow registers, all set to factory defaults
         uint8_t C0Reg = 0x00;
         uint8_t C1Reg = 0x03;
+        uint8_t CJOffReg = 0x00;
     
         //Masks
         static constexpr float fpScale = 1.0/4096.0;
         static constexpr uint32_t SignMask24Bit = 0b100000000000000000000000;
         static constexpr uint32_t MaskAll24Bits = 0b111111111111111111111111;
+        
         //C0
         static constexpr uint8_t ModeMask = 0b01111111;
         static constexpr uint8_t OCFaultMask = 0b11001111;
