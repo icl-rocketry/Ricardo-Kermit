@@ -34,8 +34,8 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    SNSRSPI(HSPI_BUS_NUM),
                    TC0(SNSRSPI, PinMap::TC0_Cs),
                    TC1(SNSRSPI, PinMap::TC1_Cs),
-                //    FS0(networkmanager, PCNT_UNIT_0, PCNT_CHANNEL_0, PinMap::TC2_Cs, 0.001146158078),
-                   TC2(SNSRSPI, PinMap::TC2_Cs),
+                   FS0(networkmanager, PCNT_UNIT_0, PCNT_CHANNEL_0, PinMap::TC2_Cs, 0.001146158078),
+                //    TC2(SNSRSPI, PinMap::TC2_Cs),
                    TC3(SNSRSPI, PinMap::TC3_Cs),
                    ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK), // need clkout pin and channel
                    ADC1(SNSRSPI, PinMap::ADC1_Cs),
@@ -51,7 +51,7 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    VPT5(networkmanager, 7, ADC0, 2),
                    VPT6(networkmanager, 8, ADC0, 1),
                    VPT7(networkmanager, 9, ADC0, 0),
-                   primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(50),false,&systemstatus){};
+                   primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(20),false,&systemstatus){};
 
 void System::systemSetup()
 {
@@ -93,7 +93,7 @@ void System::systemSetup()
     TC0.setup();
     TC1.setup();
     // TC2.setup();
-    // FS0.setup();
+    FS0.setup();
     TC3.setup();
     // ADC's:
     ADC0.setup();
@@ -180,7 +180,7 @@ void System::deviceUpdate()
     TC1.update();
     // TC2.update();
     // if(millis()-prev_flow_sensr_update > 10){
-    // FS0.update();
+    FS0.update();
         // prev_flow_sensr_update = millis();
     // }
     TC3.update();
@@ -229,11 +229,11 @@ void System::logReadings()
 
         logframe.temp0 = TC0.getTemp();
         logframe.temp1 = TC1.getTemp();
-        // logframe.temp2 = FS0.getValue();
+        logframe.temp2 = FS0.getValue();
         // logframe.temp2 = TC2.getTemp();
         logframe.temp3 = TC3.getTemp();
 
-        logframe.timestamp = micros();
+        logframe.timestamp = esp_timer_get_time();
         prev_telemetry_log_time = micros();
 
         RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::TELEMETRY>(logframe);

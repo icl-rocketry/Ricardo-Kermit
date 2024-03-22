@@ -13,6 +13,7 @@
 #include "nrccomponents/nrcremoteloadcell.h"
 #include "nrccomponents/nrcremoteptap.h"
 
+#include "librrc/nrcremoteflowsensor.h"
 #include "Commands/commands.h"
 
 #include "Storage/sdfat_store.h"
@@ -39,7 +40,8 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         //4 thermocouples:
         MAX31856 TC0;
         MAX31856 TC1;
-        MAX31856 TC2;
+        // MAX31856 TC2;
+        NRCRemoteFlowSensor FS0;
         MAX31856 TC3;
         //2 ADC's:
         ADS131M06 ADC0;

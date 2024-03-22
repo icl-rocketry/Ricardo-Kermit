@@ -43,7 +43,7 @@ void loopTask(void *pvParameters)
 }
 
 extern "C" void app_main()
-{
+ {
     initArduino(); //probably dont even need this
     xTaskCreateUniversal(loopTask, "loopTask", ARDUINO_LOOP_STACK_SIZE, NULL, 1, &loopTaskHandle, 1);
 }
