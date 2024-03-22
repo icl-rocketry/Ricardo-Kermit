@@ -63,7 +63,7 @@ class MAX31856{
             fiftyHz = 0
         };
         
-        MAX31856(SPIClass &spi, uint8_t cs, TCType TCType = TCType::TK, OCSet OCSet = OCSet::RSH5KTCL2, AVSet AVSet = AVSet::onesamp, ConvModes Mode = ConvModes::conti, ENCJComp EN = ENCJComp::enable, FaultModes Fault = FaultModes::comparator, FilterFreqs Freq = FilterFreqs::fiftyHz);
+        MAX31856(SPIClass &spi, uint8_t cs, TCType TCType = TCType::TK, OCSet OCSet = OCSet::RSH5KTCL2, AVSet AVSet = AVSet::onesamp, ConvModes Mode = ConvModes::conti, ENCJComp EN = ENCJComp::disable, FaultModes Fault = FaultModes::comparator, FilterFreqs Freq = FilterFreqs::sixtyHz);
         void setup();
         void reset();
         void setTCType(TCType TCType);
@@ -172,5 +172,8 @@ class MAX31856{
         //C1
         static constexpr uint8_t TypeMask = 0b11110000;
         static constexpr uint8_t AVMask = 0b10001111;
+
+        uint32_t m_CJtimerOFF = 0;
+        uint32_t m_CJtimerON = 0;
 
 };

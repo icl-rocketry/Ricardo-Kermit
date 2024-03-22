@@ -52,6 +52,16 @@ void MAX31856::setParameter(writeRegisters Addr, uint8_t ShadowReg, uint8_t Mask
 
 void MAX31856::update()
 {
+    if(millis() - m_CJtimerOFF > 60000 && _ColdJComp == ENCJComp::disable){
+        enableCJComp(ENCJComp::enable);
+        m_CJtimerON = millis();
+    }
+
+    if(millis() - m_CJtimerON > 200 && _ColdJComp == ENCJComp::disable){
+        enableCJComp(_ColdJComp);
+        m_CJtimerOFF = millis();
+    }
+    
     if (millis() - m_prevUpdate > m_updateDelta)
     {
         int32_t TempReg = readRegister(readRegisters::LinTempB2, 3);
