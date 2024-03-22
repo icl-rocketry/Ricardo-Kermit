@@ -34,8 +34,8 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    SNSRSPI(HSPI_BUS_NUM),
                    TC0(SNSRSPI, PinMap::TC0_Cs),
                    TC1(SNSRSPI, PinMap::TC1_Cs),
-                   FS0(networkmanager, PCNT_UNIT_0, PCNT_CHANNEL_0, PinMap::TC2_Cs, 0.001146158078),
-                //    TC2(SNSRSPI, PinMap::TC2_Cs),
+                //    FS0(networkmanager, PCNT_UNIT_0, PCNT_CHANNEL_0, PinMap::TC2_Cs, 0.001146158078),
+                   TC2(SNSRSPI, PinMap::TC2_Cs),
                    TC3(SNSRSPI, PinMap::TC3_Cs),
                    ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK), // need clkout pin and channel
                    ADC1(SNSRSPI, PinMap::ADC1_Cs),
@@ -51,7 +51,7 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    VPT5(networkmanager, 7, ADC0, 2),
                    VPT6(networkmanager, 8, ADC0, 1),
                    VPT7(networkmanager, 9, ADC0, 0),
-                   primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(15),false,&systemstatus){};
+                   primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(50),false,&systemstatus){};
 
 void System::systemSetup()
 {
@@ -93,7 +93,7 @@ void System::systemSetup()
     TC0.setup();
     TC1.setup();
     // TC2.setup();
-    FS0.setup();
+    // FS0.setup();
     TC3.setup();
     // ADC's:
     ADC0.setup();
@@ -121,6 +121,10 @@ void System::systemUpdate()
 
     logReadings();
     // Serial.println((int)primarysd.getState());
+
+    if(primarysd.getError() > 1 && !systemstatus.flagSetOr(SYSTEM_FLAG::ERROR_SD)){
+        systemstatus.newFlag(SYSTEM_FLAG::ERROR_SD, "SD Card Failed with error: " + std::to_string(primarysd.getError()));
+    };
 };
 
 void System::serviceSetup()
@@ -165,6 +169,7 @@ void System::initializeLoggers()
     loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::TELEMETRY>().initialize(std::move(telemetrylogfile),[](std::string_view msg){RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>(msg);});
 }
 
+uint32_t updated = 0;
 void System::deviceUpdate()
 {
 
@@ -175,10 +180,14 @@ void System::deviceUpdate()
     TC1.update();
     // TC2.update();
     // if(millis()-prev_flow_sensr_update > 10){
-    FS0.update();
+    // FS0.update();
         // prev_flow_sensr_update = millis();
     // }
     TC3.update();
+    // if (millis()-updated > 20){
+    //     RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("SD Card Error Status: " + std::to_string(primarysd.getError()));
+    //     updated = millis();
+    // }
 }
 
 void System::remoteSensorUpdate()
@@ -220,7 +229,7 @@ void System::logReadings()
 
         logframe.temp0 = TC0.getTemp();
         logframe.temp1 = TC1.getTemp();
-        logframe.temp2 = FS0.getValue();
+        // logframe.temp2 = FS0.getValue();
         // logframe.temp2 = TC2.getTemp();
         logframe.temp3 = TC3.getTemp();
 
@@ -235,7 +244,7 @@ void System::logReadings()
 
 void System::setupSPI(){
     SDSPI.begin(PinMap::SD_SCLK,PinMap::SD_MISO,PinMap::SD_MOSI);
-    SDSPI.setFrequency(15e6);
+    SDSPI.setFrequency(50e6);
     SDSPI.setBitOrder(MSBFIRST);
     SDSPI.setDataMode(SPI_MODE0);
 
