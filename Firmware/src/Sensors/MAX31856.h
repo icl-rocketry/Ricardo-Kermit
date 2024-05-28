@@ -15,21 +15,10 @@
 #include <SPI.h>
 
 class MAX31856{
-    
-    private: //This is only here because arduino requires enums to be defined before they're used as a function input.
-        enum Faults : uint8_t {
-            CJRange = (1<<7),
-            TCRange = (1<<6),
-            CJHigh = (1<<5),
-            CJLow = (1<<4),
-            TCHigh = (1<<3),
-            TCLow = (1<<2),
-            OVUV = (1<<1),
-            OPEN = (1<<0),
-        };
 
     public:
         //Enums to make device settings readable.
+        //This is only here because arduino requires enums to be defined before they're used as a function input.
         enum TCType : uint8_t {
             TB = 0b00000000,
             TE = 0b00000001,
@@ -74,6 +63,17 @@ class MAX31856{
         enum FilterFreqs : uint8_t {
             sixtyHz = 0b00000001,
             fiftyHz = 0
+        };
+
+        enum Faults : uint8_t {
+            CJRange = (1<<7),
+            TCRange = (1<<6),
+            CJHigh = (1<<5),
+            CJLow = (1<<4),
+            TCHigh = (1<<3),
+            TCLow = (1<<2),
+            OVUV = (1<<1),
+            OPEN = (1<<0),
         };
         
         MAX31856(SPIClass &spi, uint8_t cs, int8_t faultPin = -1, int8_t DRDYPin = -1);

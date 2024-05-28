@@ -60,6 +60,7 @@ void System::systemSetup()
     Serial.begin(GeneralConfig::SerialBaud);
   
 
+
     // initialize statemachine with idle state
     statemachine.initalize(std::make_unique<Idle>(systemstatus, commandhandler));
 
@@ -76,7 +77,7 @@ void System::systemSetup()
     pinMode(PinMap::ADC1_Cs, OUTPUT);
     pinMode(PinMap::TC0_Cs, OUTPUT);
     pinMode(PinMap::TC1_Cs, OUTPUT);
-    // pinMode(PinMap::TC2_Cs, OUTPUT);
+    // pinMode(PinMap::TC2_Cs, INPUT_PULLUP);
     pinMode(PinMap::TC3_Cs, OUTPUT);
 
     digitalWrite(PinMap::SdCs_1, HIGH);
@@ -122,7 +123,7 @@ void System::systemUpdate()
     logReadings();
     // Serial.println((int)primarysd.getState());
 
-    if(primarysd.getError() > 1 && !systemstatus.flagSetOr(SYSTEM_FLAG::ERROR_SD)){
+    if((primarysd.getError() > 0) && !systemstatus.flagSet(SYSTEM_FLAG::ERROR_SD)){
         systemstatus.newFlag(SYSTEM_FLAG::ERROR_SD, "SD Card Failed with error: " + std::to_string(primarysd.getError()));
     };
 };
@@ -178,16 +179,10 @@ void System::deviceUpdate()
 
     TC0.update();
     TC1.update();
-    // TC2.update();
-    // if(millis()-prev_flow_sensr_update > 10){
     FS0.update();
-        // prev_flow_sensr_update = millis();
-    // }
+    
     TC3.update();
-    // if (millis()-updated > 20){
-    //     RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("SD Card Error Status: " + std::to_string(primarysd.getError()));
-    //     updated = millis();
-    // }
+
 }
 
 void System::remoteSensorUpdate()
@@ -244,7 +239,7 @@ void System::logReadings()
 
 void System::setupSPI(){
     SDSPI.begin(PinMap::SD_SCLK,PinMap::SD_MISO,PinMap::SD_MOSI);
-    SDSPI.setFrequency(50e6);
+    SDSPI.setFrequency(20e6);
     SDSPI.setBitOrder(MSBFIRST);
     SDSPI.setDataMode(SPI_MODE0);
 

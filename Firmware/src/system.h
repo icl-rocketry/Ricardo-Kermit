@@ -13,7 +13,7 @@
 #include "nrccomponents/nrcremoteloadcell.h"
 #include "nrccomponents/nrcremoteptap.h"
 
-#include "librrc/nrcremoteflowsensor.h"
+#include "librrc/Remote/nrcremoteflowsensor.h"
 #include "Commands/commands.h"
 
 #include "Storage/sdfat_store.h"
@@ -75,7 +75,7 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
 
         const std::string log_path = "/Logs";
 
-        uint32_t telemetry_log_delta = 1;
+        uint32_t telemetry_log_delta = 5000;
         uint32_t prev_telemetry_log_time;
         uint32_t prev_flow_sensr_update;
 
