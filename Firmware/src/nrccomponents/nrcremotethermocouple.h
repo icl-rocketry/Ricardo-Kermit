@@ -11,7 +11,7 @@
 
 #pragma once
 
-#include <librrc/nrcremotesensorbase.h>
+#include <librrc/remote/nrcremotesensorbase.h>
 
 #include <librnp/rnp_networkmanager.h>
 #include <librnp/rnp_packet.h>
@@ -29,6 +29,7 @@ class NRCRemoteThermocouple : public NRCRemoteSensorBase<NRCRemoteThermocouple>
             {};
         
         float getValue(){return _MAX.getTemp();};
+        void update(){updateSensorValue(_MAX.getTemp());};
     
     protected:
 

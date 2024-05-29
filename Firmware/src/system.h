@@ -11,6 +11,8 @@
 #include "Sensors/MAX31856.h"
 #include "Sensors/ADS131M06.h"
 #include "nrccomponents/nrcremoteloadcell.h"
+#include "nrccomponents/nrcremoteglobalmonitor.h"
+#include "nrccomponents/nrcremoteredline.h"
 #include "nrccomponents/nrcremoteptap.h"
 
 #include "librrc/Remote/nrcremoteflowsensor.h"
@@ -40,8 +42,7 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         //4 thermocouples:
         MAX31856 TC0;
         MAX31856 TC1;
-        // MAX31856 TC2;
-        NRCRemoteFlowSensor FS0;
+        MAX31856 TC2;
         MAX31856 TC3;
         //2 ADC's:
         ADS131M06 ADC0;
@@ -61,6 +62,26 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         NRCRemotePTap VPT6;
         NRCRemotePTap VPT7;
 
+        NRCRemoteRedline RLMPT0;
+        NRCRemoteRedline RLMPT1;
+
+        NRCRemoteRedline RLMTC0;
+        NRCRemoteRedline RLMTC1;
+        NRCRemoteRedline RLMTC2;
+        NRCRemoteRedline RLMTC3;
+
+        //gradient monitors
+        NRCRemoteRedline RLMGPT0;
+        NRCRemoteRedline RLMGPT1;
+
+        NRCRemoteRedline RLMGTC0;
+        NRCRemoteRedline RLMGTC1;
+        NRCRemoteRedline RLMGTC2;
+        NRCRemoteRedline RLMGTC3;
+
+        //global monitor. This is what the other boards will be polling.
+        NRCRemoteGlobalMonitor GLOBALMON;
+
         SdFat_Store primarysd;
 
     private:
@@ -72,6 +93,7 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         void initializeLoggers();
         void logReadings();
         void remoteSensorSetup();
+        void globalMonSetup();
 
         const std::string log_path = "/Logs";
 

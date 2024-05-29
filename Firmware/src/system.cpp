@@ -34,8 +34,7 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    SNSRSPI(HSPI_BUS_NUM),
                    TC0(SNSRSPI, PinMap::TC0_Cs),
                    TC1(SNSRSPI, PinMap::TC1_Cs),
-                   FS0(networkmanager, PCNT_UNIT_0, PCNT_CHANNEL_0, PinMap::TC2_Cs, 0.001146158078),
-                //    TC2(SNSRSPI, PinMap::TC2_Cs),
+                   TC2(SNSRSPI, PinMap::TC2_Cs),
                    TC3(SNSRSPI, PinMap::TC3_Cs),
                    ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK), // need clkout pin and channel
                    ADC1(SNSRSPI, PinMap::ADC1_Cs),
@@ -51,6 +50,19 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    VPT5(networkmanager, 7, ADC0, 2),
                    VPT6(networkmanager, 8, ADC0, 1),
                    VPT7(networkmanager, 9, ADC0, 0),
+                   RLMPT0(networkmanager,0,-2,0),
+                   RLMPT1(networkmanager,1,-2,0),
+                   RLMTC0(networkmanager,2,-273,0),
+                   RLMTC1(networkmanager,3,-273,0),
+                   RLMTC2(networkmanager,4,-273,0),
+                   RLMTC3(networkmanager,5,-273,0),
+                   RLMGPT0(networkmanager,6,0,1),
+                   RLMGPT1(networkmanager,7,0,1),
+                   RLMGTC0(networkmanager,8,0,1),
+                   RLMGTC1(networkmanager,9,-2,1),
+                   RLMGTC2(networkmanager,10,-2,1),
+                   RLMGTC3(networkmanager,11,-2,1),
+                   GLOBALMON(networkmanager),
                    primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(20),false,&systemstatus){};
 
 void System::systemSetup()
@@ -77,7 +89,7 @@ void System::systemSetup()
     pinMode(PinMap::ADC1_Cs, OUTPUT);
     pinMode(PinMap::TC0_Cs, OUTPUT);
     pinMode(PinMap::TC1_Cs, OUTPUT);
-    // pinMode(PinMap::TC2_Cs, INPUT_PULLUP);
+    pinMode(PinMap::TC2_Cs, OUTPUT);
     pinMode(PinMap::TC3_Cs, OUTPUT);
 
     digitalWrite(PinMap::SdCs_1, HIGH);
@@ -85,7 +97,7 @@ void System::systemSetup()
     digitalWrite(PinMap::ADC1_Cs, HIGH);
     digitalWrite(PinMap::TC0_Cs, HIGH);
     digitalWrite(PinMap::TC1_Cs, HIGH);
-    // digitalWrite(PinMap::TC2_Cs, HIGH);
+    digitalWrite(PinMap::TC2_Cs, HIGH);
     digitalWrite(PinMap::TC3_Cs, HIGH);
 
     setupSPI();
@@ -93,8 +105,7 @@ void System::systemSetup()
     // Thermocouples:
     TC0.setup();
     TC1.setup();
-    // TC2.setup();
-    FS0.setup();
+    TC2.setup();
     TC3.setup();
     // ADC's:
     ADC0.setup();
@@ -102,8 +113,6 @@ void System::systemSetup()
 
     ADC0.setOSR(ADS131M06::OSROPT::OSR16256);
     ADC1.setOSR(ADS131M06::OSROPT::OSR16256);
-    // ADC0.setGain(5, ADS131M06::GAIN::GAIN64);
-    // ADC0.setGain(5, ADS131M06::GAIN::GAIN64);
 
     serviceSetup();
 
@@ -130,6 +139,7 @@ void System::systemUpdate()
 
 void System::serviceSetup()
 {
+    //remote sensors
     networkmanager.registerService(10, CPT0.getThisNetworkCallback());
     networkmanager.registerService(11, CPT1.getThisNetworkCallback());
     networkmanager.registerService(12, VPT0.getThisNetworkCallback());
@@ -142,6 +152,24 @@ void System::serviceSetup()
     networkmanager.registerService(19, VPT5.getThisNetworkCallback());
     networkmanager.registerService(20, VPT6.getThisNetworkCallback());
     networkmanager.registerService(21, VPT7.getThisNetworkCallback());
+
+    //redline monitors
+    networkmanager.registerService(30, RLMPT0.getThisNetworkCallback());
+    networkmanager.registerService(31, RLMPT1.getThisNetworkCallback());
+    networkmanager.registerService(32, RLMTC0.getThisNetworkCallback());
+    networkmanager.registerService(33, RLMTC1.getThisNetworkCallback());
+    networkmanager.registerService(34, RLMTC2.getThisNetworkCallback());
+    networkmanager.registerService(35, RLMTC3.getThisNetworkCallback());
+    networkmanager.registerService(36, RLMGPT0.getThisNetworkCallback());
+    networkmanager.registerService(37, RLMGPT1.getThisNetworkCallback());
+    networkmanager.registerService(38, RLMGTC0.getThisNetworkCallback());
+    networkmanager.registerService(39, RLMGTC1.getThisNetworkCallback());
+    networkmanager.registerService(40, RLMGTC2.getThisNetworkCallback());
+    networkmanager.registerService(41, RLMGTC3.getThisNetworkCallback());
+
+    //global monitor
+    networkmanager.registerService(42, GLOBALMON.getThisNetworkCallback());
+
 }
 
 void System::initializeLoggers()
@@ -179,8 +207,7 @@ void System::deviceUpdate()
 
     TC0.update();
     TC1.update();
-    FS0.update();
-    
+    TC2.update();
     TC3.update();
 
 }
@@ -200,6 +227,22 @@ void System::remoteSensorUpdate()
     VPT5.update();
     VPT6.update();
     VPT7.update();
+
+    RLMPT0.update(CPT0.getValue());
+    RLMPT1.update(CPT1.getValue());
+    RLMTC0.update(TC0.getTemp());
+    RLMTC1.update(TC1.getTemp());
+    RLMTC2.update(TC2.getTemp());
+    RLMTC3.update(TC3.getTemp());
+
+    RLMGPT0.update(CPT0.getValue());
+    RLMGPT1.update(CPT1.getValue());
+    RLMGTC0.update(TC0.getTemp());
+    RLMGTC1.update(TC1.getTemp());
+    RLMGTC2.update(TC2.getTemp());
+    RLMGTC3.update(TC3.getTemp());
+
+    GLOBALMON.update();
 }
 
 void System::logReadings()
@@ -224,8 +267,8 @@ void System::logReadings()
 
         logframe.temp0 = TC0.getTemp();
         logframe.temp1 = TC1.getTemp();
-        logframe.temp2 = FS0.getValue();
-        // logframe.temp2 = TC2.getTemp();
+        logframe.temp2 = TC2.getTemp();
+        logframe.temp2 = TC2.getTemp();
         logframe.temp3 = TC3.getTemp();
 
         logframe.timestamp = esp_timer_get_time();
@@ -262,4 +305,35 @@ void System::remoteSensorSetup(){
     VPT5.setup();
     VPT6.setup();
     VPT7.setup();
+
+    RLMPT0.setup();
+    RLMPT1.setup();
+    RLMTC0.setup();
+    RLMTC1.setup();
+    RLMTC2.setup();
+    RLMTC3.setup();
+
+    RLMGPT0.setup();
+    RLMGPT1.setup();
+    RLMGTC0.setup();
+    RLMGTC1.setup();
+    RLMGTC2.setup();
+    RLMGTC3.setup();
+
+    globalMonSetup();
+}
+
+void System::globalMonSetup(){
+    GLOBALMON.redlinesVect.push_back(RLMPT0);
+    GLOBALMON.redlinesVect.push_back(RLMPT1);
+    GLOBALMON.redlinesVect.push_back(RLMTC0);
+    GLOBALMON.redlinesVect.push_back(RLMTC1);
+    GLOBALMON.redlinesVect.push_back(RLMTC2);
+    GLOBALMON.redlinesVect.push_back(RLMTC3);
+    GLOBALMON.redlinesVect.push_back(RLMGPT0);
+    GLOBALMON.redlinesVect.push_back(RLMGPT1);
+    GLOBALMON.redlinesVect.push_back(RLMGTC0);
+    GLOBALMON.redlinesVect.push_back(RLMGTC1);
+    GLOBALMON.redlinesVect.push_back(RLMGTC2);
+    GLOBALMON.redlinesVect.push_back(RLMGTC3);
 }
