@@ -58,10 +58,10 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    RLMTC3(networkmanager,5,-273,0),
                    RLMGPT0(networkmanager,6,0,1),
                    RLMGPT1(networkmanager,7,0,1),
-                   RLMGTC0(networkmanager,8,0,1),
-                   RLMGTC1(networkmanager,9,-2,1),
-                   RLMGTC2(networkmanager,10,-2,1),
-                   RLMGTC3(networkmanager,11,-2,1),
+                   RLMGTC0(networkmanager,8,0,1,100e-3),
+                   RLMGTC1(networkmanager,9,-2,1,100e-3),
+                   RLMGTC2(networkmanager,10,-2,1,100e-3),
+                   RLMGTC3(networkmanager,11,-2,1,100e-3),
                    GLOBALMON(networkmanager),
                    primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(20),false,&systemstatus){};
 

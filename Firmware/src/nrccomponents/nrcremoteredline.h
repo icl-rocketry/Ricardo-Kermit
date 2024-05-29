@@ -7,6 +7,7 @@
 
 #include <librrc/Helpers/nvsstore.h>
 #include "packets/redlinecalibrationpacket.h"
+#include <libriccore/filtering/movingAvg.h>
 
 class NRCRemoteRedline : public NRCRemoteSensorBase<NRCRemoteRedline>
 {
@@ -16,12 +17,14 @@ class NRCRemoteRedline : public NRCRemoteSensorBase<NRCRemoteRedline>
         NRCRemoteRedline(RnpNetworkManager& networkmanager,
                     uint8_t monitorInd,
                     float redlineLimit,
-                    bool gradientmonitor
+                    bool gradientmonitor,
+                    float gradUpdateTime = 5e-3
                     ): 
             NRCRemoteSensorBase(networkmanager),
             m_monitorIndex(monitorInd),
             m_redlineLim(redlineLimit),
-            m_gradientmonitor(gradientmonitor)
+            m_gradientmonitor(gradientmonitor),
+            m_grad_update_time(gradUpdateTime)
             {};
 
         void calibrate_impl(packetptr_t packetptr);
@@ -37,6 +40,11 @@ class NRCRemoteRedline : public NRCRemoteSensorBase<NRCRemoteRedline>
         uint8_t m_monitorIndex;
         float m_redlineLim;
         float m_sensrvalue;
+        uint64_t m_lastSensrTime;
+        float m_lastSensrReading;
+        float m_grad = 0;
+        MovingAvg movingAvg = MovingAvg(2);
+        float m_grad_update_time;
         bool m_gradientmonitor;
 
 
