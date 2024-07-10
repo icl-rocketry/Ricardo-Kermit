@@ -13,6 +13,7 @@
 
 #include "Commands/commands.h"
 
+
 #include "States/idle.h"
 
 #include <cstdlib>
@@ -50,19 +51,18 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    VPT5(networkmanager, 7, ADC0, 2),
                    VPT6(networkmanager, 8, ADC0, 1),
                    VPT7(networkmanager, 9, ADC0, 0),
-                   RLMPT0(networkmanager,0,-2,0),
-                   RLMPT1(networkmanager,1,-2,0),
-                   RLMTC0(networkmanager,2,-273,0),
-                   RLMTC1(networkmanager,3,-273,0),
-                   RLMTC2(networkmanager,4,-273,0),
-                   RLMTC3(networkmanager,5,-273,0),
-                   RLMGPT0(networkmanager,6,0,1),
-                   RLMGPT1(networkmanager,7,0,1),
-                   RLMGTC0(networkmanager,8,0,1,100e-3),
-                   RLMGTC1(networkmanager,9,-2,1,100e-3),
-                   RLMGTC2(networkmanager,10,-2,1,100e-3),
-                   RLMGTC3(networkmanager,11,-2,1,100e-3),
-                   GLOBALMON(networkmanager),
+                   RLMPT0(networkmanager,0,30,0,0),
+                   RLMPT1(networkmanager,1,31,0,0),
+                   RLMTC0(networkmanager,2,32,0,0),
+                   RLMTC1(networkmanager,3,33,0,0),
+                   RLMTC2(networkmanager,4,34,0,0),
+                   RLMTC3(networkmanager,5,35,0,0),
+                   SOL0(networkmanager, 1, 10),
+                   SOL1(networkmanager, 1, 11),
+                   SOL2(networkmanager, 1, 12),
+                   SOL3(networkmanager, 1, 13),
+                   SERVO0(networkmanager, 2, 10),
+                   SERVO1(networkmanager, 2, 11),
                    primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(20),false,&systemstatus){};
 
 void System::systemSetup()
@@ -160,15 +160,7 @@ void System::serviceSetup()
     networkmanager.registerService(33, RLMTC1.getThisNetworkCallback());
     networkmanager.registerService(34, RLMTC2.getThisNetworkCallback());
     networkmanager.registerService(35, RLMTC3.getThisNetworkCallback());
-    networkmanager.registerService(36, RLMGPT0.getThisNetworkCallback());
-    networkmanager.registerService(37, RLMGPT1.getThisNetworkCallback());
-    networkmanager.registerService(38, RLMGTC0.getThisNetworkCallback());
-    networkmanager.registerService(39, RLMGTC1.getThisNetworkCallback());
-    networkmanager.registerService(40, RLMGTC2.getThisNetworkCallback());
-    networkmanager.registerService(41, RLMGTC3.getThisNetworkCallback());
 
-    //global monitor
-    networkmanager.registerService(42, GLOBALMON.getThisNetworkCallback());
 
 }
 
@@ -235,14 +227,6 @@ void System::remoteSensorUpdate()
     RLMTC2.update(TC2.getTemp());
     RLMTC3.update(TC3.getTemp());
 
-    RLMGPT0.update(CPT0.getValue());
-    RLMGPT1.update(CPT1.getValue());
-    RLMGTC0.update(TC0.getTemp());
-    RLMGTC1.update(TC1.getTemp());
-    RLMGTC2.update(TC2.getTemp());
-    RLMGTC3.update(TC3.getTemp());
-
-    GLOBALMON.update();
 }
 
 void System::logReadings()
@@ -306,34 +290,28 @@ void System::remoteSensorSetup(){
     VPT6.setup();
     VPT7.setup();
 
+    setvalves(RLMPT0);
+    setvalves(RLMPT1);
+    setvalves(RLMTC0);
+    setvalves(RLMTC1);
+    setvalves(RLMTC2);
+    setvalves(RLMTC3);
+    
     RLMPT0.setup();
     RLMPT1.setup();
     RLMTC0.setup();
     RLMTC1.setup();
     RLMTC2.setup();
     RLMTC3.setup();
-
-    RLMGPT0.setup();
-    RLMGPT1.setup();
-    RLMGTC0.setup();
-    RLMGTC1.setup();
-    RLMGTC2.setup();
-    RLMGTC3.setup();
-
-    globalMonSetup();
 }
 
-void System::globalMonSetup(){
-    GLOBALMON.redlinesVect.push_back(RLMPT0);
-    GLOBALMON.redlinesVect.push_back(RLMPT1);
-    GLOBALMON.redlinesVect.push_back(RLMTC0);
-    GLOBALMON.redlinesVect.push_back(RLMTC1);
-    GLOBALMON.redlinesVect.push_back(RLMTC2);
-    GLOBALMON.redlinesVect.push_back(RLMTC3);
-    GLOBALMON.redlinesVect.push_back(RLMGPT0);
-    GLOBALMON.redlinesVect.push_back(RLMGPT1);
-    GLOBALMON.redlinesVect.push_back(RLMGTC0);
-    GLOBALMON.redlinesVect.push_back(RLMGTC1);
-    GLOBALMON.redlinesVect.push_back(RLMGTC2);
-    GLOBALMON.redlinesVect.push_back(RLMGTC3);
+void System::setvalves(NRCRemoteRedline& obj){
+    obj.addvalve(SOL0);
+    obj.addvalve(SOL1);
+    obj.addvalve(SOL2);
+    obj.addvalve(SOL3);
+
+    obj.addvalve(SERVO0);
+    obj.addvalve(SERVO1);
+
 }

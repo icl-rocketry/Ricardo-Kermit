@@ -11,7 +11,7 @@
 #include "Sensors/MAX31856.h"
 #include "Sensors/ADS131M06.h"
 #include "nrccomponents/nrcremoteloadcell.h"
-#include "nrccomponents/nrcremoteglobalmonitor.h"
+#include "nrccomponents/valvehelper.h"
 #include "nrccomponents/nrcremoteredline.h"
 #include "nrccomponents/nrcremoteptap.h"
 
@@ -70,19 +70,17 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         NRCRemoteRedline RLMTC2;
         NRCRemoteRedline RLMTC3;
 
-        //gradient monitors
-        NRCRemoteRedline RLMGPT0;
-        NRCRemoteRedline RLMGPT1;
+        //valves to operate
+        valvehelper SOL0;
+        valvehelper SOL1;
+        valvehelper SOL2;
+        valvehelper SOL3;
 
-        NRCRemoteRedline RLMGTC0;
-        NRCRemoteRedline RLMGTC1;
-        NRCRemoteRedline RLMGTC2;
-        NRCRemoteRedline RLMGTC3;
-
-        //global monitor. This is what the other boards will be polling.
-        NRCRemoteGlobalMonitor GLOBALMON;
+        valvehelper SERVO0;
+        valvehelper SERVO1;
 
         SdFat_Store primarysd;
+
 
     private:
 
@@ -93,7 +91,7 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         void initializeLoggers();
         void logReadings();
         void remoteSensorSetup();
-        void globalMonSetup();
+        void setvalves(NRCRemoteRedline& obj);
 
         const std::string log_path = "/Logs";
 
