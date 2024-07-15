@@ -49,7 +49,12 @@ class NRCRemoteRedline : public NRCRemoteSensorBase<NRCRemoteRedline>
         void extendedCommandHandler_impl(const NRCPacket::NRC_COMMAND_ID commandID,packetptr_t packetptr){
             
             SimpleCommandPacket command_packet(*packetptr);
-            setValveAction(static_cast<uint8_t>(commandID),command_packet.arg);
+            uint8_t cmd = static_cast<uint8_t>(commandID);
+            if(cmd - 10 < 0){
+                RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("Invalid valve target!");
+                return;
+            }
+            setValveAction(cmd-10,command_packet.arg);
         }
      
         

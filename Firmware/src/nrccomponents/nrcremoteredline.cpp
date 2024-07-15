@@ -47,7 +47,8 @@ void NRCRemoteRedline::calibrate_impl(packetptr_t packetptr)
 
     _NVS.saveBytes(serialisedvect);
 
-    m_valueredlineLim = calibrate_comm.redline;
+    m_valueredlineLim = calibrate_comm.reading_redline;
+    m_gradredlineLim = calibrate_comm.gradient_redline;
 }
 
 void NRCRemoteRedline::loadCalibration()
@@ -67,7 +68,8 @@ void NRCRemoteRedline::loadCalibration()
     RedlineCalibrationPacket calibpacket;
     calibpacket.deserializeBody(calibSerialised);
 
-    m_valueredlineLim = calibpacket.redline;
+    m_valueredlineLim = calibpacket.reading_redline;
+    m_gradredlineLim = calibpacket.gradient_redline;
 
     Preferences pref;
     pref.begin(NVSName.c_str());

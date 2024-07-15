@@ -12,7 +12,8 @@ class RedlineCalibrationPacket : public RnpPacket{
         {
             auto ret = RnpSerializer(
                 &RedlineCalibrationPacket::command,
-                &RedlineCalibrationPacket::redline
+                &RedlineCalibrationPacket::reading_redline,
+                &RedlineCalibrationPacket::gradient_redline
             );
 
             return ret;
@@ -38,7 +39,8 @@ class RedlineCalibrationPacket : public RnpPacket{
         void serialize(std::vector<uint8_t>& buf) override;
 
         uint8_t command;
-        float redline;
+        float reading_redline;
+        float gradient_redline;
 
         static constexpr size_t size(){
             return getSerializer().member_size();
