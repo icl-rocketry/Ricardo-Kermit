@@ -2036,7 +2036,7 @@
 			(uuid "6802d67a-ee6e-45f4-b9c7-e19435a0f2f8")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
 					(reference "#PWR031")
 					(unit 1)
@@ -2103,7 +2103,7 @@
 			(uuid "bff175d8-2e40-4e60-8883-cfa3ac53a5f9")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
 					(reference "R12")
 					(unit 1)
@@ -2170,7 +2170,7 @@
 			(uuid "03eee002-78af-410b-bdc3-31147203b477")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
 					(reference "R11")
 					(unit 1)
@@ -2235,7 +2235,7 @@
 			(uuid "f6e4e2ae-07f3-455f-b6fc-3773751223c6")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
 					(reference "#PWR029")
 					(unit 1)
@@ -2347,7 +2347,7 @@
 			(uuid "7b836b8f-e2f7-4a02-aaea-5f5f23bb6c5e")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
 					(reference "J2")
 					(unit 1)
@@ -2412,7 +2412,7 @@
 			(uuid "5adfa564-011e-4a12-8859-deffc2a0e089")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
 					(reference "#PWR032")
 					(unit 1)
@@ -2488,7 +2488,7 @@
 			(uuid "e99c92ed-a3d1-4b5e-9be9-ad8c1c3e2068")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
 					(reference "D2")
 					(unit 1)
@@ -2554,7 +2554,7 @@
 			(uuid "9aa99eb0-7cee-4396-b81d-a9612075f311")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
 					(reference "#PWR030")
 					(unit 1)
@@ -2620,7 +2620,7 @@
 			(uuid "7d1b7618-f8de-4b3d-aa8b-046586bd73a9")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
 					(reference "TP1")
 					(unit 1)
@@ -2686,7 +2686,7 @@
 			(uuid "0822c170-c52f-4a24-9f2e-dc0082caf2a3")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
 					(reference "TP2")
 					(unit 1)
@@ -2753,7 +2753,7 @@
 			(uuid "cfddbd95-bad4-4676-b489-0166e48bd76e")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
 					(reference "USBLED1")
 					(unit 1)
@@ -2820,7 +2820,7 @@
 			(uuid "658fe9ab-a4e5-4dbe-b15c-2b71b08637ef")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
 					(reference "R13")
 					(unit 1)
@@ -2886,7 +2886,7 @@
 			(uuid "7d7486ae-aeaa-4bbe-ab12-2142f8812c98")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
 					(reference "#PWR034")
 					(unit 1)
@@ -2952,7 +2952,7 @@
 			(uuid "af236b67-2378-48e2-b559-027c97a398ae")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
 					(reference "#PWR033")
 					(unit 1)

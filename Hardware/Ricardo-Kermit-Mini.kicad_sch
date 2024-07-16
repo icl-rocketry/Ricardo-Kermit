@@ -1091,108 +1091,6 @@
 				)
 			)
 		)
-		(symbol "Connector:TestPoint"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0.762) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "TP"
-				(at 0 6.858 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "TestPoint"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 5.08 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 5.08 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "test point"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "test point tp"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "Pin* Test*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "TestPoint_0_1"
-				(circle
-					(center 0 3.302)
-					(radius 0.762)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TestPoint_1_1"
-				(pin passive line
-					(at 0 0 90)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "Device:C_Small"
 			(pin_numbers hide)
 			(pin_names
@@ -3235,126 +3133,6 @@
 				)
 			)
 		)
-		(symbol "power:+12V"
-			(power)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "+12V"
-				(at 0 3.556 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"+12V\""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "power-flag"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "+12V_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "+12V_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0) hide
-					(name "+12V"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "power:+3.3V"
 			(power)
 			(pin_names
@@ -3867,8 +3645,24 @@
 		(uuid "f130ddb0-0916-407d-9728-6ff1a5a57806")
 	)
 	(no_connect
+		(at 69.85 120.65)
+		(uuid "2246eda2-41d4-44ee-89a7-6c3f63b64cb4")
+	)
+	(no_connect
+		(at 135.89 110.49)
+		(uuid "22b7634a-5973-446a-8a57-b218ba0653b2")
+	)
+	(no_connect
+		(at 135.89 105.41)
+		(uuid "328e7360-9db2-46b1-ba98-a4b0fdfef1dd")
+	)
+	(no_connect
 		(at 207.01 139.7)
 		(uuid "3608b55e-d9e6-4e38-bae2-af3572d5f14c")
+	)
+	(no_connect
+		(at 69.85 95.25)
+		(uuid "4af522f5-feee-4623-b462-79d48c45f1e4")
 	)
 	(no_connect
 		(at 69.85 77.47)
@@ -3877,6 +3671,30 @@
 	(no_connect
 		(at 207.01 123.19)
 		(uuid "8d78f30b-87b9-4ae9-bbb8-cd8699792bfe")
+	)
+	(no_connect
+		(at 69.85 102.87)
+		(uuid "8d7904d8-23ca-4766-8dc0-c691c8085b3e")
+	)
+	(no_connect
+		(at 135.89 82.55)
+		(uuid "95bae103-31ea-4d76-a984-77b41bdac87a")
+	)
+	(no_connect
+		(at 69.85 74.93)
+		(uuid "9c6772f1-48d3-4c2f-9264-bd6da4b3ba99")
+	)
+	(no_connect
+		(at 135.89 80.01)
+		(uuid "a0908cbd-e579-4678-a5e1-1428c2968958")
+	)
+	(no_connect
+		(at 135.89 74.93)
+		(uuid "af8b586e-20b2-4d8d-8321-eeb80df15203")
+	)
+	(no_connect
+		(at 135.89 72.39)
+		(uuid "afc6e3af-258a-4477-9b7b-f810145128f9")
 	)
 	(no_connect
 		(at 69.85 62.23)
@@ -3891,12 +3709,40 @@
 		(uuid "bb2860e8-0c95-4597-b037-1350438e735b")
 	)
 	(no_connect
+		(at 135.89 128.27)
+		(uuid "d129a596-47c3-458c-9bba-c52d512e3848")
+	)
+	(no_connect
 		(at 135.89 123.19)
 		(uuid "d53bdb65-9586-496e-89ff-e2edf8bb8d22")
 	)
 	(no_connect
+		(at 69.85 105.41)
+		(uuid "d59e3380-b57a-4b72-925b-8c690c3aea08")
+	)
+	(no_connect
+		(at 135.89 77.47)
+		(uuid "d8b5f741-4b9d-44d7-9a09-9b7d409908d5")
+	)
+	(no_connect
 		(at 207.01 137.16)
 		(uuid "e86e683d-a72e-4bb4-b80a-a1a660013936")
+	)
+	(no_connect
+		(at 135.89 130.81)
+		(uuid "e99ec90c-426a-4743-8308-ac15c384a2d4")
+	)
+	(no_connect
+		(at 69.85 72.39)
+		(uuid "f53ab739-4a22-4eff-824e-208699726690")
+	)
+	(no_connect
+		(at 69.85 118.11)
+		(uuid "f8d6a53b-656e-4e93-a023-55e0b679bddd")
+	)
+	(no_connect
+		(at 135.89 115.57)
+		(uuid "f945b334-8818-4fcb-a434-fe3c14f55223")
 	)
 	(wire
 		(pts
@@ -5153,7 +4999,7 @@
 		(uuid "bacbcd94-a4f0-4fb4-8934-fa2c66cdf843")
 	)
 	(label "ADS_CS0"
-		(at 135.89 105.41 0)
+		(at 135.89 102.87 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5164,7 +5010,7 @@
 		(uuid "005c2002-7066-4bf6-aa36-8023bf620588")
 	)
 	(label "GPIO9"
-		(at 252.73 58.42 180)
+		(at 269.24 60.96 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5208,7 +5054,7 @@
 		(uuid "1a1071e2-a1db-4dab-aac1-903f32047457")
 	)
 	(label "CS0"
-		(at 66.04 97.79 0)
+		(at 66.04 100.33 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5272,17 +5118,6 @@
 			(justify left bottom)
 		)
 		(uuid "3d8e2435-a65d-4628-866c-8590f9d3a638")
-	)
-	(label "RXD"
-		(at 29.21 43.18 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "3f00994b-99c9-4ca0-835d-a6fc3df540f3")
 	)
 	(label "GPIO4"
 		(at 69.85 80.01 180)
@@ -5427,17 +5262,6 @@
 		)
 		(uuid "64ca32d9-a61b-44e9-be9a-3dde07caf7d5")
 	)
-	(label "TXD"
-		(at 29.21 38.1 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6732e03e-da7a-48a0-a557-ffb41e062f91")
-	)
 	(label "HSPI_MISO"
 		(at 223.52 82.55 0)
 		(fields_autoplaced yes)
@@ -5450,7 +5274,7 @@
 		(uuid "6c2162c3-2da6-4e51-adc6-33875328475e")
 	)
 	(label "CS1"
-		(at 66.04 100.33 0)
+		(at 66.04 97.79 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5658,6 +5482,17 @@
 		)
 		(uuid "ac2a561d-a3c5-466e-8c9e-77133cc9bf7b")
 	)
+	(label "CAN_RX"
+		(at 69.85 123.19 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "b46fe232-d64a-4f3c-b92e-939449a84426")
+	)
 	(label "GPIO7"
 		(at 269.24 55.88 180)
 		(fields_autoplaced yes)
@@ -5758,7 +5593,7 @@
 		(uuid "de552ae9-cde6-4643-8cc7-9de2579dadae")
 	)
 	(label "GPIO8"
-		(at 252.73 55.88 180)
+		(at 269.24 58.42 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5856,6 +5691,17 @@
 		)
 		(uuid "f7447e92-4293-41c4-be3f-69b30aad1f17")
 	)
+	(label "CAN_TX"
+		(at 69.85 125.73 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f8ec407b-e840-4a8d-a010-fadbb58714f5")
+	)
 	(label "HSPI_SCLK"
 		(at 179.07 137.16 0)
 		(fields_autoplaced yes)
@@ -5866,6 +5712,50 @@
 			(justify left bottom)
 		)
 		(uuid "f9276685-91af-4414-ba03-772c65896930")
+	)
+	(global_label "DEP"
+		(shape input)
+		(at 120.65 25.4 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1a9ae558-72cc-4c8c-b3c6-90dd3cc132e9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 120.65 31.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "DEP"
+		(shape input)
+		(at 73.66 26.67 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a420934e-26ef-4ff6-8027-a7bbefa22b43")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 73.66 20.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
 	)
 	(global_label "RBUS_uC_V"
 		(shape input)
@@ -5958,7 +5848,7 @@
 			(uuid "820cb463-e699-492c-9935-f79e4de14158")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR04")
 					(unit 1)
@@ -6027,7 +5917,7 @@
 			(uuid "a9353e24-f820-4a6e-a64d-9c6a28208987")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "R1")
 					(unit 1)
@@ -6094,7 +5984,7 @@
 			(uuid "98705d3e-8978-4b42-8258-e009c7790fe7")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "C2")
 					(unit 1)
@@ -6159,7 +6049,7 @@
 			(uuid "c5287179-b3b6-428e-a484-e878e44f3199")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR02")
 					(unit 1)
@@ -6224,7 +6114,7 @@
 			(uuid "963e6348-5e97-4a50-8d0e-37eb9c0ee339")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR08")
 					(unit 1)
@@ -6293,7 +6183,7 @@
 			(uuid "d3c38e12-00a4-4365-9e7c-23401893696e")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "R3")
 					(unit 1)
@@ -6358,7 +6248,7 @@
 			(uuid "1bd480d0-4658-43ef-ad96-0e32013f3a20")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR07")
 					(unit 1)
@@ -6425,7 +6315,7 @@
 			(uuid "1b28e93e-476a-4063-bb46-463c0836ac41")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "C8")
 					(unit 1)
@@ -6490,7 +6380,7 @@
 			(uuid "96a17626-f9ee-4aee-8dac-6fab93984c00")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR01")
 					(unit 1)
@@ -6557,7 +6447,7 @@
 			(uuid "6e196713-3ac2-4a58-940c-b6dfe09cfa17")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "C3")
 					(unit 1)
@@ -6624,7 +6514,7 @@
 			(uuid "2f584ba0-8b96-4568-a433-7e28372b5c73")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "TXLED1")
 					(unit 1)
@@ -6691,7 +6581,7 @@
 			(uuid "57db95f6-ac2d-44cf-a7f0-178e0f4e4971")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "R2")
 					(unit 1)
@@ -6756,7 +6646,7 @@
 			(uuid "91a4378c-9ae3-4032-a50d-65b53c7dab97")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR012")
 					(unit 1)
@@ -6821,7 +6711,7 @@
 			(uuid "aef4612b-be87-494d-9080-7ea71d7f25b4")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR06")
 					(unit 1)
@@ -6888,7 +6778,7 @@
 			(uuid "f20b6a3e-ae65-4447-a086-d14e20656445")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "3V3LED1")
 					(unit 1)
@@ -6955,7 +6845,7 @@
 			(uuid "e6a6c7d1-f72a-4ae0-89d1-d5aa287a3276")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "R4")
 					(unit 1)
@@ -7024,7 +6914,7 @@
 			(uuid "b319df63-5f02-4942-ae11-5cd569153740")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "ENJUMPER1")
 					(unit 1)
@@ -7093,7 +6983,7 @@
 			(uuid "f8a46177-c207-45e1-aa8c-9ee19c95df87")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "BOOTJUMPER1")
 					(unit 1)
@@ -7159,7 +7049,7 @@
 			(uuid "5ed803be-5c06-41ff-b7a1-f96acd19d7e9")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR018")
 					(unit 1)
@@ -7238,7 +7128,7 @@
 			(uuid "fe7a5a10-5c4d-469c-9a98-6ec80008f4da")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "J1")
 					(unit 1)
@@ -7305,7 +7195,7 @@
 			(uuid "27a26f87-3ba7-47e5-ad37-d7a8feb63205")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "12VLED1")
 					(unit 1)
@@ -7372,75 +7262,9 @@
 			(uuid "b7b912dc-1955-41be-ac01-54cde64e6251")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "R7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 29.21 38.1 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "0967eaf7-3e4f-4a2f-9d90-7cb2691f23b6")
-		(property "Reference" "TP9"
-			(at 24.4348 39.2684 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 24.4348 36.957 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 29.21 33.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 29.21 33.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 29.21 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d7a258e2-d08c-4fd4-b61c-45edb53abc36")
-		)
-		(instances
-			(project "RicardoTemplate"
-				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
-					(reference "TP9")
 					(unit 1)
 				)
 			)
@@ -7503,7 +7327,7 @@
 			(uuid "e20d252a-cebd-4978-8aa9-4a763d3eec7f")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR021")
 					(unit 1)
@@ -7568,7 +7392,7 @@
 			(uuid "da27637c-6bb0-40e5-9924-ef000585a100")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR05")
 					(unit 1)
@@ -7638,7 +7462,7 @@
 			(uuid "6b8302a0-caad-4941-bca2-c4ebb3c4ad4a")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "C9")
 					(unit 1)
@@ -7703,7 +7527,7 @@
 			(uuid "d6ca7ed7-ab62-4373-9eed-aa57c66725e8")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR010")
 					(unit 1)
@@ -7769,7 +7593,7 @@
 			(uuid "c919c225-7880-4e32-ac69-d537c269db4f")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "H2")
 					(unit 1)
@@ -7906,7 +7730,7 @@
 			(uuid "eb41d0df-f8dd-45eb-80d2-9c9ffde399f6")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "C7")
 					(unit 1)
@@ -7982,71 +7806,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+12V")
-		(at 73.66 26.67 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "45f3e55c-5ee7-42ae-bc02-6a829654a22a")
-		(property "Reference" "#PWR015"
-			(at 73.66 30.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 73.66 21.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 73.66 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 73.66 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 73.66 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b08142d3-7ff8-4c5c-b42b-c785d3dc28ed")
-		)
-		(instances
-			(project "RicardoTemplate"
-				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
-					(reference "#PWR015")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Mechanical:MountingHole_Pad")
 		(at 278.13 30.48 0)
 		(unit 1)
@@ -8104,7 +7863,7 @@
 			(uuid "74fe3bfb-5751-4c2b-b371-b92a1699ccee")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "H4")
 					(unit 1)
@@ -8169,7 +7928,7 @@
 			(uuid "032121d6-13fe-407e-b1d5-09ad6e574252")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR014")
 					(unit 1)
@@ -8265,71 +8024,6 @@
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "J8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 120.65 25.4 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "53d816b2-077d-4de8-9c2d-91adbcde7c2a")
-		(property "Reference" "#PWR017"
-			(at 120.65 21.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 120.65 31.75 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 120.65 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 120.65 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 120.65 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a86d66ea-d900-49d0-a0f4-cf5dc54600a2")
-		)
-		(instances
-			(project "RicardoTemplate"
-				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
-					(reference "#PWR017")
 					(unit 1)
 				)
 			)
@@ -8462,7 +8156,7 @@
 			(uuid "94ec8071-8e61-494b-b4f0-a2990e4d6e0a")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "C1")
 					(unit 1)
@@ -8529,7 +8223,7 @@
 			(uuid "60857d83-6c1d-44a5-abd3-9cbcc25900e5")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "C10")
 					(unit 1)
@@ -8598,7 +8292,7 @@
 			(uuid "9e36900f-4367-48b6-9df9-6bc742156a8e")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "C14")
 					(unit 1)
@@ -8663,7 +8357,7 @@
 			(uuid "3849d66d-40e3-4def-aad0-9183d2d5c314")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR022")
 					(unit 1)
@@ -8733,7 +8427,7 @@
 			(uuid "1d0b2b7c-f371-4553-b3ad-8263ac81b9f7")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "C5")
 					(unit 1)
@@ -8865,7 +8559,7 @@
 			(uuid "f97db71f-d602-44b6-b2ff-26f95f368026")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR011")
 					(unit 1)
@@ -8997,7 +8691,7 @@
 			(uuid "e057ca2f-1b75-420b-8935-3a5f72a1ab12")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "H1")
 					(unit 1)
@@ -9064,7 +8758,7 @@
 			(uuid "d430cb9e-64ce-44de-bddd-01ebc6600cec")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "C11")
 					(unit 1)
@@ -9133,7 +8827,7 @@
 			(uuid "5275bad5-f328-40ee-b2a8-6f7519a510b2")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "C13")
 					(unit 1)
@@ -9198,7 +8892,7 @@
 			(uuid "7af70fed-48b9-435f-bc2b-0ff09d16ca28")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR020")
 					(unit 1)
@@ -9265,7 +8959,7 @@
 			(uuid "248dad01-eac3-4b17-94a4-8a89355bd01e")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "L2")
 					(unit 1)
@@ -9330,141 +9024,9 @@
 			(uuid "abb3743c-9d85-41bb-adb8-235a02ea2b78")
 		)
 		(instances
-			(project "RicardoTemplate"
-				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
-					(reference "#PWR013")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 29.21 43.18 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b79adfd9-dbae-480d-ab5a-2a9c412479a2")
-		(property "Reference" "TP10"
-			(at 24.4348 44.3484 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 24.4348 42.037 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 29.21 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 29.21 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 29.21 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "736d38d1-7a62-4576-8b89-3ca52ddf9d40")
-		)
-		(instances
-			(project "RicardoTemplate"
-				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
-					(reference "TP10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 66.04 97.79 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "c50e41dd-a416-439d-9bd1-eccafc1c20a7")
-		(property "Reference" "TP_CS1"
-			(at 61.2648 98.9584 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 55.88 97.79 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 66.04 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 66.04 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 66.04 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d400f6da-ffee-4aec-8664-ad64b930e9c2")
-		)
-		(instances
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
-					(reference "TP_CS1")
+					(reference "#PWR013")
 					(unit 1)
 				)
 			)
@@ -9530,7 +9092,7 @@
 			(uuid "cc95fe4e-01a7-4822-b596-b663cefcaf88")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "L1")
 					(unit 1)
@@ -9595,7 +9157,7 @@
 			(uuid "8cb0cb25-4761-4336-9d72-c84e24dfcf34")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR03")
 					(unit 1)
@@ -9828,7 +9390,7 @@
 			(uuid "0814a376-397e-443b-8d20-7c22d4ee4dde")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "U1")
 					(unit 1)
@@ -9894,7 +9456,7 @@
 			(uuid "47776f9f-a724-4d92-b93e-435f4140fa11")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "H3")
 					(unit 1)
@@ -10026,7 +9588,7 @@
 			(uuid "1e2b55bb-e350-4363-bf19-e50ddc9809a3")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR023")
 					(unit 1)
@@ -10099,7 +9661,7 @@
 			(uuid "2dae3d9a-4853-403b-ad0f-6957b87d6073")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "Y1")
 					(unit 1)
@@ -10168,7 +9730,7 @@
 			(uuid "94f71ba0-8a09-445a-933b-c97acb5ecf21")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "C4")
 					(unit 1)
@@ -10233,7 +9795,7 @@
 			(uuid "b0239597-cd62-4448-8c4c-8645b779d407")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR019")
 					(unit 1)
@@ -10300,75 +9862,9 @@
 			(uuid "e7cd0c88-8e84-4eeb-8a00-0697bb9e4b4d")
 		)
 		(instances
-			(project "RicardoTemplate"
-				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
-					(reference "R6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 66.04 100.33 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "f6433022-8129-4ea1-9db6-e2412ebf0efe")
-		(property "Reference" "TP_CS2"
-			(at 61.2648 101.4984 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 55.88 100.33 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 66.04 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 66.04 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 66.04 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4dbbbfb4-7d91-4464-926c-0f8cb19f6865")
-		)
-		(instances
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
-					(reference "TP_CS2")
+					(reference "R6")
 					(unit 1)
 				)
 			)
@@ -10436,7 +9932,7 @@
 			(uuid "e5993979-a3f8-40b5-a761-7ce3bba866f2")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "C6")
 					(unit 1)

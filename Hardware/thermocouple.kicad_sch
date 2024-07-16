@@ -970,11 +970,11 @@
 				)
 			)
 		)
-		(symbol "analogue-cache:+3.3V"
+		(symbol "power:+3V3"
 			(power)
+			(pin_numbers hide)
 			(pin_names
-				(offset 0)
-			)
+				(offset 0) hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -987,7 +987,7 @@
 					(hide yes)
 				)
 			)
-			(property "Value" "+3.3V"
+			(property "Value" "+3V3"
 				(at 0 3.556 0)
 				(effects
 					(font
@@ -1013,7 +1013,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" ""
+			(property "Description" "Power symbol creates a global label with name \"+3V3\""
 				(at 0 0 0)
 				(effects
 					(font
@@ -1022,7 +1022,16 @@
 					(hide yes)
 				)
 			)
-			(symbol "+3.3V_0_1"
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "+3V3_0_1"
 				(polyline
 					(pts
 						(xy -0.762 1.27) (xy 0 2.54)
@@ -1060,11 +1069,11 @@
 					)
 				)
 			)
-			(symbol "+3.3V_1_1"
+			(symbol "+3V3_1_1"
 				(pin power_in line
 					(at 0 0 90)
-					(length 0) hide
-					(name "+3V3"
+					(length 0)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1698,75 +1707,6 @@
 				)
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/266223ae-5f75-432e-9940-fddcb4dab7c9"
 					(reference "#PWR0120")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "analogue-cache:+3.3V")
-		(at 92.71 50.8 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00006199a53a")
-		(property "Reference" "#PWR0112"
-			(at 92.71 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 93.091 46.4058 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 92.71 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 92.71 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 92.71 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2ff88dc4-d890-4e26-a4d4-3636651d3afd")
-		)
-		(instances
-			(project "Ricardo-Kermit-Mini"
-				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/09056f23-cb8d-477a-be53-e1594f20e2a0"
-					(reference "#PWR0112")
-					(unit 1)
-				)
-				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/266223ae-5f75-432e-9940-fddcb4dab7c9"
-					(reference "#PWR0119")
 					(unit 1)
 				)
 			)
@@ -2554,15 +2494,16 @@
 		)
 	)
 	(symbol
-		(lib_id "analogue-cache:+3.3V")
+		(lib_id "power:+3V3")
 		(at 97.79 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "54013431-9a65-46d0-9a9d-364c694a3d27")
-		(property "Reference" "#PWR0114"
+		(fields_autoplaced yes)
+		(uuid "035acf3f-9e33-4324-9343-3d9cd89cf648")
+		(property "Reference" "#PWR063"
 			(at 97.79 54.61 0)
 			(effects
 				(font
@@ -2571,8 +2512,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3.3V"
-			(at 98.171 46.4058 0)
+		(property "Value" "+3V3"
+			(at 97.79 46.6669 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2597,7 +2538,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
 			(at 97.79 50.8 0)
 			(effects
 				(font
@@ -2607,16 +2548,16 @@
 			)
 		)
 		(pin "1"
-			(uuid "b9d913d3-0215-46fb-89f7-b67c8d574008")
+			(uuid "de8f0b45-aa13-4ab9-a787-0a470802b37a")
 		)
 		(instances
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/09056f23-cb8d-477a-be53-e1594f20e2a0"
-					(reference "#PWR0114")
+					(reference "#PWR063")
 					(unit 1)
 				)
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/266223ae-5f75-432e-9940-fddcb4dab7c9"
-					(reference "#PWR0121")
+					(reference "#PWR076")
 					(unit 1)
 				)
 			)
@@ -2688,6 +2629,76 @@
 				)
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/266223ae-5f75-432e-9940-fddcb4dab7c9"
 					(reference "C62")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 92.71 50.8 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7633fc29-a669-49bd-a2ef-5426caa0eb78")
+		(property "Reference" "#PWR017"
+			(at 92.71 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 92.71 46.6669 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 92.71 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 92.71 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 92.71 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d435c5f4-7332-42de-99d4-066a101eb975")
+		)
+		(instances
+			(project "Ricardo-Kermit-Mini"
+				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/09056f23-cb8d-477a-be53-e1594f20e2a0"
+					(reference "#PWR017")
+					(unit 1)
+				)
+				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/266223ae-5f75-432e-9940-fddcb4dab7c9"
+					(reference "#PWR058")
 					(unit 1)
 				)
 			)
