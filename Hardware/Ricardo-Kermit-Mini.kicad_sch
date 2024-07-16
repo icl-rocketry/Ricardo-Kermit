@@ -3483,6 +3483,12 @@
 		(uuid "0753a347-97d9-4cb7-b81c-f57d156ee03d")
 	)
 	(junction
+		(at 39.37 38.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "08047f8d-57bb-4b77-aa7d-ac672e2ce64a")
+	)
+	(junction
 		(at 53.34 127)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3756,6 +3762,16 @@
 	)
 	(wire
 		(pts
+			(xy 261.874 51.816) (xy 261.874 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0387b1b6-3ac0-4225-a73f-added8e43070")
+	)
+	(wire
+		(pts
 			(xy 30.48 191.77) (xy 30.48 190.5)
 		)
 		(stroke
@@ -3813,6 +3829,16 @@
 			(type default)
 		)
 		(uuid "0e807ccc-cc79-42a4-806d-495a604e9066")
+	)
+	(wire
+		(pts
+			(xy 261.874 53.34) (xy 269.24 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ee44583-2a08-4fc8-aad0-2b6afbd67f6d")
 	)
 	(wire
 		(pts
@@ -4204,6 +4230,16 @@
 		)
 		(uuid "5ede4c5b-b589-4517-a4f5-02d54b6b84c7")
 	)
+	(wire
+		(pts
+			(xy 27.94 50.8) (xy 30.48 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "61e6d7a0-97b3-4d83-a978-cf31d74d31da")
+	)
 	(polyline
 		(pts
 			(xy 12.7 12.7) (xy 175.26 12.7)
@@ -4216,6 +4252,26 @@
 	)
 	(wire
 		(pts
+			(xy 262.128 61.214) (xy 262.128 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65e2f9f4-4990-4e90-848f-f02811f88f79")
+	)
+	(wire
+		(pts
+			(xy 269.24 63.5) (xy 262.128 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "67519d9f-42f3-42f5-98cd-9ec2c182b4ad")
+	)
+	(wire
+		(pts
 			(xy 44.45 135.89) (xy 46.99 135.89)
 		)
 		(stroke
@@ -4223,6 +4279,16 @@
 			(type default)
 		)
 		(uuid "6a46ab16-f5fd-4446-b3e9-c38f81123df3")
+	)
+	(wire
+		(pts
+			(xy 39.37 21.59) (xy 39.37 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6cf4c677-8dd0-4746-a0d6-722a22050983")
 	)
 	(wire
 		(pts
@@ -4316,6 +4382,16 @@
 	)
 	(wire
 		(pts
+			(xy 15.24 50.8) (xy 22.86 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83e429fe-3368-4573-b8a7-de676948c41f")
+	)
+	(wire
+		(pts
 			(xy 278.13 33.02) (xy 273.05 33.02)
 		)
 		(stroke
@@ -4323,6 +4399,16 @@
 			(type default)
 		)
 		(uuid "848724ee-1b9c-4104-83c6-94f25177f0bb")
+	)
+	(wire
+		(pts
+			(xy 39.37 38.1) (xy 35.56 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8633ab4a-288e-416b-bc76-9034f51f6aa5")
 	)
 	(wire
 		(pts
@@ -4546,6 +4632,26 @@
 	)
 	(wire
 		(pts
+			(xy 15.24 38.1) (xy 22.86 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ab206588-4eea-4fd9-ab3d-81d099e622f0")
+	)
+	(wire
+		(pts
+			(xy 27.94 38.1) (xy 30.48 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b421e280-0363-4891-9ec8-241cfb695a72")
+	)
+	(wire
+		(pts
 			(xy 59.69 67.31) (xy 69.85 67.31)
 		)
 		(stroke
@@ -4553,6 +4659,16 @@
 			(type default)
 		)
 		(uuid "b631e025-a8e2-4a19-bb6a-e279684a284c")
+	)
+	(wire
+		(pts
+			(xy 39.37 38.1) (xy 39.37 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b6ce4b54-96a1-4d2e-b31f-ffaadb21ae10")
 	)
 	(wire
 		(pts
@@ -4953,6 +5069,16 @@
 			(type default)
 		)
 		(uuid "fe57d6c6-6a58-4e27-ae49-abe5c6360092")
+	)
+	(wire
+		(pts
+			(xy 39.37 50.8) (xy 35.56 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fea8001f-721d-4b79-a335-61a216bfb5ac")
 	)
 	(text "Controls bootmode, don't use.\n"
 		(exclude_from_sim no)
@@ -5537,6 +5663,17 @@
 		)
 		(uuid "bf482801-739d-4fa2-877c-e72f08f9d7d6")
 	)
+	(label "CAN_RX"
+		(at 15.24 50.8 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d3cef56b-325f-40da-80ac-e01b0a37f577")
+	)
 	(label "HSPI_MISO"
 		(at 179.07 125.73 0)
 		(fields_autoplaced yes)
@@ -5547,6 +5684,17 @@
 			(justify left bottom)
 		)
 		(uuid "d4988faf-0ace-4299-95f3-eefbfd35f9d9")
+	)
+	(label "CAN_TX"
+		(at 15.24 38.1 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d609c99c-d4c9-43c6-8c65-d4080b782f5a")
 	)
 	(label "CAN_RX"
 		(at 115.57 182.88 0)
@@ -5778,18 +5926,6 @@
 				(hide yes)
 			)
 		)
-	)
-	(hierarchical_label "5V"
-		(shape output)
-		(at 269.24 63.5 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "0cd72d69-bb5c-4c5d-82f0-d0c802cba07a")
 	)
 	(symbol
 		(lib_id "power:+3.3V")
@@ -8030,6 +8166,73 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:LED_Small")
+		(at 25.4 38.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "510be93c-aa5d-463c-98d8-126546a7445d")
+		(property "Reference" "CANTXLED1"
+			(at 25.4 43.307 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "CANTXLED"
+			(at 25.4 40.9956 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0402_1005Metric"
+			(at 25.4 38.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 25.4 38.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 25.4 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "25f9e358-db60-4fea-a9ea-66d383524365")
+		)
+		(pin "2"
+			(uuid "8feecab7-54c8-4ecc-86bd-a7902956c53b")
+		)
+		(instances
+			(project "Ricardo-Kermit-Mini"
+				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
+					(reference "CANTXLED1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+5V")
 		(at 222.25 105.41 0)
 		(unit 1)
@@ -8568,16 +8771,32 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3.3V")
-		(at 269.24 53.34 90)
+		(lib_id "Device:LED_Small")
+		(at 25.4 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "94855f29-2ea1-4285-8eea-1752a0e16bbe")
-		(property "Reference" "#PWR0124"
-			(at 273.05 53.34 0)
+		(uuid "82559cd8-7a74-45b5-91e9-09ba951a7ca4")
+		(property "Reference" "CANRXLED1"
+			(at 25.4 56.007 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "CANRXLED"
+			(at 25.4 53.6956 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0402_1005Metric"
+			(at 25.4 50.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8585,26 +8804,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 266.065 53.7738 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 269.24 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 269.24 53.34 0)
+		(property "Datasheet" "~"
+			(at 25.4 50.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8613,7 +8814,76 @@
 			)
 		)
 		(property "Description" ""
-			(at 269.24 53.34 0)
+			(at 25.4 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4a64241d-a20d-4225-a104-198f3c4e9a1c")
+		)
+		(pin "2"
+			(uuid "fd3a58aa-8ade-48a2-a018-68c34049a1dc")
+		)
+		(instances
+			(project "Ricardo-Kermit-Mini"
+				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
+					(reference "CANRXLED1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 261.874 51.816 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "94855f29-2ea1-4285-8eea-1752a0e16bbe")
+		(property "Reference" "#PWR0124"
+			(at 261.874 55.626 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 261.4402 48.641 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 261.874 51.816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 261.874 51.816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 261.874 51.816 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8694,6 +8964,72 @@
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "H1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 262.128 61.214 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a012603c-e300-4dc2-8f2a-e7d6c67f46ca")
+		(property "Reference" "#PWR080"
+			(at 262.128 65.024 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 262.128 56.134 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 262.128 61.214 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 262.128 61.214 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 262.128 61.214 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fbe93334-9763-4283-9e31-a27625ccc017")
+		)
+		(instances
+			(project "Ricardo-Kermit-Mini"
+				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
+					(reference "#PWR080")
 					(unit 1)
 				)
 			)
@@ -8895,6 +9231,73 @@
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "#PWR020")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 33.02 38.1 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "adb34d1a-80ae-461f-896b-f8c5603f564f")
+		(property "Reference" "R55"
+			(at 33.02 33.1216 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1k"
+			(at 33.02 35.433 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 33.02 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 33.02 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 33.02 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cf884048-9e6e-41cc-a999-23844d353567")
+		)
+		(pin "2"
+			(uuid "dd84ceda-3aba-48ae-9e54-7537cee4718e")
+		)
+		(instances
+			(project "Ricardo-Kermit-Mini"
+				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
+					(reference "R55")
 					(unit 1)
 				)
 			)
@@ -9865,6 +10268,73 @@
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
 					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 33.02 50.8 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f60c8015-f7f9-4553-8308-d76a7624a86b")
+		(property "Reference" "R56"
+			(at 33.02 45.8216 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1k"
+			(at 33.02 48.133 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 33.02 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 33.02 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 33.02 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d9dc4924-d239-4f19-a168-e295ea057d02")
+		)
+		(pin "2"
+			(uuid "960fb815-980d-462a-ab20-68388a8bc6dc")
+		)
+		(instances
+			(project "Ricardo-Kermit-Mini"
+				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83"
+					(reference "R56")
 					(unit 1)
 				)
 			)

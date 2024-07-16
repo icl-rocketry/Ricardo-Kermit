@@ -2368,6 +2368,12 @@
 		(uuid "f5134485-b163-48a1-b2da-d07be81c473b")
 	)
 	(junction
+		(at 46.736 115.57)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f76bf7fe-a326-4f18-9339-5cc54afcca8b")
+	)
+	(junction
 		(at 185.42 51.054)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2735,6 +2741,16 @@
 	)
 	(wire
 		(pts
+			(xy 46.736 115.57) (xy 46.736 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "39cb42ca-6b66-4815-ba4f-024dedb4ec09")
+	)
+	(wire
+		(pts
 			(xy 174.752 45.974) (xy 187.96 45.974)
 		)
 		(stroke
@@ -2792,6 +2808,16 @@
 			(type default)
 		)
 		(uuid "47e887e9-f0ec-4088-91c8-085e07e08fdd")
+	)
+	(wire
+		(pts
+			(xy 49.53 118.11) (xy 46.736 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "48d925e5-fff3-4a67-87a2-26b2c254f715")
 	)
 	(wire
 		(pts
@@ -3415,6 +3441,16 @@
 	)
 	(wire
 		(pts
+			(xy 46.736 115.57) (xy 49.53 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c3fbc14d-c56b-4b83-98a1-14975d20140e")
+	)
+	(wire
+		(pts
 			(xy 173.228 72.39) (xy 173.228 81.788)
 		)
 		(stroke
@@ -3725,7 +3761,7 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 115.57) (xy 49.53 115.57)
+			(xy 35.56 115.57) (xy 46.736 115.57)
 		)
 		(stroke
 			(width 0)

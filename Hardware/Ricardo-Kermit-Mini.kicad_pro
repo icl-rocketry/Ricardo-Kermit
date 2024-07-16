@@ -59,7 +59,19 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "annular_width|7895000|37845000|42195049-2a42-4ee0-96e5-462567ae64eb|00000000-0000-0000-0000-000000000000",
+        "clearance|7755000|37845000|21b04b01-c1c0-4a62-9295-4202960c7cb9|42195049-2a42-4ee0-96e5-462567ae64eb",
+        "drill_out_of_range|7895000|37845000|42195049-2a42-4ee0-96e5-462567ae64eb|00000000-0000-0000-0000-000000000000",
+        "hole_clearance|51775000|50290000|2d3dfa2a-43f6-41de-8014-9db28ba3ecc9|17ac0c80-e4d7-4e0b-8357-397f1e8a62b7",
+        "hole_clearance|51775000|50290000|2d3dfa2a-43f6-41de-8014-9db28ba3ecc9|4ccbce96-1780-4520-82cd-4c217b1ea876",
+        "hole_clearance|51975000|50290000|2d3dfa2a-43f6-41de-8014-9db28ba3ecc9|57244d56-746c-4662-bff0-7e1df2cbbd74",
+        "hole_clearance|51975000|50290000|2d3dfa2a-43f6-41de-8014-9db28ba3ecc9|5fb536a3-b0d6-4648-83f6-553ab0dd0ed3",
+        "hole_clearance|57375000|50290000|fa20a813-e0a6-4105-8d5b-f2229da28acf|c382be18-f833-4952-ab6f-411b2302bbee",
+        "hole_clearance|57375000|50290000|fa20a813-e0a6-4105-8d5b-f2229da28acf|d0c2d0de-c6cb-44d0-84bc-290420fb6b3a",
+        "hole_clearance|57575000|50290000|fa20a813-e0a6-4105-8d5b-f2229da28acf|183b4c99-ae3c-4b39-b5e5-7ef816bccd16",
+        "hole_clearance|57575000|50290000|fa20a813-e0a6-4105-8d5b-f2229da28acf|d4492c68-d33e-4822-be2d-c0f8173d654a"
+      ],
       "meta": {
         "version": 2
       },
@@ -121,15 +133,15 @@
         "max_error": 0.005,
         "min_clearance": 0.127,
         "min_connection": 0.0,
-        "min_copper_edge_clearance": 0.254,
+        "min_copper_edge_clearance": 0.28,
         "min_hole_clearance": 0.254,
         "min_hole_to_hole": 0.254,
         "min_microvia_diameter": 0.2,
         "min_microvia_drill": 0.1,
         "min_resolved_spokes": 2,
         "min_silk_clearance": 0.0,
-        "min_text_height": 0.7,
-        "min_text_thickness": 0.1,
+        "min_text_height": 0.5,
+        "min_text_thickness": 0.153,
         "min_through_hole_diameter": 0.3,
         "min_track_width": 0.09,
         "min_via_annular_width": 0.075,

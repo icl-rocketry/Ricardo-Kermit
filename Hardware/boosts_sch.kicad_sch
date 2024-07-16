@@ -2142,6 +2142,16 @@
 	)
 	(wire
 		(pts
+			(xy 210.312 33.782) (xy 213.868 33.782)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "289779ad-7682-491d-9cb2-1f817cf4e778")
+	)
+	(wire
+		(pts
 			(xy 39.37 110.49) (xy 39.37 110.744)
 		)
 		(stroke
@@ -2799,6 +2809,16 @@
 			(type default)
 		)
 		(uuid "d8ea76bb-90fe-48a4-9a43-a1258d5f0086")
+	)
+	(wire
+		(pts
+			(xy 104.902 37.592) (xy 108.712 37.592)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "de50da69-4dcb-4378-b9ae-2494ba3370ed")
 	)
 	(wire
 		(pts
@@ -6056,7 +6076,7 @@
 	(symbol
 		(lib_name "GND_1")
 		(lib_id "power:GND")
-		(at 104.902 37.592 180)
+		(at 108.712 37.592 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6064,7 +6084,7 @@
 		(dnp no)
 		(uuid "a80569c8-6cdd-44bb-b546-1a371bb9c4ad")
 		(property "Reference" "#PWR060"
-			(at 104.902 31.242 0)
+			(at 108.712 43.942 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6073,7 +6093,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 104.902 32.512 0)
+			(at 108.712 42.672 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6081,7 +6101,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 104.902 37.592 0)
+			(at 108.712 37.592 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6090,7 +6110,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 104.902 37.592 0)
+			(at 108.712 37.592 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6099,7 +6119,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 104.902 37.592 0)
+			(at 108.712 37.592 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7794,7 +7814,7 @@
 	(symbol
 		(lib_name "GND_1")
 		(lib_id "power:GND")
-		(at 210.312 33.782 180)
+		(at 213.868 33.782 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7802,7 +7822,7 @@
 		(dnp no)
 		(uuid "ee1d6b81-1624-4960-9fd2-6db7ed1e9f68")
 		(property "Reference" "#PWR073"
-			(at 210.312 27.432 0)
+			(at 213.868 40.132 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7811,7 +7831,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 210.312 28.702 0)
+			(at 213.868 38.862 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7819,7 +7839,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 210.312 33.782 0)
+			(at 213.868 33.782 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7828,7 +7848,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 210.312 33.782 0)
+			(at 213.868 33.782 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7837,7 +7857,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 210.312 33.782 0)
+			(at 213.868 33.782 0)
 			(effects
 				(font
 					(size 1.27 1.27)
