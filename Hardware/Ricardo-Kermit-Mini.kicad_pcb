@@ -61405,7 +61405,7 @@
 	(footprint "iclr:rae_logo_8mm"
 		(layer "B.Cu")
 		(uuid "b400bc4b-bf7a-4db5-9afc-df455fb1848c")
-		(at 59.125 47.39 -90)
+		(at 59.125 49.29 -90)
 		(property "Reference" "G***"
 			(at 0 0 90)
 			(layer "B.SilkS")
@@ -61725,7 +61725,7 @@
 	(footprint "iclr:iclr_logo_estd2018_10mm"
 		(layer "B.Cu")
 		(uuid "b9348203-bbbd-432a-a13e-eac78cf3e352")
-		(at 59.525 35.59 -90)
+		(at 59.225 31.89 -90)
 		(property "Reference" "G***"
 			(at 0 0 90)
 			(layer "B.SilkS")
@@ -65520,8 +65520,8 @@
 			(justify left bottom mirror)
 		)
 	)
-	(gr_text "Designed by \nElectronics 2024"
-		(at 67.825 42.19 90)
+	(gr_text "Designed by \nShiven Chandarana\nArtem Sheykin"
+		(at 68.725 41.29 90)
 		(layer "B.SilkS")
 		(uuid "1af1ce4f-f6a4-4fd9-b3b2-cb2b71097d46")
 		(effects
@@ -65554,6 +65554,18 @@
 				(thickness 0.15)
 			)
 			(justify right bottom mirror)
+		)
+	)
+	(gr_text "RAE 2024"
+		(at 59.725 41.19 90)
+		(layer "B.SilkS")
+		(uuid "cfef311a-9271-4313-a327-f1ce4c2b927c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify bottom mirror)
 		)
 	)
 	(gr_text "12V"
