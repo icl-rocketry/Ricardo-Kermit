@@ -38,8 +38,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.0,
-          "height": 0.1,
-          "width": 0.1
+          "height": 1.75,
+          "width": 1.75
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -546,7 +546,12 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "Default",
+        "pattern": "GND"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {
@@ -690,7 +695,7 @@
     ],
     [
       "4e53c9d6-58b6-437c-afe4-98fd8bd012ed",
-      "Boosts1"
+      "Boosts"
     ],
     [
       "d2fb5c72-e348-4618-9c43-b5fd18c57de4",
@@ -702,11 +707,11 @@
     ],
     [
       "09056f23-cb8d-477a-be53-e1594f20e2a0",
-      "thermocouple2"
+      "thermocouple1"
     ],
     [
       "266223ae-5f75-432e-9940-fddcb4dab7c9",
-      "thermocouple3"
+      "thermocouple2"
     ]
   ],
   "text_variables": {}
