@@ -1,6 +1,6 @@
 #pragma once
 
-#include <librrc/remote/nrcremotesensorbase.h>
+#include <librrc/Remote/nrcremotesensorbase.h>
 
 #include <librnp/rnp_networkmanager.h>
 #include <librnp/rnp_packet.h>
@@ -35,7 +35,11 @@ class NRCRemoteRedline : public NRCRemoteSensorBase<NRCRemoteRedline>
         void calibrate_impl(packetptr_t packetptr);
 
         void update(float sensrvalue);
-        void setup(){loadCalibration();};
+        void setup()
+        {
+            loadCalibration();
+            // Serial.println("Redline Monitor Setup");    
+        };
 
         void addvalve(valvehelper& valve)
         {
@@ -74,7 +78,7 @@ class NRCRemoteRedline : public NRCRemoteSensorBase<NRCRemoteRedline>
         MovingAvg movingAvg = MovingAvg(2);
 
         float m_grad_update_time;
-        uint8_t m_maxAbortCalls;
+        uint8_t m_maxAbortCalls = 2;
 
         uint8_t m_abortcalls = 0;
 
@@ -99,4 +103,7 @@ class NRCRemoteRedline : public NRCRemoteSensorBase<NRCRemoteRedline>
             pref.putUShort(vname.c_str(),action);
             pref.end();
         };
+        void dumpVars();
+        uint8_t debug_print = 0;
+
 };

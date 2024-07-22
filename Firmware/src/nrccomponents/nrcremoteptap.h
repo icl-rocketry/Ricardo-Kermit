@@ -1,12 +1,12 @@
 #pragma once
 
-#include <librrc/remote/nrcremotesensorbase.h>
+#include <librrc/Remote/nrcremotesensorbase.h>
 
 #include <librnp/rnp_networkmanager.h>
 #include <librnp/rnp_packet.h>
 
 #include <librrc/Helpers/nvsstore.h>
-#include <librrc/packets/ptapcalibrationpacket.h>
+#include <librrc/Packets/ptapcalibrationpacket.h>
 
 #include "Sensors/ADS131M06.h"
 

@@ -57,12 +57,12 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    RLMTC1(networkmanager,3,33,0,0),
                    RLMTC2(networkmanager,4,34,0,0),
                    RLMTC3(networkmanager,5,35,0,0),
-                   SOL0(networkmanager, 1, 10),
-                   SOL1(networkmanager, 1, 11),
-                   SOL2(networkmanager, 1, 12),
-                   SOL3(networkmanager, 1, 13),
-                   SERVO0(networkmanager, 2, 10),
-                   SERVO1(networkmanager, 2, 11),
+                   SOL0(networkmanager, 107, 10),
+                   SOL1(networkmanager, 107, 11),
+                   SOL2(networkmanager, 107, 12),
+                   SOL3(networkmanager, 107, 13),
+                   SERVO0(networkmanager, 104, 10),
+                   SERVO1(networkmanager, 104, 11),
                    primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(20),false,&systemstatus){};
 
 void System::systemSetup()
@@ -220,8 +220,8 @@ void System::remoteSensorUpdate()
     VPT6.update();
     VPT7.update();
 
-    RLMPT0.update(CPT0.getValue());
-    RLMPT1.update(CPT1.getValue());
+    RLMPT0.update(CPT0.getPressure());
+    RLMPT1.update(CPT1.getPressure());
     RLMTC0.update(TC0.getTemp());
     RLMTC1.update(TC1.getTemp());
     RLMTC2.update(TC2.getTemp());
@@ -296,7 +296,7 @@ void System::remoteSensorSetup(){
     setvalves(RLMTC1);
     setvalves(RLMTC2);
     setvalves(RLMTC3);
-    
+    // Serial.println("Remote Sensors Setup");
     RLMPT0.setup();
     RLMPT1.setup();
     RLMTC0.setup();
