@@ -2097,12 +2097,6 @@
 		(uuid "09104f80-d2cb-481a-822f-c9db3eceac85")
 	)
 	(junction
-		(at 66.548 139.192)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0f8b15d1-7480-4474-909a-3bfe0777287b")
-	)
-	(junction
 		(at 119.888 49.022)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2119,6 +2113,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3597f72d-1978-43f7-a4b1-a224c5e86014")
+	)
+	(junction
+		(at 210.312 38.862)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "425b645d-2571-4b97-9adc-2ce5f9f22b9a")
 	)
 	(junction
 		(at 216.408 122.682)
@@ -2217,6 +2217,12 @@
 		(uuid "7b308c83-25ab-467d-9680-be6cb42a7d52")
 	)
 	(junction
+		(at 210.312 43.942)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8214ea4d-7b7d-4d7f-b99e-e9698e82f608")
+	)
+	(junction
 		(at 61.722 46.482)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2275,6 +2281,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d3155f61-11ef-4ec5-bc8b-a58b667fd4ed")
+	)
+	(junction
+		(at 67.31 138.684)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d65a1db8-fe80-43c5-93d3-74c731277ae7")
 	)
 	(junction
 		(at 104.902 43.942)
@@ -2760,6 +2772,16 @@
 	)
 	(wire
 		(pts
+			(xy 67.31 137.16) (xy 67.31 138.684)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "66313f61-25d3-480b-b999-0070cf88ec21")
+	)
+	(wire
+		(pts
 			(xy 222.504 103.632) (xy 231.648 103.632)
 		)
 		(stroke
@@ -2810,16 +2832,6 @@
 	)
 	(wire
 		(pts
-			(xy 70.358 139.446) (xy 70.358 138.938)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7158304c-6adb-4be3-a616-e039949db8d3")
-	)
-	(wire
-		(pts
 			(xy 123.952 80.772) (xy 127.762 80.772)
 		)
 		(stroke
@@ -2857,16 +2869,6 @@
 			(type default)
 		)
 		(uuid "7eb27a4a-6994-41e3-843f-7be7a8b29469")
-	)
-	(wire
-		(pts
-			(xy 66.548 139.446) (xy 66.548 139.192)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8302893c-4142-4d3b-86e8-2d727ba94659")
 	)
 	(wire
 		(pts
@@ -2980,6 +2982,16 @@
 	)
 	(wire
 		(pts
+			(xy 67.31 138.684) (xy 67.31 139.192)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a54c12ba-9b76-4ccc-96e6-e7b2a12b1e93")
+	)
+	(wire
+		(pts
 			(xy 222.504 94.488) (xy 222.504 98.552)
 		)
 		(stroke
@@ -3020,23 +3032,13 @@
 	)
 	(wire
 		(pts
-			(xy 207.772 43.942) (xy 212.852 43.942)
+			(xy 207.772 43.942) (xy 210.312 43.942)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "b592d309-e3f7-41a6-b090-5df82706c181")
-	)
-	(wire
-		(pts
-			(xy 66.548 137.16) (xy 67.31 137.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b938619d-3e96-4fbc-9d48-5bed162e7c48")
 	)
 	(wire
 		(pts
@@ -3047,16 +3049,6 @@
 			(type default)
 		)
 		(uuid "ba094e2a-40c8-4fe7-a2d1-133377bd2450")
-	)
-	(wire
-		(pts
-			(xy 66.548 137.16) (xy 66.548 139.192)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bab2fb77-97cb-4010-8053-6f3273a38cee")
 	)
 	(wire
 		(pts
@@ -3117,16 +3109,6 @@
 			(type default)
 		)
 		(uuid "c1d2b812-967a-419b-a08a-d7706f28d7d1")
-	)
-	(wire
-		(pts
-			(xy 66.548 139.192) (xy 67.31 139.192)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c2b6d407-24c6-4dd5-b417-35b215762edc")
 	)
 	(wire
 		(pts
@@ -3207,6 +3189,16 @@
 			(type default)
 		)
 		(uuid "d8ea76bb-90fe-48a4-9a43-a1258d5f0086")
+	)
+	(wire
+		(pts
+			(xy 67.31 138.684) (xy 69.596 138.684)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d996a04b-e0d7-4fc3-b1e6-058c784e4a5e")
 	)
 	(wire
 		(pts
@@ -3300,6 +3292,16 @@
 	)
 	(wire
 		(pts
+			(xy 210.312 43.942) (xy 212.852 43.942)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ed43fbfc-1d73-449c-a3c2-7e773ac31596")
+	)
+	(wire
+		(pts
 			(xy 67.31 132.08) (xy 81.026 132.08)
 		)
 		(stroke
@@ -3337,16 +3339,6 @@
 			(type default)
 		)
 		(uuid "f2f97a0c-2a50-4d0d-8627-57cda5619cdb")
-	)
-	(wire
-		(pts
-			(xy 66.548 139.446) (xy 70.358 139.446)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f5058d93-2974-40c9-8571-21ef65da1442")
 	)
 	(wire
 		(pts
@@ -3429,6 +3421,16 @@
 			(justify left bottom)
 		)
 		(uuid "6d498e35-de3f-4434-bdce-501e223e772f")
+	)
+	(text "973k\n"
+		(exclude_from_sim no)
+		(at 180.594 134.62 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "97c963ef-2772-431a-913e-f008d5e36cf7")
 	)
 	(text "SIM: https://webench.ti.com/appinfo/webench/scripts/SDP.cgi?ID=0086ECB0F8B2BBA7"
 		(exclude_from_sim no)
@@ -3541,7 +3543,7 @@
 		(uuid "72e149d0-8fd8-4261-be8a-4412ef27e518")
 	)
 	(label "FB_5V"
-		(at 70.358 139.446 0)
+		(at 69.596 138.684 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5704,6 +5706,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R_Small")
+		(at 210.312 41.402 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "680eb1c6-aa5e-4f06-af7f-f75bcc2c2ef6")
+		(property "Reference" "R65"
+			(at 211.8106 40.1898 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "360k"
+			(at 211.8106 42.6141 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 210.312 41.402 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 210.312 41.402 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 210.312 41.402 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d9fb2d6b-55ce-4334-9a1f-4e2cf911d67b")
+		)
+		(pin "2"
+			(uuid "5f0a9070-a3c8-469c-a3c5-c96da0413f26")
+		)
+		(instances
+			(project "Ricardo-Kermit-Mini"
+				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/4e53c9d6-58b6-437c-afe4-98fd8bd012ed"
+					(reference "R65")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 87.884 134.62 0)
 		(unit 1)
@@ -7859,7 +7931,7 @@
 		(fields_autoplaced yes)
 		(uuid "d6245132-4bae-4a63-9483-4e8e49d06c8d")
 		(property "Reference" "R26"
-			(at 198.12 123.952 0)
+			(at 197.5866 124.0098 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7867,8 +7939,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "900k"
-			(at 198.12 126.492 0)
+		(property "Value" "976k"
+			(at 197.5866 126.4341 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8484,7 +8556,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 104.902 46.482 0)
 			(effects
 				(font
@@ -8546,7 +8618,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 213.868 38.862 0)
+			(at 217.424 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
