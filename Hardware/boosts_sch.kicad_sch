@@ -4434,6 +4434,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "TPS61089RNRR"
+			(at 194.564 98.552 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "087de295-91c9-4ab7-bfb1-dd58ec424e19")
 		)
@@ -7046,6 +7055,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "MMBZ6V2ALT1G"
+			(at 122.428 56.896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "f2cbd550-5442-4bc9-93b9-6aaa8eb59e3f")
 		)
@@ -7303,6 +7321,15 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AP2205-W5-7"
+			(at 177.292 41.402 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
@@ -7802,6 +7829,15 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TPS61089RNRR"
+			(at 65.786 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
@@ -8504,6 +8540,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "AP2205-W5-7"
+			(at 71.882 46.482 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a1497eaf-90da-4076-b797-5f7a729eeb78")
 		)
@@ -8547,7 +8592,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "152k"
+		(property "Value" "150k"
 			(at 107.442 48.387 0)
 			(effects
 				(font

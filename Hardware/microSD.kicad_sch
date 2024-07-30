@@ -2356,6 +2356,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" " PNM723T201E0"
+			(at 84.836 75.438 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "9e2c1616-4bba-4a8b-9878-03bfda3f93e0")
 		)
