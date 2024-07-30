@@ -3880,6 +3880,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C1005X5R1E104KT000E"
+			(at 247.142 49.022 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "24172b38-d939-4ca2-824f-06220395c423")
 		)
@@ -4583,7 +4592,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 239.522 49.022 0)
 			(effects
 				(font
@@ -4602,6 +4611,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 239.522 49.022 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" " TMK107BBJ106MA-T"
 			(at 239.522 49.022 0)
 			(effects
 				(font
@@ -4938,6 +4956,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 107.442 54.102 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRM155R61E225ME15D"
 			(at 107.442 54.102 0)
 			(effects
 				(font
@@ -5655,7 +5682,7 @@
 		(dnp no)
 		(uuid "61fbdbee-d17d-4ba0-906e-f318fc4aeca5")
 		(property "Reference" "R25"
-			(at 179.6034 113.6563 0)
+			(at 187.6806 113.2767 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5664,7 +5691,7 @@
 			)
 		)
 		(property "Value" "18.7k"
-			(at 179.6034 115.5773 0)
+			(at 187.706 115.062 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6169,6 +6196,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 56.642 49.022 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL05X105KA5NQNC"
 			(at 56.642 49.022 0)
 			(effects
 				(font
@@ -6803,7 +6839,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "a9df1fae-db27-4e69-8025-1ded06b16f9f")
 		(property "Reference" "C39"
 			(at 175.2981 113.1546 0)
@@ -6815,7 +6850,7 @@
 			)
 		)
 		(property "Value" "120pF"
-			(at 175.2981 115.0756 0)
+			(at 175.2727 115.2113 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7196,6 +7231,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 123.952 78.232 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" " TMK107BBJ106MA-T"
 			(at 123.952 78.232 0)
 			(effects
 				(font
@@ -8072,6 +8116,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 162.052 43.942 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL05X105KA5NQNC"
 			(at 162.052 43.942 0)
 			(effects
 				(font
@@ -9036,6 +9089,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C1005X5R1E104KT000E"
+			(at 131.572 78.232 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "f9ae7bf6-93d0-40a8-af5d-495c7af4f81a")
 		)
@@ -9378,6 +9440,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 212.852 49.022 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRM155R61E225ME15D"
 			(at 212.852 49.022 0)
 			(effects
 				(font
