@@ -8635,7 +8635,7 @@
 		(fields_autoplaced yes)
 		(uuid "ec213e51-7deb-40af-bb0d-7caaf0cb394e")
 		(property "Reference" "R23"
-			(at 107.442 45.847 0)
+			(at 106.4006 45.2698 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8643,8 +8643,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "150k"
-			(at 107.442 48.387 0)
+		(property "Value" "152k"
+			(at 106.4006 47.6941 0)
 			(effects
 				(font
 					(size 1.27 1.27)
