@@ -2302,7 +2302,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-723"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 79.756 77.978 0)
 			(effects
 				(font
@@ -2356,7 +2356,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" " PNM723T201E0"
+		(property "MPN" " DMP3099L"
 			(at 84.836 75.438 0)
 			(effects
 				(font

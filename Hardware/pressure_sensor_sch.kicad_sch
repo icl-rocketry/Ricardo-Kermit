@@ -2451,10 +2451,6 @@
 		(color 0 0 0 0)
 		(uuid "ffeb8bc6-31fc-41a6-8dc2-b3b90d62af13")
 	)
-	(no_connect
-		(at 82.042 93.472)
-		(uuid "5fb940ac-bd3c-46e7-833d-4994135cb4a6")
-	)
 	(wire
 		(pts
 			(xy 233.934 120.904) (xy 233.934 123.952)
@@ -4338,6 +4334,18 @@
 			(justify left)
 		)
 		(uuid "01deeaad-904a-4eaa-ba9a-9125b66f1537")
+	)
+	(hierarchical_label "ADS_DRDY"
+		(shape output)
+		(at 82.042 93.472 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "078d1ce5-b856-45fd-8c63-63a4239c590c")
 	)
 	(hierarchical_label "ADS_CLK"
 		(shape bidirectional)

@@ -5405,24 +5405,23 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "5835a80b-a0c7-4f33-bcb2-76aa8dd75338")
 		(property "Reference" "R22"
-			(at 102.362 40.767 0)
+			(at 98.298 38.608 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
-		(property "Value" "50k"
-			(at 102.362 38.227 0)
+		(property "Value" "49.9k"
+			(at 98.298 41.0323 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
@@ -5760,7 +5759,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "360k"
+		(property "Value" "432k"
 			(at 211.8106 42.6141 0)
 			(effects
 				(font
@@ -7621,24 +7620,23 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "c5fbf0b6-8f29-4db6-b7d8-cd8f89053ec3")
 		(property "Reference" "R28"
-			(at 207.772 36.957 0)
+			(at 204.216 34.798 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
-		(property "Value" "51k"
-			(at 207.772 34.417 0)
+		(property "Value" "49.9"
+			(at 204.216 37.2223 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
