@@ -4092,17 +4092,6 @@
 		)
 		(uuid "d4cedca4-9c42-4628-afb9-6af5261a7919")
 	)
-	(text "Jump for \nvoltage"
-		(exclude_from_sim no)
-		(at 272.034 131.572 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify bottom)
-		)
-		(uuid "d9f9a5a9-9e08-461f-a69f-fab3b5a09266")
-	)
 	(text "Current"
 		(exclude_from_sim no)
 		(at 184.15 123.952 0)
@@ -5583,7 +5572,7 @@
 				)
 			)
 		)
-		(property "Value" "49"
+		(property "Value" "49.9"
 			(at 259.334 134.874 90)
 			(effects
 				(font
@@ -5611,6 +5600,15 @@
 		)
 		(property "Description" ""
 			(at 259.334 136.906 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RT0402BRD0749R9L"
+			(at 259.334 136.906 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5932,7 +5930,7 @@
 				)
 			)
 		)
-		(property "Value" "49"
+		(property "Value" "49.9"
 			(at 193.548 135.382 90)
 			(effects
 				(font
@@ -5960,6 +5958,15 @@
 		)
 		(property "Description" ""
 			(at 193.548 137.414 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RT0402BRD0749R9L"
+			(at 193.548 137.414 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6948,7 +6955,7 @@
 				)
 			)
 		)
-		(property "Value" "49"
+		(property "Value" "49.9"
 			(at 257.81 60.96 90)
 			(effects
 				(font
@@ -6976,6 +6983,15 @@
 		)
 		(property "Description" ""
 			(at 257.81 62.992 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RT0402BRD0749R9L"
+			(at 257.81 62.992 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7232,7 +7248,7 @@
 				)
 			)
 		)
-		(property "Value" "49"
+		(property "Value" "49.9"
 			(at 196.088 60.96 90)
 			(effects
 				(font
@@ -7260,6 +7276,15 @@
 		)
 		(property "Description" ""
 			(at 196.088 62.992 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RT0402BRD0749R9L"
+			(at 196.088 62.992 90)
 			(effects
 				(font
 					(size 1.27 1.27)

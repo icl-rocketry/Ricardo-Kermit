@@ -5,391 +5,6 @@
 	(uuid "b0f3721b-732a-45a3-8404-9479daf2d069")
 	(paper "A4")
 	(lib_symbols
-		(symbol "Connector:Micro_SD_Card_Det"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "J"
-				(at -16.51 17.78 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Micro_SD_Card_Det"
-				(at 16.51 17.78 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify right)
-				)
-			)
-			(property "Footprint" ""
-				(at 52.07 17.78 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.hirose.com/product/en/download_file/key_name/DM3/category/Catalog/doc_file_id/49662/?file_category_id=4&item_id=195&is_series=1"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Micro SD Card Socket with card detection pins"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "connector SD microsd"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "microSD*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Micro_SD_Card_Det_0_1"
-				(rectangle
-					(start -7.62 -6.985)
-					(end -5.08 -8.255)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -7.62 -4.445)
-					(end -5.08 -5.715)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -7.62 -1.905)
-					(end -5.08 -3.175)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -7.62 0.635)
-					(end -5.08 -0.635)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -7.62 3.175)
-					(end -5.08 1.905)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -7.62 5.715)
-					(end -5.08 4.445)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -7.62 8.255)
-					(end -5.08 6.985)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -7.62 10.795)
-					(end -5.08 9.525)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 16.51 15.24) (xy 16.51 16.51) (xy -19.05 16.51) (xy -19.05 -16.51) (xy 16.51 -16.51) (xy 16.51 -8.89)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -8.89 -8.89) (xy -8.89 11.43) (xy -1.27 11.43) (xy 2.54 15.24) (xy 3.81 15.24) (xy 3.81 13.97)
-						(xy 6.35 13.97) (xy 7.62 15.24) (xy 20.32 15.24) (xy 20.32 -8.89) (xy -8.89 -8.89)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-			)
-			(symbol "Micro_SD_Card_Det_1_1"
-				(pin bidirectional line
-					(at -22.86 10.16 0)
-					(length 3.81)
-					(name "DAT2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -22.86 -10.16 0)
-					(length 3.81)
-					(name "DET_A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "10"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 20.32 -12.7 180)
-					(length 3.81)
-					(name "SHIELD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "11"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at -22.86 7.62 0)
-					(length 3.81)
-					(name "DAT3/CD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -22.86 5.08 0)
-					(length 3.81)
-					(name "CMD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -22.86 2.54 0)
-					(length 3.81)
-					(name "VDD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -22.86 0 0)
-					(length 3.81)
-					(name "CLK"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -22.86 -2.54 0)
-					(length 3.81)
-					(name "VSS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at -22.86 -5.08 0)
-					(length 3.81)
-					(name "DAT0"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at -22.86 -7.62 0)
-					(length 3.81)
-					(name "DAT1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -22.86 -12.7 0)
-					(length 3.81)
-					(name "DET_B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "Device:C_Small"
 			(pin_numbers hide)
 			(pin_names
@@ -1140,6 +755,437 @@
 				)
 			)
 		)
+		(symbol "iclr:ST1W008S4TR2000"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at -7.62 16.002 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "ST1W008S4TR2000"
+				(at -7.62 -20.32 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "iclr:JAE_ST1W008S4TR2000"
+				(at 0 -22.606 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MF" "JAE Electronics"
+				(at 14.986 -28.956 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "MAXIMUM_PACKAGE_HEIGHT" "1.5 mm"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Package" "None"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Price" "None"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Check_prices" "https://www.snapeda.com/parts/ST1W008S4TR2000/JAE+Electronics/view-part/?ref=eda"
+				(at 12.446 -25.654 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "STANDARD" "Manufacturer Recommendations"
+				(at 13.716 -26.416 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "PARTREV" "1"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "SnapEDA_Link" "https://www.snapeda.com/parts/ST1W008S4TR2000/JAE+Electronics/view-part/?ref=snap"
+				(at 12.446 -25.654 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "MP" "ST1W008S4TR2000"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Purchase-URL" "https://www.snapeda.com/api/url_track_click_mouser/?unipart_id=501060&manufacturer=JAE Electronics&part_name=ST1W008S4TR2000&search_term=st1w008s4tr2000"
+				(at 12.446 -25.654 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Description_1" "\nmicroSD memory card connector, 8 contacts, hinge type, soldering (SMT) | JAE Electronics Inc. ST1W008S4TR2000\n"
+				(at 12.446 -25.654 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Availability" "In Stock"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "JAE Electronics"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(symbol "ST1W008S4TR2000_0_0"
+				(rectangle
+					(start -7.62 -17.78)
+					(end 7.62 15.24)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -12.7 7.62 0)
+					(length 5.08)
+					(name "C1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "C1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 5.08 0)
+					(length 5.08)
+					(name "C2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "C2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 2.54 0)
+					(length 5.08)
+					(name "C3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "C3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 0 0)
+					(length 5.08)
+					(name "C4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "C4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -2.54 0)
+					(length 5.08)
+					(name "C5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "C5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -5.08 0)
+					(length 5.08)
+					(name "C6"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "C6"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -7.62 0)
+					(length 5.08)
+					(name "C7"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "C7"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -10.16 0)
+					(length 5.08)
+					(name "C8"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "C8"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 12.7 -15.24 180)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "GND1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 12.7 -15.24 180)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "GND2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 12.7 -15.24 180)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "GND3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 12.7 -15.24 180)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "GND4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 12.7 0)
+					(length 5.08)
+					(name "SW"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "SW"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "power:+3.3V"
 			(power)
 			(pin_names
@@ -1358,76 +1404,50 @@
 		)
 	)
 	(junction
-		(at 82.296 80.518)
+		(at 126.492 83.312)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "515f05e1-fa4e-4468-9bb1-ce99944b100d")
 	)
 	(junction
-		(at 90.678 75.438)
+		(at 134.874 78.232)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b937d480-29ea-4b7f-b7f5-4bda57f98a9a")
 	)
 	(junction
-		(at 82.296 81.788)
+		(at 116.586 103.124)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e3cc55e2-665e-4059-ad5d-20aa9870761c")
+	)
+	(junction
+		(at 126.492 84.582)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e7be87d4-fc13-47c4-9417-893bf1cc0fdd")
 	)
 	(junction
-		(at 87.376 117.348)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ebbd9728-0dbe-4834-a1b6-0712b30eef85")
-	)
-	(junction
-		(at 82.296 69.85)
+		(at 126.492 72.644)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f614dc09-d672-4650-ae0c-416cc506f00f")
 	)
 	(no_connect
-		(at 98.806 81.788)
+		(at 143.002 79.502)
+		(uuid "35ef38ad-f10e-469d-9782-94c109c9c68a")
+	)
+	(no_connect
+		(at 143.002 84.582)
 		(uuid "4878ba8c-5a74-4316-8b13-285fe7c83fcf")
 	)
 	(no_connect
-		(at 98.806 99.568)
+		(at 143.002 102.362)
 		(uuid "90695557-77f7-4a4f-9628-bfeaee444293")
 	)
 	(wire
 		(pts
-			(xy 91.186 102.108) (xy 91.186 117.348)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "00bec301-0c67-456c-9f38-b5b08b847832")
-	)
-	(wire
-		(pts
-			(xy 83.566 117.348) (xy 87.376 117.348)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "189f0af5-43f9-45ce-b7cf-051396fd0988")
-	)
-	(wire
-		(pts
-			(xy 87.376 113.538) (xy 87.376 117.348)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1ecc9c1c-3cab-464b-ae99-c4a33c6015bd")
-	)
-	(wire
-		(pts
-			(xy 82.296 69.85) (xy 82.296 70.358)
+			(xy 126.492 72.644) (xy 126.492 73.152)
 		)
 		(stroke
 			(width 0)
@@ -1437,7 +1457,7 @@
 	)
 	(wire
 		(pts
-			(xy 82.296 81.788) (xy 82.296 89.408)
+			(xy 126.492 84.582) (xy 126.492 92.202)
 		)
 		(stroke
 			(width 0)
@@ -1447,17 +1467,7 @@
 	)
 	(wire
 		(pts
-			(xy 96.266 104.648) (xy 96.266 110.998)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2e515c52-91d2-4f41-903b-8fa3e1d613d1")
-	)
-	(wire
-		(pts
-			(xy 78.486 81.788) (xy 82.296 81.788)
+			(xy 122.682 84.582) (xy 126.492 84.582)
 		)
 		(stroke
 			(width 0)
@@ -1467,7 +1477,7 @@
 	)
 	(wire
 		(pts
-			(xy 82.296 80.518) (xy 82.296 81.788)
+			(xy 126.492 83.312) (xy 126.492 84.582)
 		)
 		(stroke
 			(width 0)
@@ -1477,17 +1487,7 @@
 	)
 	(wire
 		(pts
-			(xy 98.806 104.648) (xy 96.266 104.648)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3dc42d7d-c6f0-4605-bc8a-d2f0c10156e3")
-	)
-	(wire
-		(pts
-			(xy 97.536 97.028) (xy 98.806 97.028)
+			(xy 141.732 99.822) (xy 143.002 99.822)
 		)
 		(stroke
 			(width 0)
@@ -1497,7 +1497,7 @@
 	)
 	(wire
 		(pts
-			(xy 89.916 75.438) (xy 90.678 75.438)
+			(xy 134.112 78.232) (xy 134.874 78.232)
 		)
 		(stroke
 			(width 0)
@@ -1507,7 +1507,7 @@
 	)
 	(wire
 		(pts
-			(xy 90.678 75.438) (xy 91.821 75.438)
+			(xy 134.874 78.232) (xy 136.017 78.232)
 		)
 		(stroke
 			(width 0)
@@ -1517,7 +1517,7 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 71.882) (xy 69.85 69.85)
+			(xy 114.046 74.676) (xy 114.046 72.644)
 		)
 		(stroke
 			(width 0)
@@ -1527,27 +1527,7 @@
 	)
 	(wire
 		(pts
-			(xy 98.806 94.488) (xy 82.296 94.488)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6beda710-be59-4143-b222-339fb2cd70f1")
-	)
-	(wire
-		(pts
-			(xy 91.186 117.348) (xy 87.376 117.348)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6d2ae56a-5e9a-47b2-9a08-9a98528c8c70")
-	)
-	(wire
-		(pts
-			(xy 98.806 89.408) (xy 82.296 89.408)
+			(xy 143.002 92.202) (xy 126.492 92.202)
 		)
 		(stroke
 			(width 0)
@@ -1557,7 +1537,17 @@
 	)
 	(wire
 		(pts
-			(xy 141.986 104.648) (xy 144.526 104.648)
+			(xy 143.002 97.282) (xy 124.206 97.282)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "75eb16b5-2deb-4031-a17c-beba0a741a7e")
+	)
+	(wire
+		(pts
+			(xy 168.402 107.442) (xy 170.942 107.442)
 		)
 		(stroke
 			(width 0)
@@ -1567,7 +1557,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.536 86.868) (xy 98.806 86.868)
+			(xy 141.732 89.662) (xy 143.002 89.662)
 		)
 		(stroke
 			(width 0)
@@ -1577,7 +1567,17 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 80.518) (xy 69.85 79.502)
+			(xy 109.728 103.124) (xy 116.586 103.124)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e85a288-acb6-4d74-b855-734b9a764c27")
+	)
+	(wire
+		(pts
+			(xy 114.046 83.312) (xy 114.046 82.296)
 		)
 		(stroke
 			(width 0)
@@ -1587,7 +1587,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.536 91.948) (xy 98.806 91.948)
+			(xy 141.732 94.742) (xy 143.002 94.742)
 		)
 		(stroke
 			(width 0)
@@ -1597,17 +1597,7 @@
 	)
 	(wire
 		(pts
-			(xy 82.296 94.488) (xy 82.296 99.568)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bef62527-fb66-470d-8acb-9f3a4bee1f3e")
-	)
-	(wire
-		(pts
-			(xy 69.85 69.85) (xy 82.296 69.85)
+			(xy 114.046 72.644) (xy 126.492 72.644)
 		)
 		(stroke
 			(width 0)
@@ -1617,7 +1607,17 @@
 	)
 	(wire
 		(pts
-			(xy 97.536 84.328) (xy 98.806 84.328)
+			(xy 116.586 103.124) (xy 124.206 103.124)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d0f3ecce-6f5e-4a2f-9d87-76b8762f591b")
+	)
+	(wire
+		(pts
+			(xy 141.732 87.122) (xy 143.002 87.122)
 		)
 		(stroke
 			(width 0)
@@ -1627,7 +1627,7 @@
 	)
 	(wire
 		(pts
-			(xy 82.296 68.834) (xy 82.296 69.85)
+			(xy 126.492 71.628) (xy 126.492 72.644)
 		)
 		(stroke
 			(width 0)
@@ -1637,17 +1637,17 @@
 	)
 	(wire
 		(pts
-			(xy 98.806 102.108) (xy 91.186 102.108)
+			(xy 124.206 97.282) (xy 124.206 103.124)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "e434be60-773e-4763-94d2-22991e350d59")
+		(uuid "e4d55ee2-d986-4f35-be65-6838026f4b9f")
 	)
 	(wire
 		(pts
-			(xy 82.296 80.518) (xy 69.85 80.518)
+			(xy 126.492 83.312) (xy 114.046 83.312)
 		)
 		(stroke
 			(width 0)
@@ -1657,7 +1657,7 @@
 	)
 	(wire
 		(pts
-			(xy 144.526 104.648) (xy 144.526 107.188)
+			(xy 170.942 107.442) (xy 170.942 109.982)
 		)
 		(stroke
 			(width 0)
@@ -1667,7 +1667,7 @@
 	)
 	(hierarchical_label "VSPI_SCLK"
 		(shape input)
-		(at 97.536 91.948 180)
+		(at 141.732 94.742 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1679,7 +1679,7 @@
 	)
 	(hierarchical_label "VSPI_MISO"
 		(shape output)
-		(at 97.536 97.028 180)
+		(at 141.732 99.822 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1691,7 +1691,7 @@
 	)
 	(hierarchical_label "VSPI_MOSI"
 		(shape input)
-		(at 97.536 86.868 180)
+		(at 141.732 89.662 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1703,7 +1703,7 @@
 	)
 	(hierarchical_label "SD1_CS"
 		(shape input)
-		(at 97.536 84.328 180)
+		(at 141.732 87.122 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1713,9 +1713,21 @@
 		)
 		(uuid "9cf108a1-72a6-467e-810b-67bfc51aa5ae")
 	)
+	(hierarchical_label "SD_DET"
+		(shape input)
+		(at 109.728 103.124 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a23ff5c8-103b-4309-b245-2e03ff4dfc54")
+	)
 	(hierarchical_label "SD_Pow"
 		(shape input)
-		(at 91.821 75.438 0)
+		(at 136.017 78.232 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1725,87 +1737,9 @@
 		)
 		(uuid "fb57fab8-34f1-4181-9f14-d1b68d131380")
 	)
-	(hierarchical_label "SD1_DET"
-		(shape input)
-		(at 83.566 117.348 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "fc67645e-7aad-4ed3-be40-c90a0440ef02")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 96.266 110.998 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "182fb28a-4b0b-4ba3-b947-2d59b573fc87")
-		(property "Reference" "#PWR086"
-			(at 96.266 117.348 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 96.266 116.078 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 96.266 110.998 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 96.266 110.998 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 96.266 110.998 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0892a441-6591-4753-9b7c-0a33cf277ab7")
-		)
-		(instances
-			(project "Ricardo-Kermit-Mini"
-				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "#PWR086")
-					(unit 1)
-				)
-			)
-		)
-	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 82.296 68.834 0)
+		(at 126.492 71.628 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1814,7 +1748,7 @@
 		(fields_autoplaced yes)
 		(uuid "28505d33-1da7-485d-b68b-cd86acad6318")
 		(property "Reference" "#PWR082"
-			(at 82.296 72.644 0)
+			(at 126.492 75.438 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1823,7 +1757,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 82.296 63.754 0)
+			(at 126.492 66.548 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1831,7 +1765,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 82.296 68.834 0)
+			(at 126.492 71.628 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1840,7 +1774,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 82.296 68.834 0)
+			(at 126.492 71.628 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1849,7 +1783,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 82.296 68.834 0)
+			(at 126.492 71.628 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1870,99 +1804,32 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3.3V")
-		(at 87.376 108.458 0)
+		(lib_id "Device:R_Small")
+		(at 116.586 100.584 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3a00e2dc-1665-4326-ba95-a80e01ab51d9")
-		(property "Reference" "#PWR084"
-			(at 87.376 112.268 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 87.376 103.378 0)
+		(uuid "47a098e5-6631-4b30-8e97-21389ff105dd")
+		(property "Reference" "R32"
+			(at 112.776 98.044 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 87.376 108.458 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 87.376 108.458 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 87.376 108.458 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2c5a61ff-ba00-43ea-ad22-15b45d3f84e0")
-		)
-		(instances
-			(project "Ricardo-Kermit-Mini"
-				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "#PWR084")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 69.85 75.692 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "53bf53ee-2a03-4324-8261-7781f2b91ad1")
-		(property "Reference" "JP2"
-			(at 64.77 75.692 0)
+		(property "Value" "10k"
+			(at 112.776 100.584 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 38.1 57.912 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "iclr:SmallerSolderJP"
-			(at 69.85 75.692 0)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 116.586 100.584 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1971,7 +1838,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 69.85 75.692 0)
+			(at 116.586 100.584 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1980,7 +1847,75 @@
 			)
 		)
 		(property "Description" ""
-			(at 69.85 75.692 0)
+			(at 116.586 100.584 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a30c676e-f6cc-438f-8645-98f18c23ec94")
+		)
+		(pin "2"
+			(uuid "72007795-3574-4253-9e31-f2d928c72584")
+		)
+		(instances
+			(project "Ricardo-Kermit-Mini"
+				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
+					(reference "R32")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 114.046 78.486 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "53bf53ee-2a03-4324-8261-7781f2b91ad1")
+		(property "Reference" "JP2"
+			(at 108.966 78.486 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 82.296 60.706 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "iclr:SmallerSolderJP"
+			(at 114.046 78.486 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 114.046 78.486 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 114.046 78.486 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2005,7 +1940,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 144.526 107.188 0)
+		(at 170.942 109.982 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2014,7 +1949,7 @@
 		(fields_autoplaced yes)
 		(uuid "5c8d0791-0bde-4d2e-9d71-b8939e8d018c")
 		(property "Reference" "#PWR087"
-			(at 144.526 113.538 0)
+			(at 170.942 116.332 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2023,7 +1958,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 144.526 112.268 0)
+			(at 170.942 115.062 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2031,7 +1966,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 144.526 107.188 0)
+			(at 170.942 109.982 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2040,7 +1975,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 144.526 107.188 0)
+			(at 170.942 109.982 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2049,7 +1984,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 144.526 107.188 0)
+			(at 170.942 109.982 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2071,7 +2006,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small")
-		(at 90.678 77.978 180)
+		(at 134.874 80.772 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2079,7 +2014,7 @@
 		(dnp no)
 		(uuid "6909b242-71a5-4cae-851d-ac16b8ae2532")
 		(property "Reference" "R33"
-			(at 87.249 78.1081 0)
+			(at 131.445 80.9021 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2087,7 +2022,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 87.249 80.645 0)
+			(at 131.445 83.439 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2095,7 +2030,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 90.678 77.978 0)
+			(at 134.874 80.772 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2104,7 +2039,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 90.678 77.978 0)
+			(at 134.874 80.772 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2113,7 +2048,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 90.678 77.978 0)
+			(at 134.874 80.772 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2137,78 +2072,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Small")
-		(at 87.376 110.998 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "83011d91-52e8-4808-907a-4678f144e837")
-		(property "Reference" "R32"
-			(at 89.916 109.7279 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10k"
-			(at 89.916 112.2679 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 87.376 110.998 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 87.376 110.998 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 87.376 110.998 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c0c79226-d9d9-4bd3-9156-5c1fb55f99c7")
-		)
-		(pin "2"
-			(uuid "9c819e3a-a3f0-4265-a787-f24335d39561")
-		)
-		(instances
-			(project "Ricardo-Kermit-Mini"
-				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "R32")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
-		(at 90.678 80.518 0)
+		(at 134.874 83.312 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2217,7 +2082,7 @@
 		(fields_autoplaced yes)
 		(uuid "a2a9b5f7-4062-4930-a7d0-6d28acfdeaaf")
 		(property "Reference" "#PWR085"
-			(at 90.678 86.868 0)
+			(at 134.874 89.662 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2226,7 +2091,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 92.583 82.2218 0)
+			(at 136.779 85.0158 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2236,7 +2101,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 90.678 80.518 0)
+			(at 134.874 83.312 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2245,7 +2110,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 90.678 80.518 0)
+			(at 134.874 83.312 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2254,7 +2119,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 90.678 80.518 0)
+			(at 134.874 83.312 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2276,7 +2141,7 @@
 	)
 	(symbol
 		(lib_id "Simulation_SPICE:PMOS")
-		(at 84.836 75.438 180)
+		(at 129.032 78.232 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2285,7 +2150,7 @@
 		(fields_autoplaced yes)
 		(uuid "a8620991-0703-4c3d-bb38-b1211d27021e")
 		(property "Reference" "Q1"
-			(at 78.486 74.168 0)
+			(at 122.682 76.962 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2294,7 +2159,7 @@
 			)
 		)
 		(property "Value" "PMOS"
-			(at 78.486 76.708 0)
+			(at 122.682 79.502 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2303,7 +2168,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 79.756 77.978 0)
+			(at 123.952 80.772 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2312,7 +2177,7 @@
 			)
 		)
 		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-manual.pdf"
-			(at 84.836 62.738 0)
+			(at 129.032 65.532 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2321,7 +2186,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 84.836 75.438 0)
+			(at 129.032 78.232 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2330,7 +2195,7 @@
 			)
 		)
 		(property "Sim.Device" "PMOS"
-			(at 84.836 58.293 0)
+			(at 129.032 61.087 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2339,7 +2204,7 @@
 			)
 		)
 		(property "Sim.Type" "VDMOS"
-			(at 84.836 56.388 0)
+			(at 129.032 59.182 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2348,7 +2213,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=D 2=G 3=S"
-			(at 84.836 60.198 0)
+			(at 129.032 62.992 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2357,7 +2222,7 @@
 			)
 		)
 		(property "MPN" " DMP3099L"
-			(at 84.836 75.438 0)
+			(at 129.032 78.232 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2384,41 +2249,43 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C_Small")
-		(at 78.486 84.328 0)
+		(lib_id "iclr:ST1W008S4TR2000")
+		(at 155.702 92.202 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "d96cb3ec-4cfb-4f5e-8ea4-409a1d131444")
-		(property "Reference" "C49"
-			(at 73.406 84.328 0)
+		(fields_autoplaced yes)
+		(uuid "bb1b0af1-813c-48b7-a6a9-bbf7103d7916")
+		(property "Reference" "J9"
+			(at 155.702 72.8175 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "0.1uF"
-			(at 73.406 86.6394 0)
+		(property "Value" "ST1W008S4TR2000"
+			(at 155.702 75.2418 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 78.486 84.328 0)
+		(property "Footprint" "iclr:JAE_ST1W008S4TR2000"
+			(at 155.702 114.808 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify bottom)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 78.486 84.328 0)
+		(property "Datasheet" ""
+			(at 155.702 92.202 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2427,7 +2294,237 @@
 			)
 		)
 		(property "Description" ""
-			(at 78.486 84.328 0)
+			(at 155.702 92.202 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" "JAE Electronics"
+			(at 170.688 121.158 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" "1.5 mm"
+			(at 155.702 92.202 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Package" "None"
+			(at 155.702 92.202 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Price" "None"
+			(at 155.702 92.202 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" "https://www.snapeda.com/parts/ST1W008S4TR2000/JAE+Electronics/view-part/?ref=eda"
+			(at 168.148 117.856 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "STANDARD" "Manufacturer Recommendations"
+			(at 169.418 118.618 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "PARTREV" "1"
+			(at 155.702 92.202 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" "https://www.snapeda.com/parts/ST1W008S4TR2000/JAE+Electronics/view-part/?ref=snap"
+			(at 168.148 117.856 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MP" "ST1W008S4TR2000"
+			(at 155.702 92.202 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Purchase-URL" "https://www.snapeda.com/api/url_track_click_mouser/?unipart_id=501060&manufacturer=JAE Electronics&part_name=ST1W008S4TR2000&search_term=st1w008s4tr2000"
+			(at 168.148 117.856 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Description_1" "\nmicroSD memory card connector, 8 contacts, hinge type, soldering (SMT) | JAE Electronics Inc. ST1W008S4TR2000\n"
+			(at 168.148 117.856 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Availability" "In Stock"
+			(at 155.702 92.202 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "JAE Electronics"
+			(at 155.702 92.202 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(pin "GND3"
+			(uuid "7346191a-4152-43d2-8520-27f8c3b72db3")
+		)
+		(pin "C8"
+			(uuid "0fd59360-a10c-4a8f-8e77-bea7414424d0")
+		)
+		(pin "C1"
+			(uuid "9d858242-e43f-4159-a2dc-cf7a407d8369")
+		)
+		(pin "C6"
+			(uuid "529612c3-9162-4efd-8d6f-43c9f0245e3e")
+		)
+		(pin "GND4"
+			(uuid "77c5a8f6-e060-4535-aa19-d925ada56e35")
+		)
+		(pin "GND2"
+			(uuid "6282f4a6-e694-4c5a-9f3c-6c0737905ea3")
+		)
+		(pin "C2"
+			(uuid "4574a678-f027-45ee-965b-8664b8efb1b8")
+		)
+		(pin "C5"
+			(uuid "5735324b-809f-4e1f-b5c6-5ba61ac8da41")
+		)
+		(pin "C3"
+			(uuid "22d3eb12-fb18-44a1-bc21-8aa5be684c74")
+		)
+		(pin "SW"
+			(uuid "33395aa5-91a2-4347-8bec-38e1d4423924")
+		)
+		(pin "GND1"
+			(uuid "69601e2e-ddde-417f-90ef-2c2d6f6581bc")
+		)
+		(pin "C7"
+			(uuid "0dbded6d-bfa6-4a03-985f-55e2a6a2bc76")
+		)
+		(pin "C4"
+			(uuid "b43037c3-a92d-43a9-9471-dd65ecdc7821")
+		)
+		(instances
+			(project "Ricardo-Kermit-Mini"
+				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
+					(reference "J9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 122.682 87.122 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d96cb3ec-4cfb-4f5e-8ea4-409a1d131444")
+		(property "Reference" "C49"
+			(at 117.602 87.122 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 117.602 89.4334 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 122.682 87.122 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 122.682 87.122 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 122.682 87.122 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2451,17 +2548,16 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 82.296 99.568 0)
+		(lib_id "power:+3.3V")
+		(at 116.586 98.044 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "da337651-4ce8-47cc-bb9f-ba4e948e9068")
+		(uuid "e9d17dea-25a6-4f74-8255-655831aabfe6")
 		(property "Reference" "#PWR083"
-			(at 82.296 105.918 0)
+			(at 116.586 101.854 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2469,8 +2565,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
-			(at 82.296 104.648 0)
+		(property "Value" "+3V3"
+			(at 116.586 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2478,7 +2574,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 82.296 99.568 0)
+			(at 116.586 98.044 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2487,7 +2583,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 82.296 99.568 0)
+			(at 116.586 98.044 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2496,7 +2592,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 82.296 99.568 0)
+			(at 116.586 98.044 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2505,7 +2601,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "b0812832-4ca8-4d86-ac1e-6709bfe5734a")
+			(uuid "e7fe0a26-19c9-4133-b25a-8ef17602d7e3")
 		)
 		(instances
 			(project "Ricardo-Kermit-Mini"
@@ -2518,16 +2614,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 78.486 86.868 0)
+		(at 122.682 89.662 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "fba6c548-c66a-4f58-8c58-3ac880a3acb1")
 		(property "Reference" "#PWR081"
-			(at 78.486 93.218 0)
+			(at 122.682 96.012 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2536,7 +2631,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 78.486 91.948 0)
+			(at 122.682 93.726 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2544,7 +2639,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 78.486 86.868 0)
+			(at 122.682 89.662 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2553,7 +2648,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 78.486 86.868 0)
+			(at 122.682 89.662 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2562,7 +2657,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 78.486 86.868 0)
+			(at 122.682 89.662 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2577,101 +2672,6 @@
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
 					(reference "#PWR081")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:Micro_SD_Card_Det")
-		(at 121.666 91.948 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "fe053866-61f1-4978-b96e-ab6045fa6128")
-		(property "Reference" "J3"
-			(at 122.301 70.358 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Micro_SD_Card_Det"
-			(at 122.301 72.898 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_Card:microSD_HC_Hirose_DM3AT-SF-PEJM5"
-			(at 173.736 74.168 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.hirose.com/product/en/download_file/key_name/DM3/category/Catalog/doc_file_id/49662/?file_category_id=4&item_id=195&is_series=1"
-			(at 121.666 89.408 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 121.666 91.948 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b2da6582-f24e-46d0-90b8-0d7dcf91d110")
-		)
-		(pin "10"
-			(uuid "a6045da5-6b21-447f-8740-0d8bbd225c3b")
-		)
-		(pin "11"
-			(uuid "918177fd-da61-41e1-a07b-f8d34960570c")
-		)
-		(pin "2"
-			(uuid "99faec51-cc14-4d74-b126-772718e1893b")
-		)
-		(pin "3"
-			(uuid "2a56111b-d61a-48e5-bd8f-ffae33ece16d")
-		)
-		(pin "4"
-			(uuid "3c288b50-2b74-468a-8404-7f3fb8d52680")
-		)
-		(pin "5"
-			(uuid "ed1595e4-1dab-41da-b3b7-9d6ffd427681")
-		)
-		(pin "6"
-			(uuid "890efc95-4485-4549-987f-d05ac034307c")
-		)
-		(pin "7"
-			(uuid "df402fc8-7ae5-4e9d-a08c-529c18136151")
-		)
-		(pin "8"
-			(uuid "b8c6fedf-dae0-484e-b3f9-a63c3c38cb26")
-		)
-		(pin "9"
-			(uuid "cab07837-283c-4e9c-ac59-55bbb1118493")
-		)
-		(instances
-			(project "Ricardo-Kermit-Mini"
-				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "J3")
 					(unit 1)
 				)
 			)
