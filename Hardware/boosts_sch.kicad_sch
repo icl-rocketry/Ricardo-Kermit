@@ -3422,16 +3422,6 @@
 		)
 		(uuid "6d498e35-de3f-4434-bdce-501e223e772f")
 	)
-	(text "973k\n"
-		(exclude_from_sim no)
-		(at 180.594 134.62 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "97c963ef-2772-431a-913e-f008d5e36cf7")
-	)
 	(text "SIM: https://webench.ti.com/appinfo/webench/scripts/SDP.cgi?ID=0086ECB0F8B2BBA7"
 		(exclude_from_sim no)
 		(at 167.132 145.796 0)
@@ -8643,7 +8633,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "152k"
+		(property "Value" "150k"
 			(at 106.4006 47.6941 0)
 			(effects
 				(font
