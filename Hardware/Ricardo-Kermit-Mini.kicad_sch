@@ -3257,7 +3257,7 @@
 					(justify left top)
 				)
 			)
-			(property "Footprint" "RCLAMP3346PQTNT"
+			(property "Footprint" "iclr:RCLAMP3346PQTNT"
 				(at 26.67 -94.92 0)
 				(effects
 					(font
@@ -10922,6 +10922,15 @@
 		)
 		(property "Description" ""
 			(at 67.31 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402FR-07499RL"
+			(at 67.31 113.03 90)
 			(effects
 				(font
 					(size 1.27 1.27)
