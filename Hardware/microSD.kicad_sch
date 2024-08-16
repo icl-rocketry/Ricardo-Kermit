@@ -1410,16 +1410,16 @@
 		(uuid "515f05e1-fa4e-4468-9bb1-ce99944b100d")
 	)
 	(junction
+		(at 145.796 72.644)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "74ceb4e4-185a-4a4c-b671-61ee43be4977")
+	)
+	(junction
 		(at 134.874 78.232)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b937d480-29ea-4b7f-b7f5-4bda57f98a9a")
-	)
-	(junction
-		(at 116.586 103.124)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e3cc55e2-665e-4059-ad5d-20aa9870761c")
 	)
 	(junction
 		(at 126.492 84.582)
@@ -1434,16 +1434,22 @@
 		(uuid "f614dc09-d672-4650-ae0c-416cc506f00f")
 	)
 	(no_connect
-		(at 143.002 79.502)
-		(uuid "35ef38ad-f10e-469d-9782-94c109c9c68a")
-	)
-	(no_connect
-		(at 143.002 84.582)
+		(at 146.558 84.582)
 		(uuid "4878ba8c-5a74-4316-8b13-285fe7c83fcf")
 	)
 	(no_connect
-		(at 143.002 102.362)
+		(at 146.558 102.362)
 		(uuid "90695557-77f7-4a4f-9628-bfeaee444293")
+	)
+	(wire
+		(pts
+			(xy 145.796 79.502) (xy 146.558 79.502)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "091e665c-93dc-4b61-8945-3c90a8ebbac0")
 	)
 	(wire
 		(pts
@@ -1487,7 +1493,7 @@
 	)
 	(wire
 		(pts
-			(xy 141.732 99.822) (xy 143.002 99.822)
+			(xy 141.732 99.822) (xy 146.558 99.822)
 		)
 		(stroke
 			(width 0)
@@ -1504,6 +1510,16 @@
 			(type default)
 		)
 		(uuid "5b08557c-2546-4368-8579-7db99616eb95")
+	)
+	(wire
+		(pts
+			(xy 143.764 72.644) (xy 145.796 72.644)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "63dadeca-c3c9-4d0e-9817-5a43b4573ae8")
 	)
 	(wire
 		(pts
@@ -1527,7 +1543,7 @@
 	)
 	(wire
 		(pts
-			(xy 143.002 92.202) (xy 126.492 92.202)
+			(xy 126.492 92.202) (xy 146.558 92.202)
 		)
 		(stroke
 			(width 0)
@@ -1537,17 +1553,7 @@
 	)
 	(wire
 		(pts
-			(xy 143.002 97.282) (xy 124.206 97.282)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "75eb16b5-2deb-4031-a17c-beba0a741a7e")
-	)
-	(wire
-		(pts
-			(xy 168.402 107.442) (xy 170.942 107.442)
+			(xy 171.958 107.442) (xy 174.498 107.442)
 		)
 		(stroke
 			(width 0)
@@ -1557,23 +1563,13 @@
 	)
 	(wire
 		(pts
-			(xy 141.732 89.662) (xy 143.002 89.662)
+			(xy 141.732 89.662) (xy 146.558 89.662)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "8e4a0481-f669-44fa-9980-fe51f9293eaf")
-	)
-	(wire
-		(pts
-			(xy 109.728 103.124) (xy 116.586 103.124)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9e85a288-acb6-4d74-b855-734b9a764c27")
 	)
 	(wire
 		(pts
@@ -1587,13 +1583,23 @@
 	)
 	(wire
 		(pts
-			(xy 141.732 94.742) (xy 143.002 94.742)
+			(xy 141.732 94.742) (xy 146.558 94.742)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "b81083f4-c85b-4728-be0d-d1fe38f674a4")
+	)
+	(wire
+		(pts
+			(xy 145.796 72.644) (xy 145.796 79.502)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5399619-018a-4e98-a4d5-f5dd2bf87416")
 	)
 	(wire
 		(pts
@@ -1607,23 +1613,33 @@
 	)
 	(wire
 		(pts
-			(xy 116.586 103.124) (xy 124.206 103.124)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d0f3ecce-6f5e-4a2f-9d87-76b8762f591b")
-	)
-	(wire
-		(pts
-			(xy 141.732 87.122) (xy 143.002 87.122)
+			(xy 141.732 87.122) (xy 146.558 87.122)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "d39a3208-b641-43c3-8f89-57386366ae86")
+	)
+	(wire
+		(pts
+			(xy 126.492 97.282) (xy 146.558 97.282)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d745dd2a-b37e-42f7-b7e4-4a51345702b0")
+	)
+	(wire
+		(pts
+			(xy 145.796 71.628) (xy 145.796 72.644)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d91b3ecd-83a8-41e6-80b8-a97f9aacbc1a")
 	)
 	(wire
 		(pts
@@ -1637,16 +1653,6 @@
 	)
 	(wire
 		(pts
-			(xy 124.206 97.282) (xy 124.206 103.124)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e4d55ee2-d986-4f35-be65-6838026f4b9f")
-	)
-	(wire
-		(pts
 			(xy 126.492 83.312) (xy 114.046 83.312)
 		)
 		(stroke
@@ -1657,7 +1663,7 @@
 	)
 	(wire
 		(pts
-			(xy 170.942 107.442) (xy 170.942 109.982)
+			(xy 174.498 107.442) (xy 174.498 109.982)
 		)
 		(stroke
 			(width 0)
@@ -1715,7 +1721,7 @@
 	)
 	(hierarchical_label "SD_DET"
 		(shape input)
-		(at 109.728 103.124 180)
+		(at 143.764 72.644 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1805,7 +1811,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small")
-		(at 116.586 100.584 180)
+		(at 145.796 69.088 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1813,7 +1819,7 @@
 		(dnp no)
 		(uuid "47a098e5-6631-4b30-8e97-21389ff105dd")
 		(property "Reference" "R32"
-			(at 112.776 98.044 0)
+			(at 141.986 66.548 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1821,7 +1827,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 112.776 100.584 0)
+			(at 141.986 69.088 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1829,7 +1835,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 116.586 100.584 0)
+			(at 145.796 69.088 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1838,7 +1844,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 116.586 100.584 0)
+			(at 145.796 69.088 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1847,7 +1853,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 116.586 100.584 0)
+			(at 145.796 69.088 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1940,7 +1946,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 170.942 109.982 0)
+		(at 174.498 109.982 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1949,7 +1955,7 @@
 		(fields_autoplaced yes)
 		(uuid "5c8d0791-0bde-4d2e-9d71-b8939e8d018c")
 		(property "Reference" "#PWR087"
-			(at 170.942 116.332 0)
+			(at 174.498 116.332 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1958,7 +1964,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 170.942 115.062 0)
+			(at 174.498 115.062 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1966,7 +1972,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 170.942 109.982 0)
+			(at 174.498 109.982 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1975,7 +1981,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 170.942 109.982 0)
+			(at 174.498 109.982 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1984,7 +1990,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 170.942 109.982 0)
+			(at 174.498 109.982 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2250,7 +2256,7 @@
 	)
 	(symbol
 		(lib_id "iclr:ST1W008S4TR2000")
-		(at 155.702 92.202 0)
+		(at 159.258 92.202 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2259,7 +2265,7 @@
 		(fields_autoplaced yes)
 		(uuid "bb1b0af1-813c-48b7-a6a9-bbf7103d7916")
 		(property "Reference" "J9"
-			(at 155.702 72.8175 0)
+			(at 159.258 72.8175 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2267,7 +2273,7 @@
 			)
 		)
 		(property "Value" "ST1W008S4TR2000"
-			(at 155.702 75.2418 0)
+			(at 159.258 75.2418 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2275,7 +2281,7 @@
 			)
 		)
 		(property "Footprint" "iclr:JAE_ST1W008S4TR2000"
-			(at 155.702 114.808 0)
+			(at 159.258 114.808 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2285,7 +2291,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 155.702 92.202 0)
+			(at 159.258 92.202 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2294,7 +2300,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 155.702 92.202 0)
+			(at 159.258 92.202 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2303,7 +2309,7 @@
 			)
 		)
 		(property "MF" "JAE Electronics"
-			(at 170.688 121.158 0)
+			(at 174.244 121.158 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2313,7 +2319,7 @@
 			)
 		)
 		(property "MAXIMUM_PACKAGE_HEIGHT" "1.5 mm"
-			(at 155.702 92.202 0)
+			(at 159.258 92.202 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2323,7 +2329,7 @@
 			)
 		)
 		(property "Package" "None"
-			(at 155.702 92.202 0)
+			(at 159.258 92.202 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2333,7 +2339,7 @@
 			)
 		)
 		(property "Price" "None"
-			(at 155.702 92.202 0)
+			(at 159.258 92.202 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2343,7 +2349,7 @@
 			)
 		)
 		(property "Check_prices" "https://www.snapeda.com/parts/ST1W008S4TR2000/JAE+Electronics/view-part/?ref=eda"
-			(at 168.148 117.856 0)
+			(at 171.704 117.856 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2353,7 +2359,7 @@
 			)
 		)
 		(property "STANDARD" "Manufacturer Recommendations"
-			(at 169.418 118.618 0)
+			(at 172.974 118.618 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2363,7 +2369,7 @@
 			)
 		)
 		(property "PARTREV" "1"
-			(at 155.702 92.202 0)
+			(at 159.258 92.202 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2373,7 +2379,7 @@
 			)
 		)
 		(property "SnapEDA_Link" "https://www.snapeda.com/parts/ST1W008S4TR2000/JAE+Electronics/view-part/?ref=snap"
-			(at 168.148 117.856 0)
+			(at 171.704 117.856 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2383,7 +2389,7 @@
 			)
 		)
 		(property "MP" "ST1W008S4TR2000"
-			(at 155.702 92.202 0)
+			(at 159.258 92.202 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2393,7 +2399,7 @@
 			)
 		)
 		(property "Purchase-URL" "https://www.snapeda.com/api/url_track_click_mouser/?unipart_id=501060&manufacturer=JAE Electronics&part_name=ST1W008S4TR2000&search_term=st1w008s4tr2000"
-			(at 168.148 117.856 0)
+			(at 171.704 117.856 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2403,7 +2409,7 @@
 			)
 		)
 		(property "Description_1" "\nmicroSD memory card connector, 8 contacts, hinge type, soldering (SMT) | JAE Electronics Inc. ST1W008S4TR2000\n"
-			(at 168.148 117.856 0)
+			(at 171.704 117.856 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2413,7 +2419,7 @@
 			)
 		)
 		(property "Availability" "In Stock"
-			(at 155.702 92.202 0)
+			(at 159.258 92.202 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2423,7 +2429,7 @@
 			)
 		)
 		(property "MANUFACTURER" "JAE Electronics"
-			(at 155.702 92.202 0)
+			(at 159.258 92.202 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2475,6 +2481,71 @@
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
 					(reference "J9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 126.492 97.282 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bbedf179-d9e9-4261-9e5c-e4077bbd29bb")
+		(property "Reference" "#PWR084"
+			(at 126.492 103.632 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 126.492 101.346 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 126.492 97.282 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 126.492 97.282 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 126.492 97.282 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "15af81d0-f73d-4bd2-b6be-7212a99414ac")
+		)
+		(instances
+			(project "Ricardo-Kermit-Mini"
+				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
+					(reference "#PWR084")
 					(unit 1)
 				)
 			)
@@ -2549,7 +2620,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 116.586 98.044 0)
+		(at 145.796 66.548 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2557,7 +2628,7 @@
 		(dnp no)
 		(uuid "e9d17dea-25a6-4f74-8255-655831aabfe6")
 		(property "Reference" "#PWR083"
-			(at 116.586 101.854 0)
+			(at 145.796 70.358 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2566,7 +2637,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 116.586 93.98 0)
+			(at 145.796 62.484 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2574,7 +2645,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 116.586 98.044 0)
+			(at 145.796 66.548 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2583,7 +2654,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.586 98.044 0)
+			(at 145.796 66.548 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2592,7 +2663,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 116.586 98.044 0)
+			(at 145.796 66.548 0)
 			(effects
 				(font
 					(size 1.27 1.27)
