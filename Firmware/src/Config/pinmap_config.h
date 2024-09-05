@@ -7,31 +7,27 @@
 
 namespace PinMap{
 
-    static constexpr int SNSR_MISO = 47;
-    static constexpr int SNSR_MOSI = 48;
-    static constexpr int SNSR_SCLK = 33;
+    static constexpr int SNSR_MISO = 37;
+    static constexpr int SNSR_MOSI = 36;
+    static constexpr int SNSR_SCLK = 38;
 
-    static constexpr int SD_SCLK = 12;
-    static constexpr int SD_MISO = 11;
-    static constexpr int SD_MOSI = 10;
+    static constexpr int SD_SCLK = 33;
+    static constexpr int SD_MISO = 34;
+    static constexpr int SD_MOSI = 47;
 
-    //note: counting from the leftmost thermocouple to rightmost (layout point of view)
-    static constexpr int TC0_Cs = 37;
-    static constexpr int TC1_Cs = 36;
-    static constexpr int TC2_Cs = 35;
-    static constexpr int TC3_Cs = 34;
+    static constexpr int TC0_Cs = 12;
+    static constexpr int TC1_Cs = 11;
     
-    static constexpr int ADC0_Cs = 13;
-    static constexpr int ADC1_Cs = 21;
+    static constexpr int ADC0_Cs = 40;
 
-    static constexpr int ADC_CLK = 9; //clkout pin for the ledc for ADC clock.xxxxxxxxxxxxxxxxx
+    static constexpr int ADC_CLK = 35; //clkout pin for the ledc for ADC clock.xxxxxxxxxxxxxxxxx
 
-    static constexpr int TxCan = 17;
-    static constexpr int RxCan = 14;
+    static constexpr int TxCan = 42;
+    static constexpr int RxCan = 41;
 
-    static constexpr int SdDet_1 = 5;
-    //static constexpr int SdDet_2 = 35;
-    static constexpr int SdCs_1 = 6;
+    static constexpr int SdDet_1 = 10;
+    static constexpr int SdCs_1 = 48;
+    static constexpr int SD_EN = 21;
 };
 
 

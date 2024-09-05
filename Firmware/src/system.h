@@ -9,9 +9,9 @@
 #include <libriccore/networkinterfaces/can/canbus.h>
 
 #include "Sensors/MAX31856.h"
-#include "Sensors/ADS131M06.h"
-#include "nrccomponents/nrcremoteloadcell.h"
-#include "nrccomponents/nrcremoteptap.h"
+#include "Sensors/ADS131M04.h"
+#include <librrc/Remote/nrcremoteptap.h>
+#include <librrc/Remote/nrcremoteloadcell.h>
 
 #include "Commands/commands.h"
 
@@ -36,27 +36,16 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         //2 seperate SPI lines:
         SPIClass SDSPI; //SPI for the SD card
         SPIClass SNSRSPI; //SPI for the sensors
-        //4 thermocouples:
+        //2 thermocouples:
         MAX31856 TC0;
         MAX31856 TC1;
-        MAX31856 TC2;
-        MAX31856 TC3;
-        //2 ADC's:
-        ADS131M06 ADC0;
-        ADS131M06 ADC1;
-
+        //1 ADC:
+        ADS131M04 ADC0;
+    
         NRCRemotePTap CPT0;
         NRCRemotePTap CPT1;
-        NRCRemotePTap VPT0;
-        NRCRemotePTap VPT1;
-        NRCRemotePTap VPT2;
-        NRCRemotePTap VPT3;
+        NRCRemotePTap CPT2;
         NRCRemoteLoadcell LC0;
-        NRCRemoteLoadcell LC1;
-        NRCRemotePTap VPT4;
-        NRCRemotePTap VPT5;
-        NRCRemotePTap VPT6;
-        NRCRemotePTap VPT7;
 
         SdFat_Store primarysd;
 

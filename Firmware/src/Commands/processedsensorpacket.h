@@ -15,18 +15,8 @@ class ProcessedSensorPacket : public RnpPacket{
                 &ProcessedSensorPacket::ch1sens,
                 &ProcessedSensorPacket::ch2sens,
                 &ProcessedSensorPacket::ch3sens,
-                &ProcessedSensorPacket::ch4sens,
-                &ProcessedSensorPacket::ch5sens,
-                &ProcessedSensorPacket::ch6sens,
-                &ProcessedSensorPacket::ch7sens,
-                &ProcessedSensorPacket::ch8sens,
-                &ProcessedSensorPacket::ch9sens,
-                &ProcessedSensorPacket::ch10sens,
-                &ProcessedSensorPacket::ch11sens,
                 &ProcessedSensorPacket::temp0,
                 &ProcessedSensorPacket::temp1,
-                &ProcessedSensorPacket::temp2,
-                &ProcessedSensorPacket::temp3,
                 &ProcessedSensorPacket::system_status,
                 &ProcessedSensorPacket::system_time
 

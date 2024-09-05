@@ -1,4 +1,4 @@
-/* This is a library for the ADS131M06 6-channel ADC
+/* This is a library for the ADS131M04 4-channel ADC
    
    Product information:
    https://www.ti.com/product/ADS131M06/part-details/ADS131M06IPBSR
@@ -20,10 +20,10 @@
 #include <SPI.h>
 #include <array>
 
-class ADS131M06 {
+class ADS131M04 {
   public:
-    ADS131M06(SPIClass &_spi, uint8_t _csPin, uint8_t _clkoutPin, uint8_t _clockCh = 1);
-    ADS131M06(SPIClass &_spi, uint8_t _csPin); //second ADC uses the same master clock setup by first ADC
+    ADS131M04(SPIClass &_spi, uint8_t _csPin, uint8_t _clkoutPin, uint8_t _clockCh = 1);
+    ADS131M04(SPIClass &_spi, uint8_t _csPin); //second ADC uses the same master clock setup by first ADC
     /**
      * @brief Setup function of the ADC. Configure the Cs pin, begin SPI and set Cs to high
      * (active low). Configure the clock source options for the ADC using clkConfig() and setup
@@ -47,12 +47,12 @@ class ADS131M06 {
      * spicommframe(), then loops through the array
      * and only copies the data from the channels specified in channelArr. Uses twocompDeco to change data format.
      * 
-     * @param channelArrPtr channelArr should have values from 0-5 (specifying the 6 ADC channels) in any order required
+     * @param channelArrPtr channelArr should have values from 0-4 (specifying the 6 ADC channels) in any order required
      * @param channelArrLen channelArrLen should be the length of that array, starting from 1. 
      *                      (length = 4 if 0-3 channels are used)
      * @param outputArrPtr Must match length of channelArrPtr
      */
-    void rawChannels(std::array<int32_t, 6>& outputArray);
+    void rawChannels(std::array<int32_t, 4>& outputArray);
 
     /**
      * @brief Returns raw data value from the channel specified. Wrapper function of rawChannels() function
@@ -148,9 +148,9 @@ class ADS131M06 {
     uint8_t csPin, clkoutPin, clockCh;
     bool clockEnabled;
     bool initialised;
-    std::array<uint32_t,6> resultsArray;
-    std::array<uint32_t,8> responseArray;
-    std::array<int32_t,6> outputArray;
+    std::array<uint32_t,4> resultsArray;
+    std::array<uint32_t,6> responseArray;
+    std::array<int32_t,4> outputArray;
     
     /**
      * @brief Saves all channel data (32 bits) to the outputArray of size 8 where the first index is the result of the
@@ -164,7 +164,7 @@ class ADS131M06 {
      * @param outputArray Length 8 
      * @param command optional 16 bit command
      */
-    void spiCommFrame(std::array<uint32_t,8>& outputArray, uint16_t command = 0x0000);
+    void spiCommFrame(std::array<uint32_t,6>& outputArray, uint16_t command = 0x0000);
 
     /**
      * @brief Transfer a 24 bit word, which is the result of concatinating 16 bits of input data (first 2 bytes) with
@@ -234,18 +234,6 @@ class ADS131M06 {
     static constexpr uint8_t CH3_OCAL_LSB = 0x1A;
     static constexpr uint8_t CH3_GCAL_MSB = 0x1B;
     static constexpr uint8_t CH3_GCAL_LSB = 0x1C;
-
-    static constexpr uint8_t CH4_CFG = 0x1D;
-    static constexpr uint8_t CH4_OCAL_MSB = 0x1E;
-    static constexpr uint8_t CH4_OCAL_LSB = 0x1F;
-    static constexpr uint8_t CH4_GCAL_MSB = 0x20;
-    static constexpr uint8_t CH4_GCAL_LSB = 0x21;
-
-    static constexpr uint8_t CH5_CFG = 0x22;
-    static constexpr uint8_t CH5_OCAL_MSB = 0x23;
-    static constexpr uint8_t CH5_OCAL_LSB = 0x24;
-    static constexpr uint8_t CH5_GCAL_MSB = 0x25;
-    static constexpr uint8_t CH5_GCAL_LSB = 0x26;
 
     static constexpr uint8_t REGMAP_CRC = 0x3E;
     static constexpr uint8_t RESERVED = 0x3F; //This register is exempt from read reg for ADC
