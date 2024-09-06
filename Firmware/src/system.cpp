@@ -38,7 +38,7 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    CPT0(networkmanager, 0, 0),
                    CPT1(networkmanager, 1, 1),
                    CPT2(networkmanager, 2, 2),
-                   LC0(networkmanager, 0, 3),
+                   CPT3(networkmanager, 3, 3),
                    primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(20),false,&systemstatus){};
 
 void System::systemSetup()
@@ -63,11 +63,13 @@ void System::systemSetup()
     pinMode(PinMap::ADC0_Cs, OUTPUT);
     pinMode(PinMap::TC0_Cs, OUTPUT);
     pinMode(PinMap::TC1_Cs, OUTPUT);
+    pinMode(PinMap::SD_EN, OUTPUT);
 
     digitalWrite(PinMap::SdCs_1, HIGH);
     digitalWrite(PinMap::ADC0_Cs, HIGH);
     digitalWrite(PinMap::TC0_Cs, HIGH);
     digitalWrite(PinMap::TC1_Cs, HIGH);
+    digitalWrite(PinMap::SD_EN, LOW);
 
     setupSPI();
 
@@ -77,7 +79,7 @@ void System::systemSetup()
     // ADC's:
     ADC0.setup();
 
-    ADC0.setOSR(ADS131M04::OSROPT::OSR8192);
+    ADC0.setOSR(ADS131M04::OSROPT::OSR16256);
     // ADC0.setGain(5, ADS131M06::GAIN::GAIN64);
     // ADC0.setGain(5, ADS131M06::GAIN::GAIN64);
 
@@ -105,7 +107,7 @@ void System::serviceSetup()
     networkmanager.registerService(10, CPT0.getThisNetworkCallback());
     networkmanager.registerService(11, CPT1.getThisNetworkCallback());
     networkmanager.registerService(12, CPT2.getThisNetworkCallback());
-    networkmanager.registerService(13, LC0.getThisNetworkCallback());
+    networkmanager.registerService(13, CPT3.getThisNetworkCallback());
 }
 
 void System::initializeLoggers()
@@ -149,7 +151,7 @@ void System::remoteSensorUpdate()
     CPT0.update(ADC0.getOutput(0));
     CPT1.update(ADC0.getOutput(1));
     CPT2.update(ADC0.getOutput(2));
-    LC0.update(ADC0.getOutput(3));
+    CPT3.update(ADC0.getOutput(3));
 }
 
 void System::logReadings()
@@ -161,7 +163,7 @@ void System::logReadings()
         logframe.ch0sens = CPT0.getPressure();
         logframe.ch1sens = CPT1.getPressure();
         logframe.ch2sens = CPT2.getPressure();
-        logframe.ch3sens = LC0.getWeight();
+        logframe.ch3sens = CPT3.getPressure();
 
 
         logframe.temp0 = TC0.getTemp();
@@ -192,5 +194,5 @@ void System::remoteSensorSetup(){
     CPT0.setup();
     CPT1.setup();
     CPT2.setup();
-    LC0.setup();
+    CPT3.setup();
 }

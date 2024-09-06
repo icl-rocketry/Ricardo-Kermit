@@ -73,8 +73,8 @@ void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
 
 	processedSensorPacket.ch0sens = sm.CPT0.getPressure();
 	processedSensorPacket.ch1sens = sm.CPT1.getPressure();
-	processedSensorPacket.ch1sens = sm.CPT2.getPressure();
-	processedSensorPacket.ch6sens = sm.LC0.getWeight(); 
+	processedSensorPacket.ch2sens = sm.CPT2.getPressure();
+	processedSensorPacket.ch3sens = sm.CPT3.getPressure(); 
 
 	processedSensorPacket.temp0 = sm.TC0.getTemp();
 	processedSensorPacket.temp1 = sm.TC1.getTemp();

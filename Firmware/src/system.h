@@ -45,7 +45,7 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         NRCRemotePTap CPT0;
         NRCRemotePTap CPT1;
         NRCRemotePTap CPT2;
-        NRCRemoteLoadcell LC0;
+        NRCRemotePTap CPT3;
 
         SdFat_Store primarysd;
 

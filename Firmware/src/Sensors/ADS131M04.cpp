@@ -297,22 +297,6 @@ bool ADS131M04::setGain(uint8_t channel, GAIN gain){
         gainREGValue = GAIN1REG;
         break;
       }
-      case(4):
-      {
-        GAIN2REG &= static_cast<uint16_t>(CHGAINMASK::CH04);
-        GAIN2REG |= static_cast<uint16_t>(gain);
-        GainRegAddr = GAIN2;
-        gainREGValue = GAIN2REG;
-        break;
-      }
-      case(5):
-      {
-        GAIN2REG &= static_cast<uint16_t>(CHGAINMASK::CH15);
-        GAIN2REG |= static_cast<uint16_t>(gain) << 4;
-        GainRegAddr = GAIN2;
-        gainREGValue = GAIN2REG;
-        break;
-      }
       default:{
           return(false);
       }
