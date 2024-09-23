@@ -33,12 +33,13 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    SDSPI(VSPI_BUS_NUM),
                    SNSRSPI(HSPI_BUS_NUM),
                    TC0(SNSRSPI, PinMap::TC0_Cs),
-                   TC1(SNSRSPI, PinMap::TC1_Cs),
-                   ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK), // need clkout pin and channel
+                   TC1(SNSRSPI, PinMap::TC1_Cs, MAX31856::TCType::TT),
+                   ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK),
                    CPT0(networkmanager, 0, 0),
                    CPT1(networkmanager, 1, 1),
-                   CPT2(networkmanager, 2, 2),
-                   CPT3(networkmanager, 3, 3),
+                   Mass(networkmanager, 0),
+                   Thrust(networkmanager, 1),
+                //    FS0(networkmanager, PCNT_UNIT_0, PCNT_CHANNEL_0, PinMap::FS0, 0.001146158078),
                    primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(20),false,&systemstatus){};
 
 void System::systemSetup()
@@ -54,7 +55,6 @@ void System::systemSetup()
     canbus.setup();
     networkmanager.setNodeType(NODETYPE::HUB);
     networkmanager.setNoRouteAction(NOROUTE_ACTION::BROADCAST, {1, 3});
-
     networkmanager.addInterface(&canbus);
 
     // any other setup goes here
@@ -76,8 +76,10 @@ void System::systemSetup()
     // Thermocouples:
     TC0.setup();
     TC1.setup();
-    // ADC's:
+    // ADCs:
     ADC0.setup();
+    // Turbine Flow Sensor:
+    // FS0.setup();
 
     ADC0.setOSR(ADS131M04::OSROPT::OSR16256);
     // ADC0.setGain(5, ADS131M06::GAIN::GAIN64);
@@ -100,14 +102,18 @@ void System::systemUpdate()
 
     logReadings();
     // Serial.println((int)primarysd.getState());
+
+    if((primarysd.getError() > 0) && !systemstatus.flagSet(SYSTEM_FLAG::ERROR_SD)){
+        systemstatus.newFlag(SYSTEM_FLAG::ERROR_SD, "SD Card Failed with error: " + std::to_string(primarysd.getError()));
+    };
 };
 
 void System::serviceSetup()
 {
     networkmanager.registerService(10, CPT0.getThisNetworkCallback());
     networkmanager.registerService(11, CPT1.getThisNetworkCallback());
-    networkmanager.registerService(12, CPT2.getThisNetworkCallback());
-    networkmanager.registerService(13, CPT3.getThisNetworkCallback());
+    networkmanager.registerService(12, Thrust.getThisNetworkCallback());
+    networkmanager.registerService(13, Mass.getThisNetworkCallback());
 }
 
 void System::initializeLoggers()
@@ -127,7 +133,7 @@ void System::initializeLoggers()
     primarysd.mkdir(log_directory_path);
 
     std::unique_ptr<WrappedFile> syslogfile = primarysd.open(log_directory_path + "/syslog.txt", static_cast<FILE_MODE>(O_WRITE | O_CREAT | O_AT_END));
-    std::unique_ptr<WrappedFile> telemetrylogfile = primarysd.open(log_directory_path + "/telemetrylog.txt", static_cast<FILE_MODE>(O_WRITE | O_CREAT | O_AT_END),50);
+    std::unique_ptr<WrappedFile> telemetrylogfile = primarysd.open(log_directory_path + "/telemetrylog.txt", static_cast<FILE_MODE>(O_WRITE | O_CREAT | O_AT_END),100);
 
     // intialize sys logger
     loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::SYS>().initialize(std::move(syslogfile), networkmanager);
@@ -143,6 +149,8 @@ void System::deviceUpdate()
 
     TC0.update();
     TC1.update();
+
+    // FS0.update();
 }
 
 void System::remoteSensorUpdate()
@@ -150,8 +158,8 @@ void System::remoteSensorUpdate()
 
     CPT0.update(ADC0.getOutput(0));
     CPT1.update(ADC0.getOutput(1));
-    CPT2.update(ADC0.getOutput(2));
-    CPT3.update(ADC0.getOutput(3));
+    Thrust.update(ADC0.getOutput(2));
+    Mass.update(ADC0.getOutput(3));
 }
 
 void System::logReadings()
@@ -162,13 +170,11 @@ void System::logReadings()
 
         logframe.ch0sens = CPT0.getPressure();
         logframe.ch1sens = CPT1.getPressure();
-        logframe.ch2sens = CPT2.getPressure();
-        logframe.ch3sens = CPT3.getPressure();
+        logframe.ch2sens = Thrust.getWeight();
+        logframe.ch3sens = Mass.getMass();
 
-
-        logframe.temp0 = TC0.getTemp();
+        // logframe.temp0 = FS0.getValue();
         logframe.temp1 = TC1.getTemp();
-
 
         logframe.timestamp = micros();
 
@@ -180,7 +186,7 @@ void System::logReadings()
 
 void System::setupSPI(){
     SDSPI.begin(PinMap::SD_SCLK,PinMap::SD_MISO,PinMap::SD_MOSI);
-    SDSPI.setFrequency(2000000);
+    SDSPI.setFrequency(20e6);
     SDSPI.setBitOrder(MSBFIRST);
     SDSPI.setDataMode(SPI_MODE0);
 
@@ -193,6 +199,6 @@ void System::setupSPI(){
 void System::remoteSensorSetup(){
     CPT0.setup();
     CPT1.setup();
-    CPT2.setup();
-    CPT3.setup();
+    Thrust.setup();
+    Mass.setup();
 }

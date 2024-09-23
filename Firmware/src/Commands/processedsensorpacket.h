@@ -51,19 +51,9 @@ class ProcessedSensorPacket : public RnpPacket{
         float ch1sens;
         float ch2sens;
         float ch3sens;
-        float ch4sens;
-        float ch5sens;
-        float ch6sens;
-        float ch7sens;
-        float ch8sens;
-        float ch9sens;
-        float ch10sens;
-        float ch11sens;
 
         float temp0;
         float temp1;
-        float temp2;
-        float temp3;
 
 
         //system details

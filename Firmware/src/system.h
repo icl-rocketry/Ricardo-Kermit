@@ -12,6 +12,7 @@
 #include "Sensors/ADS131M04.h"
 #include <librrc/Remote/nrcremoteptap.h>
 #include <librrc/Remote/nrcremoteloadcell.h>
+#include <librrc/Remote/nrcremoteflowsensor.h>
 
 #include "Commands/commands.h"
 
@@ -34,18 +35,22 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         CanBus<SYSTEM_FLAG> canbus;
 
         //2 seperate SPI lines:
-        SPIClass SDSPI; //SPI for the SD card
-        SPIClass SNSRSPI; //SPI for the sensors
+        SPIClass SDSPI;     //SPI for the SD card
+        SPIClass SNSRSPI;   //SPI for the sensors
         //2 thermocouples:
         MAX31856 TC0;
         MAX31856 TC1;
-        //1 ADC:
+        //1 4-channel ADC:
         ADS131M04 ADC0;
     
         NRCRemotePTap CPT0;
         NRCRemotePTap CPT1;
-        NRCRemotePTap CPT2;
-        NRCRemotePTap CPT3;
+        // NRCRemotePTap CPT2;
+        // NRCRemotePTap CPT3;
+        NRCRemoteLoadcell Mass;
+        NRCRemoteLoadcell Thrust;
+
+        // NRCRemoteFlowSensor FS0;
 
         SdFat_Store primarysd;
 

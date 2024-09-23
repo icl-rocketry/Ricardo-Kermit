@@ -28,6 +28,8 @@ namespace PinMap{
     static constexpr int SdDet_1 = 10;
     static constexpr int SdCs_1 = 48;
     static constexpr int SD_EN = 21;
+
+    static constexpr int FS0 = 4;
 };
 
 
