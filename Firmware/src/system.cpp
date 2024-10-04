@@ -173,14 +173,14 @@ void System::logReadings()
         logframe.ch2sens = Thrust.getWeight();
         logframe.ch3sens = Mass.getMass();
 
-        // logframe.temp0 = FS0.getValue();
+        logframe.temp0 = TC0.getTemp();
         logframe.temp1 = TC1.getTemp();
 
-        logframe.timestamp = micros();
+        logframe.timestamp = esp_timer_get_time();
 
         RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::TELEMETRY>(logframe);
 
-        prev_telemetry_log_time = micros();
+        prev_telemetry_log_time = esp_timer_get_time();
     }
 }
 
