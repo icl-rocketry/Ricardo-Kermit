@@ -15,4 +15,22 @@
 	url = https://github.com/espressif/arduino-esp32.git
 [submodule "Firmware/v3(Mini)/lib/SdFat"]
 	path = Firmware/v3(Mini)/lib/SdFat
-	url = https://github.com/greiman/SdFat.git
+	url = git@github.com:icl-rocketry/SdFat.git
+[submodule "Firmware/v2/components/libriccore"]
+	path = Firmware/v2/components/libriccore
+	url = https://github.com/icl-rocketry/libriccore.git
+[submodule "Firmware/v2/components/librnp"]
+	path = Firmware/v2/components/librnp
+	url = https://github.com/icl-rocketry/librnp.git
+[submodule "Firmware/v2/components/librrc"]
+	path = Firmware/v2/components/librrc
+	url = https://github.com/icl-rocketry/librrc.git
+[submodule "Firmware/v2/components/ArduinoJson"]
+	path = Firmware/v2/components/ArduinoJson
+	url = https://github.com/bblanchon/ArduinoJson.git
+[submodule "Firmware/v2/components/arduino-esp32"]
+	path = Firmware/v2/components/arduino
+	url = https://github.com/espressif/arduino-esp32.git
+[submodule "Firmware/v2/lib/SdFat"]
+	path = Firmware/v2/lib/SdFat
+	url = git@github.com:icl-rocketry/SdFat.git
