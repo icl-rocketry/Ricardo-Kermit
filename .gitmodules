@@ -1,18 +1,18 @@
-[submodule "Firmware/components/libriccore"]
-	path = Firmware/components/libriccore
+[submodule "Firmware/v3(Mini)/components/libriccore"]
+	path = Firmware/v3(Mini)/components/libriccore
 	url = https://github.com/icl-rocketry/libriccore.git
-[submodule "Firmware/components/librnp"]
-	path = Firmware/components/librnp
+[submodule "Firmware/v3(Mini)/components/librnp"]
+	path = Firmware/v3(Mini)/components/librnp
 	url = https://github.com/icl-rocketry/librnp.git
-[submodule "Firmware/components/librrc"]
-	path = Firmware/components/librrc
+[submodule "Firmware/v3(Mini)/components/librrc"]
+	path = Firmware/v3(Mini)/components/librrc
 	url = https://github.com/icl-rocketry/librrc.git
-[submodule "Firmware/components/ArduinoJson"]
-	path = Firmware/components/ArduinoJson
+[submodule "Firmware/v3(Mini)/components/ArduinoJson"]
+	path = Firmware/v3(Mini)/components/ArduinoJson
 	url = https://github.com/bblanchon/ArduinoJson.git
-[submodule "Firmware/components/arduino-esp32"]
-	path = Firmware/components/arduino
+[submodule "Firmware/v3(Mini)/components/arduino-esp32"]
+	path = Firmware/v3(Mini)/components/arduino
 	url = https://github.com/espressif/arduino-esp32.git
-[submodule "Firmware/lib/SdFat"]
-	path = Firmware/lib/SdFat
-	url = git@github.com:icl-rocketry/SdFat.git
+[submodule "Firmware/v3(Mini)/lib/SdFat"]
+	path = Firmware/v3(Mini)/lib/SdFat
+	url = https://github.com/greiman/SdFat.git
