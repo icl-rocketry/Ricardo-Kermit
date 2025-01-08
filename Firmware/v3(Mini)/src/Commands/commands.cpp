@@ -76,13 +76,8 @@ void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
 	processedSensorPacket.ch2sens = sm.Thrust.getWeight();
 	processedSensorPacket.ch3sens = sm.Mass.getMass();
 
-	// processedSensorPacket.temp0 = sm.FS0.getValue();
+	processedSensorPacket.temp0 = sm.TC0.getTemp();
 	processedSensorPacket.temp1 = sm.TC1.getTemp();
-<<<<<<<< HEAD:Firmware/v2/src/Commands/commands.cpp
-	processedSensorPacket.temp2 = sm.FS0.getValue();
-	processedSensorPacket.temp3 = sm.TC3.getTemp();
-========
->>>>>>>> 72ece5ed1e1246f5128e85fd57aef2b9de012e2a:Firmware/v3(Mini)/src/Commands/commands.cpp
 
 	processedSensorPacket.system_status = sm.systemstatus.getStatus();
 
