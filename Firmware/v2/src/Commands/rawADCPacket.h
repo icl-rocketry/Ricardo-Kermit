@@ -14,7 +14,15 @@ class RawADCPacket : public RnpPacket{
                 &RawADCPacket::ch0, 
                 &RawADCPacket::ch1,
                 &RawADCPacket::ch2, 
-                &RawADCPacket::ch3,
+                &RawADCPacket::ch3, 
+                &RawADCPacket::ch4, 
+                &RawADCPacket::ch5, 
+                &RawADCPacket::ch6, 
+                &RawADCPacket::ch7, 
+                &RawADCPacket::ch8, 
+                &RawADCPacket::ch9,
+                &RawADCPacket::ch10,
+                &RawADCPacket::ch11, 
                 &RawADCPacket::system_status, 
                 &RawADCPacket::system_time
 
@@ -49,6 +57,14 @@ class RawADCPacket : public RnpPacket{
         uint32_t ch1; 
         uint32_t ch2; 
         uint32_t ch3; 
+        uint32_t ch4; 
+        uint32_t ch5; 
+        uint32_t ch6; 
+        uint32_t ch7; 
+        uint32_t ch8; 
+        uint32_t ch9;
+        uint32_t ch10;
+        uint32_t ch11;
 
         //system details
         uint32_t system_status;

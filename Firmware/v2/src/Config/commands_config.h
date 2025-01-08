@@ -19,13 +19,15 @@ namespace Commands
         NoCommand = 0,
         GetProcessedData = 8,
         GetRawADC = 9,
+        setChamberP = 69,
+        setFuelP = 70,
         Free_Ram = 250
     };
 
-    inline std::initializer_list<ID> defaultEnabledCommands = {ID::Free_Ram, ID::GetProcessedData, ID::GetRawADC};
+    inline std::initializer_list<ID> defaultEnabledCommands = {ID::Free_Ram, ID::GetProcessedData, ID::GetRawADC, ID::setChamberP, ID::setFuelP};
 
     inline std::unordered_map<ID, std::function<void(ForwardDecl_SystemClass &, const RnpPacketSerialized &)>> command_map{
-        {ID::Free_Ram, FreeRamCommand}, {ID::GetProcessedData, TelemetryCommand}, {ID::GetRawADC, rawADCCommand}};
+        {ID::Free_Ram, FreeRamCommand}, {ID::GetProcessedData, TelemetryCommand}, {ID::GetRawADC, rawADCCommand}, {ID::setChamberP, setChamberP}, {ID::setFuelP, setFuelP}};
 
 
 

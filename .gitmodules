@@ -37,6 +37,7 @@
 [submodule "Firmware/v2/lib/SdFat"]
 	path = Firmware/v2/lib/SdFat
 	url = git@github.com:icl-rocketry/SdFat.git
+	branch = bug-fix
 [submodule "Firmware/v2/components/arduino"]
 	path = Firmware/v2/components/arduino
 	url = git@github.com:espressif/arduino-esp32.git

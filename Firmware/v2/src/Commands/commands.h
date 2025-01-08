@@ -17,6 +17,8 @@
 namespace Commands{
     
     void FreeRamCommand(ForwardDecl_SystemClass& system, const RnpPacketSerialized& packet);
+    void setChamberP(ForwardDecl_SystemClass& system, const RnpPacketSerialized& packet);
+    void setFuelP(ForwardDecl_SystemClass& system, const RnpPacketSerialized& packet);
     void TelemetryCommand(System& sm, const RnpPacketSerialized& packet);
     void rawADCCommand(System& sm, const RnpPacketSerialized& packet);
 

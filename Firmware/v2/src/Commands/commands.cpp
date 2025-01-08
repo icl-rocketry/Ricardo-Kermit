@@ -54,6 +54,21 @@ void Commands::FreeRamCommand(System& sm, const RnpPacketSerialized& packet)
 	
 }
 
+void Commands::setChamberP(System& sm, const RnpPacketSerialized& packet)
+{	
+	SimpleCommandPacket receivedPacket(packet);
+
+	sm.VPT0.pressure = receivedPacket.arg/100000;
+	
+}
+
+void Commands::setFuelP(System& sm, const RnpPacketSerialized& packet)
+{	
+	SimpleCommandPacket receivedPacket(packet);
+
+	sm.VPT1.pressure = receivedPacket.arg/100000;
+	
+}
 
 void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
 {
@@ -73,16 +88,22 @@ void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
 
 	processedSensorPacket.ch0sens = sm.CPT0.getPressure();
 	processedSensorPacket.ch1sens = sm.CPT1.getPressure();
-	processedSensorPacket.ch2sens = sm.Thrust.getWeight();
-	processedSensorPacket.ch3sens = sm.Mass.getMass();
+	processedSensorPacket.ch2sens = sm.VPT0.getPressure();
+	processedSensorPacket.ch3sens = sm.VPT1.getPressure();
+	processedSensorPacket.ch4sens = sm.VPT2.getPressure();
+	processedSensorPacket.ch5sens = sm.VPT3.getPressure();
+	processedSensorPacket.ch6sens = sm.LC0.getWeight(); 
+	processedSensorPacket.ch7sens = sm.LC1.getWeight();
+	processedSensorPacket.ch8sens = sm.VPT4.getPressure();
+	processedSensorPacket.ch9sens = sm.VPT5.getPressure();
+	processedSensorPacket.ch10sens = sm.VPT6.getPressure(); 
+	processedSensorPacket.ch11sens = sm.VPT7.getPressure();
 
-	// processedSensorPacket.temp0 = sm.FS0.getValue();
+	processedSensorPacket.temp0 = sm.TC0.getTemp();
 	processedSensorPacket.temp1 = sm.TC1.getTemp();
-<<<<<<<< HEAD:Firmware/v2/src/Commands/commands.cpp
-	processedSensorPacket.temp2 = sm.FS0.getValue();
+	processedSensorPacket.temp2 = sm.TC2.getTemp();
+	// processedSensorPacket.temp2 = sm.FS0.getValue();
 	processedSensorPacket.temp3 = sm.TC3.getTemp();
-========
->>>>>>>> 72ece5ed1e1246f5128e85fd57aef2b9de012e2a:Firmware/v3(Mini)/src/Commands/commands.cpp
 
 	processedSensorPacket.system_status = sm.systemstatus.getStatus();
 
@@ -103,10 +124,18 @@ void Commands::rawADCCommand(System& sm, const RnpPacketSerialized& packet)
 	rawSensors.header.uid = commandpacket.header.uid;
 	rawSensors.system_time = millis();
 
-	rawSensors.ch0 = sm.ADC0.getOutput(0);
-	rawSensors.ch1 = sm.ADC0.getOutput(1);
-	rawSensors.ch2 = sm.ADC0.getOutput(2); 
-	rawSensors.ch3 = sm.ADC0.getOutput(3);
+	rawSensors.ch0 = sm.ADC1.getOutput(5);
+	rawSensors.ch1 = sm.ADC1.getOutput(4);
+	rawSensors.ch2 = sm.ADC1.getOutput(3); 
+	rawSensors.ch3 = sm.ADC1.getOutput(2);
+	rawSensors.ch4 = sm.ADC1.getOutput(1);
+	rawSensors.ch5 = sm.ADC1.getOutput(0);
+	rawSensors.ch6 = sm.ADC0.getOutput(5); 
+	rawSensors.ch7 = sm.ADC0.getOutput(4);
+	rawSensors.ch8 = sm.ADC0.getOutput(3);
+	rawSensors.ch9 = sm.ADC0.getOutput(2);
+	rawSensors.ch10 = sm.ADC0.getOutput(1); 
+	rawSensors.ch11 = sm.ADC0.getOutput(0);
 
 	rawSensors.system_status = sm.systemstatus.getStatus();
 

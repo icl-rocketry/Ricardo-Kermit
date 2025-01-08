@@ -1,10 +1,10 @@
-/* This is a library for the ADS131M04 6-channel ADC
+/* This is a library for the ADS131M06 6-channel ADC
    
    Product information:
-   https://www.ti.com/product/ADS131M04/part-details/ADS131M04IPBSR
+   https://www.ti.com/product/ADS131M06/part-details/ADS131M06IPBSR
 
    Datasheet: 
-   https://www.ti.com/lit/ds/symlink/ADS131M04.pdf?ts=1688985721879&ref_url=https%253A%252F%252Fduckduckgo.com%252F
+   https://www.ti.com/lit/ds/symlink/ads131m06.pdf?ts=1688985721879&ref_url=https%253A%252F%252Fduckduckgo.com%252F
 
    This library was made for Imperial College London Rocketry
    Created by Aleksandr Kent
@@ -13,12 +13,20 @@
    https://github.com/icl-rocketry/ADS131M04-Lib
 */
 
+/*DEV:
+  - Add in a command/option to sync devices (or check they are synced). The command SYNC/RESET maybe should be made in the overall code
+  - for transferword, can we stick with transmitting 8 bits at a time or should this be changed to 16 bits for commands? (commands are each 16
+  bits)
+  - function to output array data
+  - 
+*/
+
 #include <Arduino.h>
 #include <SPI.h>
-#include "ADS131M04.h"
+#include "ADS131M06.h"
 #include <libriccore/riccorelogging.h>
 
-ADS131M04::ADS131M04(SPIClass &_spi, uint8_t _csPin, uint8_t _clkoutPin, uint8_t _clockCh):
+ADS131M06::ADS131M06(SPIClass &_spi, uint8_t _csPin, uint8_t _clkoutPin, uint8_t _clockCh):
 spi(_spi),
 _spisettings(SCLK_SPD, MSBFIRST, SPI_MODE1),
 csPin(_csPin),
@@ -28,7 +36,7 @@ clockEnabled(true),
 initialised(false)
 {}
 
-ADS131M04::ADS131M04(SPIClass &_spi, uint8_t _csPin):
+ADS131M06::ADS131M06(SPIClass &_spi, uint8_t _csPin):
 spi(_spi),
 _spisettings(SCLK_SPD, MSBFIRST, SPI_MODE1),
 csPin(_csPin),
@@ -36,7 +44,7 @@ clockEnabled(false),
 initialised(false)
 {}
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-void ADS131M04::setup() {
+void ADS131M06::setup() {
   pinMode(csPin, OUTPUT);//set the pinmode of csPin to output data
   digitalWrite(csPin, HIGH);//set the csPin to output high (active low)
 
@@ -53,18 +61,19 @@ void ADS131M04::setup() {
   ledcWrite(clockCh, 2);
  }
 
-  setOSR(OSROPT::OSR16256);
+  setOSR(OSROPT::OSR8192);
+  setGain(5, ADS131M06::GAIN::GAIN1);
   
   initialised=true;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-void ADS131M04::update(){
+void ADS131M06::update(){
 
   rawChannels(outputArray);
 
 }
 
-void ADS131M04::rawChannels(std::array<int32_t,4>& outputArray) {
+void ADS131M06::rawChannels(std::array<int32_t,6>& outputArray) {
   /* Writes data from the channels specified in channelArr, to outputArr,
      in the correct order.
 
@@ -81,7 +90,36 @@ void ADS131M04::rawChannels(std::array<int32_t,4>& outputArray) {
 
 }
 
-bool ADS131M04::writeReg(uint8_t reg, uint16_t data) {
+// bool ADS131M06::globalChop(bool enabled, uint8_t log2delay) {//XXXXXXXXXXXXXXXXXXXXXXXX
+//   /* Function to configure global chop mode for the ADS131M04.
+
+//      INPUTS:
+//      enabled - Whether to enable global-chop mode.
+//      log2delay   - Base 2 log of the desired delay in modulator clocks periods
+//      before measurment begins
+//      Possible values are between and including 1 and 16, to give delays
+//      between 2 and 65536 (2^16) clock periods respectively
+//      For more information, refer to the datasheet.
+
+//      Returns true if settings were written succesfully.
+//   */
+
+//   uint8_t delayRegData = log2delay - 1;
+
+//   // Get current settings for current detect mode from the CFG register
+//   uint16_t currentDetSett = (readReg(CFG) << 8) >>8; 
+//   // TRY LOOP HERE INSTEAD?
+
+//   uint16_t newRegData = (delayRegData << 12) + (enabled << 8) + currentDetSett;
+//   /*Define the new register data as the sum of a shifted delay data, shifted enable bool var (1 = true, 0=false. these are then shifted)
+//   and currentdetsett. More likely on datasheet as this configuration is arbitrary and defines the delay time and whether to set the globalchop
+//   as enabled or not*/
+
+//   return writeReg(CFG, newRegData);// returns true is successfull in writing the data to the CFG register.
+// }
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+
+bool ADS131M06::writeReg(uint8_t reg, uint16_t data) {
   uint8_t commandPref = 0x06;//0000 0110
 
   // Make command word using syntax found in data sheet
@@ -97,8 +135,8 @@ bool ADS131M04::writeReg(uint8_t reg, uint16_t data) {
   after the command, instead of the 6 empty words being sent after the command in spiCommFrame()*/
   spiTransferWord(data);
 
-  // Send 4 empty words
-  for (uint8_t i=0; i<4; i++) {
+  // Send 6 empty words
+  for (uint8_t i=0; i<6; i++) {
     spiTransferWord(); //sends 2bytes of zeros by default. completes the 8 word frame
   }
 
@@ -117,7 +155,7 @@ bool ADS131M04::writeReg(uint8_t reg, uint16_t data) {
   }
 }
 
-uint16_t ADS131M04::readReg(uint8_t reg){
+uint16_t ADS131M06::readReg(uint8_t reg){
   //reg: aaaa aaaa 8 bits, however, no register address requires more than 6 bits other than the RESERVED address (requires 7 bits)
   uint8_t commandPref = 0x0A;//10 = 0000 1010
   //1010 0000 0000 0000
@@ -136,14 +174,14 @@ uint16_t ADS131M04::readReg(uint8_t reg){
 
 }
 //---------------------------------------------------------------------------------------------------------------------------------------------
-bool ADS131M04::clkConfig(){
+bool ADS131M06::clkConfig(){
   /*Writes to the clock register and sets crystal oscillator to disable and enable */
 
   uint16_t data = 0b0011111111001110;
   return(writeReg(CLOCK, data));
 }
 //-----------------------------------------------------------------------------------------------
-bool ADS131M04::reset(){
+bool ADS131M06::reset(){
   uint16_t commandWord = 0x11;
 
   uint16_t commandResponse = (0xFF <<8) + 0x22; //expected response to be checked against
@@ -159,7 +197,7 @@ bool ADS131M04::reset(){
   }
 }
 
-bool ADS131M04::standby(void){
+bool ADS131M06::standby(void){
   /*Enter standby mode for the ADC
     output true if successfull
   */
@@ -175,7 +213,7 @@ bool ADS131M04::standby(void){
     return false;
   }
 }
-bool ADS131M04::wakeup(void){
+bool ADS131M06::wakeup(void){
   /*Wakeup from the standby mode
     Output true if successfull*/
   uint16_t commandWord = 0x33; // 0000 0000 0011 0011
@@ -191,7 +229,7 @@ bool ADS131M04::wakeup(void){
     return false;
   }
 }
-bool ADS131M04::lock(void){
+bool ADS131M06::lock(void){
   /**/
   uint16_t commandWord = (0x05 << 8) + (0x05 << 4) + 0x05; // 0000 0101 0101 0101
 
@@ -205,7 +243,7 @@ bool ADS131M04::lock(void){
     return false;
   }
 }
-bool ADS131M04::unlock(void){
+bool ADS131M06::unlock(void){
   /**/
   uint16_t commandWord = (0x06 << 8) + (0x05 << 4) + 0x05; // 0000 0110 0101 0101
 
@@ -220,7 +258,7 @@ bool ADS131M04::unlock(void){
   }
 }
 //---------------------------------------------------------------------------------------------------------------------------------
-uint32_t ADS131M04::spiTransferWord(uint16_t inputData) {
+uint32_t ADS131M06::spiTransferWord(uint16_t inputData) {
   
   uint32_t data = spi.transfer(inputData >> 8);
 
@@ -235,7 +273,7 @@ uint32_t ADS131M04::spiTransferWord(uint16_t inputData) {
   return data << 8;
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------
-void ADS131M04::spiCommFrame(std::array<uint32_t,6>& commOutput, uint16_t command) {
+void ADS131M06::spiCommFrame(std::array<uint32_t,8>& commOutput, uint16_t command) {
 
   digitalWrite(csPin, LOW);
 
@@ -243,25 +281,25 @@ void ADS131M04::spiCommFrame(std::array<uint32_t,6>& commOutput, uint16_t comman
 
   commOutput[0] = spiTransferWord(command);
 
-  for (uint8_t i=1; i < 5; i++) {//4 times for all ADC channels
+  for (uint8_t i=1; i < 7; i++) {//6 times for all ADC channels
 
     commOutput[i] = spiTransferWord() >> 8;
   }
 
-  commOutput[6] = spiTransferWord(); //CRC data
+  commOutput[8] = spiTransferWord(); //CRC data
 
   spi.endTransaction();
   
     digitalWrite(csPin, HIGH);
 }
 
-bool ADS131M04::setOSR(OSROPT OSR){
+bool ADS131M06::setOSR(OSROPT OSR){
     CLOCKREG &= OSRMASK;
     CLOCKREG |= static_cast<uint8_t>(OSR);
     return writeReg(CLOCK,CLOCKREG);
 }
 
-bool ADS131M04::setGain(uint8_t channel, GAIN gain){
+bool ADS131M06::setGain(uint8_t channel, GAIN gain){
     uint8_t GainRegAddr;
     uint16_t gainREGValue;
     switch(channel){
@@ -297,6 +335,22 @@ bool ADS131M04::setGain(uint8_t channel, GAIN gain){
         gainREGValue = GAIN1REG;
         break;
       }
+      case(4):
+      {
+        GAIN2REG &= static_cast<uint16_t>(CHGAINMASK::CH04);
+        GAIN2REG |= static_cast<uint16_t>(gain);
+        GainRegAddr = GAIN2;
+        gainREGValue = GAIN2REG;
+        break;
+      }
+      case(5):
+      {
+        GAIN2REG &= static_cast<uint16_t>(CHGAINMASK::CH15);
+        GAIN2REG |= static_cast<uint16_t>(gain) << 4;
+        GainRegAddr = GAIN2;
+        gainREGValue = GAIN2REG;
+        break;
+      }
       default:{
           return(false);
       }
@@ -307,7 +361,7 @@ bool ADS131M04::setGain(uint8_t channel, GAIN gain){
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-int32_t ADS131M04::twoCompDeco(uint32_t data) {//XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+int32_t ADS131M06::twoCompDeco(uint32_t data) {//XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   // Take the two's complement of the data
   data <<= 8;
   int32_t dataInt = (int)data;
