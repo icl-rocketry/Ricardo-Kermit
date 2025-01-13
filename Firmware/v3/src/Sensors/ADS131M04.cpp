@@ -15,6 +15,7 @@
 
 #include <Arduino.h>
 #include <SPI.h>
+#include <esp32-hal-ledc.h>
 #include "ADS131M04.h"
 #include <libriccore/riccorelogging.h>
 
@@ -47,11 +48,11 @@ void ADS131M04::setup() {
     
   */
 
- if (clockEnabled == true){
-  ledcSetup(clockCh, CLKIN_SPD, 2); //duty cycle resolution = 2bits? check datasheet
-  ledcAttachPin(clkoutPin, clockCh);
-  ledcWrite(clockCh, 2);
- }
+  if (clockEnabled == true)
+  {
+    ledcAttach(clkoutPin, CLKIN_SPD, 2);
+    ledcWrite(clkoutPin, 2);
+  }
 
   setOSR(OSROPT::OSR16256);
   
