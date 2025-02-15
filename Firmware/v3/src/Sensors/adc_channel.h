@@ -25,62 +25,67 @@
 #include <variant>
 #include <string>
 
-class adc_channel: public NRCRemoteSensorBase<adc_channel>{
+class adc_channel : public NRCRemoteSensorBase<adc_channel>
+{
 
-using ptap_t = NRCRemoteSensorBase<NRCRemotePTap>;
-// using thermistor_t = NRCRemoteSensorBase<NRCRemoteT>; //? There used to be one of these, got lost to time I guess?
-using loadcell_t = NRCRemoteSensorBase<NRCRemoteLoadcell>;
-    public:
+    using ptap_t = NRCRemotePTap;
+    // using thermistor_t = NRCRemoteThermistor; //? There used to be one of these, got lost to time I guess?
+    using loadcell_t = NRCRemoteLoadcell;
 
-        adc_channel(RnpNetworkManager& networkmanager, ADS131M04& ADC, uint8_t sens_ind, uint8_t adc_ind):
+public:
+    adc_channel(RnpNetworkManager &networkmanager, ADS131M04 &ADC, uint8_t sens_ind, uint8_t adc_ind): 
         NRCRemoteSensorBase(networkmanager),
-        m_NVSName("ADC" + std::to_string(sens_ind))
+        m_NVSName("ADC" + std::to_string(sens_ind)),
         m_ADC(ADC),
         m_sensor_ind(sens_ind),
-        m_channel_ind_ADC(adc_ind)
-        {};
+        m_channel_ind_ADC(adc_ind),
+        m_sensor_variant(NRCRemotePTap(networkmanager,0)){};
 
-        /** @brief Retrieve processed value from the underlying sensor bound to this channel.
-        * @return Processed sensor value. */
-        float getValueProcessed(){return m_sensor.getProcessed()//!this is currently wrong, getValue returns int32 not float};
+    /** @brief Retrieve processed value from the underlying sensor bound to this channel.
+     * @return Processed sensor value. */
+    float getValueProcessed() { 
+        return std::visit([](auto& variant){return variant.getProcessed();}, m_sensor_variant); };
 
-        /** @brief Return stored raw adc value from the adc peripheral.
-        * @return Raw adc value. */
-        int32_t getValueRaw(){return m_raw_counts;};
+    /** @brief Return stored raw adc value from the adc peripheral.
+     * @return Raw adc value. */
+    int32_t getValueRaw() { return m_raw_counts; };
 
-        bool setup(){
-            // loadCalibration();//TODO implement
-            m_sensor.setup();};
-        
-        /// @brief Poll ADC peripheral for counts updates, and update underlying sensor value
-        void update(){
-            m_raw_counts = m_ADC.getOutput(m_channel_ind_ADC);//!TODO Implement ADC...
-            m_sensor.update(m_raw_counts);
-        };
+    bool setup()
+    {
+        // loadCalibration();//TODO implement
+        std::visit([](auto& variant){variant.setup();}, m_sensor_variant);
 
+        return true; //!Always returning true for now, should be changed once underlying function calls have non-void returns.
+    };
 
-    private:
-        friend NRCRemoteSensorBase<adc_channel>;
-        
-        std::string m_NVSName; // Name to use for interacting with non volatile storage.
+    /// @brief Poll ADC peripheral for counts updates, and update underlying sensor value
+    void update()
+    {
+        m_raw_counts = m_ADC.getOutput(m_channel_ind_ADC); //! TODO Implement ADC...
+        std::visit([&](auto& variant){variant.update(m_raw_counts);}, m_sensor_variant); //?will by referencce do here?, we'll see when this moves to task based.
+    };
 
-        ADS131M04& m_ADC; //TODO make this ADC device agnostic (HAL?)
-        
-        uint8_t m_sensor_ind; // Board-level channel index.
+private:
+    friend NRCRemoteSensorBase<adc_channel>;
 
-        uint8_t m_channel_ind_ADC; // Peripheral-level channel index.
+    std::string m_NVSName; // Name to use for interacting with non volatile storage.
 
-        int32_t m_raw_counts; //Raw adc value from the peripheral.
+    ADS131M04 &m_ADC; // TODO make this ADC device agnostic (HAL?)
 
-        std::variant<ptap_t, loadcell_t> m_sensor; //Sensor type connected to the channel
+    uint8_t m_sensor_ind; // Board-level channel index.
 
-        
-        /** @brief Push configuration to ADC peripheral.
-        * @param settingsStruct  Struct containing peripheral settings.
-        * @return 0 - Error in setting up channel
-        * 
-        *  1 - Channel setup successful
-        */
-        bool setupChannel(int32_t settingsStruct); //TODO implement
+    uint8_t m_channel_ind_ADC; // Peripheral-level channel index.
+
+    int32_t m_raw_counts = 0; // Raw adc value from the peripheral.
+
+    std::variant<ptap_t, loadcell_t> m_sensor_variant; // Sensor type connected to the channel
+
+    /** @brief Push configuration to ADC peripheral.
+     * @param settingsStruct  Struct containing peripheral settings.
+     * @return 0 - Error in setting up channel
+     *
+     *  1 - Channel setup successful
+     */
+    bool setupChannel(int32_t settingsStruct); // TODO implement
 
 };
