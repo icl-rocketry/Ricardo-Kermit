@@ -61,8 +61,6 @@ void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
 
 	ProcessedSensorPacket processedSensorPacket;
 
-	// auto raw_sensors = _sm->AnalogSensors;
-
 	processedSensorPacket.header.type = 103;
 	processedSensorPacket.header.source = sm.networkmanager.getAddress();
 	processedSensorPacket.header.source_service = sm.commandhandler.getServiceID();
@@ -71,10 +69,10 @@ void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
 	processedSensorPacket.header.uid = commandpacket.header.uid;
 	processedSensorPacket.system_time = millis();
 
-	processedSensorPacket.ch0sens = sm.CPT0.getPressure();
-	processedSensorPacket.ch1sens = sm.CPT1.getPressure();
-	processedSensorPacket.ch2sens = sm.Thrust.getWeight();
-	processedSensorPacket.ch3sens = sm.Mass.getMass();
+	processedSensorPacket.ch0sens = sm.SEN0.getValueProcessed();
+	processedSensorPacket.ch1sens = sm.SEN1.getValueProcessed();
+	processedSensorPacket.ch2sens = sm.SEN2.getValueProcessed();
+	processedSensorPacket.ch3sens = sm.SEN3.getValueProcessed();
 
 	processedSensorPacket.temp0 = sm.TC0.getTemp();
 	processedSensorPacket.temp1 = sm.TC1.getTemp();
@@ -98,10 +96,10 @@ void Commands::rawADCCommand(System& sm, const RnpPacketSerialized& packet)
 	rawSensors.header.uid = commandpacket.header.uid;
 	rawSensors.system_time = millis();
 
-	rawSensors.ch0 = sm.ADC0.getOutput(0);
-	rawSensors.ch1 = sm.ADC0.getOutput(1);
-	rawSensors.ch2 = sm.ADC0.getOutput(2); 
-	rawSensors.ch3 = sm.ADC0.getOutput(3);
+	rawSensors.ch0 = sm.SEN0.getValueRaw();
+	rawSensors.ch1 = sm.SEN1.getValueRaw();
+	rawSensors.ch2 = sm.SEN2.getValueRaw();
+	rawSensors.ch3 = sm.SEN3.getValueRaw();
 
 	rawSensors.system_status = sm.systemstatus.getStatus();
 

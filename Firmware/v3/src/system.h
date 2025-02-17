@@ -17,6 +17,7 @@
 #include "Commands/commands.h"
 
 #include "Storage/sdfat_store.h"
+#include "Sensors/adc_channel.h"
 
 /* System class: a class which encapsulates all the classes used to describe components on
     the board, creating the board system. Interacting with the board involves interacting
@@ -42,13 +43,11 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         MAX31856 TC1;
         //1 4-channel ADC:
         ADS131M04 ADC0;
-    
-        NRCRemotePTap CPT0;
-        NRCRemotePTap CPT1;
-        // NRCRemotePTap CPT2;
-        // NRCRemotePTap CPT3;
-        NRCRemoteLoadcell Mass;
-        NRCRemoteLoadcell Thrust;
+
+        adc_channel SEN0;
+        adc_channel SEN1;
+        adc_channel SEN2;
+        adc_channel SEN3;
 
         // NRCRemoteFlowSensor FS0;
 

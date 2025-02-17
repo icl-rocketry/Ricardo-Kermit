@@ -19,7 +19,6 @@
 
 #include "Loggers/TelemetryLogger/telemetrylogframe.h"
 
-
 #ifdef CONFIG_IDF_TARGET_ESP32S3
 static constexpr int VSPI_BUS_NUM = 0;
 static constexpr int HSPI_BUS_NUM = 1;
@@ -35,19 +34,18 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    TC0(SNSRSPI, PinMap::TC0_Cs),
                    TC1(SNSRSPI, PinMap::TC1_Cs, MAX31856::TCType::TT),
                    ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK),
-                   CPT0(networkmanager, 0),
-                   CPT1(networkmanager, 1),
-                   Mass(networkmanager, 0),
-                   Thrust(networkmanager, 1),
-                //    FS0(networkmanager, PCNT_UNIT_0, PCNT_CHANNEL_0, PinMap::FS0, 0.001146158078),
-                   primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(20),false,&systemstatus){};
+                   SEN0(networkmanager, ADC0, 0, 0),
+                   SEN1(networkmanager, ADC0, 0, 0),
+                   SEN2(networkmanager, ADC0, 0, 0),
+                   SEN3(networkmanager, ADC0, 0, 0),
+                   //    FS0(networkmanager, PCNT_UNIT_0, PCNT_CHANNEL_0, PinMap::FS0, 0.001146158078),
+                   primarysd(SDSPI, PinMap::SdCs_1, SD_SCK_MHZ(20), false, &systemstatus) {};
 
 void System::systemSetup()
 {
 
     Serial.setRxBufferSize(GeneralConfig::SerialRxSize);
     Serial.begin(GeneralConfig::SerialBaud);
-  
 
     // initialize statemachine with idle state
     statemachine.initalize(std::make_unique<Idle>(systemstatus, commandhandler));
@@ -103,17 +101,18 @@ void System::systemUpdate()
     logReadings();
     // Serial.println((int)primarysd.getState());
 
-    if((primarysd.getError() > 0) && !systemstatus.flagSet(SYSTEM_FLAG::ERROR_SD)){
+    if ((primarysd.getError() > 0) && !systemstatus.flagSet(SYSTEM_FLAG::ERROR_SD))
+    {
         systemstatus.newFlag(SYSTEM_FLAG::ERROR_SD, "SD Card Failed with error: " + std::to_string(primarysd.getError()));
     };
 };
 
 void System::serviceSetup()
 {
-    networkmanager.registerService(10, CPT0.getThisNetworkCallback());
-    networkmanager.registerService(11, CPT1.getThisNetworkCallback());
-    networkmanager.registerService(12, Thrust.getThisNetworkCallback());
-    networkmanager.registerService(13, Mass.getThisNetworkCallback());
+    networkmanager.registerService(10, SEN0.getThisNetworkCallback());
+    networkmanager.registerService(11, SEN1.getThisNetworkCallback());
+    networkmanager.registerService(12, SEN2.getThisNetworkCallback());
+    networkmanager.registerService(13, SEN3.getThisNetworkCallback());
 }
 
 void System::initializeLoggers()
@@ -133,13 +132,14 @@ void System::initializeLoggers()
     primarysd.mkdir(log_directory_path);
 
     std::unique_ptr<WrappedFile> syslogfile = primarysd.open(log_directory_path + "/syslog.txt", static_cast<FILE_MODE>(O_WRITE | O_CREAT | O_AT_END));
-    std::unique_ptr<WrappedFile> telemetrylogfile = primarysd.open(log_directory_path + "/telemetrylog.txt", static_cast<FILE_MODE>(O_WRITE | O_CREAT | O_AT_END),100);
+    std::unique_ptr<WrappedFile> telemetrylogfile = primarysd.open(log_directory_path + "/telemetrylog.txt", static_cast<FILE_MODE>(O_WRITE | O_CREAT | O_AT_END), 100);
 
     // intialize sys logger
     loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::SYS>().initialize(std::move(syslogfile), networkmanager);
 
     // initialize telemetry logger
-    loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::TELEMETRY>().initialize(std::move(telemetrylogfile),[](std::string_view msg){RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>(msg);});
+    loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::TELEMETRY>().initialize(std::move(telemetrylogfile), [](std::string_view msg)
+                                                                                         { RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>(msg); });
 }
 
 void System::deviceUpdate()
@@ -155,11 +155,10 @@ void System::deviceUpdate()
 
 void System::remoteSensorUpdate()
 {
-
-    CPT0.update(ADC0.getOutput(0));
-    CPT1.update(ADC0.getOutput(1));
-    Thrust.update(ADC0.getOutput(2));
-    Mass.update(ADC0.getOutput(3));
+    SEN0.update();
+    SEN1.update();
+    SEN2.update();
+    SEN3.update();
 }
 
 void System::logReadings()
@@ -168,10 +167,10 @@ void System::logReadings()
     {
         TelemetryLogframe logframe;
 
-        logframe.ch0sens = CPT0.getPressure();
-        logframe.ch1sens = CPT1.getPressure();
-        logframe.ch2sens = Thrust.getWeight();
-        logframe.ch3sens = Mass.getMass();
+        logframe.ch0sens = SEN0.getValueProcessed();
+        logframe.ch1sens = SEN1.getValueProcessed();
+        logframe.ch2sens = SEN2.getValueProcessed();
+        logframe.ch3sens = SEN3.getValueProcessed();
 
         logframe.temp0 = TC0.getTemp();
         logframe.temp1 = TC1.getTemp();
@@ -184,8 +183,9 @@ void System::logReadings()
     }
 }
 
-void System::setupSPI(){
-    SDSPI.begin(PinMap::SD_SCLK,PinMap::SD_MISO,PinMap::SD_MOSI);
+void System::setupSPI()
+{
+    SDSPI.begin(PinMap::SD_SCLK, PinMap::SD_MISO, PinMap::SD_MOSI);
     SDSPI.setFrequency(20e6);
     SDSPI.setBitOrder(MSBFIRST);
     SDSPI.setDataMode(SPI_MODE0);
@@ -196,9 +196,10 @@ void System::setupSPI(){
     SNSRSPI.setDataMode(SPI_MODE1);
 }
 
-void System::remoteSensorSetup(){
-    CPT0.setup();
-    CPT1.setup();
-    Thrust.setup();
-    Mass.setup();
+void System::remoteSensorSetup()
+{
+    SEN0.setup();
+    SEN1.setup();
+    SEN2.setup();
+    SEN3.setup();
 }

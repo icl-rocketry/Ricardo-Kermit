@@ -45,10 +45,10 @@ class RawADCPacket : public RnpPacket{
         //PacketHeader header{static_cast<uint8_t>(packet::TELEMETRY); unit32_t packet_size()};
 
         //ADC channels
-        uint32_t ch0;
-        uint32_t ch1; 
-        uint32_t ch2; 
-        uint32_t ch3; 
+        int32_t ch0;
+        int32_t ch1; 
+        int32_t ch2; 
+        int32_t ch3; 
 
         //system details
         uint32_t system_status;
