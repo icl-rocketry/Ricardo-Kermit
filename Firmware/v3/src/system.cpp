@@ -81,7 +81,11 @@ void System::systemSetup()
     // Turbine Flow Sensor:
     // FS0.setup();
 
-    ADC0.setOSR(ADS131M04::OSROPT::OSR16256);
+    ADC0.setOSR(ADS131M04::OSROPT::OSR4096);
+    ADC0.setGain(0,ADS131M04::GAIN::GAIN1);
+    ADC0.setGain(1,ADS131M04::GAIN::GAIN1);
+    ADC0.setGain(2,ADS131M04::GAIN::GAIN1);
+    ADC0.setGain(3,ADS131M04::GAIN::GAIN1);
     // ADC0.setGain(5, ADS131M06::GAIN::GAIN64);
     // ADC0.setGain(5, ADS131M06::GAIN::GAIN64);
 
@@ -177,10 +181,10 @@ void System::logReadings()
         logframe.temp1 = TC1.getTemp();
 
         logframe.timestamp = esp_timer_get_time();
+        prev_telemetry_log_time = esp_timer_get_time();
 
         RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::TELEMETRY>(logframe);
 
-        prev_telemetry_log_time = esp_timer_get_time();
     }
 }
 
