@@ -81,7 +81,7 @@ void System::systemSetup()
     // Turbine Flow Sensor:
     // FS0.setup();
 
-    ADC0.setOSR(ADS131M04::OSROPT::OSR4096);
+    ADC0.setOSR(ADS131M04::OSROPT::OSR8192);
     ADC0.setGain(0,ADS131M04::GAIN::GAIN1);
     ADC0.setGain(1,ADS131M04::GAIN::GAIN1);
     ADC0.setGain(2,ADS131M04::GAIN::GAIN1);
