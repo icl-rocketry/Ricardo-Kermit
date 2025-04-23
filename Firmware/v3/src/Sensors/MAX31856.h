@@ -148,6 +148,11 @@ class MAX31856{
         bool alive();
         void clearFault();
 
+        //Fast millis bcs why not
+        uint32_t millisFast(){
+            return xTaskGetTickCount() * portTICK_PERIOD_MS;
+        };
+
         //Initialising
         float m_Temp = 0;
         uint32_t m_prevUpdate = 0;

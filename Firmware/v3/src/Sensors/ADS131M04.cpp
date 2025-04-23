@@ -40,7 +40,7 @@ initialised(false)
 void ADS131M04::setup() {
   pinMode(csPin, OUTPUT);//set the pinmode of csPin to output data
   digitalWrite(csPin, HIGH);//set the csPin to output high (active low)
-
+  reset();
   /* Set CLKOUT on the ESP32. used for generation of the ADC clock signal using ledc.
     Define the individual clock channel to generate the signal and the clock frequency to
     generate it at.
