@@ -168,7 +168,7 @@ void System::remoteSensorUpdate()
 
 void System::logReadings()
 {
-    if (micros() - prev_telemetry_log_time > telemetry_log_delta)
+    if (esp_timer_get_time() - prev_telemetry_log_time > telemetry_log_delta)
     {
         TelemetryLogframe logframe;
 
