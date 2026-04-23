@@ -8631,7 +8631,7 @@
 				)
 			)
 		)
-		(property "Value" "CANTXLED"
+		(property "Value" "EMERALD_LED"
 			(at 25.4 40.9956 0)
 			(effects
 				(font
@@ -9169,7 +9169,7 @@
 				)
 			)
 		)
-		(property "Value" "CANRXLED"
+		(property "Value" "AMBER_LED"
 			(at 25.4 53.6956 0)
 			(effects
 				(font
