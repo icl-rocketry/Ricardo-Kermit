@@ -3921,15 +3921,15 @@
 		(fields_autoplaced yes)
 		(uuid "8e7b437a-d568-4634-a4ca-9ab4da60fc54")
 		(property "Reference" "U203"
-			(at 218.44 45.9572 0)
+			(at 218.44 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SC4215"
-			(at 218.44 48.4941 0)
+		(property "Value" "SC4215ASTRT"
+			(at 218.44 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)

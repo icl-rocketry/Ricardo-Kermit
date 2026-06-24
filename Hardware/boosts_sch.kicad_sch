@@ -7497,7 +7497,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SRR6038-5R0Y"
+		(property "Value" "5uH"
 			(at 233.5794 115.0693 90)
 			(effects
 				(font
@@ -9209,7 +9209,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SRR6038-5R0Y"
+		(property "Value" "5uH"
 			(at 104.8014 124.4673 90)
 			(effects
 				(font
