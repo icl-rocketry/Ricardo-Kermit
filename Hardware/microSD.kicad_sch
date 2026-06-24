@@ -1554,7 +1554,7 @@
 	)
 	(wire
 		(pts
-			(xy 114.046 74.676) (xy 114.046 72.644)
+			(xy 110.49 74.93) (xy 110.49 72.644)
 		)
 		(stroke
 			(width 0)
@@ -1594,7 +1594,7 @@
 	)
 	(wire
 		(pts
-			(xy 114.046 83.312) (xy 114.046 82.296)
+			(xy 110.49 83.312) (xy 110.49 82.55)
 		)
 		(stroke
 			(width 0)
@@ -1624,7 +1624,7 @@
 	)
 	(wire
 		(pts
-			(xy 114.046 72.644) (xy 126.492 72.644)
+			(xy 110.49 72.644) (xy 126.492 72.644)
 		)
 		(stroke
 			(width 0)
@@ -1674,7 +1674,7 @@
 	)
 	(wire
 		(pts
-			(xy 126.492 83.312) (xy 114.046 83.312)
+			(xy 126.492 83.312) (xy 110.49 83.312)
 		)
 		(stroke
 			(width 0)
@@ -1768,7 +1768,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "28505d33-1da7-485d-b68b-cd86acad6318")
-		(property "Reference" "#PWR082"
+		(property "Reference" "#PWR0602"
 			(at 126.492 75.438 0)
 			(effects
 				(font
@@ -1818,7 +1818,7 @@
 		(instances
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "#PWR082")
+					(reference "#PWR0602")
 					(unit 1)
 				)
 			)
@@ -1833,7 +1833,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "47a098e5-6631-4b30-8e97-21389ff105dd")
-		(property "Reference" "R32"
+		(property "Reference" "R602"
 			(at 141.986 66.548 0)
 			(effects
 				(font
@@ -1841,7 +1841,7 @@
 				)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "10kΩ"
 			(at 141.986 69.088 0)
 			(effects
 				(font
@@ -1885,7 +1885,7 @@
 		(instances
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "R32")
+					(reference "R602")
 					(unit 1)
 				)
 			)
@@ -1893,15 +1893,15 @@
 	)
 	(symbol
 		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 114.046 78.486 270)
+		(at 110.49 78.74 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "53bf53ee-2a03-4324-8261-7781f2b91ad1")
-		(property "Reference" "JP2"
-			(at 108.966 78.486 0)
+		(property "Reference" "JP601"
+			(at 105.41 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1909,7 +1909,7 @@
 			)
 		)
 		(property "Value" "SolderJumper_2_Open"
-			(at 82.296 60.706 0)
+			(at 78.74 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1918,7 +1918,7 @@
 			)
 		)
 		(property "Footprint" "iclr:SmallerSolderJP"
-			(at 114.046 78.486 0)
+			(at 110.49 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1927,7 +1927,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 114.046 78.486 0)
+			(at 110.49 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1936,7 +1936,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 114.046 78.486 0)
+			(at 110.49 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1953,7 +1953,7 @@
 		(instances
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "JP2")
+					(reference "JP601")
 					(unit 1)
 				)
 			)
@@ -1969,7 +1969,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5c8d0791-0bde-4d2e-9d71-b8939e8d018c")
-		(property "Reference" "#PWR087"
+		(property "Reference" "#PWR0606"
 			(at 174.498 116.332 0)
 			(effects
 				(font
@@ -2019,7 +2019,7 @@
 		(instances
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "#PWR087")
+					(reference "#PWR0606")
 					(unit 1)
 				)
 			)
@@ -2034,7 +2034,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6909b242-71a5-4cae-851d-ac16b8ae2532")
-		(property "Reference" "R33"
+		(property "Reference" "R601"
 			(at 131.445 80.9021 0)
 			(effects
 				(font
@@ -2042,7 +2042,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "1kΩ"
 			(at 131.445 83.439 0)
 			(effects
 				(font
@@ -2086,7 +2086,7 @@
 		(instances
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "R33")
+					(reference "R601")
 					(unit 1)
 				)
 			)
@@ -2102,7 +2102,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a2a9b5f7-4062-4930-a7d0-6d28acfdeaaf")
-		(property "Reference" "#PWR085"
+		(property "Reference" "#PWR0604"
 			(at 134.874 89.662 0)
 			(effects
 				(font
@@ -2154,7 +2154,7 @@
 		(instances
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "#PWR085")
+					(reference "#PWR0604")
 					(unit 1)
 				)
 			)
@@ -2170,8 +2170,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a8620991-0703-4c3d-bb38-b1211d27021e")
-		(property "Reference" "Q1"
-			(at 122.682 76.962 0)
+		(property "Reference" "Q601"
+			(at 123.19 76.9619 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2179,8 +2179,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "PMOS"
-			(at 122.682 79.502 0)
+		(property "Value" "DMP3099L"
+			(at 123.19 79.5019 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2263,7 +2263,7 @@
 		(instances
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "Q1")
+					(reference "Q601")
 					(unit 1)
 				)
 			)
@@ -2279,7 +2279,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bb1b0af1-813c-48b7-a6a9-bbf7103d7916")
-		(property "Reference" "J9"
+		(property "Reference" "J601"
 			(at 159.258 72.8175 0)
 			(effects
 				(font
@@ -2495,7 +2495,7 @@
 		(instances
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "J9")
+					(reference "J601")
 					(unit 1)
 				)
 			)
@@ -2510,7 +2510,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bbedf179-d9e9-4261-9e5c-e4077bbd29bb")
-		(property "Reference" "#PWR084"
+		(property "Reference" "#PWR0603"
 			(at 126.492 103.632 0)
 			(effects
 				(font
@@ -2560,7 +2560,7 @@
 		(instances
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "#PWR084")
+					(reference "#PWR0603")
 					(unit 1)
 				)
 			)
@@ -2575,7 +2575,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d96cb3ec-4cfb-4f5e-8ea4-409a1d131444")
-		(property "Reference" "C49"
+		(property "Reference" "C601"
 			(at 117.602 87.122 0)
 			(effects
 				(font
@@ -2583,7 +2583,7 @@
 				)
 			)
 		)
-		(property "Value" "0.1uF"
+		(property "Value" "100nF"
 			(at 117.602 89.4334 0)
 			(effects
 				(font
@@ -2627,7 +2627,7 @@
 		(instances
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "C49")
+					(reference "C601")
 					(unit 1)
 				)
 			)
@@ -2642,7 +2642,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e9d17dea-25a6-4f74-8255-655831aabfe6")
-		(property "Reference" "#PWR083"
+		(property "Reference" "#PWR0605"
 			(at 145.796 70.358 0)
 			(effects
 				(font
@@ -2692,7 +2692,7 @@
 		(instances
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "#PWR083")
+					(reference "#PWR0605")
 					(unit 1)
 				)
 			)
@@ -2707,7 +2707,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "fba6c548-c66a-4f58-8c58-3ac880a3acb1")
-		(property "Reference" "#PWR081"
+		(property "Reference" "#PWR0601"
 			(at 122.682 96.012 0)
 			(effects
 				(font
@@ -2757,7 +2757,7 @@
 		(instances
 			(project "Ricardo-Kermit-Mini"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/d2fb5c72-e348-4618-9c43-b5fd18c57de4"
-					(reference "#PWR081")
+					(reference "#PWR0601")
 					(unit 1)
 				)
 			)
