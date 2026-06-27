@@ -30,6 +30,13 @@ namespace PinMap{
     static constexpr int SD_EN = 21;
 
     static constexpr int FS0 = 4;
+
+
+    static const int OLED_SCLK = 5;
+    static const int OLED_MOSI = 4;
+    static const int OLED_RST = 7;
+    static const int OLED_DC = 6;
+    static const int OLED_CS = 9; 
 };
 
 

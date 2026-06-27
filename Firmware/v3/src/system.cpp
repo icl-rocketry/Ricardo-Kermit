@@ -16,6 +16,7 @@
 #include "States/idle.h"
 
 #include <cstdlib>
+#include <cstdio>
 
 #include "Loggers/TelemetryLogger/telemetrylogframe.h"
 
@@ -35,6 +36,7 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    TC0(SNSRSPI, PinMap::TC0_Cs),
                    TC1(SNSRSPI, PinMap::TC1_Cs, MAX31856::TCType::TT),
                    ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK),
+                   oled(U8G2_R0, PinMap::OLED_SCLK, PinMap::OLED_MOSI, PinMap::OLED_CS, PinMap::OLED_DC, PinMap::OLED_RST),
                    CPT0(networkmanager, 0),
                    CPT1(networkmanager, 1),
                    Mass(networkmanager, 0),
@@ -47,6 +49,7 @@ void System::systemSetup()
 
     Serial.setRxBufferSize(GeneralConfig::SerialRxSize);
     Serial.begin(GeneralConfig::SerialBaud);
+    setupDisplay();
   
 
     // initialize statemachine with idle state
@@ -101,6 +104,8 @@ void System::systemSetup()
 void System::systemUpdate()
 {
     deviceUpdate();
+    
+    updateDisplay();
 
     remoteSensorUpdate();
 
@@ -206,4 +211,41 @@ void System::remoteSensorSetup(){
     CPT1.setup();
     Thrust.setup();
     Mass.setup();
+}
+
+void System::setupDisplay()
+{
+    oled.begin();
+    oled.clearBuffer();
+    oled.setFont(u8g2_font_6x10_tf);
+    oled.drawStr(0, 10, "Kermit ADC");
+    oled.sendBuffer();
+}
+
+void System::updateDisplay()
+{
+    if (esp_timer_get_time() - prev_display_update_time < display_update_delta) {
+        return;
+    }
+
+    prev_display_update_time = esp_timer_get_time();
+
+    char line[32];
+
+    oled.clearBuffer();
+    oled.setFont(u8g2_font_6x10_tf);
+
+    snprintf(line, sizeof(line), "ADC 1: %ld", static_cast<long>(ADC0.getOutput(0)));
+    oled.drawStr(0, 10, line);
+
+    snprintf(line, sizeof(line), "ADC 2: %ld", static_cast<long>(ADC0.getOutput(1)));
+    oled.drawStr(0, 25, line);
+
+    snprintf(line, sizeof(line), "ADC 3: %ld", static_cast<long>(ADC0.getOutput(2)));
+    oled.drawStr(0, 40, line);
+
+    snprintf(line, sizeof(line), "ADC 4: %ld", static_cast<long>(ADC0.getOutput(3)));
+    oled.drawStr(0, 55, line);
+
+    oled.sendBuffer();
 }

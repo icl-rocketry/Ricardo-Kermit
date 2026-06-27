@@ -13,6 +13,7 @@
 #include <librrc/Remote/nrcremoteptap.h>
 #include <librrc/Remote/nrcremoteloadcell.h>
 #include <librrc/Remote/nrcremoteflowsensor.h>
+#include <U8g2lib.h>
 
 #include "Commands/commands.h"
 
@@ -42,6 +43,9 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         MAX31856 TC1;
         //1 4-channel ADC:
         ADS131M04 ADC0;
+
+        // SPI OLED Display used to show live ADC Channel values.
+        U8G2_SSD1322_ZJY_256X64_F_4W_SW_SPI oled;
     
         NRCRemotePTap CPT0;
         NRCRemotePTap CPT1;
@@ -63,12 +67,19 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         void initializeLoggers();
         void logReadings();
         void remoteSensorSetup();
+        void setupDisplay();
+        void updateDisplay();
+
 
         const std::string log_path = "/Logs";
         const std::string config_path = "/Config";
 
         uint32_t telemetry_log_delta = 1000;
         uint32_t prev_telemetry_log_time;
+        uint32_t prev_display_update_time = 0;
+        uint32_t display_update_delta = 200000;
+
+
 
 
 };
