@@ -29,6 +29,20 @@ static constexpr int VSPI_BUS_NUM = VSPI;
 static constexpr int HSPI_BUS_NUM = HSPI;
 #endif
 
+static constexpr uint8_t ICLR_LOGO_WIDTH = 32;
+static constexpr uint8_t ICLR_LOGO_HEIGHT = 32;
+
+static const uint8_t ICLR_LOGO_XBM[] = {
+    0x00, 0xf0, 0x0f, 0x00, 0x00, 0xde, 0x7f, 0x00, 0x80, 0xfd, 0xdf, 0x01, 0xc0, 0x67, 0x66, 0x03,
+    0xe0, 0x39, 0x82, 0x05, 0xf0, 0x2c, 0x3c, 0x0f, 0xf8, 0x2e, 0xcc, 0x16, 0x7c, 0x16, 0xf0, 0x3d,
+    0x5c, 0x23, 0x38, 0x38, 0x6e, 0x31, 0x1c, 0x56, 0xbe, 0x38, 0xc4, 0x77, 0x56, 0x0e, 0xf0, 0x6f,
+    0x07, 0x30, 0xfc, 0xe0, 0xf7, 0x07, 0x04, 0xec, 0x17, 0x3e, 0x9c, 0xff, 0xff, 0x39, 0x70, 0xe0,
+    0x05, 0x20, 0x04, 0xe0, 0x07, 0x3e, 0x9c, 0xff, 0xfd, 0x39, 0x7c, 0xe0, 0x37, 0x00, 0xe0, 0xe7,
+    0x84, 0x3f, 0xf4, 0x6f, 0xee, 0x2f, 0xc0, 0x57, 0xea, 0x81, 0x08, 0x70, 0x5c, 0x08, 0xb0, 0x2b,
+    0x3c, 0x0c, 0x70, 0x3c, 0x78, 0x47, 0xe2, 0x1e, 0xf0, 0x62, 0x46, 0x0f, 0xe0, 0xf9, 0x9f, 0x07,
+    0xc0, 0xc7, 0xe3, 0x03, 0x80, 0xfb, 0xff, 0x01, 0x00, 0xfe, 0x7b, 0x00, 0x00, 0xf0, 0x0f, 0x00
+};
+
 System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabledCommands, Serial),
                    canbus(systemstatus, PinMap::TxCan, PinMap::RxCan, 3),
                    SDSPI(VSPI_BUS_NUM),
@@ -216,26 +230,46 @@ void System::remoteSensorSetup(){
 void System::setupDisplay()
 {
     oled.begin();
+
+    display_boot_start_time = static_cast<uint64_t>(esp_timer_get_time());
+    prev_display_update_time = display_boot_start_time;
+
+    drawStartupLogo();
+}
+
+void System::drawStartupLogo()
+{
     oled.clearBuffer();
-    oled.setFont(u8g2_font_9x15_tf);
-    oled.drawStr(0, 14, "KERMIT DAQ | ADC");
+    oled.setDrawColor(1);
+
+    const uint8_t x = (256 - ICLR_LOGO_WIDTH) / 2;
+    const uint8_t y = (64 - ICLR_LOGO_HEIGHT) / 2;
+
+    oled.drawXBMP(x, y, ICLR_LOGO_WIDTH, ICLR_LOGO_HEIGHT, ICLR_LOGO_XBM);
     oled.sendBuffer();
 }
 
 void System::updateDisplay()
 {
-    if (esp_timer_get_time() - prev_display_update_time < display_update_delta) {
+    const uint64_t now = static_cast<uint64_t>(esp_timer_get_time());
+
+    // Keep the ICLR logo on screen for the first 3 seconds after display init.
+    if (now - display_boot_start_time < display_logo_duration_us) {
         return;
     }
 
-    prev_display_update_time = esp_timer_get_time();
+    if (now - prev_display_update_time < display_update_delta) {
+        return;
+    }
+
+    prev_display_update_time = now;
 
     char line[32];
 
     oled.clearBuffer();
     oled.setFont(u8g2_font_9x15_tf);
 
-    oled.drawStr(0, 14, "KERMIT DAQ | ADC");
+    oled.drawStr(0, 14, "KERMIT | DAQ");
 
     snprintf(line, sizeof(line), "ADC1:%04ld", static_cast<long>(ADC0.getOutput(0)));
     oled.drawStr(0, 34, line);

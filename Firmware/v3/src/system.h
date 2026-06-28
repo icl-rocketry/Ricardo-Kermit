@@ -68,6 +68,7 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         void logReadings();
         void remoteSensorSetup();
         void setupDisplay();
+        void drawStartupLogo();
         void updateDisplay();
 
 
@@ -76,8 +77,11 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
 
         uint32_t telemetry_log_delta = 1000;
         uint32_t prev_telemetry_log_time;
-        uint32_t prev_display_update_time = 0;
-        uint32_t display_update_delta = 200000;
+        uint64_t display_boot_start_time = 0;
+        uint64_t prev_display_update_time = 0;
+
+        static constexpr uint64_t display_logo_duration_us = 3000000ULL; // 3 seconds
+        static constexpr uint64_t display_update_delta = 200000ULL;      // 0.2 seconds
 
 
 
