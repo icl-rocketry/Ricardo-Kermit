@@ -217,9 +217,8 @@ void System::setupDisplay()
 {
     oled.begin();
     oled.clearBuffer();
-    oled.setFont(u8g2_font_6x10_tf);
-    oled.drawStr(0, 10, "KERMIT ADC");
-    oled.drawStr(0, 22, "----------------");
+    oled.setFont(u8g2_font_9x15_tf);
+    oled.drawStr(0, 14, "KERMIT DAQ | ADC");
     oled.sendBuffer();
 }
 
@@ -234,22 +233,21 @@ void System::updateDisplay()
     char line[32];
 
     oled.clearBuffer();
-    oled.setFont(u8g2_font_6x10_tf);
+    oled.setFont(u8g2_font_9x15_tf);
 
-    oled.drawStr(0, 10, "KERMIT DAQ | ADC");
-    oled.drawStr(0, 22, "----------------");
+    oled.drawStr(0, 14, "KERMIT DAQ | ADC");
 
-    snprintf(line, sizeof(line), "ADC 1: %04ld", static_cast<long>(ADC0.getOutput(0)));
+    snprintf(line, sizeof(line), "ADC1:%04ld", static_cast<long>(ADC0.getOutput(0)));
     oled.drawStr(0, 34, line);
 
-    snprintf(line, sizeof(line), "ADC 2: %04ld", static_cast<long>(ADC0.getOutput(1)));
-    oled.drawStr(0, 44, line);
-
-    snprintf(line, sizeof(line), "ADC 3: %04ld", static_cast<long>(ADC0.getOutput(2)));
+    snprintf(line, sizeof(line), "ADC2:%04ld", static_cast<long>(ADC0.getOutput(1)));
     oled.drawStr(0, 54, line);
 
-    snprintf(line, sizeof(line), "ADC 4: %04ld", static_cast<long>(ADC0.getOutput(3)));
-    oled.drawStr(0, 64, line);
+    snprintf(line, sizeof(line), "ADC3:%04ld", static_cast<long>(ADC0.getOutput(2)));
+    oled.drawStr(128, 34, line);
+
+    snprintf(line, sizeof(line), "ADC4:%04ld", static_cast<long>(ADC0.getOutput(3)));
+    oled.drawStr(128, 54, line);
 
     oled.sendBuffer();
 }
