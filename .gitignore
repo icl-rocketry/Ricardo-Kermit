@@ -1,3 +1,10 @@
 .DS_Store
 **/.DS_Store
 Hardware/.history/
+
+# KiCad local/cache/backup artifacts
+Hardware/~*.lck
+Hardware/fp-info-cache
+Hardware/*.kicad_prl
+Hardware/*-backups/
+Hardware/production/backups/
