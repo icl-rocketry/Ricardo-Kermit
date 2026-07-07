@@ -27,7 +27,7 @@ class TelemetryLogger : public LoggerBase
          * @return true 
          * @return false 
          */
-        bool initialize(std::unique_ptr<WrappedFile> file,std::function<void(std::string_view message)> logcb=nullptr);
+        bool initialize(std::unique_ptr<WrappedFile> file, std::string file_header, std::function<void(std::string_view message)> logcb=nullptr);
 
         /**
          * @brief Logs given logframe as a string to the provided file

@@ -18,7 +18,7 @@ _file(nullptr),
 internalLogCB()
 {};
 
-bool TelemetryLogger::initialize(std::unique_ptr<WrappedFile> file,std::function<void(std::string_view message)> logcb)
+bool TelemetryLogger::initialize(std::unique_ptr<WrappedFile> file, std::string file_header, std::function<void(std::string_view message)> logcb)
 {
     if (logcb)
     {
@@ -28,6 +28,9 @@ bool TelemetryLogger::initialize(std::unique_ptr<WrappedFile> file,std::function
     if (file == nullptr){return false;};
     _file = std::move(file);
     initialized=true;
+    const std::string header = file_header + "\n";
+    std::vector<uint8_t> dataframe_bytes(header.begin(),header.end());
+    _file->append(dataframe_bytes);
     return true;
 }
 

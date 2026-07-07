@@ -76,17 +76,17 @@ void MAX31856::update()
     if (!m_init){ //Don't udpate if device failed to initialise
         return;
     }
-    // if(millis() - m_CJtimerOFF > 60000 && _ColdJComp == ENCJComp::disable){
+    // if(millisFast() - m_CJtimerOFF > 60000 && _ColdJComp == ENCJComp::disable){
     //     enableCJComp(ENCJComp::enable);
-    //     m_CJtimerON = millis();
+    //     m_CJtimerON = millisFast();
     // }
 
-    // if(millis() - m_CJtimerON > 200 && _ColdJComp == ENCJComp::disable){
+    // if(millisFast() - m_CJtimerON > 200 && _ColdJComp == ENCJComp::disable){
     //     enableCJComp(_ColdJComp);
-    //     m_CJtimerOFF = millis();
+    //     m_CJtimerOFF = millisFast();
     // }
     
-    if (millis() - m_prevUpdate > m_updateDelta)
+    if (millisFast() - m_prevUpdate > m_updateDelta)
     {
         m_activeFaults = static_cast<Faults>(readRegister(readRegisters::Fault,1));
         if(checkFault(OPEN) || checkFault(OVUV)){ //If thermocouple is open circuit or if the device is in OV/UV protection, the temp value can't be trusted
@@ -105,7 +105,7 @@ void MAX31856::update()
         {
             m_Temp = NAN;
         }
-        m_prevUpdate = millis();
+        m_prevUpdate = millisFast();
     }
 }
 

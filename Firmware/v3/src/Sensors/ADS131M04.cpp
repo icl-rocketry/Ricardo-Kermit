@@ -15,6 +15,7 @@
 
 #include <Arduino.h>
 #include <SPI.h>
+#include <esp32-hal-ledc.h>
 #include "ADS131M04.h"
 #include <libriccore/riccorelogging.h>
 
@@ -39,7 +40,7 @@ initialised(false)
 void ADS131M04::setup() {
   pinMode(csPin, OUTPUT);//set the pinmode of csPin to output data
   digitalWrite(csPin, HIGH);//set the csPin to output high (active low)
-
+  reset();
   /* Set CLKOUT on the ESP32. used for generation of the ADC clock signal using ledc.
     Define the individual clock channel to generate the signal and the clock frequency to
     generate it at.
@@ -47,11 +48,11 @@ void ADS131M04::setup() {
     
   */
 
- if (clockEnabled == true){
-  ledcSetup(clockCh, CLKIN_SPD, 2); //duty cycle resolution = 2bits? check datasheet
-  ledcAttachPin(clkoutPin, clockCh);
-  ledcWrite(clockCh, 2);
- }
+  if (clockEnabled == true)
+  {
+    ledcAttach(clkoutPin, CLKIN_SPD, 2);
+    ledcWrite(clkoutPin, 2);
+  }
 
   setOSR(OSROPT::OSR16256);
   

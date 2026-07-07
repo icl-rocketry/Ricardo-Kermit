@@ -19,6 +19,7 @@
 [submodule "Firmware/v3/lib/SdFat"]
 	path = Firmware/v3/lib/SdFat
 	url = git@github.com:icl-rocketry/SdFat.git
+	branch = bug-fix
 [submodule "Firmware/v2/components/libriccore"]
 	path = Firmware/v2/components/libriccore
 	url = git@github.com:icl-rocketry/libriccore.git
