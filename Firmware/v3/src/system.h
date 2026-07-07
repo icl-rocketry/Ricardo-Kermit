@@ -75,13 +75,14 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         const std::string log_path = "/Logs";
         const std::string config_path = "/Config";
 
+        // All time values are in milliseconds
         uint32_t telemetry_log_delta = 1000;
-        uint32_t prev_telemetry_log_time;
-        uint64_t display_boot_start_time = 0;
-        uint64_t prev_display_update_time = 0;
+        uint32_t prev_telemetry_log_time = 0;
+        uint32_t display_boot_start_time = 0;
+        uint32_t prev_display_update_time = 0;
 
-        static constexpr uint64_t display_logo_duration_us = 3000000ULL; // 3 seconds
-        static constexpr uint64_t display_update_delta = 200000ULL;      // 0.2 seconds
+        static constexpr uint32_t display_logo_duration_ms = 3000; // 3 seconds
+        static constexpr uint32_t display_update_delta_ms = 200;      // 0.2 seconds
 
 
 

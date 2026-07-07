@@ -162,7 +162,7 @@ void System::initializeLoggers()
     loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::SYS>().initialize(std::move(syslogfile), networkmanager);
 
     // initialize telemetry logger
-    std::string file_header = "ch0sens,ch1sens,ch2sens,ch3sens,tc0(C),tc1(C),time(us)";
+    std::string file_header = "ch0sens,ch1sens,ch2sens,ch3sens,tc0(C),tc1(C),time(ms)";
     loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::TELEMETRY>().initialize(std::move(telemetrylogfile),file_header,[](std::string_view msg){RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>(msg);});
 }
 
@@ -188,7 +188,7 @@ void System::remoteSensorUpdate()
 
 void System::logReadings()
 {
-    if (esp_timer_get_time() - prev_telemetry_log_time > telemetry_log_delta)
+    if (millis() - prev_telemetry_log_time > telemetry_log_delta)
     {
         TelemetryLogframe logframe;
 
@@ -200,8 +200,8 @@ void System::logReadings()
         logframe.temp0 = TC0.getTemp();
         logframe.temp1 = TC1.getTemp();
 
-        logframe.timestamp = esp_timer_get_time();
-        prev_telemetry_log_time = esp_timer_get_time();
+        logframe.timestamp = millis();
+        prev_telemetry_log_time = millis();
 
         RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::TELEMETRY>(logframe);
 
@@ -231,7 +231,7 @@ void System::setupDisplay()
 {
     oled.begin();
 
-    display_boot_start_time = static_cast<uint64_t>(esp_timer_get_time());
+    display_boot_start_time = millis();
     prev_display_update_time = display_boot_start_time;
 
     drawStartupLogo();
@@ -250,15 +250,15 @@ void System::drawStartupLogo()
 }
 
 void System::updateDisplay()
-{
-    const uint64_t now = static_cast<uint64_t>(esp_timer_get_time());
+{ 
+    const uint32_t now = millis();
 
     // Keep the ICLR logo on screen for the first 3 seconds after display init.
-    if (now - display_boot_start_time < display_logo_duration_us) {
+    if (now - display_boot_start_time < display_logo_duration_ms) {
         return;
     }
 
-    if (now - prev_display_update_time < display_update_delta) {
+    if (now - prev_display_update_time < display_update_delta_ms) {
         return;
     }
 
