@@ -45,7 +45,7 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         ADS131M04 ADC0;
 
         // SPI OLED Display used to show live ADC Channel values.
-        U8G2_SSD1322_ZJY_256X64_F_4W_SW_SPI oled;
+        U8G2_SSD1322_ZJY_256X64_F_4W_SW_SPI display;
     
         NRCRemotePTap CPT0;
         NRCRemotePTap CPT1;

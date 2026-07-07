@@ -29,6 +29,10 @@ static constexpr int VSPI_BUS_NUM = VSPI;
 static constexpr int HSPI_BUS_NUM = HSPI;
 #endif
 
+static constexpr uint16_t DISPLAY_WIDTH = 256;
+static constexpr uint16_t DISPLAY_HEIGHT = 64;
+static constexpr uint8_t DISPLAY_DRAW_COLOR_ON = 1;
+
 static constexpr uint8_t ICLR_LOGO_WIDTH = 32;
 static constexpr uint8_t ICLR_LOGO_HEIGHT = 32;
 
@@ -50,7 +54,7 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    TC0(SNSRSPI, PinMap::TC0_Cs),
                    TC1(SNSRSPI, PinMap::TC1_Cs, MAX31856::TCType::TT),
                    ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK),
-                   oled(U8G2_R0, PinMap::OLED_SCLK, PinMap::OLED_MOSI, PinMap::OLED_CS, PinMap::OLED_DC, PinMap::OLED_RST),
+                   display(U8G2_R0, PinMap::DISPLAY_SCLK, PinMap::DISPLAY_MOSI, PinMap::DISPLAY_CS, PinMap::DISPLAY_DC, PinMap::DISPLAY_RST),
                    CPT0(networkmanager, 0),
                    CPT1(networkmanager, 1),
                    Mass(networkmanager, 0),
@@ -229,7 +233,7 @@ void System::remoteSensorSetup(){
 
 void System::setupDisplay()
 {
-    oled.begin();
+    display.begin();
 
     display_boot_start_time = millis();
     prev_display_update_time = display_boot_start_time;
@@ -239,14 +243,14 @@ void System::setupDisplay()
 
 void System::drawStartupLogo()
 {
-    oled.clearBuffer();
-    oled.setDrawColor(1);
+    display.clearBuffer();
+    display.setDrawColor(DISPLAY_DRAW_COLOR_ON);
 
-    const uint8_t x = (256 - ICLR_LOGO_WIDTH) / 2;
-    const uint8_t y = (64 - ICLR_LOGO_HEIGHT) / 2;
+    const uint16_t logo_top_left_x = (DISPLAY_WIDTH - ICLR_LOGO_WIDTH) / 2;
+    const uint16_t logo_top_left_y = (DISPLAY_HEIGHT - ICLR_LOGO_HEIGHT) / 2;
 
-    oled.drawXBMP(x, y, ICLR_LOGO_WIDTH, ICLR_LOGO_HEIGHT, ICLR_LOGO_XBM);
-    oled.sendBuffer();
+    display.drawXBMP(logo_top_left_x, logo_top_left_y, ICLR_LOGO_WIDTH, ICLR_LOGO_HEIGHT, ICLR_LOGO_XBM);
+    display.sendBuffer();
 }
 
 void System::updateDisplay()
@@ -266,22 +270,22 @@ void System::updateDisplay()
 
     char line[32];
 
-    oled.clearBuffer();
-    oled.setFont(u8g2_font_9x15_tf);
+    display.clearBuffer();
+    display.setFont(u8g2_font_9x15_tf);
 
-    oled.drawStr(0, 14, "KERMIT | DAQ");
+    display.drawStr(0, 14, "KERMIT | DAQ");
 
     snprintf(line, sizeof(line), "ADC1:%04ld", static_cast<long>(ADC0.getOutput(0)));
-    oled.drawStr(0, 34, line);
+    display.drawStr(0, 34, line);
 
     snprintf(line, sizeof(line), "ADC2:%04ld", static_cast<long>(ADC0.getOutput(1)));
-    oled.drawStr(0, 54, line);
+    display.drawStr(0, 54, line);
 
     snprintf(line, sizeof(line), "ADC3:%04ld", static_cast<long>(ADC0.getOutput(2)));
-    oled.drawStr(128, 34, line);
+    display.drawStr(128, 34, line);
 
     snprintf(line, sizeof(line), "ADC4:%04ld", static_cast<long>(ADC0.getOutput(3)));
-    oled.drawStr(128, 54, line);
+    display.drawStr(128, 54, line);
 
-    oled.sendBuffer();
+    display.sendBuffer();
 }
