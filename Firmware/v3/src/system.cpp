@@ -275,16 +275,16 @@ void System::updateDisplay()
 
     display.drawStr(0, 14, "KERMIT | DAQ");
 
-    snprintf(line, sizeof(line), "ADC1:%04ld", static_cast<long>(ADC0.getOutput(0)));
+    snprintf(line, sizeof(line), "P0:%+06.2f", CPT0.getPressure());
     display.drawStr(0, 34, line);
 
-    snprintf(line, sizeof(line), "ADC2:%04ld", static_cast<long>(ADC0.getOutput(1)));
+    snprintf(line, sizeof(line), "P1:%+06.2f", CPT1.getPressure());
     display.drawStr(0, 54, line);
 
-    snprintf(line, sizeof(line), "ADC3:%04ld", static_cast<long>(ADC0.getOutput(2)));
+    snprintf(line, sizeof(line), "TH:%+06.2f", Thrust.getWeight());
     display.drawStr(128, 34, line);
 
-    snprintf(line, sizeof(line), "ADC4:%04ld", static_cast<long>(ADC0.getOutput(3)));
+    snprintf(line, sizeof(line), "MA:%+06.2f", Mass.getWeight());
     display.drawStr(128, 54, line);
 
     display.sendBuffer();
